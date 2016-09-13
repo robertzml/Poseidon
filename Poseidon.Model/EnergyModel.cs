@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Poseidon.Base.Model
+namespace Poseidon.Model
 {
+    using Poseidon.Base.Model;
+
     /// <summary>
-    /// 基础对象类
+    /// 能源模型
     /// </summary>
-    public abstract class BaseEntity
+    public class EnergyModel : BaseEntity
     {
         #region Property
         /// <summary>
-        /// ID
+        /// 名称
         /// </summary>
-        public string Id { get; set; }
+        public string Name { get; set; }
         #endregion //Property
     }
 }
