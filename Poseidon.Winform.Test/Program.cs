@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Poseidon.Winform.Base
+namespace Poseidon.Winform.Test
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Poseidon.Winform.Base
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BaseForm());
+            Application.Run(new Form1());
         }
     }
 }

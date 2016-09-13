@@ -5,16 +5,20 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Poseidon.Winform.Base
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// 窗体基类
+    /// </summary>
+    public partial class BaseForm : DevExpress.XtraEditors.XtraForm
     {
-        public Form1()
+        #region Constructor
+        public BaseForm()
         {
             InitializeComponent();
         }
+        #endregion //Constructor
     }
 }

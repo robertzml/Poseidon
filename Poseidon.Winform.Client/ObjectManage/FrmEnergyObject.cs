@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Client
 {
-    public partial class Form1 : Form
+    using Poseidon.Winform.Base;
+
+    public partial class FrmEnergyObject : BaseForm
     {
-        public Form1()
+        public FrmEnergyObject()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
-﻿namespace Poseidon.Winform.Client
+﻿namespace Poseidon.Winform.Base
 {
-    partial class Form1
+    partial class BaseForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // BaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 380);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(854, 478);
+            this.Name = "BaseForm";
+            this.Text = "BaseForm";
             this.ResumeLayout(false);
 
         }
