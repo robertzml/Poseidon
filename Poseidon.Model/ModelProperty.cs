@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Model
 {
-    using Poseidon.Base.Model;
-
     /// <summary>
-    /// 能源模型基类
+    /// 自定义模型属性类
     /// </summary>
-    public abstract class EnergyModel : BaseEntity
+    public class ModelProperty
     {
-        #region Property
         /// <summary>
-        /// 标识
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
-        /// 名称
+        /// 属性名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 备注
+        /// 属性类型
+        /// </summary>
+        public ModelPropertyType Type { get; set; }
+
+        /// <summary>
+        /// 属性说明
         /// </summary>
         public string Remark { get; set; }
-        #endregion //Property
     }
 }

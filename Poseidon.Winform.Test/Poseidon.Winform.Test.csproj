@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Poseidon.Winform.Test</RootNamespace>
     <AssemblyName>Poseidon.Winform.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,6 +103,10 @@
     <ProjectReference Include="..\Poseidon.Data\Poseidon.Data.csproj">
       <Project>{6abe6b44-57dc-473f-b406-8e4772b08a4a}</Project>
       <Name>Poseidon.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Poseidon.Winform.Base\Poseidon.Winform.Base.csproj">
+      <Project>{7650e6f8-d821-4281-949c-1f9005f4fb32}</Project>
+      <Name>Poseidon.Winform.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

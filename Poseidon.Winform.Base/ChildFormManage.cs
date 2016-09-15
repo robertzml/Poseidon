@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Base
 {
+    /// <summary>
+    /// 字窗体管理类
+    /// </summary>
     public class ChildFormManage
     {
         #region Method

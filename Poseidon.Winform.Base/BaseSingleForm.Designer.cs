@@ -30,8 +30,8 @@
         {
             this.plFill = new DevExpress.XtraEditors.PanelControl();
             this.plBottom = new DevExpress.XtraEditors.PanelControl();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnConfirm = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
             this.plBottom.SuspendLayout();
@@ -53,13 +53,21 @@
             this.plBottom.Appearance.BackColor = System.Drawing.Color.White;
             this.plBottom.Appearance.Options.UseBackColor = true;
             this.plBottom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.plBottom.Controls.Add(this.btnCancel);
             this.plBottom.Controls.Add(this.btnConfirm);
+            this.plBottom.Controls.Add(this.btnCancel);
             this.plBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.plBottom.Location = new System.Drawing.Point(0, 252);
             this.plBottom.Name = "plBottom";
             this.plBottom.Size = new System.Drawing.Size(477, 80);
             this.plBottom.TabIndex = 1;
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(241, 28);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(95, 31);
+            this.btnConfirm.TabIndex = 0;
+            this.btnConfirm.Text = "确定";
             // 
             // btnCancel
             // 
@@ -69,14 +77,6 @@
             this.btnCancel.Size = new System.Drawing.Size(95, 31);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "取消";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Location = new System.Drawing.Point(245, 28);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(95, 31);
-            this.btnConfirm.TabIndex = 0;
-            this.btnConfirm.Text = "确定";
             // 
             // BaseSingleForm
             // 
@@ -102,10 +102,9 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.PanelControl plFill;
-        private DevExpress.XtraEditors.PanelControl plBottom;
         protected DevExpress.XtraEditors.SimpleButton btnCancel;
         protected DevExpress.XtraEditors.SimpleButton btnConfirm;
+        protected DevExpress.XtraEditors.PanelControl plFill;
+        protected DevExpress.XtraEditors.PanelControl plBottom;
     }
 }

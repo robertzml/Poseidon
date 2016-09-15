@@ -30,15 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barBtnEnergy = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnEnergyList = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnDepartment = new DevExpress.XtraBars.BarButtonItem();
+            this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
+            this.barBtnEnergyAdd = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonGroupEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonGroupDepartment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -48,28 +50,29 @@
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
-            this.barBtnEnergy,
+            this.barBtnEnergyList,
             this.barBtnDepartment,
-            this.barChildList});
+            this.barChildList,
+            this.barBtnEnergyAdd});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 4;
+            this.ribbonControl.MaxItemId = 5;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.ribbonObject});
+            this.ribbonPageObject});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.Size = new System.Drawing.Size(924, 147);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             // 
-            // barBtnEnergy
+            // barBtnEnergyList
             // 
-            this.barBtnEnergy.Caption = "能源模型";
-            this.barBtnEnergy.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.barBtnEnergy.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnEnergy.Glyph")));
-            this.barBtnEnergy.Id = 1;
-            this.barBtnEnergy.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnEnergy.LargeGlyph")));
-            this.barBtnEnergy.Name = "barBtnEnergy";
-            this.barBtnEnergy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnEnergy_ItemClick);
+            this.barBtnEnergyList.Caption = "能源模型总览";
+            this.barBtnEnergyList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barBtnEnergyList.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnEnergyList.Glyph")));
+            this.barBtnEnergyList.Id = 1;
+            this.barBtnEnergyList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnEnergyList.LargeGlyph")));
+            this.barBtnEnergyList.Name = "barBtnEnergyList";
+            this.barBtnEnergyList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnEnergy_ItemClick);
             // 
             // barBtnDepartment
             // 
@@ -79,6 +82,23 @@
             this.barBtnDepartment.Id = 2;
             this.barBtnDepartment.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnDepartment.LargeGlyph")));
             this.barBtnDepartment.Name = "barBtnDepartment";
+            // 
+            // barChildList
+            // 
+            this.barChildList.Caption = "窗口";
+            this.barChildList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barChildList.Id = 3;
+            this.barChildList.Name = "barChildList";
+            // 
+            // barBtnEnergyAdd
+            // 
+            this.barBtnEnergyAdd.Caption = "添加模型";
+            this.barBtnEnergyAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barBtnEnergyAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnEnergyAdd.Glyph")));
+            this.barBtnEnergyAdd.Id = 4;
+            this.barBtnEnergyAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnEnergyAdd.LargeGlyph")));
+            this.barBtnEnergyAdd.Name = "barBtnEnergyAdd";
+            this.barBtnEnergyAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnEnergyAdd_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -93,19 +113,26 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
-            // ribbonObject
+            // ribbonPageObject
             // 
-            this.ribbonObject.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
-            this.ribbonObject.Name = "ribbonObject";
-            this.ribbonObject.Text = "模型管理";
+            this.ribbonPageObject.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonGroupEnergy,
+            this.ribbonGroupDepartment});
+            this.ribbonPageObject.Name = "ribbonPageObject";
+            this.ribbonPageObject.Text = "模型管理";
             // 
-            // ribbonPageGroup2
+            // ribbonGroupEnergy
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnEnergy);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnDepartment);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "基本模型";
+            this.ribbonGroupEnergy.ItemLinks.Add(this.barBtnEnergyList);
+            this.ribbonGroupEnergy.ItemLinks.Add(this.barBtnEnergyAdd);
+            this.ribbonGroupEnergy.Name = "ribbonGroupEnergy";
+            this.ribbonGroupEnergy.Text = "能源模型";
+            // 
+            // ribbonGroupDepartment
+            // 
+            this.ribbonGroupDepartment.ItemLinks.Add(this.barBtnDepartment);
+            this.ribbonGroupDepartment.Name = "ribbonGroupDepartment";
+            this.ribbonGroupDepartment.Text = "部门模型";
             // 
             // ribbonStatusBar
             // 
@@ -119,13 +146,6 @@
             this.tabMdiManager.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
-            // 
-            // barChildList
-            // 
-            this.barChildList.Caption = "窗口";
-            this.barChildList.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.barChildList.Id = 3;
-            this.barChildList.Name = "barChildList";
             // 
             // MainForm
             // 
@@ -153,12 +173,14 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraBars.BarButtonItem barBtnEnergy;
+        private DevExpress.XtraBars.BarButtonItem barBtnEnergyList;
         private DevExpress.XtraBars.BarButtonItem barBtnDepartment;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonObject;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageObject;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupEnergy;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager tabMdiManager;
         private DevExpress.XtraBars.BarMdiChildrenListItem barChildList;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupDepartment;
+        private DevExpress.XtraBars.BarButtonItem barBtnEnergyAdd;
     }
 }
 
