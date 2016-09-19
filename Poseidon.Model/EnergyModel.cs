@@ -11,7 +11,7 @@ namespace Poseidon.Model
     /// <summary>
     /// 能源模型基类
     /// </summary>
-    public abstract class EnergyModel : BaseEntity
+    public class EnergyModel : BaseEntity
     {
         #region Property
         /// <summary>
@@ -23,6 +23,11 @@ namespace Poseidon.Model
         /// 名称
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// 继承基类
+        /// </summary>
+        public string Base { get; set; }
 
         /// <summary>
         /// 备注

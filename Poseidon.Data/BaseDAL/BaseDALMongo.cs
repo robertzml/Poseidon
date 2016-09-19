@@ -19,6 +19,14 @@ namespace Poseidon.Data.BaseDAL
         public BaseDALMongo()
         {
             this.db = new MongoDb();
+
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            this.db.Connect("mongodb://localhost:27017");
+            this.db.GetDatabase("poseidon");
         }
 
         public ErrorCode Insert(string collectionName, BsonDocument doc)

@@ -73,5 +73,25 @@ namespace Poseidon.Winform.Base
             RemoveCurrent();
         }
         #endregion //Event
+
+        #region Property
+        /// <summary>
+        /// 数据源
+        /// </summary>
+        [Description("数据源")]
+        public List<ModelProperty> DataSource
+        {
+            get
+            {
+                return this.bsData.DataSource as List<ModelProperty>;
+            }
+            set
+            {
+                this.dgvModel.BeginDataUpdate();
+                this.bsData.DataSource = value;
+                this.dgvModel.EndDataUpdate();
+            }
+        }
+        #endregion //Property
     }
 }

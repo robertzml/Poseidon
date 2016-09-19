@@ -110,6 +110,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Poseidon.Base\Poseidon.Base.csproj">
+      <Project>{06220d70-2dbf-4aca-a583-0967f40923ff}</Project>
+      <Name>Poseidon.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Poseidon.Core\Poseidon.Core.csproj">
+      <Project>{7fb974ee-5f0e-45bb-b773-a34441cc1757}</Project>
+      <Name>Poseidon.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Poseidon.Model\Poseidon.Model.csproj">
       <Project>{e6c5821c-de57-4c36-9ec7-4c070045b55d}</Project>
       <Name>Poseidon.Model</Name>

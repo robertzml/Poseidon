@@ -21,7 +21,7 @@ namespace Poseidon.Data.BaseDB
             //client.GetDatabase();
         }
 
-        public void Connec(string connectionString)
+        public void Connect(string connectionString)
         {
             this.client = new MongoClient(connectionString);
 

@@ -30,11 +30,11 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.modelPropertyGrid1 = new Poseidon.Winform.Base.ModelPropertyGrid();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.imageComboBoxEdit1 = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
+            this.dgProperty = new Poseidon.Winform.Base.ModelPropertyGrid();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtKey = new DevExpress.XtraEditors.TextEdit();
+            this.cmbInherit = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -49,10 +49,10 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbInherit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
@@ -68,6 +68,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Location = new System.Drawing.Point(237, 22);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // plFill
             // 
@@ -95,11 +96,11 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.memoEdit1);
-            this.layoutControl1.Controls.Add(this.modelPropertyGrid1);
-            this.layoutControl1.Controls.Add(this.textEdit2);
-            this.layoutControl1.Controls.Add(this.textEdit1);
-            this.layoutControl1.Controls.Add(this.imageComboBoxEdit1);
+            this.layoutControl1.Controls.Add(this.txtRemark);
+            this.layoutControl1.Controls.Add(this.dgProperty);
+            this.layoutControl1.Controls.Add(this.txtName);
+            this.layoutControl1.Controls.Add(this.txtKey);
+            this.layoutControl1.Controls.Add(this.cmbInherit);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
@@ -108,46 +109,46 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // memoEdit1
+            // txtRemark
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(63, 247);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(380, 88);
-            this.memoEdit1.StyleController = this.layoutControl1;
-            this.memoEdit1.TabIndex = 9;
+            this.txtRemark.Location = new System.Drawing.Point(63, 247);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(380, 88);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 9;
             // 
-            // modelPropertyGrid1
+            // dgProperty
             // 
-            this.modelPropertyGrid1.Location = new System.Drawing.Point(63, 84);
-            this.modelPropertyGrid1.Name = "modelPropertyGrid1";
-            this.modelPropertyGrid1.Size = new System.Drawing.Size(380, 159);
-            this.modelPropertyGrid1.TabIndex = 8;
+            this.dgProperty.Location = new System.Drawing.Point(63, 84);
+            this.dgProperty.Name = "dgProperty";
+            this.dgProperty.Size = new System.Drawing.Size(380, 159);
+            this.dgProperty.TabIndex = 8;
             // 
-            // textEdit2
+            // txtName
             // 
-            this.textEdit2.Location = new System.Drawing.Point(63, 36);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(380, 20);
-            this.textEdit2.StyleController = this.layoutControl1;
-            this.textEdit2.TabIndex = 7;
+            this.txtName.Location = new System.Drawing.Point(63, 36);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(380, 20);
+            this.txtName.StyleController = this.layoutControl1;
+            this.txtName.TabIndex = 7;
             // 
-            // textEdit1
+            // txtKey
             // 
-            this.textEdit1.Location = new System.Drawing.Point(63, 12);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(380, 20);
-            this.textEdit1.StyleController = this.layoutControl1;
-            this.textEdit1.TabIndex = 6;
+            this.txtKey.Location = new System.Drawing.Point(63, 12);
+            this.txtKey.Name = "txtKey";
+            this.txtKey.Size = new System.Drawing.Size(380, 20);
+            this.txtKey.StyleController = this.layoutControl1;
+            this.txtKey.TabIndex = 6;
             // 
-            // imageComboBoxEdit1
+            // cmbInherit
             // 
-            this.imageComboBoxEdit1.Location = new System.Drawing.Point(63, 60);
-            this.imageComboBoxEdit1.Name = "imageComboBoxEdit1";
-            this.imageComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbInherit.Location = new System.Drawing.Point(63, 60);
+            this.cmbInherit.Name = "cmbInherit";
+            this.cmbInherit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.imageComboBoxEdit1.Size = new System.Drawing.Size(380, 20);
-            this.imageComboBoxEdit1.StyleController = this.layoutControl1;
-            this.imageComboBoxEdit1.TabIndex = 4;
+            this.cmbInherit.Size = new System.Drawing.Size(380, 20);
+            this.cmbInherit.StyleController = this.layoutControl1;
+            this.cmbInherit.TabIndex = 4;
             // 
             // layoutControlGroup1
             // 
@@ -166,7 +167,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.imageComboBoxEdit1;
+            this.layoutControlItem1.Control = this.cmbInherit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(435, 24);
@@ -175,7 +176,7 @@
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.textEdit1;
+            this.layoutControlItem3.Control = this.txtKey;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(435, 24);
@@ -184,7 +185,7 @@
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.textEdit2;
+            this.layoutControlItem4.Control = this.txtName;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(435, 24);
@@ -193,7 +194,7 @@
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.modelPropertyGrid1;
+            this.layoutControlItem2.Control = this.dgProperty;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(435, 163);
@@ -202,7 +203,7 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.memoEdit1;
+            this.layoutControlItem5.Control = this.txtRemark;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 235);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(435, 92);
@@ -224,10 +225,10 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbInherit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
@@ -242,16 +243,16 @@
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraEditors.ImageComboBoxEdit imageComboBoxEdit1;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cmbInherit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtName;
+        private DevExpress.XtraEditors.TextEdit txtKey;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private Base.ModelPropertyGrid modelPropertyGrid1;
+        private Base.ModelPropertyGrid dgProperty;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraEditors.MemoEdit txtRemark;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
