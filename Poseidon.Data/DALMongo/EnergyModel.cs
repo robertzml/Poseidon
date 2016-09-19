@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Poseidon.Data
+namespace Poseidon.Data.DALMongo
 {
     /// <summary>
-    /// 数据访问层通用接口
+    /// 能源模型数据访问类
     /// </summary>
-    public interface IBaseDAL
+    public class EnergyModel
     {
     }
 }
