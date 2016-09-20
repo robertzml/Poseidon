@@ -82,6 +82,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Poseidon.Model.CustomModel.datasource" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ObjectManage\FrmEnergyObjectAdd.resx">
       <DependentUpon>FrmEnergyObjectAdd.cs</DependentUpon>

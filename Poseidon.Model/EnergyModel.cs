@@ -11,28 +11,10 @@ namespace Poseidon.Model
     /// <summary>
     /// 能源模型基类
     /// </summary>
-    public class EnergyModel : BaseEntity
+    public class EnergyModel : CustomModel
     {
         #region Property
-        /// <summary>
-        /// 标识
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
-        /// 名称
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 继承基类
-        /// </summary>
-        public string Base { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        public string Remark { get; set; }
+  
         #endregion //Property
     }
 }

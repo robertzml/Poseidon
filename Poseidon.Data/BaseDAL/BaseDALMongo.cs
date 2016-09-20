@@ -29,6 +29,13 @@ namespace Poseidon.Data.BaseDAL
             this.db.GetDatabase("poseidon");
         }
 
+        public IEnumerable<BsonDocument> FindAll(string collectionName)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            var docs = collection.Find(new BsonDocument()).ToList();
+            return docs;
+        }
+
         public ErrorCode Insert(string collectionName, BsonDocument doc)
         {
             var collection = this.db.GetCollection(collectionName);

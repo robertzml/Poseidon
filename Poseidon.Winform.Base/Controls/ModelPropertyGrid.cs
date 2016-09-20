@@ -24,6 +24,9 @@ namespace Poseidon.Winform.Base
         /// </summary>
         private BindingSource bsData;
 
+        /// <summary>
+        /// 对应表格视图
+        /// </summary>
         private GridView dgView;
         #endregion //Field
 
@@ -59,6 +62,14 @@ namespace Poseidon.Winform.Base
             this.bsData.RemoveAt(rowIndex);
             this.bsData.ResetBindings(false);
             return;
+        }
+
+        /// <summary>
+        /// 完成编辑
+        /// </summary>
+        public void CloseEditor()
+        {
+            this.dgView.CloseEditor();
         }
         #endregion //Function
 

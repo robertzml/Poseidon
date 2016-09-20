@@ -59,7 +59,6 @@
     <Compile Include="BaseDAL\BaseDALSQL.cs" />
     <Compile Include="BaseDB\MongoDb.cs" />
     <Compile Include="BaseDB\SqlDb.cs" />
-    <Compile Include="DALMongo\EnergyModel.cs" />
     <Compile Include="IBaseDALUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +70,9 @@
       <Project>{06220d70-2dbf-4aca-a583-0967f40923ff}</Project>
       <Name>Poseidon.Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DALMongo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

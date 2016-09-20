@@ -26,6 +26,14 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Event
+
+        private void FrmEnergyObjectAdd_Load(object sender, EventArgs e)
+        {
+            this.dgProperty.DataSource = new List<ModelProperty>();
+
+            this.bsModel.DataSource = BusinessFactory<EnergyModelBusiness>.Instance.FindAll();
+        }
+
         /// <summary>
         /// 保存
         /// </summary>
@@ -33,6 +41,8 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            this.dgProperty.CloseEditor();
+
             EnergyModel model = new EnergyModel();
             model.Key = this.txtKey.Text;
             model.Name = this.txtName.Text;
@@ -44,5 +54,6 @@ namespace Poseidon.Winform.Client
             MessageBox.Show(result.ToString());
         }
         #endregion //Event
+
     }
 }

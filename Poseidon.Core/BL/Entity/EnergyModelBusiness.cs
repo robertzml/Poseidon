@@ -12,13 +12,13 @@ namespace Poseidon.Core.BL
     public class EnergyModelBusiness
     {
         #region Field
-        private Poseidon.Core.DAL.Mongo.EnergyModel dal;
+        private Poseidon.Core.DAL.Mongo.EnergyModelRepository dal;
         #endregion //Field
 
         #region Constructor
         public EnergyModelBusiness()
         {
-            this.dal = new DAL.Mongo.EnergyModel();
+            this.dal = new DAL.Mongo.EnergyModelRepository();
         }
         #endregion //Constructor
 
@@ -27,6 +27,12 @@ namespace Poseidon.Core.BL
         {
             var result = this.dal.Create(model, properties);
             return result;
+        }
+
+        public List<EnergyModel> FindAll()
+        {
+            var data = this.dal.FindAllWithMain();
+            return data;
         }
         #endregion //Method
     }
