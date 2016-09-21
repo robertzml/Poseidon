@@ -70,6 +70,10 @@
       <Project>{06220d70-2dbf-4aca-a583-0967f40923ff}</Project>
       <Name>Poseidon.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Poseidon.Common\Poseidon.Common.csproj">
+      <Project>{fa99b824-e554-400f-a8d3-44ffde8fd795}</Project>
+      <Name>Poseidon.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DALMongo\" />

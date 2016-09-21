@@ -8,27 +8,39 @@ namespace Poseidon.Data.BaseDAL
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
-
     using Poseidon.Base.Entity;
     using Poseidon.Data.BaseDB;
 
+    /// <summary>
+    /// MongoDB数据访问类
+    /// </summary>
     public class BaseDALMongo
     {
+        #region Field
+        /// <summary>
+        /// 数据库访问对象
+        /// </summary>
         private MongoDb db;
+        #endregion //Field
 
+        #region Constructor
         public BaseDALMongo()
         {
             this.db = new MongoDb();
 
             Initialize();
         }
+        #endregion //Constructor
 
+        #region Function
         private void Initialize()
         {
-            this.db.Connect("mongodb://localhost:27017");
-            this.db.GetDatabase("poseidon");
+            this.db.Connect();
+            this.db.OpenDatabase("poseidon");
         }
+        #endregion //Function
 
+        #region Method
         public IEnumerable<BsonDocument> FindAll(string collectionName)
         {
             var collection = this.db.GetCollection(collectionName);
@@ -42,5 +54,6 @@ namespace Poseidon.Data.BaseDAL
             collection.InsertOne(doc);
             return ErrorCode.Success;
         }
+        #endregion //Method
     }
 }

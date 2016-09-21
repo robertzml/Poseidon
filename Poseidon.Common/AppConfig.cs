@@ -45,7 +45,7 @@ namespace Poseidon.Common
             {
                 throw new ArgumentNullException("没有找到Web.config文件或者App.config文件, 请指定配置文件");
             }
-            
+
             ExeConfigurationFileMap map = new ExeConfigurationFileMap();
             map.ExeConfigFilename = this.filePath;
 
@@ -71,6 +71,29 @@ namespace Poseidon.Common
 
             return "";
         }
+
+        /// <summary>
+        /// 获取默认配置连接字符串
+        /// </summary>
+        /// <returns></returns>
+        public string GetConnectionString()
+        {
+            string key = GetAppSetting("DbConnection");
+            return GetConnectionString(key);
+        }
+
+        /// <summary>
+        /// 获取连接字符串
+        /// </summary>
+        /// <param name="key">连接字符串键</param>
+        /// <returns></returns>
+        public string GetConnectionString(string key)
+        {
+            if (this.config.ConnectionStrings.ConnectionStrings[key] != null)
+                return this.config.ConnectionStrings.ConnectionStrings[key].ConnectionString;
+            else
+                return "";
+        }
         #endregion //Method
 
         #region Property
@@ -93,6 +116,17 @@ namespace Poseidon.Common
             get
             {
                 return GetAppSetting("DbType");
+            }
+        }
+
+        /// <summary>
+        /// 数据库连接字符串键值
+        /// </summary>
+        public string DbConnection
+        {
+            get
+            {
+                return GetAppSetting("DbConnection");
             }
         }
         #endregion //Property
