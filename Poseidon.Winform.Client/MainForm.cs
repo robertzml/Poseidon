@@ -15,12 +15,22 @@ namespace Poseidon.Winform.Client
 
     public partial class MainForm : RibbonForm
     {
+        #region Field
+        
+        #endregion //Field
+
         #region Constructor
         public MainForm()
         {
             InitializeComponent();
         }
         #endregion //Constructor
+
+        #region Event
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.Text = GlobalAction.Instance.AppConfig.ApplicationName;
+        }
 
         private void barBtnEnergy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -31,5 +41,7 @@ namespace Poseidon.Winform.Client
         {
             ChildFormManage.ShowDialogForm(typeof(FrmEnergyObjectAdd));
         }
+        #endregion //Event
+
     }
 }

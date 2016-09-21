@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Entity;
+    using Poseidon.Core.DL;
     using Poseidon.Model;
 
     public class EnergyModelBusiness

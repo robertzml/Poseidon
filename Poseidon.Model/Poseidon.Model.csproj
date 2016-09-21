@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomModel.cs" />
-    <Compile Include="EnergyModel.cs" />
     <Compile Include="ModelProperty.cs" />
     <Compile Include="ModelPropertyType.cs" />
     <Compile Include="ModelType.cs" />

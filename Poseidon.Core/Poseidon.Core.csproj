@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BL\Entity\EnergyModelBusiness.cs" />
     <Compile Include="DAL\Mongo\Entity\EnergyModelRepository.cs" />
+    <Compile Include="DL\EnergyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

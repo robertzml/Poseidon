@@ -10,6 +10,7 @@ namespace Poseidon.Winform.Client
 {
     using Poseidon.Base;
     using Poseidon.Core.BL;
+    using Poseidon.Core.DL;
     using Poseidon.Model;
     using Poseidon.Winform.Base;
 
@@ -47,6 +48,7 @@ namespace Poseidon.Winform.Client
             model.Key = this.txtKey.Text;
             model.Name = this.txtName.Text;
             model.Base = "EnergyModel";
+            model.Type = ModelType.Energy;
             model.Remark = this.txtRemark.Text;
 
             var result = BusinessFactory<EnergyModelBusiness>.Instance.Create(model, this.dgProperty.DataSource);

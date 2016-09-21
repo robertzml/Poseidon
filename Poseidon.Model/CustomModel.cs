@@ -9,7 +9,7 @@ namespace Poseidon.Model
     using Poseidon.Base.Model;
 
     /// <summary>
-    /// 自定义模型类
+    /// 自定义模型基类
     /// </summary>
     public class CustomModel : BaseEntity
     {

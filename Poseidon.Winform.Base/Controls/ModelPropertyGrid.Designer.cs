@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgcModel = new DevExpress.XtraGrid.GridControl();
-            this.bsModel = new System.Windows.Forms.BindingSource();
+            this.bsModel = new System.Windows.Forms.BindingSource(this.components);
             this.dgvModel = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,6 +66,14 @@
             this.colRemark});
             this.dgvModel.GridControl = this.dgcModel;
             this.dgvModel.Name = "dgvModel";
+            this.dgvModel.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvModel.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.dgvModel.OptionsCustomization.AllowFilter = false;
+            this.dgvModel.OptionsCustomization.AllowGroup = false;
+            this.dgvModel.OptionsCustomization.AllowQuickHideColumns = false;
+            this.dgvModel.OptionsFind.AllowFindPanel = false;
+            this.dgvModel.OptionsMenu.EnableColumnMenu = false;
+            this.dgvModel.OptionsMenu.EnableFooterMenu = false;
             this.dgvModel.OptionsView.EnableAppearanceEvenRow = true;
             this.dgvModel.OptionsView.EnableAppearanceOddRow = true;
             this.dgvModel.OptionsView.ShowFooter = true;
@@ -72,6 +81,7 @@
             // 
             // colName
             // 
+            this.colName.Caption = "属性名称";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
@@ -79,6 +89,7 @@
             // 
             // colType
             // 
+            this.colType.Caption = "属性类型";
             this.colType.FieldName = "Type";
             this.colType.Name = "colType";
             this.colType.Visible = true;
@@ -86,6 +97,7 @@
             // 
             // colRemark
             // 
+            this.colRemark.Caption = "备注";
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;

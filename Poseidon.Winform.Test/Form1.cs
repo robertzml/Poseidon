@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Test
 {
+    using Poseidon.Common;
     using Poseidon.Data;
 
     public partial class Form1 : Form
@@ -32,6 +33,12 @@ namespace Poseidon.Winform.Test
             sql.Insert(tableName, ht);
 
             MessageBox.Show("OK");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AppConfig config = new AppConfig();
+            MessageBox.Show(config.DbType);
         }
     }
 }

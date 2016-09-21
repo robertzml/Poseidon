@@ -40,7 +40,7 @@ namespace Poseidon.Data.BaseDAL
         {
             var collection = this.db.GetCollection(collectionName);
             collection.InsertOne(doc);
-            return ErrorCode.Error;
+            return ErrorCode.Success;
         }
     }
 }
