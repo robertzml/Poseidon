@@ -21,6 +21,11 @@ namespace Poseidon.Data.BaseDAL
         /// 数据库访问对象
         /// </summary>
         private MongoDb db;
+
+        /// <summary>
+        /// 默认数据库名称
+        /// </summary>
+        private string databaseName = "poseidon";
         #endregion //Field
 
         #region Constructor
@@ -36,7 +41,7 @@ namespace Poseidon.Data.BaseDAL
         private void Initialize()
         {
             this.db.Connect();
-            this.db.OpenDatabase("poseidon");
+            this.db.OpenDatabase(this.databaseName);
         }
         #endregion //Function
 

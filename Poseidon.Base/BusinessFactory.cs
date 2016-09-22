@@ -11,8 +11,8 @@ namespace Poseidon.Base
     /// <summary>
     /// 业务工厂类
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class BusinessFactory<T> where T: class
+    /// <typeparam name="T">业务对象</typeparam>
+    public class BusinessFactory<T> where T : class
     {
         #region Field
         /// <summary>

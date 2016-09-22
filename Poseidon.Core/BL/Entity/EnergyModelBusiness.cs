@@ -6,20 +6,31 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Core.BL
 {
+    using Poseidon.Base;
     using Poseidon.Base.Entity;
     using Poseidon.Core.DL;
+    using Poseidon.Core.IDAL;
     using Poseidon.Model;
 
+    /// <summary>
+    /// 能耗模型业务类
+    /// </summary>
     public class EnergyModelBusiness
     {
         #region Field
-        private Poseidon.Core.DAL.Mongo.EnergyModelRepository dal;
+        /// <summary>
+        /// 数据访问接口
+        /// </summary>
+        private IEnergyModelRepository dal;
         #endregion //Field
 
         #region Constructor
+        /// <summary>
+        /// 能耗模型业务类
+        /// </summary>
         public EnergyModelBusiness()
         {
-            this.dal = new DAL.Mongo.EnergyModelRepository();
+            this.dal = RepositoryFactory<IEnergyModelRepository>.Instance;
         }
         #endregion //Constructor
 

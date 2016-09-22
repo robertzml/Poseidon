@@ -10,13 +10,14 @@ namespace Poseidon.Core.DAL.Mongo
     using MongoDB.Bson;
     using Poseidon.Base.Entity;
     using Poseidon.Core.DL;
+    using Poseidon.Core.IDAL;
     using Poseidon.Data.BaseDAL;
     using Poseidon.Model;
 
     /// <summary>
     /// 能源模型数据访问类
     /// </summary>
-    internal class EnergyModelRepository
+    internal class EnergyModelRepository : IEnergyModelRepository
     {
         #region Method
         /// <summary>

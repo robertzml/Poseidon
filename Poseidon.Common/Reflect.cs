@@ -84,7 +84,7 @@ namespace Poseidon.Common
             }
             else
             {
-                objType = CreateInstance(cacheKey, filePath);
+                objType = CreateInstance(name, filePath);
             }
 
             return objType;
