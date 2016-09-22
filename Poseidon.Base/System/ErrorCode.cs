@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poseidon.Base.Entity
+namespace Poseidon.Base
 {
     /// <summary>
     /// 错误代码

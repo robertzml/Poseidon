@@ -5,15 +5,15 @@ using System.Text;
 
 namespace Poseidon.Core.IDAL
 {
-    using Poseidon.Base.Entity;
+    using Poseidon.Base;
     using Poseidon.Core.DL;
-    using Poseidon.Data.BaseDAL;
+    using Poseidon.Data;
     using Poseidon.Model;
 
     /// <summary>
     /// 能源模型数据访问接口
     /// </summary>
-    internal interface IEnergyModelRepository
+    internal interface IEnergyModelRepository : IBaseDAL<EnergyModel>
     {
         /// <summary>
         /// 新增能源模型

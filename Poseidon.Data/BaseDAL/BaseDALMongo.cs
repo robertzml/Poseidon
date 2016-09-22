@@ -8,7 +8,7 @@ namespace Poseidon.Data.BaseDAL
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
-    using Poseidon.Base.Entity;
+    using Poseidon.Base;
     using Poseidon.Data.BaseDB;
 
     /// <summary>

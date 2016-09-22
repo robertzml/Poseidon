@@ -8,7 +8,7 @@ using System.Text;
 namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
-    using Poseidon.Base.Entity;
+    using Poseidon.Base;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
     using Poseidon.Data.BaseDAL;
@@ -19,7 +19,14 @@ namespace Poseidon.Core.DAL.Mongo
     /// </summary>
     internal class EnergyModelRepository : IEnergyModelRepository
     {
+
         #region Method
+
+        public ErrorCode Create(EnergyModel obj)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 新增能源模型
         /// </summary>

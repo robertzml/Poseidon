@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessFactory.cs" />
-    <Compile Include="Entity\ErrorCode.cs" />
+    <Compile Include="System\ErrorCode.cs" />
     <Compile Include="IBaseDAL.cs" />
     <Compile Include="IBaseDB.cs" />
     <Compile Include="Model\BaseEntity.cs" />
