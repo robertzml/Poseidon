@@ -69,6 +69,7 @@
     <Compile Include="Controls\ModelPropertyGrid.Designer.cs">
       <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

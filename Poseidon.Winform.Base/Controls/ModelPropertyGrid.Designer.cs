@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dgcModel = new DevExpress.XtraGrid.GridControl();
-            this.bsModel = new System.Windows.Forms.BindingSource(this.components);
+            this.bsModel = new System.Windows.Forms.BindingSource();
             this.dgvModel = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -132,6 +131,7 @@
             this.Controls.Add(this.dgcModel);
             this.Name = "ModelPropertyGrid";
             this.Size = new System.Drawing.Size(516, 310);
+            this.Load += new System.EventHandler(this.ModelPropertyGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgcModel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsModel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModel)).EndInit();

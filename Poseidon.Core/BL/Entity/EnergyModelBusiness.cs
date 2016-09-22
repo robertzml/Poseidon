@@ -34,16 +34,31 @@ namespace Poseidon.Core.BL
         #endregion //Constructor
 
         #region Method
+        /// <summary>
+        /// 根据ID查找能源模型
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public EnergyModel FindById(string id)
+        {
+            var data = this.dal.FindById(id);
+            return data;
+        }
+
+        /// <summary>
+        /// 获取所有能源模型
+        /// </summary>
+        /// <returns></returns>
+        public List<EnergyModel> FindAll()
+        {
+            var data = this.dal.FindAll();
+            return data.ToList();
+        }
+
         public ErrorCode Create(EnergyModel model, List<ModelProperty> properties)
         {
             var result = this.dal.Create(model, properties);
             return result;
-        }
-
-        public List<EnergyModel> FindAll()
-        {
-            var data = this.dal.FindAllWithMain();
-            return data;
         }
         #endregion //Method
     }

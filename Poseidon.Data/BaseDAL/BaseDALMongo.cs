@@ -46,6 +46,16 @@ namespace Poseidon.Data.BaseDAL
         #endregion //Function
 
         #region Method
+        public BsonDocument FindById(string collectionName, string _id)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(_id));
+
+            var doc = collection.Find(filter).First();
+
+            return doc;
+        }
+
         public IEnumerable<BsonDocument> FindAll(string collectionName)
         {
             var collection = this.db.GetCollection(collectionName);

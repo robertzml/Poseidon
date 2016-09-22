@@ -22,6 +22,13 @@ namespace Poseidon.Base
         T FindById(object id);
 
         /// <summary>
+        /// 根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        T FindById(string id);
+
+        /// <summary>
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
