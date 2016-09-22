@@ -45,7 +45,7 @@
     <Compile Include="CustomModel.cs" />
     <Compile Include="ModelProperty.cs" />
     <Compile Include="ModelPropertyType.cs" />
-    <Compile Include="ModelType.cs" />
+    <Compile Include="CustomModelType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,7 +36,7 @@ namespace Poseidon.Winform.Client
             model.Key = this.txtKey.Text;
             model.Name = this.txtName.Text;
             model.Base = this.lkuInherit.EditValue.ToString();
-            model.Type = ModelType.Energy;
+            model.Type = CustomModelType.Energy;
             model.Remark = this.txtRemark.Text;
         }
 

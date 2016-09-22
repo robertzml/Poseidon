@@ -13,6 +13,9 @@ namespace Poseidon.Winform.Client
     using DevExpress.XtraBars.Ribbon;
     using Poseidon.Winform.Base;
 
+    /// <summary>
+    /// 主窗体界面
+    /// </summary>
     public partial class MainForm : RibbonForm
     {
         #region Field
@@ -23,6 +26,7 @@ namespace Poseidon.Winform.Client
         public MainForm()
         {
             InitializeComponent();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2013");
         }
         #endregion //Constructor
 
@@ -41,7 +45,17 @@ namespace Poseidon.Winform.Client
         {
             ChildFormManage.ShowDialogForm(typeof(FrmEnergyObjectAdd));
         }
-        #endregion //Event
+        
 
+        private void barBtnOrganizationList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barBtnOrganizationAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+        #endregion //Event
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Poseidon.Model
 {
     /// <summary>
-    /// 模型类型
+    /// 自定义模型类型
     /// </summary>
-    public enum ModelType
+    public enum CustomModelType
     {
         /// <summary>
         /// 基础对象
@@ -22,6 +22,12 @@ namespace Poseidon.Model
         /// 能源模型
         /// </summary>
         [Display(Name = "能源模型")]
-        Energy = 1
+        Energy = 1,
+
+        /// <summary>
+        /// 组织模型
+        /// </summary>
+        [Display(Name = "组织模型")]
+        Organization = 2
     }
 }

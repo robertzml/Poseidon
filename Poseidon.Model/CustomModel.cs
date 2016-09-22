@@ -32,7 +32,7 @@ namespace Poseidon.Model
         /// <summary>
         /// 模型类型
         /// </summary>
-        public ModelType Type { get; set; }
+        public CustomModelType Type { get; set; }
 
         /// <summary>
         /// 属性列表

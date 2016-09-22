@@ -40,7 +40,7 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Key = doc["key"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Base = doc["base"].ToString();
-            entity.Type = (ModelType)doc["type"].ToInt32();
+            entity.Type = (CustomModelType)doc["type"].ToInt32();
             entity.Remark = doc["remark"].ToString();
 
             if (doc.Contains("properties"))
@@ -120,7 +120,7 @@ namespace Poseidon.Core.DAL.Mongo
                 m.Key = item["key"].ToString();
                 m.Name = item["name"].ToString();
                 m.Base = item["base"].ToString();
-                m.Type = (ModelType)item["type"].ToInt32();
+                m.Type = (CustomModelType)item["type"].ToInt32();
                 m.Remark = item["remark"].ToString();
 
                 models.Add(m);
