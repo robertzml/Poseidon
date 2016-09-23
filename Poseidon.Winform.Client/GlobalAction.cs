@@ -23,14 +23,12 @@ namespace Poseidon.Winform.Client
         /// 锁变量
         /// </summary>
         private static object syncRoot = new object();
-
-        private AppConfig appconfig;
         #endregion //Field
 
         #region Constructor
         private GlobalAction()
         {
-            this.appconfig = new AppConfig();
+           
         }
         #endregion //Constructor
 
@@ -53,14 +51,6 @@ namespace Poseidon.Winform.Client
                     }
                 }
                 return _instance;
-            }
-        }
-
-        public AppConfig AppConfig
-        {
-            get
-            {
-                return this.appconfig;
             }
         }
         #endregion //Property

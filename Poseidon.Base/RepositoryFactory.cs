@@ -32,8 +32,7 @@ namespace Poseidon.Base
         /// <returns></returns>
         private static T LoadAssembly()
         {
-            AppConfig config = new AppConfig();
-            string prefix = config.GetAppSetting("DALPrefix");
+            string prefix = AppConfig.GetAppSetting("DALPrefix");
             prefix = "DAL." + prefix;
 
             string name = typeof(T).Name;

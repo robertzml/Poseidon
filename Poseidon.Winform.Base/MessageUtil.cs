@@ -6,14 +6,26 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Base
 {
+    using Poseidon.Common;
+
     /// <summary>
     /// 对话框
     /// </summary>
     public class MessageUtil
     {
         #region Field
-        private static readonly string messageBoxTitle = "能源科信息系统";
+        /// <summary>
+        /// 对话框标题
+        /// </summary>
+        private static readonly string messageBoxTitle;
         #endregion //Field
+
+        #region Constructor
+        static MessageUtil()
+        {
+            messageBoxTitle = AppConfig.ApplicationName;
+        }
+        #endregion //Constructor
 
         #region Method
         /// <summary>

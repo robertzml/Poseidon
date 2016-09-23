@@ -1,4 +1,4 @@
-﻿namespace Poseidon.Winform.Base
+﻿namespace Poseidon.Winform.Client
 {
     partial class ModelPropertyGrid
     {
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgcModel = new DevExpress.XtraGrid.GridControl();
-            this.bsModel = new System.Windows.Forms.BindingSource();
+            this.bsModelProperty = new System.Windows.Forms.BindingSource(this.components);
             this.dgvModel = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -37,13 +38,13 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgcModel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsModel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsModelProperty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModel)).BeginInit();
             this.SuspendLayout();
             // 
             // dgcModel
             // 
-            this.dgcModel.DataSource = this.bsModel;
+            this.dgcModel.DataSource = this.bsModelProperty;
             this.dgcModel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgcModel.Location = new System.Drawing.Point(0, 0);
             this.dgcModel.MainView = this.dgvModel;
@@ -53,9 +54,9 @@
             this.dgcModel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvModel});
             // 
-            // bsModel
+            // bsModelProperty
             // 
-            this.bsModel.DataSource = typeof(Poseidon.Model.ModelProperty);
+            this.bsModelProperty.DataSource = typeof(Poseidon.Core.DL.ModelProperty);
             // 
             // dgvModel
             // 
@@ -133,7 +134,7 @@
             this.Size = new System.Drawing.Size(516, 310);
             this.Load += new System.EventHandler(this.ModelPropertyGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgcModel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsModel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsModelProperty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModel)).EndInit();
             this.ResumeLayout(false);
 
@@ -142,12 +143,12 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl dgcModel;
-        private System.Windows.Forms.BindingSource bsModel;
         private DevExpress.XtraGrid.Views.Grid.GridView dgvModel;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colType;
         private DevExpress.XtraGrid.Columns.GridColumn colRemark;
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private System.Windows.Forms.BindingSource bsModelProperty;
     }
 }

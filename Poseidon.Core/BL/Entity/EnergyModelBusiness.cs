@@ -9,7 +9,6 @@ namespace Poseidon.Core.BL
     using Poseidon.Base;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
-    using Poseidon.Model;
 
     /// <summary>
     /// 能耗模型业务类

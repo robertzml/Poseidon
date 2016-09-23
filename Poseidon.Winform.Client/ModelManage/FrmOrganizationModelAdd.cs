@@ -12,7 +12,6 @@ namespace Poseidon.Winform.Client
     using Poseidon.Base;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
-    using Poseidon.Model;
     using Poseidon.Winform.Base;
 
     /// <summary>

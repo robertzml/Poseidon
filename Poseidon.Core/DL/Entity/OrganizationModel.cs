@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Core.DL
 {
-    using Poseidon.Model;
-
     /// <summary>
-    /// 能源模型基类
+    /// 组织模型基类
     /// </summary>
-    public class EnergyModel : CustomModel
+    public class OrganizationModel : CustomModel
     {
     }
 }

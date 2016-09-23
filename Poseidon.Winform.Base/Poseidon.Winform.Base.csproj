@@ -63,12 +63,6 @@
       <DependentUpon>BaseSingleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ChildFormManage.cs" />
-    <Compile Include="Controls\ModelPropertyGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ModelPropertyGrid.Designer.cs">
-      <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
-    </Compile>
     <Compile Include="MessageUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,10 +73,6 @@
     <EmbeddedResource Include="BaseSingleForm.resx">
       <DependentUpon>BaseSingleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ModelPropertyGrid.resx">
-      <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Properties\DataSources\Poseidon.Model.ModelProperty.datasource" />
     <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
@@ -90,10 +80,13 @@
       <Project>{06220d70-2dbf-4aca-a583-0967f40923ff}</Project>
       <Name>Poseidon.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Poseidon.Model\Poseidon.Model.csproj">
-      <Project>{e6c5821c-de57-4c36-9ec7-4c070045b55d}</Project>
-      <Name>Poseidon.Model</Name>
+    <ProjectReference Include="..\Poseidon.Common\Poseidon.Common.csproj">
+      <Project>{fa99b824-e554-400f-a8d3-44ffde8fd795}</Project>
+      <Name>Poseidon.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,6 +41,7 @@
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -57,6 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ModelPropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ModelPropertyGrid.Designer.cs">
+      <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelManage\FrmModelAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelManage\FrmModelAdd.Designer.cs">
+      <DependentUpon>FrmModelAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelManage\FrmOrganizationModelAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,16 +97,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\ModelPropertyGrid.resx">
+      <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModelManage\FrmEnergyObject.resx">
       <DependentUpon>FrmEnergyObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\Poseidon.Model.CustomModel.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.CustomModel.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.ModelProperty.datasource" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ModelManage\FrmEnergyObjectAdd.resx">
       <DependentUpon>FrmEnergyObjectAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelManage\FrmModelAdd.resx">
+      <DependentUpon>FrmModelAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelManage\FrmOrganizationModelAdd.resx">
       <DependentUpon>FrmOrganizationModelAdd.cs</DependentUpon>
@@ -135,10 +155,6 @@
     <ProjectReference Include="..\Poseidon.Core\Poseidon.Core.csproj">
       <Project>{7fb974ee-5f0e-45bb-b773-a34441cc1757}</Project>
       <Name>Poseidon.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Poseidon.Model\Poseidon.Model.csproj">
-      <Project>{e6c5821c-de57-4c36-9ec7-4c070045b55d}</Project>
-      <Name>Poseidon.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Poseidon.Winform.Base\Poseidon.Winform.Base.csproj">
       <Project>{7650e6f8-d821-4281-949c-1f9005f4fb32}</Project>

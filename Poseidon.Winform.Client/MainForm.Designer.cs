@@ -35,14 +35,14 @@
             this.barBtnOrganizationList = new DevExpress.XtraBars.BarButtonItem();
             this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.barBtnEnergyAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnOrganizationAdd = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageModel = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonGroupEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonGroupOrganization = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barBtnOrganizationAdd = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.ribbonPageObject});
+            this.ribbonPageModel});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.Size = new System.Drawing.Size(924, 147);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
@@ -104,6 +104,16 @@
             this.barBtnEnergyAdd.Name = "barBtnEnergyAdd";
             this.barBtnEnergyAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnEnergyAdd_ItemClick);
             // 
+            // barBtnOrganizationAdd
+            // 
+            this.barBtnOrganizationAdd.Caption = "添加模型";
+            this.barBtnOrganizationAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barBtnOrganizationAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationAdd.Glyph")));
+            this.barBtnOrganizationAdd.Id = 5;
+            this.barBtnOrganizationAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationAdd.LargeGlyph")));
+            this.barBtnOrganizationAdd.Name = "barBtnOrganizationAdd";
+            this.barBtnOrganizationAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnOrganizationAdd_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -117,13 +127,13 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
-            // ribbonPageObject
+            // ribbonPageModel
             // 
-            this.ribbonPageObject.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageModel.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonGroupEnergy,
             this.ribbonGroupOrganization});
-            this.ribbonPageObject.Name = "ribbonPageObject";
-            this.ribbonPageObject.Text = "模型管理";
+            this.ribbonPageModel.Name = "ribbonPageModel";
+            this.ribbonPageModel.Text = "模型管理";
             // 
             // ribbonGroupEnergy
             // 
@@ -151,16 +161,6 @@
             this.tabMdiManager.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
-            // 
-            // barBtnOrganizationAdd
-            // 
-            this.barBtnOrganizationAdd.Caption = "添加模型";
-            this.barBtnOrganizationAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.barBtnOrganizationAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationAdd.Glyph")));
-            this.barBtnOrganizationAdd.Id = 5;
-            this.barBtnOrganizationAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationAdd.LargeGlyph")));
-            this.barBtnOrganizationAdd.Name = "barBtnOrganizationAdd";
-            this.barBtnOrganizationAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnOrganizationAdd_ItemClick);
             // 
             // MainForm
             // 
@@ -191,7 +191,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem barBtnEnergyList;
         private DevExpress.XtraBars.BarButtonItem barBtnOrganizationList;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageObject;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageModel;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupEnergy;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager tabMdiManager;
         private DevExpress.XtraBars.BarMdiChildrenListItem barChildList;

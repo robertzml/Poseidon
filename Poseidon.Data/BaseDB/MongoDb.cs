@@ -33,8 +33,7 @@ namespace Poseidon.Data.BaseDB
         /// </summary>
         public void Connect()
         {
-            AppConfig config = new AppConfig();
-            string connectionString = config.GetConnectionString();
+            string connectionString = AppConfig.GetConnectionString();
             this.client = new MongoClient(connectionString);
         }
 

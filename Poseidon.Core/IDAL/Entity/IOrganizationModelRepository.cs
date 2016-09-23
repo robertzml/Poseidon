@@ -8,7 +8,6 @@ namespace Poseidon.Core.IDAL
 {
     using Poseidon.Base;
     using Poseidon.Core.DL;
-    using Poseidon.Model;
 
     /// <summary>
     /// 组织模型数据访问接口

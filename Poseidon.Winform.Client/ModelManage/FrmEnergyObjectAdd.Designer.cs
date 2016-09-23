@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.dgInherit = new Poseidon.Winform.Base.ModelPropertyGrid();
+            this.dgInherit = new Poseidon.Winform.Client.ModelPropertyGrid();
             this.lkuInherit = new DevExpress.XtraEditors.LookUpEdit();
             this.bsModel = new System.Windows.Forms.BindingSource(this.components);
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
-            this.dgProperty = new Poseidon.Winform.Base.ModelPropertyGrid();
+            this.dgProperty = new Poseidon.Winform.Client.ModelPropertyGrid();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtKey = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -149,7 +149,7 @@
             // 
             // bsModel
             // 
-            this.bsModel.DataSource = typeof(Poseidon.Model.CustomModel);
+            this.bsModel.DataSource = typeof(Poseidon.Core.DL.CustomModel);
             // 
             // txtRemark
             // 
@@ -295,14 +295,14 @@
         private DevExpress.XtraEditors.TextEdit txtKey;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private Base.ModelPropertyGrid dgProperty;
+        private ModelPropertyGrid dgProperty;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.MemoEdit txtRemark;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.LookUpEdit lkuInherit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private System.Windows.Forms.BindingSource bsModel;
-        private Base.ModelPropertyGrid dgInherit;
+        private ModelPropertyGrid dgInherit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

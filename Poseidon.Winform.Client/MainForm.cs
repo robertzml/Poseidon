@@ -11,6 +11,8 @@ using System.Windows.Forms;
 namespace Poseidon.Winform.Client
 {
     using DevExpress.XtraBars.Ribbon;
+    using Poseidon.Common;
+    using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
 
     /// <summary>
@@ -31,9 +33,14 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Event
+        /// <summary>
+        /// 窗体载入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Text = GlobalAction.Instance.AppConfig.ApplicationName;
+            this.Text = AppConfig.ApplicationName;
         }
 
         private void barBtnEnergy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -54,7 +61,7 @@ namespace Poseidon.Winform.Client
 
         private void barBtnOrganizationAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Organization });
         }
         #endregion //Event
     }

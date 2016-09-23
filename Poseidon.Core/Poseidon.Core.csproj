@@ -44,6 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,8 +58,12 @@
     <Compile Include="BL\Entity\OrganizationModelBusiness.cs" />
     <Compile Include="DAL\Mongo\Entity\EnergyModelRepository.cs" />
     <Compile Include="DAL\Mongo\Entity\OrganizationModelRepostiory.cs" />
-    <Compile Include="DL\EnergyModel.cs" />
-    <Compile Include="DL\OrganizationModel.cs" />
+    <Compile Include="DL\Entity\CustomModel.cs" />
+    <Compile Include="DL\Entity\EnergyModel.cs" />
+    <Compile Include="DL\Entity\OrganizationModel.cs" />
+    <Compile Include="DL\Helper\CustomModelType.cs" />
+    <Compile Include="DL\Helper\ModelProperty.cs" />
+    <Compile Include="DL\Helper\ModelPropertyType.cs" />
     <Compile Include="IDAL\Entity\IEnergyModelRepository.cs" />
     <Compile Include="IDAL\Entity\IOrganizationModelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,10 +79,6 @@
     <ProjectReference Include="..\Poseidon.Data\Poseidon.Data.csproj">
       <Project>{6abe6b44-57dc-473f-b406-8e4772b08a4a}</Project>
       <Name>Poseidon.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Poseidon.Model\Poseidon.Model.csproj">
-      <Project>{e6c5821c-de57-4c36-9ec7-4c070045b55d}</Project>
-      <Name>Poseidon.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

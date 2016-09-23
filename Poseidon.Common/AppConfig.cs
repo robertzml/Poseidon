@@ -10,29 +10,25 @@ namespace Poseidon.Common
     /// <summary>
     /// 配置文件管理类
     /// </summary>
-    public sealed class AppConfig
+    public static class AppConfig
     {
         #region Field
         /// <summary>
-        /// 文件路径
-        /// </summary>
-        private string filePath;
-
-        /// <summary>
         /// 配置文件对象
         /// </summary>
-        private Configuration config;
+        private static Configuration config;
         #endregion //Field
 
         #region Constructor
         /// <summary>
         /// 配置文件管理类
         /// </summary>
-        public AppConfig()
+        static AppConfig()
         {
             string webconfig = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Web.config");
             string appConfig = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App.config");
 
+            string filePath;
             if (File.Exists(webconfig))
             {
                 filePath = webconfig;
@@ -47,9 +43,9 @@ namespace Poseidon.Common
             }
 
             ExeConfigurationFileMap map = new ExeConfigurationFileMap();
-            map.ExeConfigFilename = this.filePath;
+            map.ExeConfigFilename = filePath;
 
-            this.config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+            config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
         }
         #endregion //Constructor
 
@@ -59,7 +55,7 @@ namespace Poseidon.Common
         /// </summary>
         /// <param name="key">键</param>
         /// <returns></returns>
-        public string GetAppSetting(string key)
+        public static string GetAppSetting(string key)
         {
             foreach (string item in config.AppSettings.Settings.AllKeys)
             {
@@ -76,7 +72,7 @@ namespace Poseidon.Common
         /// 获取默认配置连接字符串
         /// </summary>
         /// <returns></returns>
-        public string GetConnectionString()
+        public static string GetConnectionString()
         {
             string key = GetAppSetting("DbConnection");
             return GetConnectionString(key);
@@ -87,10 +83,10 @@ namespace Poseidon.Common
         /// </summary>
         /// <param name="key">连接字符串键</param>
         /// <returns></returns>
-        public string GetConnectionString(string key)
+        public static string GetConnectionString(string key)
         {
-            if (this.config.ConnectionStrings.ConnectionStrings[key] != null)
-                return this.config.ConnectionStrings.ConnectionStrings[key].ConnectionString;
+            if (config.ConnectionStrings.ConnectionStrings[key] != null)
+                return config.ConnectionStrings.ConnectionStrings[key].ConnectionString;
             else
                 return "";
         }
@@ -100,7 +96,7 @@ namespace Poseidon.Common
         /// <summary>
         /// 应用程序名称
         /// </summary>
-        public string ApplicationName
+        public static string ApplicationName
         {
             get
             {
@@ -111,7 +107,7 @@ namespace Poseidon.Common
         /// <summary>
         /// 数据库类型
         /// </summary>
-        public string DbType
+        public static string DbType
         {
             get
             {
@@ -122,7 +118,7 @@ namespace Poseidon.Common
         /// <summary>
         /// 数据库连接字符串键值
         /// </summary>
-        public string DbConnection
+        public static string DbConnection
         {
             get
             {

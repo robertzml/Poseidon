@@ -37,8 +37,7 @@ namespace Poseidon.Winform.Test
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AppConfig config = new AppConfig();
-            MessageBox.Show(config.DbType);
+            
         }
     }
 }

@@ -11,7 +11,6 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
     using Poseidon.Data.BaseDAL;
-    using Poseidon.Model;
 
     /// <summary>
     /// 能源模型数据访问类

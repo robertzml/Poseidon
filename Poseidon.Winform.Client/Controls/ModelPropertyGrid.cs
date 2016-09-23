@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Poseidon.Winform.Base
+namespace Poseidon.Winform.Client
 {
     using DevExpress.XtraGrid.Views.Grid;
-    using Poseidon.Model;
+    using Poseidon.Core.DL;
 
     /// <summary>
     /// 模型属性表格控件
@@ -40,7 +40,7 @@ namespace Poseidon.Winform.Base
         {
             InitializeComponent();
 
-            this.bsData = this.bsModel;
+            this.bsData = this.bsModelProperty;
             this.dgView = this.dgvModel;
         }
         #endregion //Constructor

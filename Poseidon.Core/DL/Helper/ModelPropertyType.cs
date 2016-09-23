@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poseidon.Model
+namespace Poseidon.Core.DL
 {
     /// <summary>
     /// 模型类型

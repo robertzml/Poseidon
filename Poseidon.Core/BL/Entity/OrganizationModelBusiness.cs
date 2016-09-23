@@ -9,7 +9,6 @@ namespace Poseidon.Core.BL.Entity
     using Poseidon.Base;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
-    using Poseidon.Model;
 
     /// <summary>
     /// 组织模型业务类
