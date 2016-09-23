@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\Entity\CustomModelBusiness.cs" />
     <Compile Include="BL\Entity\EnergyModelBusiness.cs" />
     <Compile Include="BL\Entity\OrganizationModelBusiness.cs" />
+    <Compile Include="DAL\Mongo\Entity\CustomModelRepository.cs" />
     <Compile Include="DAL\Mongo\Entity\EnergyModelRepository.cs" />
     <Compile Include="DAL\Mongo\Entity\OrganizationModelRepostiory.cs" />
     <Compile Include="DL\Entity\CustomModel.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="DL\Helper\CustomModelType.cs" />
     <Compile Include="DL\Helper\ModelProperty.cs" />
     <Compile Include="DL\Helper\ModelPropertyType.cs" />
+    <Compile Include="IDAL\Entity\ICustomModelRepository.cs" />
     <Compile Include="IDAL\Entity\IEnergyModelRepository.cs" />
     <Compile Include="IDAL\Entity\IOrganizationModelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

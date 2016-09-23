@@ -81,13 +81,13 @@
             this.plFill.Appearance.BackColor = System.Drawing.Color.White;
             this.plFill.Appearance.Options.UseBackColor = true;
             this.plFill.Controls.Add(this.groupControl1);
-            this.plFill.Size = new System.Drawing.Size(623, 443);
+            this.plFill.Size = new System.Drawing.Size(623, 510);
             // 
             // plBottom
             // 
             this.plBottom.Appearance.BackColor = System.Drawing.Color.White;
             this.plBottom.Appearance.Options.UseBackColor = true;
-            this.plBottom.Location = new System.Drawing.Point(0, 443);
+            this.plBottom.Location = new System.Drawing.Point(0, 510);
             this.plBottom.Size = new System.Drawing.Size(623, 74);
             // 
             // groupControl1
@@ -96,7 +96,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(623, 443);
+            this.groupControl1.Size = new System.Drawing.Size(623, 510);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "模型属性";
             // 
@@ -112,7 +112,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(619, 420);
+            this.layoutControl1.Size = new System.Drawing.Size(619, 487);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -122,7 +122,7 @@
             this.dgInherit.Editable = false;
             this.dgInherit.Location = new System.Drawing.Point(63, 84);
             this.dgInherit.Name = "dgInherit";
-            this.dgInherit.Size = new System.Drawing.Size(544, 121);
+            this.dgInherit.Size = new System.Drawing.Size(544, 137);
             this.dgInherit.TabIndex = 11;
             // 
             // lkuInherit
@@ -153,9 +153,9 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(63, 357);
+            this.txtRemark.Location = new System.Drawing.Point(63, 413);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(544, 51);
+            this.txtRemark.Size = new System.Drawing.Size(544, 62);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 9;
             // 
@@ -163,9 +163,9 @@
             // 
             this.dgProperty.DataSource = null;
             this.dgProperty.Editable = true;
-            this.dgProperty.Location = new System.Drawing.Point(63, 209);
+            this.dgProperty.Location = new System.Drawing.Point(63, 225);
             this.dgProperty.Name = "dgProperty";
-            this.dgProperty.Size = new System.Drawing.Size(544, 144);
+            this.dgProperty.Size = new System.Drawing.Size(544, 184);
             this.dgProperty.TabIndex = 8;
             // 
             // txtName
@@ -197,7 +197,7 @@
             this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(619, 420);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(619, 487);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
@@ -221,18 +221,18 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dgProperty;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 197);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 213);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(599, 148);
+            this.layoutControlItem2.Size = new System.Drawing.Size(599, 188);
             this.layoutControlItem2.Text = "模型属性";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtRemark;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 345);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 401);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(599, 55);
+            this.layoutControlItem5.Size = new System.Drawing.Size(599, 66);
             this.layoutControlItem5.Text = "备注";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -250,7 +250,7 @@
             this.layoutControlItem6.Control = this.dgInherit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(599, 125);
+            this.layoutControlItem6.Size = new System.Drawing.Size(599, 141);
             this.layoutControlItem6.Text = "继承属性";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 517);
+            this.ClientSize = new System.Drawing.Size(623, 584);
             this.Name = "FrmEnergyObjectAdd";
             this.Text = "添加能源模型";
             this.Load += new System.EventHandler(this.FrmEnergyObjectAdd_Load);

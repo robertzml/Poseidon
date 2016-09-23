@@ -13,6 +13,7 @@ namespace Poseidon.Winform.Client
     using Poseidon.Base;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
+    using Poseidon.Common;
     using Poseidon.Winform.Base;
 
     /// <summary>
@@ -42,8 +43,27 @@ namespace Poseidon.Winform.Client
             this.modelType = type;
             InitializeComponent();
         }
+
         #endregion //Constructor
 
+        #region Event
+        /// <summary>
+        /// 窗体载入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmModelAdd_Load(object sender, EventArgs e)
+        {
+            this.Text = this.modelType.DisplayName() + "添加";
 
+            this.bsModel.DataSource = BusinessFactory<CustomModelBusiness>.Instance.FindByType(this.modelType);
+            this.dgProperty.DataSource = new List<ModelProperty>();
+        }
+
+        private void lkuInherit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion //Event
     }
 }
