@@ -102,9 +102,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Poseidon.Base\Poseidon.Base.csproj">
+      <Project>{06220d70-2dbf-4aca-a583-0967f40923ff}</Project>
+      <Name>Poseidon.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Poseidon.Common\Poseidon.Common.csproj">
       <Project>{fa99b824-e554-400f-a8d3-44ffde8fd795}</Project>
       <Name>Poseidon.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Poseidon.Core\Poseidon.Core.csproj">
+      <Project>{7fb974ee-5f0e-45bb-b773-a34441cc1757}</Project>
+      <Name>Poseidon.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Poseidon.Data\Poseidon.Data.csproj">
       <Project>{6abe6b44-57dc-473f-b406-8e4772b08a4a}</Project>

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.dgProperty = new Poseidon.Winform.Client.ModelPropertyGrid();
             this.dgInherit = new Poseidon.Winform.Client.ModelPropertyGrid();
             this.lkuInherit = new DevExpress.XtraEditors.LookUpEdit();
             this.bsModel = new System.Windows.Forms.BindingSource(this.components);
@@ -41,8 +42,9 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dgProperty = new Poseidon.Winform.Client.ModelPropertyGrid();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -61,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -70,19 +74,20 @@
             // btnConfirm
             // 
             this.btnConfirm.Location = new System.Drawing.Point(417, 25);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // plFill
             // 
             this.plFill.Appearance.BackColor = System.Drawing.Color.White;
             this.plFill.Appearance.Options.UseBackColor = true;
             this.plFill.Controls.Add(this.groupControl1);
-            this.plFill.Size = new System.Drawing.Size(643, 412);
+            this.plFill.Size = new System.Drawing.Size(643, 562);
             // 
             // plBottom
             // 
             this.plBottom.Appearance.BackColor = System.Drawing.Color.White;
             this.plBottom.Appearance.Options.UseBackColor = true;
-            this.plBottom.Location = new System.Drawing.Point(0, 412);
+            this.plBottom.Location = new System.Drawing.Point(0, 562);
             this.plBottom.Size = new System.Drawing.Size(643, 80);
             // 
             // groupControl1
@@ -91,12 +96,13 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(643, 412);
+            this.groupControl1.Size = new System.Drawing.Size(643, 562);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "模型属性";
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Controls.Add(this.dgProperty);
             this.layoutControl1.Controls.Add(this.dgInherit);
             this.layoutControl1.Controls.Add(this.lkuInherit);
@@ -106,9 +112,18 @@
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(639, 389);
+            this.layoutControl1.Size = new System.Drawing.Size(639, 539);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // dgProperty
+            // 
+            this.dgProperty.DataSource = null;
+            this.dgProperty.Editable = true;
+            this.dgProperty.Location = new System.Drawing.Point(63, 271);
+            this.dgProperty.Name = "dgProperty";
+            this.dgProperty.Size = new System.Drawing.Size(564, 186);
+            this.dgProperty.TabIndex = 8;
             // 
             // dgInherit
             // 
@@ -116,7 +131,7 @@
             this.dgInherit.Editable = false;
             this.dgInherit.Location = new System.Drawing.Point(63, 84);
             this.dgInherit.Name = "dgInherit";
-            this.dgInherit.Size = new System.Drawing.Size(564, 149);
+            this.dgInherit.Size = new System.Drawing.Size(564, 183);
             this.dgInherit.TabIndex = 7;
             // 
             // lkuInherit
@@ -170,10 +185,11 @@
             this.layoutControlItem2,
             this.layoutControlItem3,
             this.layoutControlItem4,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(639, 389);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(639, 539);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -208,33 +224,41 @@
             this.layoutControlItem4.Control = this.dgInherit;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(619, 153);
+            this.layoutControlItem4.Size = new System.Drawing.Size(619, 187);
             this.layoutControlItem4.Text = "继承属性";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // dgProperty
-            // 
-            this.dgProperty.DataSource = null;
-            this.dgProperty.Editable = true;
-            this.dgProperty.Location = new System.Drawing.Point(63, 237);
-            this.dgProperty.Name = "dgProperty";
-            this.dgProperty.Size = new System.Drawing.Size(564, 140);
-            this.dgProperty.TabIndex = 8;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.dgProperty;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 225);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 259);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(619, 144);
+            this.layoutControlItem5.Size = new System.Drawing.Size(619, 190);
             this.layoutControlItem5.Text = "模型属性";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(63, 461);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(564, 66);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 9;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.txtRemark;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 449);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(619, 70);
+            this.layoutControlItem6.Text = "备注";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(48, 14);
             // 
             // FrmModelAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 492);
+            this.ClientSize = new System.Drawing.Size(643, 642);
             this.Name = "FrmModelAdd";
             this.Text = "模型添加";
             this.Load += new System.EventHandler(this.FrmModelAdd_Load);
@@ -256,6 +280,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +302,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private ModelPropertyGrid dgProperty;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraEditors.MemoEdit txtRemark;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

@@ -19,13 +19,5 @@ namespace Poseidon.Core.IDAL
         /// <param name="type">模型类型</param>
         /// <returns></returns>
         IEnumerable<CustomModel> FindByType(CustomModelType type);
-
-        /// <summary>
-        /// 根据某一字段查询
-        /// </summary>
-        /// <param name="field">字段名称</param>
-        /// <param name="value">值</param>
-        /// <returns></returns>
-        CustomModel FindByField(string field, object value);
     }
 }

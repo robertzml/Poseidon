@@ -179,6 +179,16 @@ namespace Poseidon.Core.DAL.Mongo
         {
             throw new NotImplementedException();
         }
+
+        public EnergyModel FindByField<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<EnergyModel> FindListByField<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
         #endregion //Method
     }
 }

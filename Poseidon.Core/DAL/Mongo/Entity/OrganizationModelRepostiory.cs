@@ -115,5 +115,15 @@ namespace Poseidon.Core.DAL.Mongo
         {
             throw new NotImplementedException();
         }
+
+        public OrganizationModel FindByField<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<OrganizationModel> FindListByField<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

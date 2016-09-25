@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Test
 {
+    using Poseidon.Base;
+    using Poseidon.Core.BL;
     using Poseidon.Common;
     using Poseidon.Data;
 
@@ -37,7 +39,9 @@ namespace Poseidon.Winform.Test
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            var data = BusinessFactory<CustomModelBusiness>.Instance.FindByKey("abc");
+
+            MessageBox.Show(data.Key);
         }
     }
 }

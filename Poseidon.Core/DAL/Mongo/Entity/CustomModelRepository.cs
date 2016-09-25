@@ -77,6 +77,27 @@ namespace Poseidon.Core.DAL.Mongo
             throw new NotImplementedException();
         }
 
+
+        /// <summary>
+        /// 根据某一字段查询
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public CustomModel FindByField<Tvalue>(string field, Tvalue value)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var doc = this.mongo.Find(this.collectionName, filter).FirstOrDefault();
+
+            if (doc == null)
+                return null;
+
+            var model = DocToEntity(doc);
+            return model;
+        }
+
+
         public IEnumerable<CustomModel> FindAll()
         {
             throw new NotImplementedException();
@@ -104,24 +125,64 @@ namespace Poseidon.Core.DAL.Mongo
         }
 
         /// <summary>
-        /// 根据某一字段查询
+        /// 根据某一字段查找对象
         /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public CustomModel FindByField(string field, object value)
+        public IEnumerable<CustomModel> FindListByField<Tvalue>(string field, Tvalue value)
         {
             var filter = Builders<BsonDocument>.Filter.Eq(field, value);
-            var doc = this.mongo.Find(this.collectionName, filter).First();
+            var docs = this.mongo.Find(this.collectionName, filter);
 
-            var model = DocToEntity(doc);
+            List<CustomModel> models = new List<CustomModel>();
 
-            return model;
+            foreach (var item in docs)
+            {
+                var m = DocToEntity(item);
+                models.Add(m);
+            }
+
+            return models;
         }
 
+        /// <summary>
+        /// 添加自定义模型
+        /// </summary>
+        /// <param name="entity">模型对象</param>
+        /// <returns></returns>
         public ErrorCode Create(CustomModel entity)
         {
-            throw new NotImplementedException();
+            BsonDocument doc = new BsonDocument
+            {
+                { "key", entity.Key },
+                { "name", entity.Name },
+                { "base", entity.Base },
+                { "type", Convert.ToInt32(entity.Type) },
+                { "remark", entity.Remark }
+            };
+
+            if (entity.Properties != null && entity.Properties.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Properties)
+                {
+                    BsonDocument d = new BsonDocument
+                    {
+                        { "name", item.Name },
+                        { "type", item.Type.ToString() },
+                        { "remark", item.Remark }
+                    };
+                    array.Add(d);
+                }
+
+                doc.Add("properties", array);
+            }
+
+            var result = mongo.Insert(this.collectionName, doc);
+
+            return result;
         }
 
         public ErrorCode Update(CustomModel entity)
