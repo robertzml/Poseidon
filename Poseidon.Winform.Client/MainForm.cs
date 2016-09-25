@@ -46,7 +46,7 @@ namespace Poseidon.Winform.Client
         #region Ribbon Event
         private void barBtnEnergy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.LoadMdiForm(this, typeof(FrmEnergyObject));
+          
         }
 
         private void barBtnEnergyAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -76,6 +76,12 @@ namespace Poseidon.Winform.Client
             this.Close();
         }
         #endregion //Ribbon Event
+
         #endregion //Event
+
+        private void barBtnOrganizationOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationObject));
+        }
     }
 }

@@ -70,6 +70,12 @@
     <Compile Include="Controls\ModelListGrid.Designer.cs">
       <DependentUpon>ModelListGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="ObjectManage\FrmOrganizationObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectManage\FrmOrganizationObject.Designer.cs">
+      <DependentUpon>FrmOrganizationObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelManage\FrmOrganizationModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,18 +89,6 @@
       <DependentUpon>FrmModelAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalAction.cs" />
-    <Compile Include="ModelManage\FrmEnergyObjectAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmEnergyObjectAdd.Designer.cs">
-      <DependentUpon>FrmEnergyObjectAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelManage\FrmEnergyObject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmEnergyObject.Designer.cs">
-      <DependentUpon>FrmEnergyObject.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,23 +103,20 @@
     <EmbeddedResource Include="Controls\ModelPropertyGrid.resx">
       <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModelManage\FrmEnergyObject.resx">
-      <DependentUpon>FrmEnergyObject.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.CustomModel.datasource" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.ModelProperty.datasource" />
     <None Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="ModelManage\FrmEnergyObjectAdd.resx">
-      <DependentUpon>FrmEnergyObjectAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ModelManage\FrmModelAdd.resx">
       <DependentUpon>FrmModelAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelManage\FrmOrganizationModel.resx">
       <DependentUpon>FrmOrganizationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectManage\FrmOrganizationObject.resx">
+      <DependentUpon>FrmOrganizationObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
