@@ -36,6 +36,7 @@
             this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.barBtnEnergyAdd = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnOrganizationAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnExit = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageModel = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -56,9 +57,10 @@
             this.barBtnOrganizationList,
             this.barChildList,
             this.barBtnEnergyAdd,
-            this.barBtnOrganizationAdd});
+            this.barBtnOrganizationAdd,
+            this.barBtnExit});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 6;
+            this.ribbonControl.MaxItemId = 7;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -66,6 +68,7 @@
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.Size = new System.Drawing.Size(924, 147);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
+            this.ribbonControl.Toolbar.ItemLinks.Add(this.barBtnExit);
             // 
             // barBtnEnergyList
             // 
@@ -113,6 +116,16 @@
             this.barBtnOrganizationAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationAdd.LargeGlyph")));
             this.barBtnOrganizationAdd.Name = "barBtnOrganizationAdd";
             this.barBtnOrganizationAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnOrganizationAdd_ItemClick);
+            // 
+            // barBtnExit
+            // 
+            this.barBtnExit.Caption = "退出系统";
+            this.barBtnExit.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barBtnExit.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnExit.Glyph")));
+            this.barBtnExit.Id = 6;
+            this.barBtnExit.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnExit.LargeGlyph")));
+            this.barBtnExit.Name = "barBtnExit";
+            this.barBtnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnExit_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -198,6 +211,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupOrganization;
         private DevExpress.XtraBars.BarButtonItem barBtnEnergyAdd;
         private DevExpress.XtraBars.BarButtonItem barBtnOrganizationAdd;
+        private DevExpress.XtraBars.BarButtonItem barBtnExit;
     }
 }
 

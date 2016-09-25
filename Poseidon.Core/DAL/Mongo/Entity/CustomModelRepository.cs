@@ -172,7 +172,7 @@ namespace Poseidon.Core.DAL.Mongo
                     {
                         { "name", item.Name },
                         { "type", item.Type.ToString() },
-                        { "remark", item.Remark }
+                        { "remark", item.Remark ?? "" }
                     };
                     array.Add(d);
                 }

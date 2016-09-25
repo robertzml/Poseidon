@@ -17,7 +17,7 @@ namespace Poseidon.Winform.Client
         /// <summary>
         /// 实例
         /// </summary>
-        private static GlobalAction _instance;
+        private static volatile GlobalAction _instance;
 
         /// <summary>
         /// 锁变量

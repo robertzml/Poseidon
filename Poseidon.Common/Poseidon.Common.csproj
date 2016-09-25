@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
+    <Compile Include="Cache.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Hasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -21,7 +21,7 @@ namespace Poseidon.Winform.Client
     public partial class MainForm : RibbonForm
     {
         #region Field
-        
+
         #endregion //Field
 
         #region Constructor
@@ -43,6 +43,7 @@ namespace Poseidon.Winform.Client
             this.Text = AppConfig.ApplicationName;
         }
 
+        #region Ribbon Event
         private void barBtnEnergy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ChildFormManage.LoadMdiForm(this, typeof(FrmEnergyObject));
@@ -50,19 +51,31 @@ namespace Poseidon.Winform.Client
 
         private void barBtnEnergyAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.ShowDialogForm(typeof(FrmEnergyObjectAdd));
+            ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Energy });
         }
-        
+
 
         private void barBtnOrganizationList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationModel));
         }
 
         private void barBtnOrganizationAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Organization });
         }
+
+
+        /// <summary>
+        /// 退出系统
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barBtnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+        #endregion //Ribbon Event
         #endregion //Event
     }
 }
