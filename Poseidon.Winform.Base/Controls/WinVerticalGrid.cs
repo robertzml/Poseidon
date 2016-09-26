@@ -10,23 +10,13 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Base
 {
-    using DevExpress.XtraGrid.Views.Grid;
-
-    public partial class WinGrid : UserControl
+    public partial class WinVerticalGrid : UserControl
     {
         private object dataSource;//数据源
 
-        public WinGrid()
+        public WinVerticalGrid()
         {
             InitializeComponent();
-        }
-
-        public GridView GridView
-        {
-            get
-            {
-                return this.dgvData;
-            }
         }
 
         public object DataSource
@@ -34,11 +24,10 @@ namespace Poseidon.Winform.Base
             get { return dataSource; }
             set
             {
-                if (this.dgvData.Columns != null)
-                {
-                    this.dgvData.Columns.Clear();
-                }
-
+                //if (this.dgvData.Columns != null)
+                //{
+                //    this.dgvData.Columns.Clear();
+                //}
                 dataSource = value;
                 this.dgcData.DataSource = dataSource;
             }

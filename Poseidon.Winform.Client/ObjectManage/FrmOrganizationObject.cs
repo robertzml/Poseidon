@@ -121,5 +121,18 @@ namespace Poseidon.Winform.Client
             InitModelProperty(e.Node.Name);
         }
         #endregion //Event
+
+        private void btnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.tvModel.SelectedNode == null)
+                return;
+
+            var model = this.tvModel.SelectedNode.Tag as CustomModel;
+            if (model.Base == PoseidonConstant.RootModelName)
+                return;
+
+
+            ChildFormManage.ShowDialogForm(typeof(FrmOrganizationObjectAdd));
+        }
     }
 }

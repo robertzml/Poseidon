@@ -38,6 +38,7 @@
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -71,6 +72,12 @@
     <Compile Include="Controls\WinGrid.Designer.cs">
       <DependentUpon>WinGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WinVerticalGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WinVerticalGrid.Designer.cs">
+      <DependentUpon>WinVerticalGrid.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseForm.resx">
@@ -81,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WinGrid.resx">
       <DependentUpon>WinGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WinVerticalGrid.resx">
+      <DependentUpon>WinVerticalGrid.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
   </ItemGroup>

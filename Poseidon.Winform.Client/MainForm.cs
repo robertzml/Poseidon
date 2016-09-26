@@ -83,5 +83,10 @@ namespace Poseidon.Winform.Client
         {
             ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationObject));
         }
+
+        private void barBtnOrganizationObjectAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //ChildFormManage.ShowDialogForm(this, typeof(FrmOrganizationObjectAdd));
+        }
     }
 }

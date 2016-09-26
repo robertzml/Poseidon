@@ -51,6 +51,9 @@
     <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="System\PoseidonObject.cs" />
+    <Compile Include="System\PoseidonObjectList.cs" />
+    <Compile Include="System\PoseidonPropertyDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Poseidon.Common\Poseidon.Common.csproj">

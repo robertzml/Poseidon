@@ -41,15 +41,16 @@
             this.rpObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rgoOrganization = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpModel = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rgmEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rgmOrganization = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rgmEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rgmBuilding = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rgmEquipment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rgmStaff = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.rgmBuilding = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rgmEquipment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rgmStaff = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barBtnOrganizationObjectAdd = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +66,10 @@
             this.barBtnEnergyAdd,
             this.barBtnOrganizationAdd,
             this.barBtnExit,
-            this.barBtnOrganizationOverview});
+            this.barBtnOrganizationOverview,
+            this.barBtnOrganizationObjectAdd});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 8;
+            this.ribbonControl.MaxItemId = 9;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpObject,
@@ -155,6 +157,7 @@
             // rgoOrganization
             // 
             this.rgoOrganization.ItemLinks.Add(this.barBtnOrganizationOverview);
+            this.rgoOrganization.ItemLinks.Add(this.barBtnOrganizationObjectAdd);
             this.rgoOrganization.Name = "rgoOrganization";
             this.rgoOrganization.Text = "组织对象";
             // 
@@ -169,6 +172,13 @@
             this.rpModel.Name = "rpModel";
             this.rpModel.Text = "模型管理";
             // 
+            // rgmOrganization
+            // 
+            this.rgmOrganization.ItemLinks.Add(this.barBtnOrganizationList);
+            this.rgmOrganization.ItemLinks.Add(this.barBtnOrganizationAdd);
+            this.rgmOrganization.Name = "rgmOrganization";
+            this.rgmOrganization.Text = "组织模型";
+            // 
             // rgmEnergy
             // 
             this.rgmEnergy.ItemLinks.Add(this.barBtnEnergyList);
@@ -176,12 +186,20 @@
             this.rgmEnergy.Name = "rgmEnergy";
             this.rgmEnergy.Text = "能源模型";
             // 
-            // rgmOrganization
+            // rgmBuilding
             // 
-            this.rgmOrganization.ItemLinks.Add(this.barBtnOrganizationList);
-            this.rgmOrganization.ItemLinks.Add(this.barBtnOrganizationAdd);
-            this.rgmOrganization.Name = "rgmOrganization";
-            this.rgmOrganization.Text = "组织模型";
+            this.rgmBuilding.Name = "rgmBuilding";
+            this.rgmBuilding.Text = "建筑模型";
+            // 
+            // rgmEquipment
+            // 
+            this.rgmEquipment.Name = "rgmEquipment";
+            this.rgmEquipment.Text = "设备模型";
+            // 
+            // rgmStaff
+            // 
+            this.rgmStaff.Name = "rgmStaff";
+            this.rgmStaff.Text = "人员模型";
             // 
             // rpSystem
             // 
@@ -209,20 +227,15 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // rgmBuilding
+            // barBtnOrganizationObjectAdd
             // 
-            this.rgmBuilding.Name = "rgmBuilding";
-            this.rgmBuilding.Text = "建筑模型";
-            // 
-            // rgmEquipment
-            // 
-            this.rgmEquipment.Name = "rgmEquipment";
-            this.rgmEquipment.Text = "设备模型";
-            // 
-            // rgmStaff
-            // 
-            this.rgmStaff.Name = "rgmStaff";
-            this.rgmStaff.Text = "人员模型";
+            this.barBtnOrganizationObjectAdd.Caption = "添加对象";
+            this.barBtnOrganizationObjectAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.barBtnOrganizationObjectAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationObjectAdd.Glyph")));
+            this.barBtnOrganizationObjectAdd.Id = 8;
+            this.barBtnOrganizationObjectAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnOrganizationObjectAdd.LargeGlyph")));
+            this.barBtnOrganizationObjectAdd.Name = "barBtnOrganizationObjectAdd";
+            this.barBtnOrganizationObjectAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnOrganizationObjectAdd_ItemClick);
             // 
             // MainForm
             // 
@@ -267,6 +280,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rgmBuilding;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rgmEquipment;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rgmStaff;
+        private DevExpress.XtraBars.BarButtonItem barBtnOrganizationObjectAdd;
     }
 }
 
