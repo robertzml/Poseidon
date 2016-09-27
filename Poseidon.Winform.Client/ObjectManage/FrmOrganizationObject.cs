@@ -131,8 +131,7 @@ namespace Poseidon.Winform.Client
             if (model.Base == PoseidonConstant.RootModelName)
                 return;
 
-
-            ChildFormManage.ShowDialogForm(typeof(FrmOrganizationObjectAdd));
+            ChildFormManage.ShowDialogForm(typeof(FrmOrganizationObjectAdd), new object[] { model.Id });
         }
     }
 }

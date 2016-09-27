@@ -59,7 +59,7 @@
     <Compile Include="BL\Entity\OrganizationModelBusiness.cs" />
     <Compile Include="DAL\Mongo\Entity\CustomModelRepository.cs" />
     <Compile Include="DAL\Mongo\Entity\EnergyModelRepository.cs" />
-    <Compile Include="DAL\Mongo\Entity\OrganizationModelRepostiory.cs" />
+    <Compile Include="DAL\Mongo\Entity\OrganizationModelRepository.cs" />
     <Compile Include="DL\Entity\CustomModel.cs" />
     <Compile Include="DL\Entity\EnergyModel.cs" />
     <Compile Include="DL\Entity\OrganizationModel.cs" />

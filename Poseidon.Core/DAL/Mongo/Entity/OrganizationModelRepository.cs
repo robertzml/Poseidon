@@ -15,7 +15,7 @@ namespace Poseidon.Core.DAL.Mongo
     /// <summary>
     /// 能源模型数据访问类
     /// </summary>
-    internal class OrganizationModelRepostiory : IOrganizationModelRepository
+    internal class OrganizationModelRepository : IOrganizationModelRepository
     {
         #region Field
         private BaseDALMongo mongo;
@@ -24,7 +24,7 @@ namespace Poseidon.Core.DAL.Mongo
         #endregion //Field
 
         #region Constructor
-        public OrganizationModelRepostiory()
+        public OrganizationModelRepository()
         {
             this.mongo = new BaseDALMongo();
         }
@@ -74,7 +74,10 @@ namespace Poseidon.Core.DAL.Mongo
 
         public OrganizationModel FindById(string id)
         {
-            throw new NotImplementedException();
+            var doc = this.mongo.FindById(this.collectionName, id);
+
+            var entity = DocToEntity(doc);
+            return entity;
         }
 
         /// <summary>

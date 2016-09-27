@@ -14,24 +14,33 @@ namespace Poseidon.Base
     {
         #region Field
         private List<string> columns;
+
+        private List<string> columnDescription;
         #endregion //Field                
 
         #region Constructor
         public PoseidonObjectList()
         {
             this.columns = new List<string>();
+            this.columnDescription = new List<string>();
         }
         #endregion //Constructor
 
         #region Method
+        public void AddColumn(string column, string description)
+        {
+            this.columns.Add(column);
+            this.columnDescription.Add(description);
+        }
+
         public PoseidonObject Add(params string[] args)
         {
             if (args == null) throw new ArgumentNullException("args");
-            if (args.Length != Columns.Count) throw new ArgumentException("args");
+            if (args.Length != this.columns.Count) throw new ArgumentException("args");
             PoseidonObject bag = new PoseidonObject();
             for (int i = 0; i < args.Length; i++)
             {
-                bag[Columns[i]] = args[i];
+                bag[this.columns[i]] = args[i];
             }
             Add(bag);
             return bag;
@@ -41,10 +50,10 @@ namespace Poseidon.Base
         {
             if (listAccessors == null || listAccessors.Length == 0)
             {
-                PropertyDescriptor[] props = new PropertyDescriptor[Columns.Count];
+                PropertyDescriptor[] props = new PropertyDescriptor[this.columns.Count];
                 for (int i = 0; i < props.Length; i++)
                 {
-                    props[i] = new PoseidonPropertyDescriptor(Columns[i]);
+                    props[i] = new PoseidonPropertyDescriptor(this.columns[i]);
                 }
                 return new PropertyDescriptorCollection(props, true);
             }
