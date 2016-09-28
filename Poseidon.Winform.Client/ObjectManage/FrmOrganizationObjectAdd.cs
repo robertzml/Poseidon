@@ -9,6 +9,7 @@ using System.Windows.Forms;
 namespace Poseidon.Winform.Client
 {
     using Poseidon.Base;
+    using Poseidon.Common;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
@@ -20,6 +21,8 @@ namespace Poseidon.Winform.Client
     {
         #region Field
         private string id;
+
+        private OrganizationModel model;
         #endregion //Field
 
         #region Constructor
@@ -33,7 +36,7 @@ namespace Poseidon.Winform.Client
         #region Function
         private void InitGrid()
         {
-            var model = BusinessFactory<OrganizationModelBusiness>.Instance.FindById(this.id);
+            model = BusinessFactory<OrganizationModelBusiness>.Instance.FindById(this.id);
 
             DataTable dt = new DataTable();
 
@@ -57,6 +60,7 @@ namespace Poseidon.Winform.Client
         }
         #endregion //Function
 
+        #region Event
         private void FrmOrganizationObjectAdd_Load(object sender, EventArgs e)
         {
             InitGrid();
@@ -76,7 +80,6 @@ namespace Poseidon.Winform.Client
             //this.dvgObject.DataSource = list;
 
 
-
             //dt.Columns.Add("name", typeof(string));
             //dt.Columns.Add("birth", typeof(DateTime));
             //dt.Columns.Add("age", typeof(int));
@@ -91,5 +94,31 @@ namespace Poseidon.Winform.Client
             //this.dvgObject.DataSource = dt;
             //dt.Rows.Add()
         }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            this.dvgObject.CloseEditor();
+            var data = this.dvgObject.DataSource as DataTable;
+            DataRow row = data.Rows[0];
+
+            Organization obj = new Organization();
+            foreach (var item in model.Properties)
+            {
+                obj.SetPropertyValue(item.Name, row[item.Name]);
+            }
+
+            var result = BusinessFactory<OrganizationBusiness>.Instance.Create(obj);
+            if (result == ErrorCode.Success)
+            {
+                MessageUtil.ShowInfo("添加对象成功");
+                this.Close();
+            }
+            else
+            {
+                MessageUtil.ShowError("添加对象失败，" + result.DisplayName());
+            }
+
+        }
+        #endregion //Event
     }
 }

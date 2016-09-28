@@ -14,9 +14,15 @@ namespace Poseidon.Winform.Base
     {
         private object dataSource;//数据源
 
+
         public WinVerticalGrid()
         {
             InitializeComponent();
+        }
+
+        public void CloseEditor()
+        {
+            this.dgcData.CloseEditor();
         }
 
         public object DataSource

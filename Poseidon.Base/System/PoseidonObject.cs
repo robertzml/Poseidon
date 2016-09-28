@@ -5,10 +5,12 @@ using System.Text;
 
 namespace Poseidon.Base
 {
+    using Poseidon.Base.Model;
+
     /// <summary>
     /// 自定义属性的动态对象
     /// </summary>
-    public class PoseidonObject
+    public class PoseidonObject : BaseEntity
     {
         #region Field
         /// <summary>
@@ -89,6 +91,14 @@ namespace Poseidon.Base
             set
             {
                 SetPropertyValue(key, value);
+            }
+        }
+
+        public Dictionary<string, object> Values
+        {
+            get
+            {
+                return this.values;
             }
         }
         #endregion //Property

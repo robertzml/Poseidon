@@ -45,6 +45,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Location = new System.Drawing.Point(138, 25);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // plFill
             // 
