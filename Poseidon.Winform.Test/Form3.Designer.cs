@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.winGrid1 = new Poseidon.Winform.Base.WinGrid();
             this.winVerticalGrid1 = new Poseidon.Winform.Base.WinVerticalGrid();
             this.SuspendLayout();
             // 
@@ -42,14 +41,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // winGrid1
-            // 
-            this.winGrid1.DataSource = null;
-            this.winGrid1.Location = new System.Drawing.Point(12, 85);
-            this.winGrid1.Name = "winGrid1";
-            this.winGrid1.Size = new System.Drawing.Size(307, 273);
-            this.winGrid1.TabIndex = 0;
             // 
             // winVerticalGrid1
             // 
@@ -66,7 +57,6 @@
             this.ClientSize = new System.Drawing.Size(727, 420);
             this.Controls.Add(this.winVerticalGrid1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.winGrid1);
             this.Name = "Form3";
             this.Text = "Form3";
             this.ResumeLayout(false);
@@ -74,8 +64,6 @@
         }
 
         #endregion
-
-        private Base.WinGrid winGrid1;
         private System.Windows.Forms.Button button1;
         private Base.WinVerticalGrid winVerticalGrid1;
     }

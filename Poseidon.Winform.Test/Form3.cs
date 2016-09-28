@@ -26,7 +26,7 @@ namespace Poseidon.Winform.Test
             //list.Add("ghi", "jkl");
             //list.Add("mno", "pqr");
 
-            this.winGrid1.DataSource = list;
+            //this.winGrid1.DataSource = list;
             this.winVerticalGrid1.DataSource = list;
         }
     }

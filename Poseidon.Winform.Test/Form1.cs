@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Test
 {
-    using Poseidon.Base;
+    using Poseidon.Base.Framework;
     using Poseidon.Core.BL;
     using Poseidon.Common;
     using Poseidon.Data;
@@ -31,24 +31,18 @@ namespace Poseidon.Winform.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //BaseDALSQL sql = new BaseDALSQL();
+            PoseidonObject obj = new PoseidonObject();
+            obj.SetPropertyValue("age", 20);
+            obj.SetPropertyValue("name", "jim");
 
-            //string tableName = "Test";
-            //Hashtable ht = new Hashtable();
-            //ht.Add("Name", "robert");
-            //ht.Add("Type", 2);
 
-            //sql.Insert(tableName, ht);
-
-            //MessageBox.Show("OK");
-            SetObject(2);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var data = BusinessFactory<CustomModelBusiness>.Instance.FindByKey("abc");
+            //var data = BusinessFactory<CustomModelBusiness>.Instance.FindByKey("abc");
 
-            MessageBox.Show(data.Key);
+            //MessageBox.Show(data.Key);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -58,8 +52,7 @@ namespace Poseidon.Winform.Test
             dc.SetPropertyValue("age", 20);
             dc.SetPropertyValue("birth", DateTime.Now);
             dc.SetPropertyValue("gender", true);
-
-            this.propertyGridControl1.SelectedObject = dc;
+                   
 
             //MessageBox.Show(dc.name.ToString());
         }
@@ -73,7 +66,7 @@ namespace Poseidon.Winform.Test
             list.Add("ghi", "jkl");
             list.Add("mno", "pqr");
 
-            this.dataGridView1.DataSource = list;
+        
         }
     }
 }

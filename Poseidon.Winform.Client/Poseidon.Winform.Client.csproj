@@ -60,42 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\ModelPropertyGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ModelPropertyGrid.Designer.cs">
-      <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ModelListGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ModelListGrid.Designer.cs">
-      <DependentUpon>ModelListGrid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectManage\FrmOrganizationObjectAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ObjectManage\FrmOrganizationObjectAdd.Designer.cs">
-      <DependentUpon>FrmOrganizationObjectAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectManage\FrmOrganizationObject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ObjectManage\FrmOrganizationObject.Designer.cs">
-      <DependentUpon>FrmOrganizationObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelManage\FrmOrganizationModel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmOrganizationModel.Designer.cs">
-      <DependentUpon>FrmOrganizationModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelManage\FrmModelAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmModelAdd.Designer.cs">
-      <DependentUpon>FrmModelAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="GlobalAction.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -105,30 +69,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\ModelListGrid.resx">
-      <DependentUpon>ModelListGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ModelPropertyGrid.resx">
-      <DependentUpon>ModelPropertyGrid.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.CustomModel.datasource" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.ModelProperty.datasource" />
     <None Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="ModelManage\FrmModelAdd.resx">
-      <DependentUpon>FrmModelAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModelManage\FrmOrganizationModel.resx">
-      <DependentUpon>FrmOrganizationModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectManage\FrmOrganizationObject.resx">
-      <DependentUpon>FrmOrganizationObject.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectManage\FrmOrganizationObjectAdd.resx">
-      <DependentUpon>FrmOrganizationObjectAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -172,7 +118,11 @@
       <Name>Poseidon.Winform.Base</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="ModelManage\" />
+    <Folder Include="ObjectManage\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

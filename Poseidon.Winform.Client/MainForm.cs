@@ -44,27 +44,24 @@ namespace Poseidon.Winform.Client
         }
 
         #region Ribbon Event
-        private void barBtnEnergy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        
+        private void bbiObjectModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          
+
         }
 
         private void barBtnEnergyAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Energy });
+            //ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Energy });
         }
 
 
         private void barBtnOrganizationList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationModel));
+            //ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationModel));
         }
 
-        private void barBtnOrganizationAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Organization });
-        }
-
+ 
 
         /// <summary>
         /// 退出系统
@@ -79,14 +76,5 @@ namespace Poseidon.Winform.Client
 
         #endregion //Event
 
-        private void barBtnOrganizationOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationObject));
-        }
-
-        private void barBtnOrganizationObjectAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //ChildFormManage.ShowDialogForm(this, typeof(FrmOrganizationObjectAdd));
-        }
     }
 }
