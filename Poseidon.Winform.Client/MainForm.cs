@@ -51,7 +51,7 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void bbiObjectModelOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            ChildFormManage.LoadMdiForm(this, typeof(FrmObjectModelOverview));
         }
 
         /// <summary>
