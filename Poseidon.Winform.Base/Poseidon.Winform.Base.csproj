@@ -65,6 +65,12 @@
     </Compile>
     <Compile Include="ChildFormManage.cs" />
     <Compile Include="MessageUtil.cs" />
+    <Compile Include="Controls\PoseidonPropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PoseidonPropertyGrid.Designer.cs">
+      <DependentUpon>PoseidonPropertyGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\WinGrid.cs">
       <SubType>UserControl</SubType>
@@ -86,12 +92,16 @@
     <EmbeddedResource Include="BaseSingleForm.resx">
       <DependentUpon>BaseSingleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PoseidonPropertyGrid.resx">
+      <DependentUpon>PoseidonPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\WinGrid.resx">
       <DependentUpon>WinGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WinVerticalGrid.resx">
       <DependentUpon>WinVerticalGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Poseidon.Base.Framework.PoseidonProperty.datasource" />
     <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>

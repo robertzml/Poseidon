@@ -46,6 +46,16 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 查找所有对象模型
+        /// </summary>
+        /// <returns></returns>
+        public List<ObjectModel> FindAll()
+        {
+            var data = this.dal.FindAll();
+            return data.ToList();
+        }
+
+        /// <summary>
         /// 添加对象模型
         /// </summary>
         /// <param name="entity">模型实体</param>

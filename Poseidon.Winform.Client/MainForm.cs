@@ -44,24 +44,25 @@ namespace Poseidon.Winform.Client
         }
 
         #region Ribbon Event
-        
+        /// <summary>
+        /// 对象模型总览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiObjectModelOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 添加对象模型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbiObjectModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            ChildFormManage.ShowDialogForm(typeof(FrmObjectModelAdd));
         }
-
-        private void barBtnEnergyAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //ChildFormManage.ShowDialogForm(typeof(FrmModelAdd), new object[] { CustomModelType.Energy });
-        }
-
-
-        private void barBtnOrganizationList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //ChildFormManage.LoadMdiForm(this, typeof(FrmOrganizationModel));
-        }
-
- 
 
         /// <summary>
         /// 退出系统
@@ -75,6 +76,5 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
-
     }
 }

@@ -16,9 +16,9 @@ namespace Poseidon.Core.DL
     public class ObjectModel : PoseidonModel
     {
         /// <summary>
-        /// 模型类型
+        /// 是否抽象类
         /// </summary>
-        public ModelType Type { get; set; }
+        public bool IsAbstract { get; set; }
 
         /// <summary>
         /// 备注

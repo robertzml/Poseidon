@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Poseidon.Core.DAL.Mongo.Model
+namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
@@ -14,6 +13,9 @@ namespace Poseidon.Core.DAL.Mongo.Model
     using Poseidon.Core.IDAL;
     using Poseidon.Data.BaseDAL;
 
+    /// <summary>
+    /// 对象模型数据访问类
+    /// </summary>
     internal class ObjectModelRepository : IObjectModelRepository
     {
         #region Field
@@ -42,7 +44,7 @@ namespace Poseidon.Core.DAL.Mongo.Model
             entity.Key = doc["key"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Base = doc["base"].ToString();
-            entity.Type = (ModelType)doc["type"].ToInt32();
+            entity.IsAbstract = doc["isAbstract"].ToBoolean();           
             entity.Remark = doc["remark"].ToString();
 
             if (doc.Contains("properties"))
@@ -88,14 +90,41 @@ namespace Poseidon.Core.DAL.Mongo.Model
             return entity;
         }
 
+        /// <summary>
+        /// 查找所有对象模型
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ObjectModel> FindAll()
         {
-            throw new NotImplementedException();
+            var docs = this.mongo.FindAll(this.collectionName);
+            List<ObjectModel> models = new List<ObjectModel>();
+
+            foreach (var item in docs)
+            {
+                var m = DocToEntity(item);
+                models.Add(m);
+            }
+
+            return models;
         }
 
+        /// <summary>
+        /// 根据字段查询
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public ObjectModel FindByField<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var doc = this.mongo.Find(this.collectionName, filter).FirstOrDefault();
+
+            if (doc == null)
+                return null;
+
+            var model = DocToEntity(doc);
+            return model;
         }
 
         public IEnumerable<ObjectModel> FindByType(ModelType type)
@@ -108,9 +137,42 @@ namespace Poseidon.Core.DAL.Mongo.Model
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 添加对象模型
+        /// </summary>
+        /// <param name="entity">模型实体</param>
+        /// <returns></returns>
         public ErrorCode Create(ObjectModel entity)
         {
-            throw new NotImplementedException();
+            BsonDocument doc = new BsonDocument
+            {
+                { "key", entity.Key },
+                { "name", entity.Name },
+                { "base", entity.Base },
+                { "isAbstract", entity.IsAbstract },              
+                { "remark", entity.Remark }
+            };
+
+            if (entity.Properties != null && entity.Properties.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Properties)
+                {
+                    BsonDocument d = new BsonDocument
+                    {
+                        { "name", item.Name },
+                        { "type", item.Type.ToString() },
+                        { "remark", item.Remark ?? "" }
+                    };
+                    array.Add(d);
+                }
+
+                doc.Add("properties", array);
+            }
+
+            var result = mongo.Insert(this.collectionName, doc);
+
+            return result;
         }
 
         public ErrorCode Update(ObjectModel entity)

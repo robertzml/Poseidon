@@ -33,19 +33,19 @@
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.barBtnExit = new DevExpress.XtraBars.BarButtonItem();
-            this.rpObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rgoOrganization = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rpModel = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.rpgObjectModel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rpgBusinessModel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiObjectModelAdd = new DevExpress.XtraBars.BarButtonItem();
             this.bbiObjectModelOverview = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBusinessModelOverview = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBusinessModelAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.rpObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rgoOrganization = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpModel = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rpgObjectModel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgBusinessModel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,44 @@
             this.barBtnExit.Name = "barBtnExit";
             this.barBtnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnExit_ItemClick);
             // 
+            // bbiObjectModelAdd
+            // 
+            this.bbiObjectModelAdd.Caption = "添加模型";
+            this.bbiObjectModelAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiObjectModelAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelAdd.Glyph")));
+            this.bbiObjectModelAdd.Id = 9;
+            this.bbiObjectModelAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelAdd.LargeGlyph")));
+            this.bbiObjectModelAdd.Name = "bbiObjectModelAdd";
+            this.bbiObjectModelAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiObjectModelAdd_ItemClick);
+            // 
+            // bbiObjectModelOverview
+            // 
+            this.bbiObjectModelOverview.Caption = "对象模型总览";
+            this.bbiObjectModelOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiObjectModelOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelOverview.Glyph")));
+            this.bbiObjectModelOverview.Id = 10;
+            this.bbiObjectModelOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelOverview.LargeGlyph")));
+            this.bbiObjectModelOverview.Name = "bbiObjectModelOverview";
+            this.bbiObjectModelOverview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiObjectModelOverview_ItemClick);
+            // 
+            // bbiBusinessModelOverview
+            // 
+            this.bbiBusinessModelOverview.Caption = "业务模型总览";
+            this.bbiBusinessModelOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiBusinessModelOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelOverview.Glyph")));
+            this.bbiBusinessModelOverview.Id = 11;
+            this.bbiBusinessModelOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelOverview.LargeGlyph")));
+            this.bbiBusinessModelOverview.Name = "bbiBusinessModelOverview";
+            // 
+            // bbiBusinessModelAdd
+            // 
+            this.bbiBusinessModelAdd.Caption = "添加模型";
+            this.bbiBusinessModelAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiBusinessModelAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelAdd.Glyph")));
+            this.bbiBusinessModelAdd.Id = 12;
+            this.bbiBusinessModelAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelAdd.LargeGlyph")));
+            this.bbiBusinessModelAdd.Name = "bbiBusinessModelAdd";
+            // 
             // rpObject
             // 
             this.rpObject.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -109,6 +147,20 @@
             this.rpgBusinessModel});
             this.rpModel.Name = "rpModel";
             this.rpModel.Text = "模型管理";
+            // 
+            // rpgObjectModel
+            // 
+            this.rpgObjectModel.ItemLinks.Add(this.bbiObjectModelOverview);
+            this.rpgObjectModel.ItemLinks.Add(this.bbiObjectModelAdd);
+            this.rpgObjectModel.Name = "rpgObjectModel";
+            this.rpgObjectModel.Text = "对象模型";
+            // 
+            // rpgBusinessModel
+            // 
+            this.rpgBusinessModel.ItemLinks.Add(this.bbiBusinessModelOverview);
+            this.rpgBusinessModel.ItemLinks.Add(this.bbiBusinessModelAdd);
+            this.rpgBusinessModel.Name = "rpgBusinessModel";
+            this.rpgBusinessModel.Text = "业务模型";
             // 
             // rpSystem
             // 
@@ -135,57 +187,6 @@
             this.tabMdiManager.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
-            // 
-            // rpgObjectModel
-            // 
-            this.rpgObjectModel.ItemLinks.Add(this.bbiObjectModelOverview);
-            this.rpgObjectModel.ItemLinks.Add(this.bbiObjectModelAdd);
-            this.rpgObjectModel.Name = "rpgObjectModel";
-            this.rpgObjectModel.Text = "对象模型";
-            // 
-            // rpgBusinessModel
-            // 
-            this.rpgBusinessModel.ItemLinks.Add(this.bbiBusinessModelOverview);
-            this.rpgBusinessModel.ItemLinks.Add(this.bbiBusinessModelAdd);
-            this.rpgBusinessModel.Name = "rpgBusinessModel";
-            this.rpgBusinessModel.Text = "业务模型";
-            // 
-            // bbiObjectModelAdd
-            // 
-            this.bbiObjectModelAdd.Caption = "添加模型";
-            this.bbiObjectModelAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiObjectModelAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelAdd.Glyph")));
-            this.bbiObjectModelAdd.Id = 9;
-            this.bbiObjectModelAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelAdd.LargeGlyph")));
-            this.bbiObjectModelAdd.Name = "bbiObjectModelAdd";
-            this.bbiObjectModelAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiObjectModelAdd_ItemClick);
-            // 
-            // bbiObjectModelOverview
-            // 
-            this.bbiObjectModelOverview.Caption = "对象模型总览";
-            this.bbiObjectModelOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiObjectModelOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelOverview.Glyph")));
-            this.bbiObjectModelOverview.Id = 10;
-            this.bbiObjectModelOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiObjectModelOverview.LargeGlyph")));
-            this.bbiObjectModelOverview.Name = "bbiObjectModelOverview";
-            // 
-            // bbiBusinessModelOverview
-            // 
-            this.bbiBusinessModelOverview.Caption = "业务模型总览";
-            this.bbiBusinessModelOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiBusinessModelOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelOverview.Glyph")));
-            this.bbiBusinessModelOverview.Id = 11;
-            this.bbiBusinessModelOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelOverview.LargeGlyph")));
-            this.bbiBusinessModelOverview.Name = "bbiBusinessModelOverview";
-            // 
-            // bbiBusinessModelAdd
-            // 
-            this.bbiBusinessModelAdd.Caption = "添加模型";
-            this.bbiBusinessModelAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiBusinessModelAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelAdd.Glyph")));
-            this.bbiBusinessModelAdd.Id = 12;
-            this.bbiBusinessModelAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelAdd.LargeGlyph")));
-            this.bbiBusinessModelAdd.Name = "bbiBusinessModelAdd";
             // 
             // MainForm
             // 
