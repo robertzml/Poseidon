@@ -53,6 +53,7 @@
             this.dgvData.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.dgvData.OptionsCustomization.AllowFilter = false;
             this.dgvData.OptionsCustomization.AllowGroup = false;
+            this.dgvData.OptionsDetail.EnableMasterViewMode = false;
             this.dgvData.OptionsFind.AllowFindPanel = false;
             this.dgvData.OptionsMenu.EnableColumnMenu = false;
             this.dgvData.OptionsMenu.EnableFooterMenu = false;
@@ -60,6 +61,7 @@
             this.dgvData.OptionsView.EnableAppearanceEvenRow = true;
             this.dgvData.OptionsView.EnableAppearanceOddRow = true;
             this.dgvData.OptionsView.ShowGroupPanel = false;
+            this.dgvData.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.dgvData_CustomDrawRowIndicator);
             this.dgvData.DataSourceChanged += new System.EventHandler(this.dgvData_DataSourceChanged);
             // 
             // WinDataGrid

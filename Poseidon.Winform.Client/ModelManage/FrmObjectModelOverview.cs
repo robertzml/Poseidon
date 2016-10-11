@@ -34,6 +34,11 @@ namespace Poseidon.Winform.Client
         private void FrmObjectModelOverview_Load(object sender, EventArgs e)
         {
             var data = BusinessFactory<ObjectModelBusiness>.Instance.FindAll();
+
+            string displayColumns = "Key,Name,Base,IsAbstract,Remark";
+            string displayHeaders = "标识,名称,继承基类,是否抽象类,备注";
+            this.wdgList.SetColumnPairs(displayColumns, displayHeaders);
+
             this.wdgList.DataSource = data;
         }
         #endregion //Event

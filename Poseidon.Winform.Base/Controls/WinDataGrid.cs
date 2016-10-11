@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Base
 {
+    using DevExpress.XtraGrid.Columns;
     using DevExpress.XtraGrid.Views.Grid;
 
     /// <summary>
@@ -27,14 +28,29 @@ namespace Poseidon.Winform.Base
         private bool editable;
 
         /// <summary>
-        /// 按顺序显示的列
+        /// 是否显示行号
         /// </summary>
-        private string displayColumns = "";
+        private bool showLineNumber;
 
         /// <summary>
-        /// 字段列顺序
+        /// 是否使用最佳宽度
         /// </summary>
-        private Dictionary<string, int> columnDict = new Dictionary<string, int>();
+        private bool bestFitColumnWidth;
+
+        /// <summary>
+        /// 是否显示CheckBox列
+        /// </summary>
+        private bool showCheckBox { get; set; }
+
+        /// <summary>
+        /// 字段列配置，列名和列标题
+        /// </summary>
+        private Dictionary<string, string> columnPairs = new Dictionary<string, string>();
+
+        /// <summary>
+        /// 列顺序
+        /// </summary>
+        private Dictionary<string, int> columnIndex = new Dictionary<string, int>();
         #endregion //Field
 
         #region Constructor
@@ -43,6 +59,35 @@ namespace Poseidon.Winform.Base
             InitializeComponent();
         }
         #endregion //Constructor
+
+        #region Function
+
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 设置表格列,用'|'或','分割
+        /// </summary>
+        /// <param name="columnNames">列名</param>
+        /// <param name="columnHeaders">列标题</param>
+        public void SetColumnPairs(string columnNames, string columnHeaders)
+        {
+            string[] names = columnNames.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] headers = columnHeaders.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (names.Length != headers.Length)
+                throw new ArgumentException("表格列配置有误");
+
+            for (int i = 0; i < names.Length; i++)
+            {
+                if (!this.columnPairs.ContainsKey(names[i]))
+                {
+                    this.columnPairs.Add(names[i], headers[i]);
+                    this.columnIndex.Add(names[i], i);
+                }
+            }
+        }
+        #endregion //Method
 
         #region Event
         /// <summary>
@@ -62,7 +107,104 @@ namespace Poseidon.Winform.Base
         /// <param name="e"></param>
         private void dgvData_DataSourceChanged(object sender, EventArgs e)
         {
+            //先判断设置显示的列(如果没有则显示全部）
+            if (this.columnPairs.Count == 0)
+            {
+                string tempColumns = string.Empty;
 
+                for (int i = 0; i < this.dgvData.Columns.Count; i++)
+                {
+                    string originalName = this.dgvData.Columns[i].FieldName;
+                    tempColumns += string.Format("{0},", originalName);
+                }
+
+                tempColumns = tempColumns.Trim(',');
+
+                SetColumnPairs(tempColumns, tempColumns);
+            }
+
+            //设置列标题，是否显示，列顺序
+            foreach (GridColumn col in this.dgvData.Columns)
+            {
+                string originalName = col.FieldName;
+                if (this.columnPairs.ContainsKey(originalName))
+                {
+                    col.Caption = this.columnPairs[originalName];
+                    col.VisibleIndex = this.columnIndex[originalName];
+                }
+                else
+                {
+                    col.Caption = originalName;
+                    col.Visible = false;
+                    col.VisibleIndex = -1;
+                }
+            }
+
+            //设置特殊内容显示
+            //object cellValue = "";
+            //string fieldName = "";
+            //for (int i = 0; i < gridView1.RowCount; i++)
+            //{
+            //    for (int j = 0; j < gridView1.Columns.Count; j++)
+            //    {
+            //        fieldName = gridView1.Columns[j].FieldName;
+            //        cellValue = gridView1.GetRowCellValue(i, fieldName);
+            //        if (cellValue != null && cellValue.GetType() == typeof(DateTime))
+            //        {
+            //            if (cellValue != DBNull.Value)
+            //            {
+            //                DateTime dtTemp = DateTime.MinValue;
+            //                DateTime.TryParse(cellValue.ToString(), out dtTemp);
+            //                TimeSpan ts = dtTemp.Subtract(Convert.ToDateTime("1753/1/1"));
+            //                if (ts.TotalDays < 1)
+            //                {
+            //                    gridView1.SetRowCellValue(i, fieldName, DBNull.Value);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            if (this.showLineNumber)
+            {
+                this.dgvData.IndicatorWidth = 40;
+            }
+
+            this.dgvData.OptionsView.ColumnAutoWidth = this.bestFitColumnWidth;
+            if (this.bestFitColumnWidth)
+            {
+                this.dgvData.BestFitColumns();
+            }
+
+            //if (this.showCheckBox)
+            //{
+            //    GridCheckMarksSelection selection = new GridCheckMarksSelection(this.dgvData);
+            //    selection.CheckMarkColumn.VisibleIndex = 0;
+            //    selection.CheckMarkColumn.Width = 60;
+            //    selection.SelectionChanged += new SelectionChangedEventHandler(selection_SelectionChanged);
+            //    this.dgvData.OptionsBehavior.Editable = true;
+            //    this.dgvData.OptionsBehavior.ReadOnly = false;
+            //}
+        }
+
+        /// <summary>
+        /// 显示行号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvData_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (this.showLineNumber)
+            {
+                e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+                if (e.Info.IsRowIndicator)
+                {
+                    if (e.RowHandle >= 0)
+                    {
+                        e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                    }
+                }
+            }
         }
         #endregion //Event
 
@@ -108,6 +250,54 @@ namespace Poseidon.Winform.Base
         }
 
         /// <summary>
+        /// 是否显示行号
+        /// </summary>
+        [Description("是否显示行号")]
+        public bool ShowLineNumber
+        {
+            get
+            {
+                return this.showLineNumber;
+            }
+            set
+            {
+                this.showLineNumber = value;
+            }
+        }
+
+        /// <summary>
+        /// 是否使用最佳宽度
+        /// </summary>
+        [Description("是否使用最佳宽度")]
+        public bool BestFitColumnWidth
+        {
+            get
+            {
+                return this.bestFitColumnWidth;
+            }
+            set
+            {
+                this.bestFitColumnWidth = value;
+            }
+        }
+
+        /// <summary>
+        /// 是否显示CheckBox列
+        /// </summary>
+        [Description("是否显示CheckBox列")]
+        public bool ShowCheckBox
+        {
+            get
+            {
+                return this.showCheckBox;
+            }
+            set
+            {
+                this.showCheckBox = value;
+            }
+        }
+
+        /// <summary>
         /// 表格视图
         /// </summary>
         public GridView GridView
@@ -117,34 +307,6 @@ namespace Poseidon.Winform.Base
                 return this.dgvData;
             }
         }
-
-        /// <summary>
-        /// 按顺序显示的列
-        /// 用'|'或','分割
-        /// </summary>
-        public string DisplayColumns
-        {
-            get {
-                return this.displayColumns; }
-            set
-            {
-                this.displayColumns = value;
-                string[] items = displayColumns.Split(new char[] { '|', ',' });
-                for (int i = 0; i < items.Length; i++)
-                {
-                    string str = items[i];
-                    if (!string.IsNullOrEmpty(str))
-                    {
-                        str = str.Trim();
-                        if (!columnDict.ContainsKey(str.ToUpper()))
-                        {
-                            columnDict.Add(str.ToUpper(), i);
-                        }
-                    }
-                }
-            }
-        }
         #endregion //Property
-
     }
 }

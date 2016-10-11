@@ -62,12 +62,14 @@
             // 
             // wdgList
             // 
+            this.wdgList.BestFitColumnWidth = true;
             this.wdgList.DataSource = null;
-            this.wdgList.DisplayColumns = "";
             this.wdgList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wdgList.Editable = false;
             this.wdgList.Location = new System.Drawing.Point(2, 21);
             this.wdgList.Name = "wdgList";
+            this.wdgList.ShowCheckBox = false;
+            this.wdgList.ShowLineNumber = true;
             this.wdgList.Size = new System.Drawing.Size(836, 357);
             this.wdgList.TabIndex = 0;
             // 

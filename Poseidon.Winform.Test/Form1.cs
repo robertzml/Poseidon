@@ -23,6 +23,16 @@ namespace Poseidon.Winform.Test
             InitializeComponent();
         }
 
+        private void TestSome()
+        {
+            Dictionary<string, string> dd = new Dictionary<string, string>();
+            dd.Add("dsf", "dd");
+            
+
+            List<string> ds = new List<string>();
+            //ds.FindIndex("sd");
+        }
+
         private void SetObject(object i)
         {
             string s = i.ToString();
