@@ -14,13 +14,18 @@ namespace Poseidon.Winform.Base
     /// <summary>
     /// 表格控件
     /// </summary>
-    public partial class WinDataGrid : UserControl
+    public partial class WinDataGrid : DevExpress.XtraEditors.XtraUserControl
     {
         #region Field
         /// <summary>
         /// 数据源
         /// </summary>
         private object dataSource;
+
+        /// <summary>
+        /// 动态绑定数据源
+        /// </summary>
+        private BindingSource bindingSource;
 
         /// <summary>
         /// 是否能编辑
@@ -57,6 +62,7 @@ namespace Poseidon.Winform.Base
         public WinDataGrid()
         {
             InitializeComponent();
+            this.bindingSource = new BindingSource();
         }
         #endregion //Constructor
 
@@ -72,6 +78,9 @@ namespace Poseidon.Winform.Base
         /// <param name="columnHeaders">列标题</param>
         public void SetColumnPairs(string columnNames, string columnHeaders)
         {
+            this.columnPairs.Clear();
+            this.columnIndex.Clear();
+
             string[] names = columnNames.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries);
             string[] headers = columnHeaders.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -86,6 +95,19 @@ namespace Poseidon.Winform.Base
                     this.columnIndex.Add(names[i], i);
                 }
             }
+        }
+
+        /// <summary>
+        /// 获取选中项
+        /// </summary>
+        /// <returns></returns>
+        public object GetSelected()
+        {
+            int rowIndex = this.dgvData.GetFocusedDataSourceRowIndex();
+            if (rowIndex < 0 || rowIndex >= this.bindingSource.Count)
+                return null;
+            else
+                return this.bindingSource[rowIndex];
         }
         #endregion //Method
 
@@ -206,6 +228,19 @@ namespace Poseidon.Winform.Base
                 }
             }
         }
+
+        /// <summary>
+        /// 行焦点改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvData_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (this.GridFocusedRowChanged != null)
+            {
+                GridFocusedRowChanged(sender, e);
+            }
+        }
         #endregion //Event
 
         #region Property
@@ -228,8 +263,28 @@ namespace Poseidon.Winform.Base
                 }
 
                 dataSource = value;
-                this.dgcData.DataSource = dataSource;
+                this.bindingSource.DataSource = dataSource;
+                if (dataSource == null)
+                {
+                    this.dgcData.DataSource = null;
+                }
+                else
+                {
+                    this.dgcData.DataSource = bindingSource;
+                }
+
                 this.dgvData.EndDataUpdate();
+            }
+        }
+
+        /// <summary>
+        /// 动态绑定数据源
+        /// </summary>
+        public BindingSource BindingSource
+        {
+            get
+            {
+                return this.bindingSource;
             }
         }
 
@@ -308,5 +363,13 @@ namespace Poseidon.Winform.Base
             }
         }
         #endregion //Property
+
+        #region Delegate
+        /// <summary>
+        /// 行焦点改变事件
+        /// </summary>
+        [Description("行焦点改变事件")]
+        public event EventHandler GridFocusedRowChanged;
+        #endregion //Delegate
     }
 }

@@ -35,6 +35,7 @@
             this.dgInherit = new Poseidon.Winform.Base.PoseidonPropertyGrid();
             this.chkAbstract = new DevExpress.XtraEditors.CheckEdit();
             this.lkuInherit = new DevExpress.XtraEditors.LookUpEdit();
+            this.bsObjectModel = new System.Windows.Forms.BindingSource();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtKey = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -45,7 +46,6 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bsObjectModel = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -57,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAbstract.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkuInherit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsObjectModel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -67,7 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsObjectModel)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -176,6 +176,10 @@
             this.lkuInherit.TabIndex = 6;
             this.lkuInherit.EditValueChanged += new System.EventHandler(this.lkuInherit_EditValueChanged);
             // 
+            // bsObjectModel
+            // 
+            this.bsObjectModel.DataSource = typeof(Poseidon.Core.DL.ObjectModel);
+            // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(75, 36);
@@ -272,10 +276,6 @@
             this.layoutControlItem7.Text = "备注";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // bsObjectModel
-            // 
-            this.bsObjectModel.DataSource = typeof(Poseidon.Core.DL.ObjectModel);
-            // 
             // FrmObjectModelAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -295,6 +295,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAbstract.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkuInherit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsObjectModel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -305,7 +306,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsObjectModel)).EndInit();
             this.ResumeLayout(false);
 
         }

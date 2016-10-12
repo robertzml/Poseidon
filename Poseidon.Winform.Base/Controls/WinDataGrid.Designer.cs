@@ -40,7 +40,7 @@
             this.dgcData.Location = new System.Drawing.Point(0, 0);
             this.dgcData.MainView = this.dgvData;
             this.dgcData.Name = "dgcData";
-            this.dgcData.Size = new System.Drawing.Size(588, 364);
+            this.dgcData.Size = new System.Drawing.Size(686, 425);
             this.dgcData.TabIndex = 0;
             this.dgcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvData});
@@ -53,6 +53,7 @@
             this.dgvData.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.dgvData.OptionsCustomization.AllowFilter = false;
             this.dgvData.OptionsCustomization.AllowGroup = false;
+            this.dgvData.OptionsCustomization.AllowQuickHideColumns = false;
             this.dgvData.OptionsDetail.EnableMasterViewMode = false;
             this.dgvData.OptionsFind.AllowFindPanel = false;
             this.dgvData.OptionsMenu.EnableColumnMenu = false;
@@ -62,15 +63,16 @@
             this.dgvData.OptionsView.EnableAppearanceOddRow = true;
             this.dgvData.OptionsView.ShowGroupPanel = false;
             this.dgvData.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.dgvData_CustomDrawRowIndicator);
+            this.dgvData.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.dgvData_FocusedRowChanged);
             this.dgvData.DataSourceChanged += new System.EventHandler(this.dgvData_DataSourceChanged);
             // 
             // WinDataGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgcData);
             this.Name = "WinDataGrid";
-            this.Size = new System.Drawing.Size(588, 364);
+            this.Size = new System.Drawing.Size(686, 425);
             this.Load += new System.EventHandler(this.WinDataGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgcData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();

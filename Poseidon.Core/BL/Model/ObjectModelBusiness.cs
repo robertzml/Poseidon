@@ -35,6 +35,17 @@ namespace Poseidon.Core.BL
 
         #region Method
         /// <summary>
+        /// 根据ID查找
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public ObjectModel FindById(string id)
+        {
+            var data = this.dal.FindById(id);
+            return data;
+        }
+
+        /// <summary>
         /// 根据类型标识查找
         /// </summary>
         /// <param name="key">类型标识</param>

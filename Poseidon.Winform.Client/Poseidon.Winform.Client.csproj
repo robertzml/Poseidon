@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelManage\FrmObjectModelEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelManage\FrmObjectModelEdit.Designer.cs">
+      <DependentUpon>FrmObjectModelEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelManage\FrmObjectModelOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ModelManage\FrmObjectModelAdd.resx">
       <DependentUpon>FrmObjectModelAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelManage\FrmObjectModelEdit.resx">
+      <DependentUpon>FrmObjectModelEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelManage\FrmObjectModelOverview.resx">
       <DependentUpon>FrmObjectModelOverview.cs</DependentUpon>
