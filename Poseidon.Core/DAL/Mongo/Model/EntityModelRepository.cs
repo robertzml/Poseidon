@@ -8,15 +8,15 @@ namespace Poseidon.Core.DAL.Mongo
     using MongoDB.Bson;
     using MongoDB.Driver;
     using Poseidon.Base.Framework;
-    using Base.System;
+    using Poseidon.Base.System;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
     using Poseidon.Data.BaseDAL;
 
     /// <summary>
-    /// 对象模型数据访问类
+    /// 实体模型数据访问类
     /// </summary>
-    internal class ObjectModelRepository : IObjectModelRepository
+    internal class EntityModelRepository : IEntityModelRepository
     {
         #region Field
         private BaseDALMongo mongo;
@@ -25,7 +25,7 @@ namespace Poseidon.Core.DAL.Mongo
         #endregion //Field
 
         #region Constructor
-        public ObjectModelRepository()
+        public EntityModelRepository()
         {
             this.mongo = new BaseDALMongo();
         }
@@ -37,9 +37,9 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="doc">数据</param>
         /// <returns></returns>
-        private ObjectModel DocToEntity(BsonDocument doc)
+        private EntityModel DocToEntity(BsonDocument doc)
         {
-            ObjectModel entity = new ObjectModel();
+            EntityModel entity = new EntityModel();
             entity.Id = doc["_id"].ToString();
             entity.Key = doc["key"].ToString();
             entity.Name = doc["name"].ToString();
@@ -72,7 +72,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public ObjectModel FindById(object id)
+        public EntityModel FindById(object id)
         {
             return FindById(id.ToString());
         }
@@ -82,7 +82,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public ObjectModel FindById(string id)
+        public EntityModel FindById(string id)
         {
             var doc = this.mongo.FindById(this.collectionName, id);
 
@@ -94,10 +94,10 @@ namespace Poseidon.Core.DAL.Mongo
         /// 查找所有对象模型
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<ObjectModel> FindAll()
+        public IEnumerable<EntityModel> FindAll()
         {
             var docs = this.mongo.FindAll(this.collectionName);
-            List<ObjectModel> models = new List<ObjectModel>();
+            List<EntityModel> models = new List<EntityModel>();
 
             foreach (var item in docs)
             {
@@ -115,7 +115,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public ObjectModel FindByField<Tvalue>(string field, Tvalue value)
+        public EntityModel FindByField<Tvalue>(string field, Tvalue value)
         {
             var filter = Builders<BsonDocument>.Filter.Eq(field, value);
             var doc = this.mongo.Find(this.collectionName, filter).FirstOrDefault();
@@ -127,12 +127,7 @@ namespace Poseidon.Core.DAL.Mongo
             return model;
         }
 
-        public IEnumerable<ObjectModel> FindByType(ModelType type)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<ObjectModel> FindListByField<Tvalue>(string field, Tvalue value)
+        public IEnumerable<EntityModel> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
@@ -142,7 +137,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">模型实体</param>
         /// <returns></returns>
-        public ErrorCode Create(ObjectModel entity)
+        public ErrorCode Create(EntityModel entity)
         {
             BsonDocument doc = new BsonDocument
             {
@@ -175,12 +170,12 @@ namespace Poseidon.Core.DAL.Mongo
             return result;
         }
 
-        public ErrorCode Update(ObjectModel entity)
+        public ErrorCode Update(EntityModel entity)
         {
             throw new NotImplementedException();
         }
 
-        public ErrorCode Delete(ObjectModel entity)
+        public ErrorCode Delete(EntityModel entity)
         {
             throw new NotImplementedException();
         }

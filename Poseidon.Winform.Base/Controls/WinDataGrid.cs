@@ -62,7 +62,6 @@ namespace Poseidon.Winform.Base
         public WinDataGrid()
         {
             InitializeComponent();
-            this.bindingSource = new BindingSource();
         }
         #endregion //Constructor
 
@@ -263,6 +262,7 @@ namespace Poseidon.Winform.Base
                 }
 
                 dataSource = value;
+                this.bindingSource = new BindingSource();
                 this.bindingSource.DataSource = dataSource;
                 if (dataSource == null)
                 {

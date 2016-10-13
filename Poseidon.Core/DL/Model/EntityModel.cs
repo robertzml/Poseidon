@@ -8,12 +8,12 @@ namespace Poseidon.Core.DL
     using Poseidon.Base.Framework;
 
     /// <summary>
-    /// 对象模型类
+    /// 实体模型类
     /// </summary>
     /// <remarks>
-    /// 自定义的各类对象模型类
+    /// 自定义的各种实体模型类
     /// </remarks>
-    public class ObjectModel : PoseidonModel
+    public class EntityModel : PoseidonModel
     {
         /// <summary>
         /// 是否抽象类

@@ -1,6 +1,6 @@
 ﻿namespace Poseidon.Winform.Client
 {
-    partial class FrmObjectModelOverview
+    partial class FrmEntityModelOverview
     {
         /// <summary>
         /// Required designer variable.
@@ -137,14 +137,14 @@
             this.wdgProperty.Size = new System.Drawing.Size(290, 397);
             this.wdgProperty.TabIndex = 0;
             // 
-            // FrmObjectModelOverview
+            // FrmEntityModelOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 546);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "FrmObjectModelOverview";
-            this.Text = "对象模型总览";
+            this.Name = "FrmEntityModelOverview";
+            this.Text = "实体模型总览";
             this.Load += new System.EventHandler(this.FrmObjectModelOverview_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

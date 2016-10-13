@@ -12,24 +12,24 @@ namespace Poseidon.Core.BL
     using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 对象模型业务类
+    /// 实体模型业务类
     /// </summary>
-    public class ObjectModelBusiness
+    public class EntityModelBusiness
     {
         #region Field
         /// <summary>
         /// 数据访问接口
         /// </summary>
-        private IObjectModelRepository dal;
+        private IEntityModelRepository dal;
         #endregion //Field
 
         #region Constructor
         /// <summary>
         /// 自定义模型业务类
         /// </summary>
-        public ObjectModelBusiness()
+        public EntityModelBusiness()
         {
-            this.dal = RepositoryFactory<IObjectModelRepository>.Instance;
+            this.dal = RepositoryFactory<IEntityModelRepository>.Instance;
         }
         #endregion //Constructor
 
@@ -39,7 +39,7 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public ObjectModel FindById(string id)
+        public EntityModel FindById(string id)
         {
             var data = this.dal.FindById(id);
             return data;
@@ -50,7 +50,7 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="key">类型标识</param>
         /// <returns></returns>
-        public ObjectModel FindByKey(string key)
+        public EntityModel FindByKey(string key)
         {
             var data = this.dal.FindByField<string>("key", key);
             return data;
@@ -60,7 +60,7 @@ namespace Poseidon.Core.BL
         /// 查找所有对象模型
         /// </summary>
         /// <returns></returns>
-        public List<ObjectModel> FindAll()
+        public List<EntityModel> FindAll()
         {
             var data = this.dal.FindAll();
             return data.ToList();
@@ -71,7 +71,7 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="entity">模型实体</param>
         /// <returns></returns>
-        public ErrorCode Create(ObjectModel entity)
+        public ErrorCode Create(EntityModel entity)
         {
             var result = this.dal.Create(entity);
             return result;

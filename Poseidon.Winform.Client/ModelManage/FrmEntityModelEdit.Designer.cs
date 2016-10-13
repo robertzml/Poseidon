@@ -1,6 +1,6 @@
 ﻿namespace Poseidon.Winform.Client
 {
-    partial class FrmObjectModelEdit
+    partial class FrmEntityModelEdit
     {
         /// <summary>
         /// Required designer variable.

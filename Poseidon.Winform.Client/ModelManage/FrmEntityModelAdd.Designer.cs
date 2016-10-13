@@ -1,6 +1,6 @@
 ﻿namespace Poseidon.Winform.Client
 {
-    partial class FrmObjectModelAdd
+    partial class FrmEntityModelAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
@@ -35,7 +36,6 @@
             this.dgInherit = new Poseidon.Winform.Base.PoseidonPropertyGrid();
             this.chkAbstract = new DevExpress.XtraEditors.CheckEdit();
             this.lkuInherit = new DevExpress.XtraEditors.LookUpEdit();
-            this.bsObjectModel = new System.Windows.Forms.BindingSource();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtKey = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -46,6 +46,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bsEntityModel = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -57,7 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAbstract.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkuInherit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsObjectModel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -68,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsEntityModel)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -166,7 +167,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "名称", 41, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Base", "基类", 35, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Remark", "备注", 51, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            this.lkuInherit.Properties.DataSource = this.bsObjectModel;
+            this.lkuInherit.Properties.DataSource = this.bsEntityModel;
             this.lkuInherit.Properties.DisplayMember = "Name";
             this.lkuInherit.Properties.NullText = "请选择继承模型";
             this.lkuInherit.Properties.ShowFooter = false;
@@ -175,10 +176,6 @@
             this.lkuInherit.StyleController = this.layoutControl1;
             this.lkuInherit.TabIndex = 6;
             this.lkuInherit.EditValueChanged += new System.EventHandler(this.lkuInherit_EditValueChanged);
-            // 
-            // bsObjectModel
-            // 
-            this.bsObjectModel.DataSource = typeof(Poseidon.Core.DL.ObjectModel);
             // 
             // txtName
             // 
@@ -276,12 +273,16 @@
             this.layoutControlItem7.Text = "备注";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 14);
             // 
-            // FrmObjectModelAdd
+            // bsEntityModel
+            // 
+            this.bsEntityModel.DataSource = typeof(Poseidon.Core.DL.EntityModel);
+            // 
+            // FrmEntityModelAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 617);
-            this.Name = "FrmObjectModelAdd";
+            this.Name = "FrmEntityModelAdd";
             this.Text = "添加对象模型";
             this.Load += new System.EventHandler(this.FrmObjectModelAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).EndInit();
@@ -295,7 +296,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAbstract.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkuInherit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsObjectModel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -306,6 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsEntityModel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,7 +322,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private System.Windows.Forms.BindingSource bsObjectModel;
         private DevExpress.XtraEditors.CheckEdit chkAbstract;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.MemoEdit txtRemark;
@@ -330,5 +330,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private System.Windows.Forms.BindingSource bsEntityModel;
     }
 }

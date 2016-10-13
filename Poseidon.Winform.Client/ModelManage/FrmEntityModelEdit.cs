@@ -16,23 +16,23 @@ namespace Poseidon.Winform.Client
     using Poseidon.Winform.Base;
 
     /// <summary>
-    /// 对象模型编辑窗体
+    /// 实体模型编辑窗体
     /// </summary>
-    public partial class FrmObjectModelEdit : BaseSingleForm
+    public partial class FrmEntityModelEdit : BaseSingleForm
     {
         #region Field
         /// <summary>
         /// 当前关联对象
         /// </summary>
-        private ObjectModel currentModel;
+        private EntityModel currentModel;
         #endregion //Field
 
         #region Constructor
-        public FrmObjectModelEdit(string id)
+        public FrmEntityModelEdit(string id)
         {
             InitializeComponent();
 
-            this.currentModel = BusinessFactory<ObjectModelBusiness>.Instance.FindById(id);
+            this.currentModel = BusinessFactory<EntityModelBusiness>.Instance.FindById(id);
         }
         #endregion //Constructor
 

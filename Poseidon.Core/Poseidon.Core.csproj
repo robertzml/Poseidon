@@ -54,12 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\Model\ObjectModelBusiness.cs" />
-    <Compile Include="DAL\Mongo\Model\ObjectModelRepository.cs" />
+    <Compile Include="BL\Model\EntityModelBusiness.cs" />
+    <Compile Include="DAL\Mongo\Model\EntityModelRepository.cs" />
     <Compile Include="DL\Helper\ModelType.cs" />
     <Compile Include="DL\Model\BusinessModel.cs" />
-    <Compile Include="DL\Model\ObjectModel.cs" />
-    <Compile Include="IDAL\Model\IObjectModelRepository.cs" />
+    <Compile Include="DL\Model\EntityModel.cs" />
+    <Compile Include="IDAL\Model\IEntityModelRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

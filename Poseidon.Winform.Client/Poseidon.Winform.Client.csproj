@@ -60,23 +60,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelManage\FrmObjectModelEdit.cs">
+    <Compile Include="ModelManage\FrmEntityModelEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModelManage\FrmObjectModelEdit.Designer.cs">
-      <DependentUpon>FrmObjectModelEdit.cs</DependentUpon>
+    <Compile Include="ModelManage\FrmEntityModelEdit.Designer.cs">
+      <DependentUpon>FrmEntityModelEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModelManage\FrmObjectModelOverview.cs">
+    <Compile Include="ModelManage\FrmEntityModelOverview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModelManage\FrmObjectModelOverview.Designer.cs">
-      <DependentUpon>FrmObjectModelOverview.cs</DependentUpon>
+    <Compile Include="ModelManage\FrmEntityModelOverview.Designer.cs">
+      <DependentUpon>FrmEntityModelOverview.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModelManage\FrmObjectModelAdd.cs">
+    <Compile Include="ModelManage\FrmEntityModelAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModelManage\FrmObjectModelAdd.Designer.cs">
-      <DependentUpon>FrmObjectModelAdd.cs</DependentUpon>
+    <Compile Include="ModelManage\FrmEntityModelAdd.Designer.cs">
+      <DependentUpon>FrmEntityModelAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalAction.cs" />
     <Compile Include="MainForm.cs">
@@ -91,16 +91,16 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\Poseidon.Core.DL.ObjectModel.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.EntityModel.datasource" />
     <None Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="ModelManage\FrmObjectModelAdd.resx">
-      <DependentUpon>FrmObjectModelAdd.cs</DependentUpon>
+    <EmbeddedResource Include="ModelManage\FrmEntityModelAdd.resx">
+      <DependentUpon>FrmEntityModelAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModelManage\FrmObjectModelEdit.resx">
-      <DependentUpon>FrmObjectModelEdit.cs</DependentUpon>
+    <EmbeddedResource Include="ModelManage\FrmEntityModelEdit.resx">
+      <DependentUpon>FrmEntityModelEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModelManage\FrmObjectModelOverview.resx">
-      <DependentUpon>FrmObjectModelOverview.cs</DependentUpon>
+    <EmbeddedResource Include="ModelManage\FrmEntityModelOverview.resx">
+      <DependentUpon>FrmEntityModelOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

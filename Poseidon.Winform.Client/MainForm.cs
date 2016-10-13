@@ -45,23 +45,24 @@ namespace Poseidon.Winform.Client
 
         #region Ribbon Event
         /// <summary>
-        /// 对象模型总览
+        /// 实体模型总览
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bbiObjectModelOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiEntityModelOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.LoadMdiForm(this, typeof(FrmObjectModelOverview));
+            ChildFormManage.LoadMdiForm(this, typeof(FrmEntityModelOverview));
         }
 
+
         /// <summary>
-        /// 添加对象模型
+        /// 添加实体模型
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bbiObjectModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiEntityModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.ShowDialogForm(typeof(FrmObjectModelAdd));
+            ChildFormManage.ShowDialogForm(typeof(FrmEntityModelAdd));
         }
 
         /// <summary>

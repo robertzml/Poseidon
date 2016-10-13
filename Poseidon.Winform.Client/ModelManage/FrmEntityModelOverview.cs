@@ -14,12 +14,12 @@ namespace Poseidon.Winform.Client
     using Poseidon.Winform.Base;
 
     /// <summary>
-    /// 对象模型总览窗体
+    /// 实体模型总览窗体
     /// </summary>
-    public partial class FrmObjectModelOverview : BaseForm
+    public partial class FrmEntityModelOverview : BaseForm
     {
         #region Constructor
-        public FrmObjectModelOverview()
+        public FrmEntityModelOverview()
         {
             InitializeComponent();
         }
@@ -42,13 +42,13 @@ namespace Poseidon.Winform.Client
 
         private void LoadData()
         {
-            var data = BusinessFactory<ObjectModelBusiness>.Instance.FindAll();
+            var data = BusinessFactory<EntityModelBusiness>.Instance.FindAll();
             this.wdgList.DataSource = data;
         }
 
         private void LoadProperty()
         {
-            var data = this.wdgList.GetSelected() as ObjectModel;
+            var data = this.wdgList.GetSelected() as EntityModel;
             this.wdgProperty.DataSource = data.Properties;
         }
         #endregion //Function
@@ -68,11 +68,11 @@ namespace Poseidon.Winform.Client
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            var data = this.wdgList.GetSelected() as ObjectModel;
+            var data = this.wdgList.GetSelected() as EntityModel;
             if (data == null)
                 return;
 
-            ChildFormManage.ShowDialogForm(typeof(FrmObjectModelEdit), new object[] { data.Id });
+            ChildFormManage.ShowDialogForm(typeof(FrmEntityModelEdit), new object[] { data.Id });
         }
        
 

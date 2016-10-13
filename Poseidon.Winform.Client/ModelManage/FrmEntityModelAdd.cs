@@ -16,12 +16,12 @@ namespace Poseidon.Winform.Client
     using Poseidon.Winform.Base;
 
     /// <summary>
-    /// 对象模型添加窗体
+    /// 实体模型添加窗体
     /// </summary>
-    public partial class FrmObjectModelAdd : BaseSingleForm
+    public partial class FrmEntityModelAdd : BaseSingleForm
     {
         #region Constructor
-        public FrmObjectModelAdd()
+        public FrmEntityModelAdd()
         {
             InitializeComponent();
         }
@@ -32,7 +32,7 @@ namespace Poseidon.Winform.Client
         /// 设置实体
         /// </summary>
         /// <param name="model"></param>
-        private void SetEntity(ObjectModel model)
+        private void SetEntity(EntityModel model)
         {
             model.Key = this.txtKey.Text;
             model.Name = this.txtName.Text;
@@ -87,7 +87,7 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void FrmObjectModelAdd_Load(object sender, EventArgs e)
         {
-            this.bsObjectModel.DataSource = BusinessFactory<ObjectModelBusiness>.Instance.FindAll();
+            this.bsEntityModel.DataSource = BusinessFactory<EntityModelBusiness>.Instance.FindAll();
             this.dgProperty.DataSource = new List<PoseidonProperty>();
         }
 
@@ -104,7 +104,7 @@ namespace Poseidon.Winform.Client
                 return;
             }
 
-            var model = BusinessFactory<ObjectModelBusiness>.Instance.FindByKey(this.lkuInherit.EditValue.ToString());
+            var model = BusinessFactory<EntityModelBusiness>.Instance.FindByKey(this.lkuInherit.EditValue.ToString());
             this.dgInherit.DataSource = model.Properties;
         }
         
@@ -124,10 +124,10 @@ namespace Poseidon.Winform.Client
                 return;
             }
 
-            ObjectModel model = new ObjectModel();
+            EntityModel model = new EntityModel();
             SetEntity(model);
 
-            var result = BusinessFactory<ObjectModelBusiness>.Instance.Create(model);
+            var result = BusinessFactory<EntityModelBusiness>.Instance.Create(model);
             if (result == ErrorCode.Success)
             {
                 MessageUtil.ShowInfo("添加模型成功");

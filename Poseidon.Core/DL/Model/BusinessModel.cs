@@ -11,7 +11,7 @@ namespace Poseidon.Core.DL
     /// 业务模型类
     /// </summary>
     /// <remarks>
-    /// 自定义的各类业务模型类
+    /// 自定义的各种业务模型类
     /// </remarks>
     public class BusinessModel : PoseidonModel
     {
