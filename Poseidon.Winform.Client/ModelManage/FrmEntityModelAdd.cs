@@ -38,6 +38,7 @@ namespace Poseidon.Winform.Client
             model.Name = this.txtName.Text;
             model.Base = this.lkuInherit.EditValue.ToString();
             model.IsAbstract = this.chkAbstract.Checked;
+            model.CollectionName = this.txtCollectionName.Text.Trim();
             model.Remark = this.txtRemark.Text;
 
             model.Properties = new List<PoseidonProperty>();
@@ -75,6 +76,12 @@ namespace Poseidon.Winform.Client
                 return new Tuple<bool, string>(false, errorMessage);
             }
 
+            if (this.chkAbstract.Checked == false && string.IsNullOrEmpty(this.txtCollectionName.Text.Trim()))
+            {
+                errorMessage = "非抽象模型需指定存储集合";
+                return new Tuple<bool, string>(false, errorMessage);
+            }
+
             return new Tuple<bool, string>(true, "");
         }
         #endregion //Function
@@ -107,7 +114,7 @@ namespace Poseidon.Winform.Client
             var model = BusinessFactory<EntityModelBusiness>.Instance.FindByKey(this.lkuInherit.EditValue.ToString());
             this.dgInherit.DataSource = model.Properties;
         }
-        
+
         /// <summary>
         /// 保存
         /// </summary>

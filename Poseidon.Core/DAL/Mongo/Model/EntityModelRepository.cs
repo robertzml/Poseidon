@@ -21,7 +21,10 @@ namespace Poseidon.Core.DAL.Mongo
         #region Field
         private BaseDALMongo mongo;
 
-        private string collectionName = "objectModel";
+        /// <summary>
+        /// 集合名称
+        /// </summary>
+        private string collectionName = "entityModel";
         #endregion //Field
 
         #region Constructor
@@ -44,7 +47,8 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Key = doc["key"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Base = doc["base"].ToString();
-            entity.IsAbstract = doc["isAbstract"].ToBoolean();           
+            entity.IsAbstract = doc["isAbstract"].ToBoolean();
+            entity.CollectionName = doc["collectionName"].ToString();
             entity.Remark = doc["remark"].ToString();
 
             if (doc.Contains("properties"))
@@ -144,7 +148,8 @@ namespace Poseidon.Core.DAL.Mongo
                 { "key", entity.Key },
                 { "name", entity.Name },
                 { "base", entity.Base },
-                { "isAbstract", entity.IsAbstract },              
+                { "isAbstract", entity.IsAbstract },
+                { "collectionName", entity.CollectionName },
                 { "remark", entity.Remark }
             };
 

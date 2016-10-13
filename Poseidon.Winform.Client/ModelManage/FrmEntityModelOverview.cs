@@ -31,8 +31,8 @@ namespace Poseidon.Winform.Client
         /// </summary>
         private void InitControls()
         {
-            string displayColumns = "Key,Name,Base,IsAbstract,Remark";
-            string displayHeaders = "标识,名称,继承基类,是否抽象类,备注";
+            string displayColumns = "Key,Name,Base,IsAbstract,CollectionName,Remark";
+            string displayHeaders = "标识,名称,继承基类,是否抽象类,存储集合,备注";
             this.wdgList.SetColumnPairs(displayColumns, displayHeaders);
 
             displayColumns = "Name,Type,Remark";
@@ -40,6 +40,9 @@ namespace Poseidon.Winform.Client
             this.wdgProperty.SetColumnPairs(displayColumns, displayHeaders);
         }
 
+        /// <summary>
+        /// 载入所有实体模型
+        /// </summary>
         private void LoadData()
         {
             var data = BusinessFactory<EntityModelBusiness>.Instance.FindAll();
@@ -64,7 +67,17 @@ namespace Poseidon.Winform.Client
             InitControls();
             LoadData();
         }
-        
+
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -81,5 +94,7 @@ namespace Poseidon.Winform.Client
             LoadProperty();
         }
         #endregion //Event
+
+     
     }
 }

@@ -36,6 +36,7 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.wdgProperty = new Poseidon.Winform.Base.WinDataGrid();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -88,6 +89,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.btnRefresh);
             this.groupControl2.Controls.Add(this.btnEdit);
             this.groupControl2.Controls.Add(this.btnAdd);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,6 +139,15 @@
             this.wdgProperty.Size = new System.Drawing.Size(290, 397);
             this.wdgProperty.TabIndex = 0;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(283, 45);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(88, 37);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "刷新";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // FrmEntityModelOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -167,5 +178,6 @@
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private Base.WinDataGrid wdgProperty;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
     }
 }

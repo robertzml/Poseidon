@@ -21,6 +21,11 @@ namespace Poseidon.Core.DL
         public bool IsAbstract { get; set; }
 
         /// <summary>
+        /// 存储表名，默认为 entityObject 表
+        /// </summary>
+        public string CollectionName { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }

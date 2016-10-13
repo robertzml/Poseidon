@@ -131,6 +131,14 @@ namespace Poseidon.Winform.Base
             }
         }
 
+        public BindingSource BindingSource
+        {
+            get
+            {
+                return this.bsData;
+            }
+        }
+
         /// <summary>
         /// 是否能编辑
         /// </summary>

@@ -18,12 +18,7 @@ namespace Poseidon.Winform.Base
     {
         #region Field
         /// <summary>
-        /// 数据源
-        /// </summary>
-        private object dataSource;
-
-        /// <summary>
-        /// 动态绑定数据源
+        /// 绑定数据源
         /// </summary>
         private BindingSource bindingSource;
 
@@ -62,6 +57,8 @@ namespace Poseidon.Winform.Base
         public WinDataGrid()
         {
             InitializeComponent();
+
+            this.bindingSource = new BindingSource();
         }
         #endregion //Constructor
 
@@ -107,6 +104,14 @@ namespace Poseidon.Winform.Base
                 return null;
             else
                 return this.bindingSource[rowIndex];
+        }
+
+        /// <summary>
+        /// 更新列表绑定数据显示
+        /// </summary>
+        public void UpdateBindingData()
+        {
+            this.bindingSource.ResetBindings(false);
         }
         #endregion //Method
 
@@ -249,22 +254,11 @@ namespace Poseidon.Winform.Base
         [Description("数据源")]
         public object DataSource
         {
-            get
-            {
-                return dataSource;
-            }
             set
             {
                 this.dgvData.BeginDataUpdate();
-                if (this.dgvData.Columns != null)
-                {
-                    this.dgvData.Columns.Clear();
-                }
-
-                dataSource = value;
-                this.bindingSource = new BindingSource();
-                this.bindingSource.DataSource = dataSource;
-                if (dataSource == null)
+                this.bindingSource.DataSource = value;
+                if (value == null)
                 {
                     this.dgcData.DataSource = null;
                 }
@@ -274,17 +268,6 @@ namespace Poseidon.Winform.Base
                 }
 
                 this.dgvData.EndDataUpdate();
-            }
-        }
-
-        /// <summary>
-        /// 动态绑定数据源
-        /// </summary>
-        public BindingSource BindingSource
-        {
-            get
-            {
-                return this.bindingSource;
             }
         }
 
