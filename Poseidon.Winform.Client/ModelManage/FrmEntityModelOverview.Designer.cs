@@ -76,7 +76,6 @@
             // wdgList
             // 
             this.wdgList.BestFitColumnWidth = true;
-            this.wdgList.DataSource = null;
             this.wdgList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wdgList.Editable = false;
             this.wdgList.Location = new System.Drawing.Point(2, 21);
@@ -129,7 +128,6 @@
             // wdgProperty
             // 
             this.wdgProperty.BestFitColumnWidth = true;
-            this.wdgProperty.DataSource = null;
             this.wdgProperty.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wdgProperty.Editable = false;
             this.wdgProperty.Location = new System.Drawing.Point(2, 21);

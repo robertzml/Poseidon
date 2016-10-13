@@ -54,7 +54,6 @@ namespace Poseidon.Winform.Client
             ChildFormManage.LoadMdiForm(this, typeof(FrmEntityModelOverview));
         }
 
-
         /// <summary>
         /// 添加实体模型
         /// </summary>
@@ -63,6 +62,17 @@ namespace Poseidon.Winform.Client
         private void bbiEntityModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmEntityModelAdd));
+        }
+
+
+        /// <summary>
+        /// 实体对象总览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiEntityObjectOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChildFormManage.LoadMdiForm(this, typeof(FrmEntityObjectOverview));
         }
 
         /// <summary>

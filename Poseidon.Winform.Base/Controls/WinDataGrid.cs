@@ -254,6 +254,10 @@ namespace Poseidon.Winform.Base
         [Description("数据源")]
         public object DataSource
         {
+            get
+            {
+                return this.bindingSource.DataSource;
+            }
             set
             {
                 this.dgvData.BeginDataUpdate();
