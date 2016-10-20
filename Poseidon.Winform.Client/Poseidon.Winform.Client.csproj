@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectManage\FrmEntityObjectAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectManage\FrmEntityObjectAdd.Designer.cs">
+      <DependentUpon>FrmEntityObjectAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjectManage\FrmEntityObjectOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModelManage\FrmEntityModelOverview.resx">
       <DependentUpon>FrmEntityModelOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectManage\FrmEntityObjectAdd.resx">
+      <DependentUpon>FrmEntityObjectAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ObjectManage\FrmEntityObjectOverview.resx">
       <DependentUpon>FrmEntityObjectOverview.cs</DependentUpon>

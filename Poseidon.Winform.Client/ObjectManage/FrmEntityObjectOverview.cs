@@ -82,6 +82,18 @@ namespace Poseidon.Winform.Client
 
             SetModelBaseInfo(model);
         }
+        
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (this.tlEntityModel.Selection.Count <= 0)
+                return;
+
+            var data = this.tlEntityModel.DataSource as List<EntityModel>;
+            var model = data[this.tlEntityModel.Selection[0].Id];
+
+            ChildFormManage.ShowDialogForm(typeof(FrmEntityObjectAdd), new object[] { model });
+        }
         #endregion //Event
     }
 }

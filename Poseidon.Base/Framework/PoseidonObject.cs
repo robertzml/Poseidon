@@ -98,9 +98,27 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 获取所有字段名
+        /// </summary>
+        public List<string> Fields
+        {
+            get
+            {
+                List<string> fields = new List<string>();
+                var keys = this.values.Keys.GetEnumerator();
+                while(keys.MoveNext())
+                {
+                    fields.Add(keys.Current.ToString());
+                }
+
+                return fields;
+            }
+        }
+
+        /// <summary>
         /// 获取所有键值
         /// </summary>
-        public Hashtable Values
+        public Hashtable Table
         {
             get
             {

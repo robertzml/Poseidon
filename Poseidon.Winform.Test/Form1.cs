@@ -42,10 +42,18 @@ namespace Poseidon.Winform.Test
         private void button1_Click(object sender, EventArgs e)
         {
             PoseidonObject obj = new PoseidonObject();
-            obj.SetPropertyValue("age", 20);
             obj.SetPropertyValue("name", "jim");
+            obj.SetPropertyValue("age", 20);
+            
 
+            PoseidonObjectList list = new PoseidonObjectList();
+            list.SetColumnPairs("name,age", "姓名,年龄");
+            list.AddType(typeof(string));
+            list.AddType(typeof(int));
 
+            list.Add(obj);
+
+            this.vGridControl1.DataSource = list;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -53,6 +61,11 @@ namespace Poseidon.Winform.Test
             //var data = BusinessFactory<CustomModelBusiness>.Instance.FindByKey("abc");
 
             //MessageBox.Show(data.Key);
+
+            var properties = TypeDescriptor.GetProperties(button1);
+
+            PropertyDescriptor pd = properties.Find("Text", false);
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -69,14 +82,14 @@ namespace Poseidon.Winform.Test
 
         private void button4_Click(object sender, EventArgs e)
         {
-            PropertyBagList list = new PropertyBagList();
-            list.Columns.Add("Foo");
-            list.Columns.Add("Bar");
-            list.Add("abc", "def");
-            list.Add("ghi", "jkl");
-            list.Add("mno", "pqr");
+            List<Person> data = new List<Person>();
 
-        
+            var person = new Person { Name = "Jim", Age = 14, Birth = new DateTime(2014, 4, 5) };
+            data.Add(person);
+
+            this.vGridControl1.DataSource = data;
+
+            this.propertyGridControl1.SelectedObject = person;
         }
     }
 }

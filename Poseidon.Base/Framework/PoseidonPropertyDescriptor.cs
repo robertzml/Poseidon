@@ -15,7 +15,7 @@ namespace Poseidon.Base.Framework
         /// <summary>
         /// PoseidonObject 实例
         /// </summary>
-        private readonly PoseidonObject poseidonObject;
+        //private readonly PoseidonObject poseidonObject;
 
         /// <summary>
         /// 属性类型
@@ -35,14 +35,13 @@ namespace Poseidon.Base.Framework
         /// <summary>
         /// PoseidonObject 属性描述器
         /// </summary>
-        /// <param name="poseidonObject">属性描述器</param>
         /// <param name="propertyName">属性名称</param>
         /// <param name="propertyType">属性类型</param>
         /// <param name="propertyAttributes">属性特性</param>
-        public PoseidonPropertyDescriptor(PoseidonObject poseidonObject, string propertyName, Type propertyType, Attribute[] propertyAttributes)
+        public PoseidonPropertyDescriptor(string propertyName, Type propertyType, Attribute[] propertyAttributes)
                 : base(propertyName, propertyAttributes)
         {
-            this.poseidonObject = poseidonObject;
+            //this.poseidonObject = poseidonObject;
             this.propertyType = propertyType;
         }
         #endregion //Constructor

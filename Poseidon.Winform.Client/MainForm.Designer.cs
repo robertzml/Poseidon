@@ -37,6 +37,7 @@
             this.bbiEntityModelOverview = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBusinessModelOverview = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBusinessModelAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEntityObjectOverview = new DevExpress.XtraBars.BarButtonItem();
             this.rpObject = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgEntityObject = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgBusinessObject = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -47,7 +48,8 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiEntityObjectOverview = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEntityObjectAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEntityObjectEdit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -63,9 +65,11 @@
             this.bbiEntityModelOverview,
             this.bbiBusinessModelOverview,
             this.bbiBusinessModelAdd,
-            this.bbiEntityObjectOverview});
+            this.bbiEntityObjectOverview,
+            this.bbiEntityObjectAdd,
+            this.bbiEntityObjectEdit});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 14;
+            this.ribbonControl.MaxItemId = 16;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpObject,
@@ -131,6 +135,16 @@
             this.bbiBusinessModelAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiBusinessModelAdd.LargeGlyph")));
             this.bbiBusinessModelAdd.Name = "bbiBusinessModelAdd";
             // 
+            // bbiEntityObjectOverview
+            // 
+            this.bbiEntityObjectOverview.Caption = "实体对象总览";
+            this.bbiEntityObjectOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiEntityObjectOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectOverview.Glyph")));
+            this.bbiEntityObjectOverview.Id = 13;
+            this.bbiEntityObjectOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectOverview.LargeGlyph")));
+            this.bbiEntityObjectOverview.Name = "bbiEntityObjectOverview";
+            this.bbiEntityObjectOverview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEntityObjectOverview_ItemClick);
+            // 
             // rpObject
             // 
             this.rpObject.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -142,6 +156,8 @@
             // rpgEntityObject
             // 
             this.rpgEntityObject.ItemLinks.Add(this.bbiEntityObjectOverview);
+            this.rpgEntityObject.ItemLinks.Add(this.bbiEntityObjectAdd);
+            this.rpgEntityObject.ItemLinks.Add(this.bbiEntityObjectEdit);
             this.rpgEntityObject.Name = "rpgEntityObject";
             this.rpgEntityObject.Text = "实体对象";
             // 
@@ -198,15 +214,26 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // bbiEntityObjectOverview
+            // bbiEntityObjectAdd
             // 
-            this.bbiEntityObjectOverview.Caption = "实体对象总览";
-            this.bbiEntityObjectOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiEntityObjectOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectOverview.Glyph")));
-            this.bbiEntityObjectOverview.Id = 13;
-            this.bbiEntityObjectOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectOverview.LargeGlyph")));
-            this.bbiEntityObjectOverview.Name = "bbiEntityObjectOverview";
-            this.bbiEntityObjectOverview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEntityObjectOverview_ItemClick);
+            this.bbiEntityObjectAdd.Caption = "添加对象";
+            this.bbiEntityObjectAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiEntityObjectAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectAdd.Glyph")));
+            this.bbiEntityObjectAdd.Id = 14;
+            this.bbiEntityObjectAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectAdd.LargeGlyph")));
+            this.bbiEntityObjectAdd.Name = "bbiEntityObjectAdd";
+            this.bbiEntityObjectAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiEntityObjectAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEntityObjectAdd_ItemClick);
+            // 
+            // bbiEntityObjectEdit
+            // 
+            this.bbiEntityObjectEdit.Caption = "编辑对象";
+            this.bbiEntityObjectEdit.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiEntityObjectEdit.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectEdit.Glyph")));
+            this.bbiEntityObjectEdit.Id = 15;
+            this.bbiEntityObjectEdit.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiEntityObjectEdit.LargeGlyph")));
+            this.bbiEntityObjectEdit.Name = "bbiEntityObjectEdit";
+            this.bbiEntityObjectEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
             // MainForm
             // 
@@ -249,6 +276,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgEntityObject;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgBusinessObject;
         private DevExpress.XtraBars.BarButtonItem bbiEntityObjectOverview;
+        private DevExpress.XtraBars.BarButtonItem bbiEntityObjectAdd;
+        private DevExpress.XtraBars.BarButtonItem bbiEntityObjectEdit;
     }
 }
 

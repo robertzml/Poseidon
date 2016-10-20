@@ -27,7 +27,10 @@ namespace Poseidon.Winform.Base
 
         public object DataSource
         {
-            get { return dataSource; }
+            get
+            {
+                return dataSource;
+            }
             set
             {
                 //if (this.dgvData.Columns != null)

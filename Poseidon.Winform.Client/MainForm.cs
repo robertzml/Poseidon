@@ -76,6 +76,16 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
+        /// 添加实体对象
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiEntityObjectAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        /// <summary>
         /// 退出系统
         /// </summary>
         /// <param name="sender"></param>
@@ -87,5 +97,6 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
+
     }
 }
