@@ -6,6 +6,8 @@ using System.Text;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.Utility;
+
     /// <summary>
     /// 自定义属性的动态对象列表类
     /// 表示动态对象的集合
@@ -18,6 +20,9 @@ namespace Poseidon.Base.Framework
         /// </summary>
         private List<string> columns;
 
+        /// <summary>
+        /// 列类型集合
+        /// </summary>
         private List<Type> columnTypes;
 
         /// <summary>
@@ -36,29 +41,30 @@ namespace Poseidon.Base.Framework
         #endregion //Constructor
 
         #region Method
-        public void AddColumn(string column, string description)
+        /// <summary>
+        /// 添加列定义
+        /// </summary>
+        /// <param name="column">列名</param>
+        /// <param name="type">列类型</param>
+        /// <param name="description">列描述</param>
+        public void AddColumn(string column, Type type, string description)
         {
             this.columns.Add(column);
-            this.columnDescription.Add(description);            
-        }
-
-        public void AddType(Type type)
-        {
             this.columnTypes.Add(type);
+            this.columnDescription.Add(description);
         }
 
-        public void SetColumnPairs(string columns, string descriptions)
+        /// <summary>
+        /// 添加列定义
+        /// </summary>
+        /// <param name="properties">属性描述</param>
+        public void AddColumns(List<PoseidonProperty> properties)
         {
-            string[] names = columns.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            string[] headers = descriptions.Split(new char[] { '|', ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (names.Length != headers.Length)
-                throw new ArgumentException("动态对象列配置有误");
-
-            for (int i = 0; i < names.Length; i++)
+            foreach(var item in properties)
             {
-                this.columns.Add(names[i]);
-                this.columnDescription.Add(headers[i]);
+                this.columns.Add(item.Name);
+                this.columnTypes.Add(PoseidonUtil.GetPropertyType(item.Type));
+                this.columnDescription.Add(item.Remark);
             }
         }
 
@@ -79,15 +85,6 @@ namespace Poseidon.Base.Framework
         }
 
 
-        public void AddObject(PoseidonObject obj)
-        {
-            //foreach(var item in obj.Fields)
-            //{
-            //    obj[item]
-            //}
-            base.Add(obj);
-        }
-
         //public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
         //{
         //    if (listAccessors == null || listAccessors.Length == 0)
@@ -102,6 +99,11 @@ namespace Poseidon.Base.Framework
         //    throw new NotImplementedException("Relations not implemented");
         //}
 
+        /// <summary>
+        /// 设置项属性
+        /// </summary>
+        /// <param name="listAccessors"></param>
+        /// <returns></returns>
         public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
         {
             if (listAccessors == null || listAccessors.Length == 0)
@@ -109,13 +111,20 @@ namespace Poseidon.Base.Framework
                 PropertyDescriptor[] props = new PropertyDescriptor[this.columns.Count];
                 for (int i = 0; i < props.Length; i++)
                 {
-                    props[i] = new PoseidonPropertyDescriptor(this.columns[i], this.columnTypes[i], null);
+                    DisplayNameAttribute display = new DisplayNameAttribute(this.columnDescription[i]);
+
+                    props[i] = new PoseidonPropertyDescriptor(this.columns[i], this.columnTypes[i], new Attribute[] { display });
                 }
                 return new PropertyDescriptorCollection(props, true);
             }
             throw new NotImplementedException("Relations not implemented");
         }
 
+        /// <summary>
+        /// 获取列表名称
+        /// </summary>
+        /// <param name="listAccessors"></param>
+        /// <returns></returns>
         public string GetListName(PropertyDescriptor[] listAccessors)
         {
             return "PoseidonObjectList";

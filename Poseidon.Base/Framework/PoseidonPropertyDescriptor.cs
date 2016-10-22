@@ -13,11 +13,6 @@ namespace Poseidon.Base.Framework
     {
         #region Field
         /// <summary>
-        /// PoseidonObject 实例
-        /// </summary>
-        //private readonly PoseidonObject poseidonObject;
-
-        /// <summary>
         /// 属性类型
         /// </summary>
         private readonly Type propertyType;
@@ -41,7 +36,6 @@ namespace Poseidon.Base.Framework
         public PoseidonPropertyDescriptor(string propertyName, Type propertyType, Attribute[] propertyAttributes)
                 : base(propertyName, propertyAttributes)
         {
-            //this.poseidonObject = poseidonObject;
             this.propertyType = propertyType;
         }
         #endregion //Constructor

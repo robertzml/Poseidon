@@ -31,23 +31,33 @@ namespace Poseidon.Winform.Client
 
             this.model = model;
         }
-
         #endregion //Constructor
 
+        #region Event
         private void FrmEntityObjectAdd_Load(object sender, EventArgs e)
         {
             PoseidonObjectList list = new PoseidonObjectList();
 
-            foreach (var item in model.Properties)
-            {
-                list.AddColumn(item.Name, item.Remark);
-            }
+            list.AddColumns(model.Properties);
 
             list.Add(new PoseidonObject());
 
-            this.vGridControl1.DataSource = list;
-
-            //this.vGridControl1.Rows.Add()
+            this.wvgData.DataSource = list;
         }
+        
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            this.wvgData.CloseEditor();
+
+            var data = this.wvgData.DataSource;
+
+
+        }
+        #endregion //Event
     }
 }

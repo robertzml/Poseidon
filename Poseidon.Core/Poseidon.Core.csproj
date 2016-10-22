@@ -56,10 +56,13 @@
   <ItemGroup>
     <Compile Include="BL\Model\EntityModelBusiness.cs" />
     <Compile Include="DAL\Mongo\Model\EntityModelRepository.cs" />
+    <Compile Include="DAL\Mongo\Object\EntityObjectRepository.cs" />
     <Compile Include="DL\Helper\ModelType.cs" />
     <Compile Include="DL\Model\BusinessModel.cs" />
     <Compile Include="DL\Model\EntityModel.cs" />
+    <Compile Include="DL\Object\EntityObject.cs" />
     <Compile Include="IDAL\Model\IEntityModelRepository.cs" />
+    <Compile Include="IDAL\Object\IEntityObjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

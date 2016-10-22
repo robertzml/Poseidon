@@ -38,16 +38,17 @@
             this.dgcData.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.dgcData.Location = new System.Drawing.Point(0, 0);
             this.dgcData.Name = "dgcData";
-            this.dgcData.Size = new System.Drawing.Size(402, 356);
+            this.dgcData.Size = new System.Drawing.Size(469, 415);
             this.dgcData.TabIndex = 0;
             // 
             // WinVerticalGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgcData);
             this.Name = "WinVerticalGrid";
-            this.Size = new System.Drawing.Size(402, 356);
+            this.Size = new System.Drawing.Size(469, 415);
+            this.Load += new System.EventHandler(this.WinVerticalGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgcData)).EndInit();
             this.ResumeLayout(false);
 

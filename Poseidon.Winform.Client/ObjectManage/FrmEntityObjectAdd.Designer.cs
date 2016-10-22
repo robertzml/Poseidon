@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.wvgData = new Poseidon.Winform.Base.WinVerticalGrid();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
             this.plBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // plFill
             // 
@@ -55,7 +58,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.vGridControl1);
+            this.groupControl1.Controls.Add(this.wvgData);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
@@ -63,13 +66,14 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "实体对象信息";
             // 
-            // vGridControl1
+            // wvgData
             // 
-            this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
-            this.vGridControl1.Location = new System.Drawing.Point(78, 120);
-            this.vGridControl1.Name = "vGridControl1";
-            this.vGridControl1.Size = new System.Drawing.Size(400, 200);
-            this.vGridControl1.TabIndex = 0;
+            this.wvgData.DataSource = null;
+            this.wvgData.Editable = true;
+            this.wvgData.Location = new System.Drawing.Point(20, 37);
+            this.wvgData.Name = "wvgData";
+            this.wvgData.Size = new System.Drawing.Size(316, 310);
+            this.wvgData.TabIndex = 0;
             // 
             // FrmEntityObjectAdd
             // 
@@ -85,7 +89,6 @@
             this.plBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -93,6 +96,6 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
+        private Base.WinVerticalGrid wvgData;
     }
 }

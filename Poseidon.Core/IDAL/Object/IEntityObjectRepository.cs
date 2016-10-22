@@ -9,10 +9,9 @@ namespace Poseidon.Core.IDAL
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 实体模型数据访问接口
+    /// 实体对象数据访问接口
     /// </summary>
-    internal interface IEntityModelRepository : IBaseDAL<EntityModel>
+    internal interface IEntityObjectRepository : IBaseDAL<EntityObject>
     {
-
     }
 }

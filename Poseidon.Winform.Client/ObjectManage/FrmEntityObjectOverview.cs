@@ -34,6 +34,8 @@ namespace Poseidon.Winform.Client
         {
             var data = BusinessFactory<EntityModelBusiness>.Instance.FindAll();
             this.tlEntityModel.DataSource = data;
+
+            this.tlEntityModel.ExpandToLevel(2);
         }
 
         private void SetModelBaseInfo(EntityModel model)

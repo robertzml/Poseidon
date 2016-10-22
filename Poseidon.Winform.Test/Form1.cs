@@ -47,9 +47,9 @@ namespace Poseidon.Winform.Test
             
 
             PoseidonObjectList list = new PoseidonObjectList();
-            list.SetColumnPairs("name,age", "姓名,年龄");
-            list.AddType(typeof(string));
-            list.AddType(typeof(int));
+            //list.SetColumnPairs("name,age", "姓名,年龄");
+            //list.AddType(typeof(string));
+            //list.AddType(typeof(int));
 
             list.Add(obj);
 

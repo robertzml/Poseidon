@@ -72,7 +72,7 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
-        /// 根据ID查找对象模型
+        /// 根据ID查找实体模型
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace Poseidon.Core.DAL.Mongo
         }
 
         /// <summary>
-        /// 根据ID查找对象模型
+        /// 根据ID查找实体模型
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace Poseidon.Core.DAL.Mongo
         }
 
         /// <summary>
-        /// 查找所有对象模型
+        /// 查找所有实体模型
         /// </summary>
         /// <returns></returns>
         public IEnumerable<EntityModel> FindAll()
@@ -137,7 +137,7 @@ namespace Poseidon.Core.DAL.Mongo
         }
 
         /// <summary>
-        /// 添加对象模型
+        /// 添加实体模型
         /// </summary>
         /// <param name="entity">模型实体</param>
         /// <returns></returns>
