@@ -24,7 +24,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// <summary>
         /// 集合名称
         /// </summary>
-        private string collectionName = "entityModel";
+        private string collectionName = "entityObject";
         #endregion //Field
 
         #region Constructor
@@ -76,7 +76,7 @@ namespace Poseidon.Core.DAL.Mongo
                 doc.Add(item, (BsonValue)entity[item]);
             }
 
-            var result = mongo.Insert(this.collectionName, doc);
+            var result = mongo.Insert(entity.CollectionName, doc);
 
             return result;
         }

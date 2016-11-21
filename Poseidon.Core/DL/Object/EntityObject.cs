@@ -15,5 +15,9 @@ namespace Poseidon.Core.DL
     /// </remarks>
     public class EntityObject : PoseidonObject
     {
+        /// <summary>
+        /// 存储集合名称
+        /// </summary>
+        public string CollectionName { get; set; }
     }
 }

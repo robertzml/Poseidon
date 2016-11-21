@@ -61,7 +61,7 @@ namespace Poseidon.Common
         /// </summary>
         /// <param name="name">对象全局名称</param>
         /// <param name="filePath">文件路径</param>
-        /// <param name="bCache">缓存集合</param>
+        /// <param name="bCache">是否用缓存</param>
         /// <returns></returns>
         public static T Create(string name, string filePath, bool bCache)
         {

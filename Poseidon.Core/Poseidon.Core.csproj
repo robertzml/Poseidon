@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Model\EntityModelBusiness.cs" />
+    <Compile Include="BL\Object\EntityObjectBusiness.cs" />
     <Compile Include="DAL\Mongo\Model\EntityModelRepository.cs" />
     <Compile Include="DAL\Mongo\Object\EntityObjectRepository.cs" />
     <Compile Include="DL\Helper\ModelType.cs" />
