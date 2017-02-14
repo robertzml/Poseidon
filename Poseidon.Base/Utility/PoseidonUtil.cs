@@ -118,15 +118,5 @@ namespace Poseidon.Base.Utility
             // Expected to throw an exception in case the type has not been recognized.
             return Type.GetType(parsedTypeName);
         }
-
-        /// <summary>
-        /// 获取属性类型
-        /// </summary>
-        /// <param name="type">属性类型</param>
-        /// <returns></returns>
-        public static Type GetPropertyType(Poseidon.Base.Framework.PoseidonPropertyType type)
-        {
-            return GetTypeFromString(type.DisplayName());
-        }
     }
 }

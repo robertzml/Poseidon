@@ -12,7 +12,6 @@ using System.Windows.Forms;
 namespace Poseidon.Winform.Test
 {
     using Poseidon.Base.Framework;
-    using Poseidon.Core.BL;
     using Poseidon.Common;
     using Poseidon.Data;
 
@@ -41,19 +40,7 @@ namespace Poseidon.Winform.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PoseidonObject obj = new PoseidonObject();
-            obj.SetPropertyValue("name", "jim");
-            obj.SetPropertyValue("age", 20);
             
-
-            PoseidonObjectList list = new PoseidonObjectList();
-            //list.SetColumnPairs("name,age", "姓名,年龄");
-            //list.AddType(typeof(string));
-            //list.AddType(typeof(int));
-
-            list.Add(obj);
-
-            this.vGridControl1.DataSource = list;
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -12,7 +12,6 @@ namespace Poseidon.Winform.Client
 {
     using DevExpress.XtraBars.Ribbon;
     using Poseidon.Common;
-    using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
 
     /// <summary>
@@ -51,7 +50,7 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void bbiEntityModelOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.LoadMdiForm(this, typeof(FrmEntityModelOverview));
+            //ChildFormManage.LoadMdiForm(this, typeof(FrmEntityModelOverview));
         }
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void bbiEntityModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.ShowDialogForm(typeof(FrmEntityModelAdd));
+            //ChildFormManage.ShowDialogForm(typeof(FrmEntityModelAdd));
         }
 
 
@@ -72,7 +71,7 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void bbiEntityObjectOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ChildFormManage.LoadMdiForm(this, typeof(FrmEntityObjectOverview));
+            //ChildFormManage.LoadMdiForm(this, typeof(FrmEntityObjectOverview));
         }
 
         /// <summary>

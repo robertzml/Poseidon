@@ -94,7 +94,12 @@ namespace Poseidon.Data.BaseDAL
             return docs;
         }
 
-
+        /// <summary>
+        /// 插入记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="doc">Bson文档</param>
+        /// <returns></returns>
         public ErrorCode Insert(string collectionName, BsonDocument doc)
         {
             var collection = this.db.GetCollection(collectionName);

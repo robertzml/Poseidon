@@ -54,16 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\Model\EntityModelBusiness.cs" />
-    <Compile Include="BL\Object\EntityObjectBusiness.cs" />
-    <Compile Include="DAL\Mongo\Model\EntityModelRepository.cs" />
-    <Compile Include="DAL\Mongo\Object\EntityObjectRepository.cs" />
-    <Compile Include="DL\Helper\ModelType.cs" />
-    <Compile Include="DL\Model\BusinessModel.cs" />
-    <Compile Include="DL\Model\EntityModel.cs" />
-    <Compile Include="DL\Object\EntityObject.cs" />
-    <Compile Include="IDAL\Model\IEntityModelRepository.cs" />
-    <Compile Include="IDAL\Object\IEntityObjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BL\" />
+    <Folder Include="DAL\" />
+    <Folder Include="DL\" />
+    <Folder Include="IDAL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

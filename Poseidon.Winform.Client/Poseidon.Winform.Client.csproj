@@ -62,36 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjectManage\FrmEntityObjectAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ObjectManage\FrmEntityObjectAdd.Designer.cs">
-      <DependentUpon>FrmEntityObjectAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectManage\FrmEntityObjectOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ObjectManage\FrmEntityObjectOverview.Designer.cs">
-      <DependentUpon>FrmEntityObjectOverview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelManage\FrmEntityModelEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmEntityModelEdit.Designer.cs">
-      <DependentUpon>FrmEntityModelEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelManage\FrmEntityModelOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmEntityModelOverview.Designer.cs">
-      <DependentUpon>FrmEntityModelOverview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelManage\FrmEntityModelAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelManage\FrmEntityModelAdd.Designer.cs">
-      <DependentUpon>FrmEntityModelAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="GlobalAction.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -107,21 +77,6 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.EntityModel.datasource" />
     <None Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="ModelManage\FrmEntityModelAdd.resx">
-      <DependentUpon>FrmEntityModelAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModelManage\FrmEntityModelEdit.resx">
-      <DependentUpon>FrmEntityModelEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModelManage\FrmEntityModelOverview.resx">
-      <DependentUpon>FrmEntityModelOverview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectManage\FrmEntityObjectAdd.resx">
-      <DependentUpon>FrmEntityObjectAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ObjectManage\FrmEntityObjectOverview.resx">
-      <DependentUpon>FrmEntityObjectOverview.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
