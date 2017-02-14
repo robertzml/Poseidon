@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -72,6 +72,20 @@ namespace Poseidon.Winform.Client
         private void bbiEntityObjectOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //ChildFormManage.LoadMdiForm(this, typeof(FrmEntityObjectOverview));
+
+            string assemblyName = "Poseidon.Organization.ClientDx.dll";
+            //反射创建
+            Assembly assemblyObj = Assembly.LoadFrom(Application.StartupPath + "\\plugins\\" + assemblyName);
+            if (assemblyObj == null)
+            {
+                throw new ArgumentNullException("AssemblyName", string.Format("无法加载AssemblyName={0} 的程序集", assemblyName));
+            }
+
+            object obj = assemblyObj.CreateInstance("Poseidon.Organization.ClientDx.FrmOrganizationAdd");
+            var bizForm = obj as BaseForm;
+
+            bizForm.MdiParent = this;
+            bizForm.Show();
         }
 
         /// <summary>

@@ -29,14 +29,14 @@ namespace Poseidon.Common
         /// 根据全名和路径构造对象
         /// </summary>
         /// <param name="name">对象全名</param>
-        /// <param name="filePath">程序集路径</param>
+        /// <param name="assemblyString">程序集名称</param>
         /// <returns></returns>
-        private static T CreateInstance(string name, string filePath)
+        private static T CreateInstance(string name, string assemblyString)
         {
-            Assembly assemblyObj = Assembly.Load(filePath);
+            Assembly assemblyObj = Assembly.Load(assemblyString);
             if (assemblyObj == null)
             {
-                throw new ArgumentNullException("sFilePath", string.Format("无法加载sFilePath={0} 的程序集", filePath));
+                throw new ArgumentNullException("sFilePath", string.Format("无法加载sFilePath={0} 的程序集", assemblyString));
             }
 
             T obj = (T)assemblyObj.CreateInstance(name); //反射创建 
