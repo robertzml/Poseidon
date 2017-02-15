@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Core.IDAL
 {
-    using Poseidon.Data;
+    using Poseidon.Base.Framework;
     using Poseidon.Core.DL;
 
     /// <summary>

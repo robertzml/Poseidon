@@ -59,12 +59,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\GroupBusiness.cs" />
+    <Compile Include="BL\ModelTypeBusiness.cs" />
     <Compile Include="BL\OrganizationBusiness.cs" />
     <Compile Include="DAL\Mongo\GroupRepository.cs" />
+    <Compile Include="DAL\Mongo\ModelTypeRepository.cs" />
     <Compile Include="DAL\Mongo\OrganizationRepository.cs" />
     <Compile Include="DL\Group.cs" />
+    <Compile Include="DL\ModelType.cs" />
     <Compile Include="DL\Organization.cs" />
     <Compile Include="IDAL\IGroupRepository.cs" />
+    <Compile Include="IDAL\IModelTypeRepository.cs" />
     <Compile Include="IDAL\IOrganizationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,17 +12,17 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 分组对象数据访问类
+    /// 模型类型数据访问类
     /// </summary>
-    internal class GroupRepository : AbsctractDALMongo<Group>, IGroupRepository
+    internal class ModelTypeRepository : AbsctractDALMongo<ModelType>, IModelTypeRepository
     {
         #region Constructor
         /// <summary>
         /// 组织分组对象访问类
         /// </summary>
-        public GroupRepository()
+        public ModelTypeRepository()
         {
-            this.collectionName = "core_group";
+            this.collectionName = "core_modelType";
         }
         #endregion //Constructor
 
@@ -32,13 +32,12 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="doc">Bson文档</param>
         /// <returns></returns>
-        protected override Group DocToEntity(BsonDocument doc)
+        protected override ModelType DocToEntity(BsonDocument doc)
         {
-            Group entity = new Group();
+            ModelType entity = new ModelType();
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Code = doc["code"].ToString();
-            entity.ParentId = doc["parent"].ToString();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
@@ -50,13 +49,12 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        protected override BsonDocument EntityToDoc(Group entity)
+        protected override BsonDocument EntityToDoc(ModelType entity)
         {
             BsonDocument doc = new BsonDocument
             {
                 { "name", entity.Name },
                 { "code", entity.Code },
-                { "parent", entity.ParentId },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };

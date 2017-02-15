@@ -13,10 +13,10 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 组织对象业务类
     /// </summary>
-    public class OrganizationBusiness
+    public class OrganizationBusiness : AbsctractBusiness<Organization>
     {
         #region Field
-        private IOrganizationRepository dal;
+
         #endregion //Field
 
         #region Constructor
@@ -30,16 +30,7 @@ namespace Poseidon.Core.BL
         #endregion //Constructor
 
         #region Method
-        /// <summary>
-        /// 添加组织对象
-        /// </summary>
-        /// <param name="entity">组织对象实体</param>
-        /// <returns></returns>
-        public ErrorCode Create(Organization entity)
-        {
-            var result = this.dal.Create(entity);
-            return result;
-        }
+
         #endregion //Method
     }
 }

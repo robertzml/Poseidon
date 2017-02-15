@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Poseidon.Core.IDAL
 {
@@ -9,9 +10,9 @@ namespace Poseidon.Core.IDAL
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 组织对象访问接口
+    /// 模型类型对象数据访问接口
     /// </summary>
-    internal interface IOrganizationRepository : IBaseDAL<Organization>
+    internal interface IModelTypeRepository : IBaseDAL<ModelType>
     {
     }
 }

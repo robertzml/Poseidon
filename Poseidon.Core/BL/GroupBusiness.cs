@@ -13,13 +13,10 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 分组对象业务类
     /// </summary>
-    public class GroupBusiness
+    public class GroupBusiness : AbsctractBusiness<Group>
     {
         #region Field
-        /// <summary>
-        /// 数据访问接口
-        /// </summary>
-        private IGroupRepository dal;
+
         #endregion //Field
 
         #region Constructor
@@ -33,16 +30,7 @@ namespace Poseidon.Core.BL
         #endregion //Constructor
 
         #region Method
-        /// <summary>
-        /// 添加分组对象
-        /// </summary>
-        /// <param name="entity">分组对象</param>
-        /// <returns></returns>
-        public ErrorCode Create(Group entity)
-        {
-            var result = this.dal.Create(entity);
-            return result;
-        }
+
         #endregion //Method
     }
 }

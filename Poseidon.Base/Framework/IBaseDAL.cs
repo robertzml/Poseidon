@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Poseidon.Data
-{
-    using Poseidon.Base.Framework;
+namespace Poseidon.Base.Framework
+{   
     using Poseidon.Base.System;
 
     /// <summary>
