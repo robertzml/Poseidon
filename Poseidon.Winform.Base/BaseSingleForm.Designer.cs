@@ -63,9 +63,9 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(241, 28);
+            this.btnConfirm.Location = new System.Drawing.Point(249, 28);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(95, 31);
+            this.btnConfirm.Size = new System.Drawing.Size(80, 30);
             this.btnConfirm.TabIndex = 0;
             this.btnConfirm.Text = "确定";
             // 
@@ -74,7 +74,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(358, 28);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 31);
+            this.btnCancel.Size = new System.Drawing.Size(80, 30);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "取消";
             // 
@@ -91,6 +91,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BaseSingleForm";
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseSingleForm";

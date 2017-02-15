@@ -57,6 +57,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseMdiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseMdiForm.Designer.cs">
+      <DependentUpon>BaseMdiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseSingleForm.cs">
       <SubType>Form</SubType>
     </Compile>

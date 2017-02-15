@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
-    using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
+    using Poseidon.Core.IDAL;
 
     /// <summary>
     /// 模型类型业务类

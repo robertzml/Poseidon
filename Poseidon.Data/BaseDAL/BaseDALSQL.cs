@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Poseidon.Data
 {
-    public class BaseDALSQL
+    internal class BaseDALSQL
     {
         public void Insert(string tableName, Hashtable recordField)
         {

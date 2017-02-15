@@ -13,7 +13,7 @@ namespace Poseidon.Data.BaseDB
     /// <summary>
     /// MongoDB 数据库访问类
     /// </summary>
-    public class MongoDb
+    internal class MongoDb
     {
         #region Field
         /// <summary>

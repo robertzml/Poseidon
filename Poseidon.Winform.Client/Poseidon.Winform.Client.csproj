@@ -62,12 +62,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Organization\FrmModelTypeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmModelTypeAdd.Designer.cs">
+      <DependentUpon>FrmModelTypeAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalAction.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\FrmModelTypeOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmModelTypeOverview.Designer.cs">
+      <DependentUpon>FrmModelTypeOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="Organization\FrmOrganizationAdd.cs">
       <SubType>Form</SubType>
@@ -83,6 +95,12 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.EntityModel.datasource" />
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Organization\FrmModelTypeAdd.resx">
+      <DependentUpon>FrmModelTypeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organization\FrmModelTypeOverview.resx">
+      <DependentUpon>FrmModelTypeOverview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmOrganizationAdd.resx">
       <DependentUpon>FrmOrganizationAdd.cs</DependentUpon>
     </EmbeddedResource>

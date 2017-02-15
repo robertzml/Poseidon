@@ -38,6 +38,8 @@ namespace Poseidon.Core.DAL.Mongo
             Organization entity = new Organization();
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
+            entity.Remark = doc["remark"].ToString();
+            entity.Status = doc["status"].ToInt32();
 
             return entity;
         }
@@ -51,7 +53,9 @@ namespace Poseidon.Core.DAL.Mongo
         {
             BsonDocument doc = new BsonDocument
             {
-                { "name", entity.Name }
+                { "name", entity.Name },
+                { "remark", entity.Remark },
+                { "status", entity.Status }
             };
 
             return doc;

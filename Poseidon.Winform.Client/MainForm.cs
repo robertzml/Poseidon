@@ -44,25 +44,14 @@ namespace Poseidon.Winform.Client
 
         #region Ribbon Event
         /// <summary>
-        /// 实体模型总览
+        /// 模型类型总览
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bbiEntityModelOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiModelTypeOv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //ChildFormManage.LoadMdiForm(this, typeof(FrmEntityModelOverview));
+            ChildFormManage.LoadMdiForm(this, typeof(FrmModelTypeOverview));
         }
-
-        /// <summary>
-        /// 添加实体模型
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bbiEntityModelAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //ChildFormManage.ShowDialogForm(typeof(FrmEntityModelAdd));
-        }
-
 
         /// <summary>
         /// 实体对象总览
@@ -88,15 +77,6 @@ namespace Poseidon.Winform.Client
             bizForm.Show();
         }
 
-        /// <summary>
-        /// 添加实体对象
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bbiEntityObjectAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// 退出系统
@@ -110,6 +90,5 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
-
     }
 }

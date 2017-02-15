@@ -14,7 +14,7 @@ namespace Poseidon.Data.BaseDAL
     /// <summary>
     /// MongoDB数据访问类
     /// </summary>
-    public class BaseDALMongo
+    internal class BaseDALMongo
     {
         #region Field
         /// <summary>
