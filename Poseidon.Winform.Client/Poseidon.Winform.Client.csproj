@@ -83,6 +83,9 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.EntityModel.datasource" />
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Organization\FrmOrganizationAdd.resx">
+      <DependentUpon>FrmOrganizationAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

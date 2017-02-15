@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -8,19 +9,44 @@ namespace Poseidon.Core.DL
     using Poseidon.Base.Framework;
 
     /// <summary>
-    /// 分组类
+    /// 组织分组类
     /// </summary>
     public class Group : BaseEntity
     {
         /// <summary>
-        /// 显示名称
+        /// 名称
         /// </summary>
+        [Display(Name = "名称")]
         public string Name { get; set; }
-
 
         /// <summary>
         /// 代号
         /// </summary>
+        [Display(Name = "代号")]
         public string Code { get; set; }
+
+        /// <summary>
+        /// 上级ID
+        /// </summary>
+        [Display(Name = "上级ID")]
+        public string ParentId { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [Display(Name = "备注")]
+        public string Remark { get; set; }
+
+        /// <summary>
+        /// 状态
+        /// </summary>
+        [Display(Name = "状态")]
+        public int Status { get; set; }
+
+        /// <summary>
+        /// 下属组织
+        /// </summary>
+        [Display(Name = "下属组织")]
+        public List<string> Organizations { get; set; }
     }
 }

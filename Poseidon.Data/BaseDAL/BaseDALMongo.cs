@@ -77,6 +77,7 @@ namespace Poseidon.Data.BaseDAL
         {
             var collection = this.db.GetCollection(collectionName);
             var docs = collection.Find(new BsonDocument()).ToList();
+
             return docs;
         }
 

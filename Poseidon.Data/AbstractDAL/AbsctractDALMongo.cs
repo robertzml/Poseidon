@@ -58,7 +58,7 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public T FindById(object id)
+        public virtual T FindById(object id)
         {
             var doc = this.mongo.FindById(this.collectionName, id.ToString());
             var entity = DocToEntity(doc);
@@ -70,24 +70,24 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public T FindById(string id)
+        public virtual T FindById(string id)
         {
             var doc = this.mongo.FindById(this.collectionName, id);
             var entity = DocToEntity(doc);
             return entity;
         }
 
-        public T FindByField<Tvalue>(string field, Tvalue value)
+        public virtual T FindByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindAll()
+        public virtual IEnumerable<T> FindAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
@@ -97,18 +97,18 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public ErrorCode Create(T entity)
+        public virtual ErrorCode Create(T entity)
         {
             var doc = EntityToDoc(entity);
             return this.mongo.Insert(this.collectionName, doc);
         }
 
-        public ErrorCode Update(T entity)
+        public virtual ErrorCode Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public ErrorCode Delete(T entity)
+        public virtual ErrorCode Delete(T entity)
         {
             throw new NotImplementedException();
         }

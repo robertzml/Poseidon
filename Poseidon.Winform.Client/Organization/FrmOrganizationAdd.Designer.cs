@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FrmOrganizationAdd
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "FrmOrganizationAdd";
+            this.ClientSize = new System.Drawing.Size(731, 427);
+            this.Name = "FrmOrganizationAdd";
+            this.Text = "添加组织";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
