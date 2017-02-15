@@ -69,13 +69,13 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
-        /// 实体对象总览
+        /// 分组总览
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bbiEntityObjectOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiGroupOv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-       
+            ChildFormManage.LoadMdiForm(this, typeof(FrmGroupOverview));
         }
 
         /// <summary>

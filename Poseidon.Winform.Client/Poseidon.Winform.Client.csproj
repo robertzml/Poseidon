@@ -62,6 +62,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Organization\FrmGroupAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmGroupAdd.Designer.cs">
+      <DependentUpon>FrmGroupAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\FrmGroupOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmGroupOverview.Designer.cs">
+      <DependentUpon>FrmGroupOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Organization\FrmModelTypeAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +106,12 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.EntityModel.datasource" />
     <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Organization\FrmGroupAdd.resx">
+      <DependentUpon>FrmGroupAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organization\FrmGroupOverview.resx">
+      <DependentUpon>FrmGroupOverview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmModelTypeAdd.resx">
       <DependentUpon>FrmModelTypeAdd.cs</DependentUpon>
     </EmbeddedResource>

@@ -45,7 +45,7 @@
             this.plFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plFill.Location = new System.Drawing.Point(0, 0);
             this.plFill.Name = "plFill";
-            this.plFill.Size = new System.Drawing.Size(477, 252);
+            this.plFill.Size = new System.Drawing.Size(456, 272);
             this.plFill.TabIndex = 0;
             // 
             // plBottom
@@ -56,14 +56,14 @@
             this.plBottom.Controls.Add(this.btnConfirm);
             this.plBottom.Controls.Add(this.btnCancel);
             this.plBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.plBottom.Location = new System.Drawing.Point(0, 252);
+            this.plBottom.Location = new System.Drawing.Point(0, 272);
             this.plBottom.Name = "plBottom";
-            this.plBottom.Size = new System.Drawing.Size(477, 80);
+            this.plBottom.Size = new System.Drawing.Size(456, 60);
             this.plBottom.TabIndex = 1;
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(249, 28);
+            this.btnConfirm.Location = new System.Drawing.Point(237, 15);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(80, 30);
             this.btnConfirm.TabIndex = 0;
@@ -72,7 +72,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(358, 28);
+            this.btnCancel.Location = new System.Drawing.Point(346, 15);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 30);
             this.btnCancel.TabIndex = 1;
@@ -84,7 +84,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(477, 332);
+            this.ClientSize = new System.Drawing.Size(456, 332);
             this.Controls.Add(this.plFill);
             this.Controls.Add(this.plBottom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -95,6 +95,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseSingleForm";
+            this.Load += new System.EventHandler(this.BaseSingleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).EndInit();
             this.plBottom.ResumeLayout(false);

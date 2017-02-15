@@ -84,6 +84,12 @@
     <Compile Include="Controls\WinDataGrid.Designer.cs">
       <DependentUpon>WinDataGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WinEntityGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WinEntityGrid.Designer.cs">
+      <DependentUpon>WinEntityGrid.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseForm.resx">
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WinDataGrid.resx">
       <DependentUpon>WinDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WinEntityGrid.resx">
+      <DependentUpon>WinEntityGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WinVerticalGrid.resx">
       <DependentUpon>WinVerticalGrid.cs</DependentUpon>

@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Poseidon.Winform.Base
+namespace Poseidon.Winform.Client
 {
+    using Poseidon.Core.BL;
+    using Poseidon.Core.DL;
+    using Poseidon.Winform.Base;
+
     /// <summary>
-    /// 对话框基类
+    /// 分组添加窗体
     /// </summary>
-    public partial class BaseSingleForm : BaseForm
+    public partial class FrmGroupAdd : BaseSingleForm
     {
         #region Constructor
-        public BaseSingleForm()
+        public FrmGroupAdd()
         {
             InitializeComponent();
         }
@@ -26,15 +28,20 @@ namespace Poseidon.Winform.Base
         /// <summary>
         /// 初始化控件
         /// </summary>
-        protected virtual void InitControls()
+        protected override void InitControls()
         {
+           
         }
         #endregion //Function
 
         #region Event
-        private void BaseSingleForm_Load(object sender, EventArgs e)
+        /// <summary>
+        /// 窗体载入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmGroupAdd_Load(object sender, EventArgs e)
         {
-            InitControls();
         }
         #endregion //Event
     }
