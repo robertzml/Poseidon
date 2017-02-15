@@ -69,6 +69,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Organization\FrmOrganizationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmOrganizationAdd.Designer.cs">
+      <DependentUpon>FrmOrganizationAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

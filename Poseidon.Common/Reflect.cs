@@ -49,21 +49,21 @@ namespace Poseidon.Common
         /// 根据参数创建对象实例
         /// </summary>
         /// <param name="name">对象全局名称</param>
-        /// <param name="filePath">文件路径</param>
+        /// <param name="assemblyString">程序集名称</param>
         /// <returns></returns>
-        public static T Create(string name, string filePath)
+        public static T Create(string name, string assemblyString)
         {
-            return Create(name, filePath, true);
+            return Create(name, assemblyString, true);
         }
 
         /// <summary>
         /// 根据参数创建对象实例
         /// </summary>
         /// <param name="name">对象全局名称</param>
-        /// <param name="filePath">文件路径</param>
+        /// <param name="assemblyString">程序集名称</param>
         /// <param name="bCache">是否用缓存</param>
         /// <returns></returns>
-        public static T Create(string name, string filePath, bool bCache)
+        public static T Create(string name, string assemblyString, bool bCache)
         {
             string cacheKey = name;
             T objType = null;
@@ -73,7 +73,7 @@ namespace Poseidon.Common
                 {
                     lock (syncRoot)
                     {
-                        objType = CreateInstance(cacheKey, filePath);
+                        objType = CreateInstance(cacheKey, assemblyString);
                         objCache.Add(cacheKey, objType);//缓存数据访问对象
                     }
                 }
@@ -84,7 +84,7 @@ namespace Poseidon.Common
             }
             else
             {
-                objType = CreateInstance(name, filePath);
+                objType = CreateInstance(name, assemblyString);
             }
 
             return objType;
