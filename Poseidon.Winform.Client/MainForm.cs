@@ -44,6 +44,21 @@ namespace Poseidon.Winform.Client
 
         #region Ribbon Event
         /// <summary>
+        /// 支出账户
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiExpenseAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Expense.ClientDx";
+            string typeName = "Poseidon.Expense.ClientDx.FrmWaterAccountOverview";
+
+            var form = Reflect<BaseMdiForm>.Create(typeName, assemblyName);
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        /// <summary>
         /// 模型类型总览
         /// </summary>
         /// <param name="sender"></param>
@@ -60,23 +75,8 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void bbiEntityObjectOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //ChildFormManage.LoadMdiForm(this, typeof(FrmEntityObjectOverview));
-
-            string assemblyName = "Poseidon.Organization.ClientDx.dll";
-            //反射创建
-            Assembly assemblyObj = Assembly.LoadFrom(Application.StartupPath + "\\plugins\\" + assemblyName);
-            if (assemblyObj == null)
-            {
-                throw new ArgumentNullException("AssemblyName", string.Format("无法加载AssemblyName={0} 的程序集", assemblyName));
-            }
-
-            object obj = assemblyObj.CreateInstance("Poseidon.Organization.ClientDx.FrmOrganizationAdd");
-            var bizForm = obj as BaseForm;
-
-            bizForm.MdiParent = this;
-            bizForm.Show();
+       
         }
-
 
         /// <summary>
         /// 退出系统
@@ -90,5 +90,6 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
+
     }
 }

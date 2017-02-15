@@ -36,7 +36,7 @@ namespace Poseidon.Common
             Assembly assemblyObj = Assembly.Load(assemblyString);
             if (assemblyObj == null)
             {
-                throw new ArgumentNullException("sFilePath", string.Format("无法加载sFilePath={0} 的程序集", assemblyString));
+                throw new ArgumentNullException("assemblyString", string.Format("无法加载AssemblyString = {0} 的程序集", assemblyString));
             }
 
             T obj = (T)assemblyObj.CreateInstance(name); //反射创建 
@@ -88,6 +88,25 @@ namespace Poseidon.Common
             }
 
             return objType;
+        }
+
+        /// <summary>
+        /// 根据路径创建实例对象
+        /// </summary>
+        /// <param name="typeName">类型名称</param>
+        /// <param name="filePath">文件路径</param>
+        /// <returns></returns>
+        public static T CreateFrom(string typeName, string filePath)
+        {
+            Assembly assemblyObj = Assembly.LoadFrom(filePath);
+            if (assemblyObj == null)
+            {
+                throw new ArgumentNullException("filePath", string.Format("无法加载 FilePath = {0} 的程序集", filePath));
+            }
+
+            T obj = (T)assemblyObj.CreateInstance(typeName);
+
+            return obj;
         }
         #endregion //Method
     }

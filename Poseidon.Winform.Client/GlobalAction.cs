@@ -32,6 +32,18 @@ namespace Poseidon.Winform.Client
         }
         #endregion //Constructor
 
+        #region Method
+        /// <summary>
+        /// 获取插件路径
+        /// </summary>
+        /// <returns></returns>
+        public string GetPluginPath()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + AppConfig.GetAppSetting("PluginPath") + "\\";
+            return path;                
+        }
+        #endregion //Method
+
         #region Property
         /// <summary>
         /// 单件实例
