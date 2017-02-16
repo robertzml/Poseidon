@@ -32,6 +32,7 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.pcParentGroup = new DevExpress.XtraEditors.PopupContainerEdit();
             this.pcGroups = new DevExpress.XtraEditors.PopupContainerControl();
+            this.trGroup = new Poseidon.Winform.Core.GroupsTree();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
@@ -40,7 +41,6 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.trGroup = new Poseidon.Winform.Core.GroupsTree();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -133,6 +133,18 @@
             this.pcGroups.Size = new System.Drawing.Size(300, 185);
             this.pcGroups.TabIndex = 8;
             // 
+            // trGroup
+            // 
+            this.trGroup.DataSource = null;
+            this.trGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trGroup.Location = new System.Drawing.Point(0, 0);
+            this.trGroup.Name = "trGroup";
+            this.trGroup.ShowCode = true;
+            this.trGroup.ShowRemark = true;
+            this.trGroup.Size = new System.Drawing.Size(300, 185);
+            this.trGroup.TabIndex = 0;
+            this.trGroup.GroupSelected += new System.Action<object, System.EventArgs>(this.trGroup_GroupSelected);
+            // 
             // txtRemark
             // 
             this.txtRemark.Location = new System.Drawing.Point(63, 84);
@@ -206,16 +218,6 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(377, 24);
             this.layoutControlItem5.Text = "上级分组";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // trGroup
-            // 
-            this.trGroup.DataSource = null;
-            this.trGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trGroup.Location = new System.Drawing.Point(0, 0);
-            this.trGroup.Name = "trGroup";
-            this.trGroup.Size = new System.Drawing.Size(300, 185);
-            this.trGroup.TabIndex = 0;
-            this.trGroup.GroupSelected += new System.Action<object, System.EventArgs>(this.trGroup_GroupSelected);
             // 
             // FrmGroupAdd
             // 

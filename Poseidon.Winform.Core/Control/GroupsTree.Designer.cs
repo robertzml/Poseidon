@@ -30,8 +30,8 @@
         {
             this.tlGroup = new DevExpress.XtraTreeList.TreeList();
             this.colId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.colCode = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colCode = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colParentId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colRemark = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colStatus = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -64,6 +64,7 @@
             this.tlGroup.ParentFieldName = "ParentId";
             this.tlGroup.Size = new System.Drawing.Size(309, 304);
             this.tlGroup.TabIndex = 0;
+            this.tlGroup.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlGroup_FocusedNodeChanged);
             this.tlGroup.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tlGroup_MouseDoubleClick);
             // 
             // colId
@@ -71,15 +72,6 @@
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
             this.colId.Width = 114;
-            // 
-            // colCode
-            // 
-            this.colCode.Caption = "代码";
-            this.colCode.FieldName = "Code";
-            this.colCode.Name = "colCode";
-            this.colCode.Visible = true;
-            this.colCode.VisibleIndex = 1;
-            this.colCode.Width = 228;
             // 
             // colName
             // 
@@ -89,6 +81,15 @@
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
             this.colName.Width = 228;
+            // 
+            // colCode
+            // 
+            this.colCode.Caption = "代码";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.Visible = true;
+            this.colCode.VisibleIndex = 1;
+            this.colCode.Width = 228;
             // 
             // colParentId
             // 
@@ -122,6 +123,7 @@
             this.Controls.Add(this.tlGroup);
             this.Name = "GroupsTree";
             this.Size = new System.Drawing.Size(309, 304);
+            this.Load += new System.EventHandler(this.GroupsTree_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tlGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).EndInit();
             this.ResumeLayout(false);

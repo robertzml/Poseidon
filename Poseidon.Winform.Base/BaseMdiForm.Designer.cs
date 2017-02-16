@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // BaseMdiForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(731, 427);
+            this.Name = "BaseMdiForm";
             this.Text = "BaseMdiForm";
+            this.Load += new System.EventHandler(this.BaseMdiForm_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

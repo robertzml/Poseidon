@@ -17,6 +17,18 @@ namespace Poseidon.Winform.Core
     /// </summary>
     public partial class GroupsTree : DevExpress.XtraEditors.XtraUserControl
     {
+        #region Field
+        /// <summary>
+        /// 是否显示代码列
+        /// </summary>
+        private bool showCode;
+
+        /// <summary>
+        /// 是否显示备注列
+        /// </summary>
+        private bool showRemark;
+        #endregion //Field
+
         #region Constructor
         public GroupsTree()
         {
@@ -43,7 +55,18 @@ namespace Poseidon.Winform.Core
 
         #region Event
         /// <summary>
-        /// 树形菜单双击事件
+        /// 控件载入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GroupsTree_Load(object sender, EventArgs e)
+        {
+            this.colCode.Visible = this.showCode;
+            this.colRemark.Visible = this.showRemark;
+        }
+
+        /// <summary>
+        /// 树形列表双击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -52,9 +75,20 @@ namespace Poseidon.Winform.Core
             var info = this.tlGroup.CalcHitInfo(this.tlGroup.PointToClient(MousePosition));
 
             if (info.Node != null)
-            {    
+            {
                 GroupSelected?.Invoke(sender, e);
             }
+        }
+
+        /// <summary>
+        /// 树形列表选择事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tlGroup_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            MessageBox.Show("change");
+            GroupSelected?.Invoke(sender, e);
         }
         #endregion //Event
 
@@ -84,7 +118,38 @@ namespace Poseidon.Winform.Core
                 this.tlGroup.EndInit();
             }
         }
-        #endregion //Property
 
+        /// <summary>
+        /// 是否显示代码列
+        /// </summary>
+        [Description("是否显示代码列")]
+        public bool ShowCode
+        {
+            get
+            {
+                return this.showCode;
+            }
+            set
+            {
+                this.showCode = value;
+            }
+        }
+
+        /// <summary>
+        /// 是否显示备注列
+        /// </summary>
+        [Description("是否显示备注列")]
+        public bool ShowRemark
+        {
+            get
+            {
+                return this.showRemark;
+            }
+            set
+            {
+                this.showRemark = value;
+            }
+        }
+        #endregion //Property
     }
 }

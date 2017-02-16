@@ -21,5 +21,21 @@ namespace Poseidon.Winform.Base
             InitializeComponent();
         }
         #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 初始化控件
+        /// </summary>
+        protected virtual void InitControls()
+        {
+        }
+        #endregion //Function
+
+        #region Event
+        private void BaseMdiForm_Load(object sender, EventArgs e)
+        {
+            InitControls();
+        }
+        #endregion //Event
     }
 }

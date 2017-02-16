@@ -95,6 +95,9 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaseMdiForm.resx">
+      <DependentUpon>BaseMdiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseSingleForm.resx">
       <DependentUpon>BaseSingleForm.cs</DependentUpon>
     </EmbeddedResource>
