@@ -79,10 +79,16 @@ namespace Poseidon.Base.System
         DuplicateNumber = 10,
 
         /// <summary>
+        /// 代码重复
+        /// </summary>
+        [Display(Name = "代码重复")]
+        DuplicateCode = 11,
+
+        /// <summary>
         /// 未选择记录
         /// </summary>
         [Display(Name = "未选择记录")]
-        EmptySelect = 11,
+        EmptySelect = 12,
         #endregion //System
     }
 }

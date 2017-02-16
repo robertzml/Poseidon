@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Data", "Poseidon.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Client", "Poseidon.Winform.Client\Poseidon.Winform.Client.csproj", "{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Test", "Poseidon.Winform.Test\Poseidon.Winform.Test.csproj", "{1ADDA04A-7BBB-4BF4-AEF5-C876DFCB2CF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Base", "Poseidon.Winform.Base\Poseidon.Winform.Base.csproj", "{7650E6F8-D821-4281-949C-1F9005F4FB32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Common", "Poseidon.Common\Poseidon.Common.csproj", "{FA99B824-E554-400F-A8D3-44FFDE8FD795}"
@@ -37,10 +35,6 @@ Global
 		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1ADDA04A-7BBB-4BF4-AEF5-C876DFCB2CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1ADDA04A-7BBB-4BF4-AEF5-C876DFCB2CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1ADDA04A-7BBB-4BF4-AEF5-C876DFCB2CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1ADDA04A-7BBB-4BF4-AEF5-C876DFCB2CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Release|Any CPU.ActiveCfg = Release|Any CPU

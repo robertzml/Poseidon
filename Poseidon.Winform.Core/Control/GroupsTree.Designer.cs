@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tlGroup = new DevExpress.XtraTreeList.TreeList();
             this.colId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colCode = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -36,7 +35,7 @@
             this.colParentId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colRemark = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colStatus = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
+            this.bsGroup = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.tlGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).BeginInit();
             this.SuspendLayout();
@@ -45,8 +44,8 @@
             // 
             this.tlGroup.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colId,
-            this.colCode,
             this.colName,
+            this.colCode,
             this.colParentId,
             this.colRemark,
             this.colStatus});
@@ -55,26 +54,32 @@
             this.tlGroup.KeyFieldName = "Id";
             this.tlGroup.Location = new System.Drawing.Point(0, 0);
             this.tlGroup.Name = "tlGroup";
+            this.tlGroup.OptionsBehavior.Editable = false;
             this.tlGroup.OptionsBehavior.PopulateServiceColumns = true;
+            this.tlGroup.OptionsCustomization.AllowColumnMoving = false;
+            this.tlGroup.OptionsCustomization.AllowQuickHideColumns = false;
+            this.tlGroup.OptionsMenu.EnableColumnMenu = false;
+            this.tlGroup.OptionsMenu.EnableFooterMenu = false;
             this.tlGroup.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlGroup.ParentFieldName = "ParentId";
             this.tlGroup.Size = new System.Drawing.Size(309, 304);
             this.tlGroup.TabIndex = 0;
+            this.tlGroup.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tlGroup_MouseDoubleClick);
             // 
             // colId
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Width = 49;
+            this.colId.Width = 114;
             // 
             // colCode
             // 
-            this.colCode.Caption = "代号";
+            this.colCode.Caption = "代码";
             this.colCode.FieldName = "Code";
             this.colCode.Name = "colCode";
             this.colCode.Visible = true;
-            this.colCode.VisibleIndex = 0;
-            this.colCode.Width = 171;
+            this.colCode.VisibleIndex = 1;
+            this.colCode.Width = 228;
             // 
             // colName
             // 
@@ -82,8 +87,8 @@
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 1;
-            this.colName.Width = 171;
+            this.colName.VisibleIndex = 0;
+            this.colName.Width = 228;
             // 
             // colParentId
             // 
@@ -98,13 +103,13 @@
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
             this.colRemark.VisibleIndex = 2;
-            this.colRemark.Width = 172;
+            this.colRemark.Width = 229;
             // 
             // colStatus
             // 
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
-            this.colStatus.Width = 171;
+            this.colStatus.Width = 49;
             // 
             // bsGroup
             // 
@@ -126,12 +131,12 @@
         #endregion
 
         private DevExpress.XtraTreeList.TreeList tlGroup;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn colName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colCode;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colParentId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colRemark;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colStatus;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
         private System.Windows.Forms.BindingSource bsGroup;
     }
 }

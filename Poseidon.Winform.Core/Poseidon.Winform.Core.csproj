@@ -62,6 +62,7 @@
     <EmbeddedResource Include="Control\GroupsTree.resx">
       <DependentUpon>GroupsTree.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
     <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>

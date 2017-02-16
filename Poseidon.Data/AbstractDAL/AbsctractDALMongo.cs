@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Data
 {
     using MongoDB.Bson;
+    using MongoDB.Driver;
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
     using Poseidon.Data.BaseDAL;
@@ -77,9 +78,20 @@ namespace Poseidon.Data
             return entity;
         }
 
-        public virtual T FindByField<Tvalue>(string field, Tvalue value)
+        /// <summary>
+        /// 根据条件查找单条记录
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var doc = this.mongo.FindOne(this.collectionName, filter);
+
+            var entity = DocToEntity(doc);
+            return entity;
         }
 
         /// <summary>
@@ -103,6 +115,20 @@ namespace Poseidon.Data
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual long Count<Tvalue>(string field, Tvalue value)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            long count = this.mongo.Count(this.collectionName, filter);
+            return count;
         }
 
         /// <summary>

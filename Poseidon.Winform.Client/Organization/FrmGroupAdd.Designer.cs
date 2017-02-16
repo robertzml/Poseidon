@@ -30,6 +30,8 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.pcParentGroup = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.pcGroups = new DevExpress.XtraEditors.PopupContainerControl();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
@@ -37,8 +39,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.pcGroups = new DevExpress.XtraEditors.PopupContainerControl();
-            this.pcParentGroup = new DevExpress.XtraEditors.PopupContainerEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.trGroup = new Poseidon.Winform.Core.GroupsTree();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
@@ -49,6 +49,9 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).BeginInit();
+            this.pcGroups.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -56,9 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).BeginInit();
-            this.pcGroups.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,13 +110,36 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // pcParentGroup
+            // 
+            this.pcParentGroup.Location = new System.Drawing.Point(63, 60);
+            this.pcParentGroup.Name = "pcParentGroup";
+            this.pcParentGroup.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.pcParentGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.pcParentGroup.Properties.PopupControl = this.pcGroups;
+            this.pcParentGroup.Properties.PopupSizeable = false;
+            this.pcParentGroup.Properties.ShowPopupCloseButton = false;
+            this.pcParentGroup.Size = new System.Drawing.Size(322, 20);
+            this.pcParentGroup.StyleController = this.layoutControl1;
+            this.pcParentGroup.TabIndex = 2;
+            this.pcParentGroup.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.pcParentGroup_QueryPopUp);
+            // 
+            // pcGroups
+            // 
+            this.pcGroups.Controls.Add(this.trGroup);
+            this.pcGroups.Location = new System.Drawing.Point(65, 84);
+            this.pcGroups.Name = "pcGroups";
+            this.pcGroups.Size = new System.Drawing.Size(300, 185);
+            this.pcGroups.TabIndex = 8;
+            // 
             // txtRemark
             // 
             this.txtRemark.Location = new System.Drawing.Point(63, 84);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(322, 203);
             this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 7;
+            this.txtRemark.TabIndex = 3;
             // 
             // txtCode
             // 
@@ -124,7 +147,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(322, 20);
             this.txtCode.StyleController = this.layoutControl1;
-            this.txtCode.TabIndex = 5;
+            this.txtCode.TabIndex = 1;
             // 
             // txtName
             // 
@@ -132,7 +155,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(322, 20);
             this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 0;
             // 
             // layoutControlGroup1
             // 
@@ -163,7 +186,7 @@
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(377, 24);
-            this.layoutControlItem2.Text = "代号";
+            this.layoutControlItem2.Text = "代码";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
             // layoutControlItem4
@@ -174,25 +197,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(377, 207);
             this.layoutControlItem4.Text = "备注";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // pcGroups
-            // 
-            this.pcGroups.Controls.Add(this.trGroup);
-            this.pcGroups.Location = new System.Drawing.Point(154, 169);
-            this.pcGroups.Name = "pcGroups";
-            this.pcGroups.Size = new System.Drawing.Size(200, 100);
-            this.pcGroups.TabIndex = 8;
-            // 
-            // pcParentGroup
-            // 
-            this.pcParentGroup.Location = new System.Drawing.Point(63, 60);
-            this.pcParentGroup.Name = "pcParentGroup";
-            this.pcParentGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.pcParentGroup.Properties.PopupControl = this.pcGroups;
-            this.pcParentGroup.Size = new System.Drawing.Size(322, 20);
-            this.pcParentGroup.StyleController = this.layoutControl1;
-            this.pcParentGroup.TabIndex = 9;
             // 
             // layoutControlItem5
             // 
@@ -209,8 +213,9 @@
             this.trGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trGroup.Location = new System.Drawing.Point(0, 0);
             this.trGroup.Name = "trGroup";
-            this.trGroup.Size = new System.Drawing.Size(200, 100);
+            this.trGroup.Size = new System.Drawing.Size(300, 185);
             this.trGroup.TabIndex = 0;
+            this.trGroup.GroupSelected += new System.Action<object, System.EventArgs>(this.trGroup_GroupSelected);
             // 
             // FrmGroupAdd
             // 
@@ -228,6 +233,9 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).EndInit();
+            this.pcGroups.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
@@ -235,9 +243,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).EndInit();
-            this.pcGroups.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 

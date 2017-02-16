@@ -48,9 +48,9 @@ namespace Poseidon.Winform.Client
             entity.Code = this.txtCode.Text;
             entity.Remark = this.txtRemark.Text;
 
-            var parent = this.trGroup.GetCurrentSelect();
+            var parent = pcParentGroup.Tag;
             if (parent != null)
-                entity.ParentId = parent.Id;
+                entity.ParentId = ((Group)parent).Id;
             else
                 entity.ParentId = null;
 
@@ -89,9 +89,31 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void FrmGroupAdd_Load(object sender, EventArgs e)
         {
-           
+
         }
-        #endregion //Event
+
+        /// <summary>
+        /// 分组选中事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void trGroup_GroupSelected(object sender, EventArgs e)
+        {
+            var group = this.trGroup.GetCurrentSelect();
+            this.pcParentGroup.Text = group.Name;
+            this.pcParentGroup.Tag = group;            
+            this.pcParentGroup.ClosePopup();
+        }
+
+        /// <summary>
+        /// 所属分组弹出事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pcParentGroup_QueryPopUp(object sender, CancelEventArgs e)
+        {
+            pcGroups.Width = this.pcParentGroup.Width;
+        }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -116,5 +138,6 @@ namespace Poseidon.Winform.Client
                 MessageUtil.ShowError("保存失败，" + result.DisplayName());
             }
         }
+        #endregion //Event
     }
 }

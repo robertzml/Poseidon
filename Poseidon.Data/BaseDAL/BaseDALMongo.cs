@@ -69,6 +69,20 @@ namespace Poseidon.Data.BaseDAL
         }
 
         /// <summary>
+        /// 根据Filter查找单条记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public BsonDocument FindOne(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            var doc = collection.Find(filter).First();
+
+            return doc;
+        }
+
+        /// <summary>
         /// 查找集合所有记录
         /// </summary>
         /// <param name="collectionName">集合名称</param>
@@ -93,6 +107,18 @@ namespace Poseidon.Data.BaseDAL
             var docs = collection.Find(filter).ToList();
 
             return docs;
+        }
+
+        /// <summary>
+        /// 根据Filter查找记录数量
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public long Count(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            return collection.Count(filter);
         }
 
         /// <summary>

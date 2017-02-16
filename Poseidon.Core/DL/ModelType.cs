@@ -20,9 +20,9 @@ namespace Poseidon.Core.DL
         public string Name { get; set; }
 
         /// <summary>
-        /// 代号
+        /// 代码
         /// </summary>
-        [Display(Name = "代号")]
+        [Display(Name = "代码")]
         public string Code { get; set; }
 
         /// <summary>

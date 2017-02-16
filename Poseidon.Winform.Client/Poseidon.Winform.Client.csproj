@@ -104,7 +104,6 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Organization\FrmGroupAdd.resx">
       <DependentUpon>FrmGroupAdd.cs</DependentUpon>

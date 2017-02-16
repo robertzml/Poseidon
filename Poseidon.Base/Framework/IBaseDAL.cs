@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Poseidon.Base.Framework
-{   
+{
     using Poseidon.Base.System;
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace Poseidon.Base.Framework
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        T FindByField<Tvalue>(string field, Tvalue value);
+        T FindOneByField<Tvalue>(string field, Tvalue value);
 
         /// <summary>
         /// 查找所有对象
@@ -49,6 +49,15 @@ namespace Poseidon.Base.Framework
         /// <param name="value">值</param>
         /// <returns></returns>
         IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        long Count<Tvalue>(string field, Tvalue value);
 
         /// <summary>
         /// 插入指定对象到数据库中

@@ -10,6 +10,7 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
+    using Base.System;
 
     /// <summary>
     /// 分组对象数据访问类
@@ -38,7 +39,7 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Code = doc["code"].ToString();
-            entity.ParentId = doc["parent"].ToString();
+            entity.ParentId = doc["parentId"].ToString();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
@@ -61,12 +62,41 @@ namespace Poseidon.Core.DAL.Mongo
             };
 
             if (entity.ParentId == null)
-                doc.Add("parent", BsonNull.Value);
+                doc.Add("parentId", BsonNull.Value);
             else
-                doc.Add("parent", entity.ParentId);
+                doc.Add("parentId", entity.ParentId);
 
             return doc;
         }
+
+        /// <summary>
+        /// 检查重复项
+        /// </summary>
+        /// <param name="entity">分组实体</param>
+        /// <returns></returns>
+        private bool CheckDuplicate(Group entity)
+        {
+            long count = Count<string>("code", entity.Code);
+            if (count > 0)
+                return false;
+            else
+                return true;
+        }
         #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 添加分组
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override ErrorCode Create(Group entity)
+        {
+            if (!CheckDuplicate(entity))
+                return ErrorCode.DuplicateCode;
+
+            return base.Create(entity);
+        }
+        #endregion //Method
     }
 }

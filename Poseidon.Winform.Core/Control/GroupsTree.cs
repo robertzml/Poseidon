@@ -41,6 +41,31 @@ namespace Poseidon.Winform.Core
         }
         #endregion //Method
 
+        #region Event
+        /// <summary>
+        /// 树形菜单双击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tlGroup_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var info = this.tlGroup.CalcHitInfo(this.tlGroup.PointToClient(MousePosition));
+
+            if (info.Node != null)
+            {    
+                GroupSelected?.Invoke(sender, e);
+            }
+        }
+        #endregion //Event
+
+        #region Delegate
+        /// <summary>
+        /// 分组选择事件
+        /// </summary>
+        [Description("分组选择事件")]
+        public event Action<object, EventArgs> GroupSelected;
+        #endregion //Delegate
+
         #region Property
         /// <summary>
         /// 数据源
@@ -60,5 +85,6 @@ namespace Poseidon.Winform.Core
             }
         }
         #endregion //Property
+
     }
 }
