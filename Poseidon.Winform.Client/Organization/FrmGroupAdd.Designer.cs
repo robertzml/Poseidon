@@ -30,15 +30,17 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.imageComboBoxEdit1 = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
+            this.txtCode = new DevExpress.XtraEditors.TextEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.pcGroups = new DevExpress.XtraEditors.PopupContainerControl();
+            this.pcParentGroup = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.trGroup = new Poseidon.Winform.Core.GroupsTree();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -47,15 +49,17 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).BeginInit();
+            this.pcGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -65,6 +69,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Location = new System.Drawing.Point(178, 15);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // plFill
             // 
@@ -92,10 +97,11 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.memoEdit1);
-            this.layoutControl1.Controls.Add(this.imageComboBoxEdit1);
-            this.layoutControl1.Controls.Add(this.textEdit2);
-            this.layoutControl1.Controls.Add(this.textEdit1);
+            this.layoutControl1.Controls.Add(this.pcParentGroup);
+            this.layoutControl1.Controls.Add(this.pcGroups);
+            this.layoutControl1.Controls.Add(this.txtRemark);
+            this.layoutControl1.Controls.Add(this.txtCode);
+            this.layoutControl1.Controls.Add(this.txtName);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
@@ -104,39 +110,29 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // memoEdit1
+            // txtRemark
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(63, 84);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(322, 203);
-            this.memoEdit1.StyleController = this.layoutControl1;
-            this.memoEdit1.TabIndex = 7;
+            this.txtRemark.Location = new System.Drawing.Point(63, 84);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(322, 203);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 7;
             // 
-            // imageComboBoxEdit1
+            // txtCode
             // 
-            this.imageComboBoxEdit1.Location = new System.Drawing.Point(63, 60);
-            this.imageComboBoxEdit1.Name = "imageComboBoxEdit1";
-            this.imageComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.imageComboBoxEdit1.Size = new System.Drawing.Size(322, 20);
-            this.imageComboBoxEdit1.StyleController = this.layoutControl1;
-            this.imageComboBoxEdit1.TabIndex = 6;
+            this.txtCode.Location = new System.Drawing.Point(63, 36);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(322, 20);
+            this.txtCode.StyleController = this.layoutControl1;
+            this.txtCode.TabIndex = 5;
             // 
-            // textEdit2
+            // txtName
             // 
-            this.textEdit2.Location = new System.Drawing.Point(63, 36);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(322, 20);
-            this.textEdit2.StyleController = this.layoutControl1;
-            this.textEdit2.TabIndex = 5;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(63, 12);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(322, 20);
-            this.textEdit1.StyleController = this.layoutControl1;
-            this.textEdit1.TabIndex = 4;
+            this.txtName.Location = new System.Drawing.Point(63, 12);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(322, 20);
+            this.txtName.StyleController = this.layoutControl1;
+            this.txtName.TabIndex = 4;
             // 
             // layoutControlGroup1
             // 
@@ -145,8 +141,8 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem5});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(397, 299);
@@ -154,7 +150,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.textEdit1;
+            this.layoutControlItem1.Control = this.txtName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(377, 24);
@@ -163,30 +159,58 @@
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.textEdit2;
+            this.layoutControlItem2.Control = this.txtCode;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(377, 24);
             this.layoutControlItem2.Text = "代号";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.imageComboBoxEdit1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(377, 24);
-            this.layoutControlItem3.Text = "上级分组";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.memoEdit1;
+            this.layoutControlItem4.Control = this.txtRemark;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(377, 207);
             this.layoutControlItem4.Text = "备注";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // pcGroups
+            // 
+            this.pcGroups.Controls.Add(this.trGroup);
+            this.pcGroups.Location = new System.Drawing.Point(154, 169);
+            this.pcGroups.Name = "pcGroups";
+            this.pcGroups.Size = new System.Drawing.Size(200, 100);
+            this.pcGroups.TabIndex = 8;
+            // 
+            // pcParentGroup
+            // 
+            this.pcParentGroup.Location = new System.Drawing.Point(63, 60);
+            this.pcParentGroup.Name = "pcParentGroup";
+            this.pcParentGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.pcParentGroup.Properties.PopupControl = this.pcGroups;
+            this.pcParentGroup.Size = new System.Drawing.Size(322, 20);
+            this.pcParentGroup.StyleController = this.layoutControl1;
+            this.pcParentGroup.TabIndex = 9;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.pcParentGroup;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(377, 24);
+            this.layoutControlItem5.Text = "上级分组";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // trGroup
+            // 
+            this.trGroup.DataSource = null;
+            this.trGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trGroup.Location = new System.Drawing.Point(0, 0);
+            this.trGroup.Name = "trGroup";
+            this.trGroup.Size = new System.Drawing.Size(200, 100);
+            this.trGroup.TabIndex = 0;
             // 
             // FrmGroupAdd
             // 
@@ -204,15 +228,17 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).EndInit();
+            this.pcGroups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,14 +247,16 @@
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtCode;
+        private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraEditors.MemoEdit memoEdit1;
-        private DevExpress.XtraEditors.ImageComboBoxEdit imageComboBoxEdit1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.MemoEdit txtRemark;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.PopupContainerEdit pcParentGroup;
+        private DevExpress.XtraEditors.PopupContainerControl pcGroups;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private Core.GroupsTree trGroup;
     }
 }

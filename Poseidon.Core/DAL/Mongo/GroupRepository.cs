@@ -56,10 +56,14 @@ namespace Poseidon.Core.DAL.Mongo
             {
                 { "name", entity.Name },
                 { "code", entity.Code },
-                { "parent", entity.ParentId },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };
+
+            if (entity.ParentId == null)
+                doc.Add("parent", BsonNull.Value);
+            else
+                doc.Add("parent", entity.ParentId);
 
             return doc;
         }

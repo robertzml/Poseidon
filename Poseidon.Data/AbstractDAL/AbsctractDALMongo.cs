@@ -82,9 +82,22 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 查找所有对象
+        /// </summary>
+        /// <returns></returns>
         public virtual IEnumerable<T> FindAll()
         {
-            throw new NotImplementedException();
+            var docs = this.mongo.FindAll(this.collectionName);
+
+            List<T> data = new List<T>();
+            foreach (var doc in docs)
+            {
+                var entity = DocToEntity(doc);
+                data.Add(entity);
+            }
+
+            return data;
         }
 
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)

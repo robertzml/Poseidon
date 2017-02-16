@@ -21,6 +21,25 @@ namespace Poseidon.Base.Framework
 
         #region Method
         /// <summary>
+        /// 根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public virtual T FindById(string id)
+        {
+            return this.dal.FindById(id);
+        }
+
+        /// <summary>
+        /// 查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindAll()
+        {
+            return this.dal.FindAll();
+        }
+
+        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">对象实体</param>

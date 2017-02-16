@@ -104,7 +104,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\Poseidon.Core.DL.EntityModel.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Organization\FrmGroupAdd.resx">
       <DependentUpon>FrmGroupAdd.cs</DependentUpon>
@@ -166,6 +166,10 @@
     <ProjectReference Include="..\Poseidon.Winform.Base\Poseidon.Winform.Base.csproj">
       <Project>{7650e6f8-d821-4281-949c-1f9005f4fb32}</Project>
       <Name>Poseidon.Winform.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Poseidon.Winform.Core\Poseidon.Winform.Core.csproj">
+      <Project>{A8F51891-8A7C-4881-9C66-8D0A7229CC11}</Project>
+      <Name>Poseidon.Winform.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

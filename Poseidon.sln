@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Common", "Poseidon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Core", "Poseidon.Core\Poseidon.Core.csproj", "{7FB974EE-5F0E-45BB-B773-A34441CC1757}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Core", "Poseidon.Winform.Core\Poseidon.Winform.Core.csproj", "{A8F51891-8A7C-4881-9C66-8D0A7229CC11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7FB974EE-5F0E-45BB-B773-A34441CC1757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB974EE-5F0E-45BB-B773-A34441CC1757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB974EE-5F0E-45BB-B773-A34441CC1757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
