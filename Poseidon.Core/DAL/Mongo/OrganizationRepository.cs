@@ -41,6 +41,9 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
+            if (doc.Contains("parentId"))
+                entity.ParentId = doc["parentId"].ToString();
+
             return entity;
         }
 

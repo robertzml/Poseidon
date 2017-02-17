@@ -44,6 +44,21 @@ namespace Poseidon.Winform.Client
 
         #region Ribbon Event
         /// <summary>
+        /// 部门总览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiDepartmentOv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmDepartmentOverview";
+
+            var form = Reflect<BaseMdiForm>.Create(typeName, assemblyName);
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        /// <summary>
         /// 支出账户
         /// </summary>
         /// <param name="sender"></param>

@@ -21,7 +21,10 @@ namespace Poseidon.Winform.Base
     public partial class WinEntityGrid<T> : DevExpress.XtraEditors.XtraUserControl where T : BaseEntity
     {
         #region Field
-       
+        /// <summary>
+        /// 是否显示行号
+        /// </summary>
+        private bool showLineNumber;
         #endregion //Field
 
         #region Constructor
@@ -65,6 +68,28 @@ namespace Poseidon.Winform.Base
         #region Event
         private void WinEntityGrid_Load(object sender, EventArgs e)
         {
+            if (this.showLineNumber)
+                this.dgvEntity.IndicatorWidth = 40;
+        }
+
+        /// <summary>
+        /// 显示行号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvEntity_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (this.showLineNumber)
+            {
+                e.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+                if (e.Info.IsRowIndicator)
+                {
+                    if (e.RowHandle >= 0)
+                    {
+                        e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                    }
+                }
+            }
         }
         #endregion //Event
 
@@ -86,6 +111,23 @@ namespace Poseidon.Winform.Base
                 this.dgvEntity.EndDataUpdate();
             }
         }
+
+        /// <summary>
+        /// 是否显示行号
+        /// </summary>
+        [Description("是否显示行号")]
+        public bool ShowLineNumber
+        {
+            get
+            {
+                return this.showLineNumber;
+            }
+            set
+            {
+                this.showLineNumber = value;
+            }
+        }
         #endregion //Property
+
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgcEntity = new DevExpress.XtraGrid.GridControl();
+            this.bsEntity = new System.Windows.Forms.BindingSource(this.components);
             this.dgvEntity = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.bsEntity = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.dgcEntity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEntity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).BeginInit();
             this.SuspendLayout();
             // 
             // dgcEntity
@@ -58,6 +59,7 @@
             this.dgvEntity.OptionsView.EnableAppearanceOddRow = true;
             this.dgvEntity.OptionsView.ShowFooter = true;
             this.dgvEntity.OptionsView.ShowGroupPanel = false;
+            this.dgvEntity.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.dgvEntity_CustomDrawRowIndicator);
             // 
             // WinEntityGrid
             // 
@@ -68,8 +70,8 @@
             this.Size = new System.Drawing.Size(568, 378);
             this.Load += new System.EventHandler(this.WinEntityGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgcEntity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEntity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).EndInit();
             this.ResumeLayout(false);
 
         }

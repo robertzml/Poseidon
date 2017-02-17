@@ -28,25 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.bbiModelTypeOv = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExpenseAccount = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGroupOv = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGroupRelate = new DevExpress.XtraBars.BarButtonItem();
             this.rpExpense = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgExpenseInfo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpOrganization = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rpModel = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rpgEntityModel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rpgBusinessModel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiGroupRelate = new DevExpress.XtraBars.BarButtonItem();
+            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.rpDepartment = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rpgDepartment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiDepartmentOv = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -60,14 +59,15 @@
             this.bbiModelTypeOv,
             this.bbiExpenseAccount,
             this.bbiGroupOv,
-            this.bbiGroupRelate});
+            this.bbiGroupRelate,
+            this.bbiDepartmentOv});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.rpDepartment,
             this.rpExpense,
             this.rpOrganization,
-            this.rpModel,
             this.rpSystem});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.Size = new System.Drawing.Size(924, 147);
@@ -109,6 +109,16 @@
             this.bbiGroupOv.Name = "bbiGroupOv";
             this.bbiGroupOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroupOv_ItemClick);
             // 
+            // bbiGroupRelate
+            // 
+            this.bbiGroupRelate.Caption = "分组关联";
+            this.bbiGroupRelate.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiGroupRelate.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.Glyph")));
+            this.bbiGroupRelate.Id = 20;
+            this.bbiGroupRelate.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.LargeGlyph")));
+            this.bbiGroupRelate.Name = "bbiGroupRelate";
+            this.bbiGroupRelate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroupRelate_ItemClick);
+            // 
             // rpExpense
             // 
             this.rpExpense.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -137,24 +147,6 @@
             this.rpgGroup.Name = "rpgGroup";
             this.rpgGroup.Text = "组织分组";
             // 
-            // rpModel
-            // 
-            this.rpModel.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.rpgEntityModel,
-            this.rpgBusinessModel});
-            this.rpModel.Name = "rpModel";
-            this.rpModel.Text = "模型管理";
-            // 
-            // rpgEntityModel
-            // 
-            this.rpgEntityModel.Name = "rpgEntityModel";
-            this.rpgEntityModel.Text = "实体模型";
-            // 
-            // rpgBusinessModel
-            // 
-            this.rpgBusinessModel.Name = "rpgBusinessModel";
-            this.rpgBusinessModel.Text = "业务模型";
-            // 
             // rpSystem
             // 
             this.rpSystem.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -181,15 +173,28 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // bbiGroupRelate
+            // rpDepartment
             // 
-            this.bbiGroupRelate.Caption = "分组关联";
-            this.bbiGroupRelate.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiGroupRelate.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.Glyph")));
-            this.bbiGroupRelate.Id = 20;
-            this.bbiGroupRelate.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.LargeGlyph")));
-            this.bbiGroupRelate.Name = "bbiGroupRelate";
-            this.bbiGroupRelate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroupRelate_ItemClick);
+            this.rpDepartment.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rpgDepartment});
+            this.rpDepartment.Name = "rpDepartment";
+            this.rpDepartment.Text = "部门管理";
+            // 
+            // rpgDepartment
+            // 
+            this.rpgDepartment.ItemLinks.Add(this.bbiDepartmentOv);
+            this.rpgDepartment.Name = "rpgDepartment";
+            this.rpgDepartment.Text = "部门管理";
+            // 
+            // bbiDepartmentOv
+            // 
+            this.bbiDepartmentOv.Caption = "部门总览";
+            this.bbiDepartmentOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiDepartmentOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiDepartmentOv.Glyph")));
+            this.bbiDepartmentOv.Id = 21;
+            this.bbiDepartmentOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiDepartmentOv.LargeGlyph")));
+            this.bbiDepartmentOv.Name = "bbiDepartmentOv";
+            this.bbiDepartmentOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDepartmentOv_ItemClick);
             // 
             // MainForm
             // 
@@ -217,12 +222,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpModel;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager tabMdiManager;
         private DevExpress.XtraBars.BarMdiChildrenListItem barChildList;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpSystem;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgEntityModel;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgBusinessModel;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpOrganization;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgGroup;
         private DevExpress.XtraBars.BarButtonItem bbiModelTypeOv;
@@ -231,6 +233,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgExpenseInfo;
         private DevExpress.XtraBars.BarButtonItem bbiGroupOv;
         private DevExpress.XtraBars.BarButtonItem bbiGroupRelate;
+        private DevExpress.XtraBars.BarButtonItem bbiDepartmentOv;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rpDepartment;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgDepartment;
     }
 }
 

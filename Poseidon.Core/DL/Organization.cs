@@ -20,6 +20,12 @@ namespace Poseidon.Core.DL
         public string Name { get; set; }
 
         /// <summary>
+        /// 上级ID
+        /// </summary>
+        [Display(Name = "上级ID")]
+        public string ParentId { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [Display(Name = "备注")]
