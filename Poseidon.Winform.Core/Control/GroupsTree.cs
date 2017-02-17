@@ -87,7 +87,6 @@ namespace Poseidon.Winform.Core
         /// <param name="e"></param>
         private void tlGroup_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            MessageBox.Show("change");
             GroupSelected?.Invoke(sender, e);
         }
         #endregion //Event

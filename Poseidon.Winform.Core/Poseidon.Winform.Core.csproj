@@ -35,7 +35,9 @@
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +57,12 @@
     <Compile Include="Control\GroupsTree.Designer.cs">
       <DependentUpon>GroupsTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\OrganizationGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\OrganizationGrid.Designer.cs">
+      <DependentUpon>OrganizationGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -62,7 +70,11 @@
     <EmbeddedResource Include="Control\GroupsTree.resx">
       <DependentUpon>GroupsTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\OrganizationGrid.resx">
+      <DependentUpon>OrganizationGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.Organization.datasource" />
     <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>

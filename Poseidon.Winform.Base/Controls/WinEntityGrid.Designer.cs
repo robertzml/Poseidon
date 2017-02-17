@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dgcEntity = new DevExpress.XtraGrid.GridControl();
             this.dgvEntity = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.bsEntity = new System.Windows.Forms.BindingSource(this.components);
+            this.bsEntity = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.dgcEntity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEntity)).BeginInit();
@@ -39,6 +38,7 @@
             // 
             // dgcEntity
             // 
+            this.dgcEntity.DataSource = this.bsEntity;
             this.dgcEntity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgcEntity.Location = new System.Drawing.Point(0, 0);
             this.dgcEntity.MainView = this.dgvEntity;

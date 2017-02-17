@@ -35,7 +35,7 @@ namespace Poseidon.Winform.Client
         protected override void InitControls()
         {
             var groups = BusinessFactory<GroupBusiness>.Instance.FindAll();
-            this.trGroup.DataSource = groups.ToList();
+            this.bsGroup.DataSource = groups.ToList();
         }
 
         /// <summary>
@@ -47,13 +47,10 @@ namespace Poseidon.Winform.Client
             entity.Name = this.txtName.Text;
             entity.Code = this.txtCode.Text;
             entity.Remark = this.txtRemark.Text;
-
-            var parent = pcParentGroup.Tag;
-            if (parent != null)
-                entity.ParentId = ((Group)parent).Id;
-            else
+            if (this.cmbParent.EditValue == null)
                 entity.ParentId = null;
-
+            else
+                entity.ParentId = this.cmbParent.EditValue.ToString();
             entity.Status = 0;
         }
 
@@ -90,29 +87,6 @@ namespace Poseidon.Winform.Client
         private void FrmGroupAdd_Load(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// 分组选中事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void trGroup_GroupSelected(object sender, EventArgs e)
-        {
-            var group = this.trGroup.GetCurrentSelect();
-            this.pcParentGroup.Text = group.Name;
-            this.pcParentGroup.Tag = group;
-            this.pcParentGroup.ClosePopup();
-        }
-
-        /// <summary>
-        /// 所属分组弹出事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pcParentGroup_QueryPopUp(object sender, CancelEventArgs e)
-        {
-            pcGroups.Width = this.pcParentGroup.Width;
         }
 
         /// <summary>

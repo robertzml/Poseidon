@@ -297,7 +297,7 @@
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(695, 322);
             this.groupControl3.TabIndex = 3;
-            this.groupControl3.Text = "groupControl3";
+            this.groupControl3.Text = "包含组织";
             // 
             // FrmGroupOverview
             // 

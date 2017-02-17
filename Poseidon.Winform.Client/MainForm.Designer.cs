@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
@@ -44,7 +45,8 @@
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.bbiGroupRelate = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -57,9 +59,10 @@
             this.barChildList,
             this.bbiModelTypeOv,
             this.bbiExpenseAccount,
-            this.bbiGroupOv});
+            this.bbiGroupOv,
+            this.bbiGroupRelate});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpExpense,
@@ -130,6 +133,7 @@
             // 
             this.rpgGroup.ItemLinks.Add(this.bbiModelTypeOv);
             this.rpgGroup.ItemLinks.Add(this.bbiGroupOv);
+            this.rpgGroup.ItemLinks.Add(this.bbiGroupRelate);
             this.rpgGroup.Name = "rpgGroup";
             this.rpgGroup.Text = "组织分组";
             // 
@@ -177,6 +181,16 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
+            // bbiGroupRelate
+            // 
+            this.bbiGroupRelate.Caption = "分组关联";
+            this.bbiGroupRelate.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiGroupRelate.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.Glyph")));
+            this.bbiGroupRelate.Id = 20;
+            this.bbiGroupRelate.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.LargeGlyph")));
+            this.bbiGroupRelate.Name = "bbiGroupRelate";
+            this.bbiGroupRelate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroupRelate_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -216,6 +230,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rpExpense;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgExpenseInfo;
         private DevExpress.XtraBars.BarButtonItem bbiGroupOv;
+        private DevExpress.XtraBars.BarButtonItem bbiGroupRelate;
     }
 }
 

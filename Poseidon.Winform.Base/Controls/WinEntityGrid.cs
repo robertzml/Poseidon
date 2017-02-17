@@ -65,7 +65,6 @@ namespace Poseidon.Winform.Base
         #region Event
         private void WinEntityGrid_Load(object sender, EventArgs e)
         {
-
         }
         #endregion //Event
 

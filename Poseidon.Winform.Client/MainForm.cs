@@ -79,6 +79,16 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
+        /// 分组关联
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiGroupRelate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChildFormManage.LoadMdiForm(this, typeof(FrmGroupRelate));
+        }
+
+        /// <summary>
         /// 退出系统
         /// </summary>
         /// <param name="sender"></param>

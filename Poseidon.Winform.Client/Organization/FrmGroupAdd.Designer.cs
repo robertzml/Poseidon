@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.pcParentGroup = new DevExpress.XtraEditors.PopupContainerEdit();
-            this.pcGroups = new DevExpress.XtraEditors.PopupContainerControl();
-            this.trGroup = new Poseidon.Winform.Core.GroupsTree();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
             this.txtCode = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
@@ -40,7 +38,14 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.cmbParent = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.bsGroup = new System.Windows.Forms.BindingSource(this.components);
+            this.colName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colCode = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colRemark = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colStatus = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -49,9 +54,6 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).BeginInit();
-            this.pcGroups.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
@@ -59,7 +61,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbParent.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -76,13 +81,13 @@
             this.plFill.Appearance.BackColor = System.Drawing.Color.White;
             this.plFill.Appearance.Options.UseBackColor = true;
             this.plFill.Controls.Add(this.groupControl1);
-            this.plFill.Size = new System.Drawing.Size(401, 322);
+            this.plFill.Size = new System.Drawing.Size(401, 271);
             // 
             // plBottom
             // 
             this.plBottom.Appearance.BackColor = System.Drawing.Color.White;
             this.plBottom.Appearance.Options.UseBackColor = true;
-            this.plBottom.Location = new System.Drawing.Point(0, 322);
+            this.plBottom.Location = new System.Drawing.Point(0, 271);
             this.plBottom.Size = new System.Drawing.Size(401, 60);
             // 
             // groupControl1
@@ -91,14 +96,13 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(401, 322);
+            this.groupControl1.Size = new System.Drawing.Size(401, 271);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "分组信息";
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.pcParentGroup);
-            this.layoutControl1.Controls.Add(this.pcGroups);
+            this.layoutControl1.Controls.Add(this.cmbParent);
             this.layoutControl1.Controls.Add(this.txtRemark);
             this.layoutControl1.Controls.Add(this.txtCode);
             this.layoutControl1.Controls.Add(this.txtName);
@@ -106,50 +110,15 @@
             this.layoutControl1.Location = new System.Drawing.Point(2, 21);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(397, 299);
+            this.layoutControl1.Size = new System.Drawing.Size(397, 248);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // pcParentGroup
-            // 
-            this.pcParentGroup.Location = new System.Drawing.Point(63, 60);
-            this.pcParentGroup.Name = "pcParentGroup";
-            this.pcParentGroup.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.pcParentGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.pcParentGroup.Properties.PopupControl = this.pcGroups;
-            this.pcParentGroup.Properties.PopupSizeable = false;
-            this.pcParentGroup.Properties.ShowPopupCloseButton = false;
-            this.pcParentGroup.Size = new System.Drawing.Size(322, 20);
-            this.pcParentGroup.StyleController = this.layoutControl1;
-            this.pcParentGroup.TabIndex = 2;
-            this.pcParentGroup.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.pcParentGroup_QueryPopUp);
-            // 
-            // pcGroups
-            // 
-            this.pcGroups.Controls.Add(this.trGroup);
-            this.pcGroups.Location = new System.Drawing.Point(65, 84);
-            this.pcGroups.Name = "pcGroups";
-            this.pcGroups.Size = new System.Drawing.Size(300, 185);
-            this.pcGroups.TabIndex = 8;
-            // 
-            // trGroup
-            // 
-            this.trGroup.DataSource = null;
-            this.trGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trGroup.Location = new System.Drawing.Point(0, 0);
-            this.trGroup.Name = "trGroup";
-            this.trGroup.ShowCode = true;
-            this.trGroup.ShowRemark = true;
-            this.trGroup.Size = new System.Drawing.Size(300, 185);
-            this.trGroup.TabIndex = 0;
-            this.trGroup.GroupSelected += new System.Action<object, System.EventArgs>(this.trGroup_GroupSelected);
             // 
             // txtRemark
             // 
             this.txtRemark.Location = new System.Drawing.Point(63, 84);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(322, 203);
+            this.txtRemark.Size = new System.Drawing.Size(322, 152);
             this.txtRemark.StyleController = this.layoutControl1;
             this.txtRemark.TabIndex = 3;
             // 
@@ -177,10 +146,10 @@
             this.layoutControlItem1,
             this.layoutControlItem2,
             this.layoutControlItem4,
-            this.layoutControlItem5});
+            this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(397, 299);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(397, 248);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -206,24 +175,93 @@
             this.layoutControlItem4.Control = this.txtRemark;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(377, 207);
+            this.layoutControlItem4.Size = new System.Drawing.Size(377, 156);
             this.layoutControlItem4.Text = "备注";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // layoutControlItem5
+            // cmbParent
             // 
-            this.layoutControlItem5.Control = this.pcParentGroup;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(377, 24);
-            this.layoutControlItem5.Text = "上级分组";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
+            this.cmbParent.Location = new System.Drawing.Point(63, 60);
+            this.cmbParent.Name = "cmbParent";
+            this.cmbParent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbParent.Properties.DataSource = this.bsGroup;
+            this.cmbParent.Properties.DisplayMember = "Name";
+            this.cmbParent.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.cmbParent.Properties.ValueMember = "Id";
+            this.cmbParent.Size = new System.Drawing.Size(322, 20);
+            this.cmbParent.StyleController = this.layoutControl1;
+            this.cmbParent.TabIndex = 4;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.cmbParent;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(377, 24);
+            this.layoutControlItem3.Text = "上级分组";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colName,
+            this.colCode,
+            this.colRemark,
+            this.colStatus});
+            this.treeListLookUpEdit1TreeList.DataSource = this.bsGroup;
+            this.treeListLookUpEdit1TreeList.KeyFieldName = "Id";
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.ParentFieldName = "ParentId";
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            // 
+            // bsGroup
+            // 
+            this.bsGroup.DataSource = typeof(Poseidon.Core.DL.Group);
+            // 
+            // colName
+            // 
+            this.colName.Caption = "名称";
+            this.colName.FieldName = "Name";
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 0;
+            this.colName.Width = 96;
+            // 
+            // colCode
+            // 
+            this.colCode.Caption = "代码";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.Visible = true;
+            this.colCode.VisibleIndex = 1;
+            this.colCode.Width = 96;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "备注";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 2;
+            this.colRemark.Width = 96;
+            // 
+            // colStatus
+            // 
+            this.colStatus.Caption = "状态";
+            this.colStatus.FieldName = "Status";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Width = 96;
             // 
             // FrmGroupAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 382);
+            this.ClientSize = new System.Drawing.Size(401, 331);
             this.Name = "FrmGroupAdd";
             this.Text = "添加分组";
             this.Load += new System.EventHandler(this.FrmGroupAdd_Load);
@@ -235,9 +273,6 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcParentGroup.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcGroups)).EndInit();
-            this.pcGroups.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
@@ -245,7 +280,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbParent.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGroup)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,9 +299,13 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.MemoEdit txtRemark;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.PopupContainerEdit pcParentGroup;
-        private DevExpress.XtraEditors.PopupContainerControl pcGroups;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private Core.GroupsTree trGroup;
+        private DevExpress.XtraEditors.TreeListLookUpEdit cmbParent;
+        private System.Windows.Forms.BindingSource bsGroup;
+        private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colCode;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colRemark;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colStatus;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }
