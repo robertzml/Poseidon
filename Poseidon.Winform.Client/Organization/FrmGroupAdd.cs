@@ -101,7 +101,7 @@ namespace Poseidon.Winform.Client
         {
             var group = this.trGroup.GetCurrentSelect();
             this.pcParentGroup.Text = group.Name;
-            this.pcParentGroup.Tag = group;            
+            this.pcParentGroup.Tag = group;
             this.pcParentGroup.ClosePopup();
         }
 
@@ -115,6 +115,11 @@ namespace Poseidon.Winform.Client
             pcGroups.Width = this.pcParentGroup.Width;
         }
 
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var input = CheckInput();
@@ -127,15 +132,16 @@ namespace Poseidon.Winform.Client
             Group entity = new Group();
             SetEntity(entity);
 
-            var result = BusinessFactory<GroupBusiness>.Instance.Create(entity);
-            if (result == ErrorCode.Success)
+            try
             {
+                BusinessFactory<GroupBusiness>.Instance.Create(entity);
+
                 MessageUtil.ShowInfo("保存成功");
                 this.Close();
             }
-            else
+            catch (PoseidonException pe)
             {
-                MessageUtil.ShowError("保存失败，" + result.DisplayName());
+                MessageUtil.ShowError(string.Format("保存失败，错误消息:{0}", pe.Message));
             }
         }
         #endregion //Event

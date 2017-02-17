@@ -46,6 +46,7 @@
     <Compile Include="Framework\AbsctractBusiness.cs" />
     <Compile Include="Framework\BusinessFactory.cs" />
     <Compile Include="Framework\IBaseDAL.cs" />
+    <Compile Include="System\PoseidonException.cs" />
     <Compile Include="Utility\PoseidonConstant.cs" />
     <Compile Include="Utility\PoseidonUtil.cs" />
     <Compile Include="System\ErrorCode.cs" />

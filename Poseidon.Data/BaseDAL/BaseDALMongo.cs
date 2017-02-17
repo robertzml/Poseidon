@@ -127,11 +127,11 @@ namespace Poseidon.Data.BaseDAL
         /// <param name="collectionName">集合名称</param>
         /// <param name="doc">Bson文档</param>
         /// <returns></returns>
-        public ErrorCode Insert(string collectionName, BsonDocument doc)
+        public void Insert(string collectionName, BsonDocument doc)
         {
             var collection = this.db.GetCollection(collectionName);
             collection.InsertOne(doc);
-            return ErrorCode.Success;
+            return;
         }
         #endregion //Method
     }

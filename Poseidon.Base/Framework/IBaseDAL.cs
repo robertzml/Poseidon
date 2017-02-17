@@ -5,8 +5,6 @@ using System.Text;
 
 namespace Poseidon.Base.Framework
 {
-    using Poseidon.Base.System;
-
     /// <summary>
     /// 数据库数据访问层基础接口
     /// </summary>
@@ -64,20 +62,20 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">指定的对象</param>
         /// <returns></returns>
-        ErrorCode Create(T entity);
+        void Create(T entity);
 
         /// <summary>
         /// 编辑对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        ErrorCode Update(T entity);
+        void Update(T entity);
 
         /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        ErrorCode Delete(T entity);
+        void Delete(T entity);
     }
 }

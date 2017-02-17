@@ -9,7 +9,6 @@ namespace Poseidon.Data
     using MongoDB.Bson;
     using MongoDB.Driver;
     using Poseidon.Base.Framework;
-    using Poseidon.Base.System;
     using Poseidon.Data.BaseDAL;
 
     /// <summary>
@@ -136,18 +135,19 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual ErrorCode Create(T entity)
+        public virtual void Create(T entity)
         {
             var doc = EntityToDoc(entity);
-            return this.mongo.Insert(this.collectionName, doc);
+            this.mongo.Insert(this.collectionName, doc);
+            return;
         }
 
-        public virtual ErrorCode Update(T entity)
+        public virtual void Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public virtual ErrorCode Delete(T entity)
+        public virtual void Delete(T entity)
         {
             throw new NotImplementedException();
         }

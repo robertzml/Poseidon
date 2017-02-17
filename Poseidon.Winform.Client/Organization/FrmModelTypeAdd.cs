@@ -83,15 +83,16 @@ namespace Poseidon.Winform.Client
             ModelType type = new ModelType();
             SetEntity(type);
 
-            var result = BusinessFactory<ModelTypeBusiness>.Instance.Create(type);
-            if (result == ErrorCode.Success)
+            try
             {
+                BusinessFactory<ModelTypeBusiness>.Instance.Create(type);
+
                 MessageUtil.ShowInfo("保存成功");
                 this.Close();
             }
-            else
+            catch (PoseidonException pe)
             {
-                MessageUtil.ShowError("添加模型类型失败，" + result.DisplayName());
+                MessageUtil.ShowError(string.Format("保存失败，错误消息:{0}", pe.Message));
             }
         }
         #endregion //Event

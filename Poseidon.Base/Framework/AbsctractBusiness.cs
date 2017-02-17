@@ -44,9 +44,10 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">对象实体</param>
         /// <returns></returns>
-        public virtual ErrorCode Create(T entity)
+        public virtual void Create(T entity)
         {
-            return this.dal.Create(entity);
+            this.dal.Create(entity);
+            return;
         }
         #endregion //Method
     }

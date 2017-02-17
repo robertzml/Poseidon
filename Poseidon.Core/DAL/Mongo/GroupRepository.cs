@@ -90,12 +90,13 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override ErrorCode Create(Group entity)
+        public override void Create(Group entity)
         {
             if (!CheckDuplicate(entity))
-                return ErrorCode.DuplicateCode;
+                throw new PoseidonException(ErrorCode.DuplicateCode);
 
-            return base.Create(entity);
+            base.Create(entity);
+            return;
         }
         #endregion //Method
     }
