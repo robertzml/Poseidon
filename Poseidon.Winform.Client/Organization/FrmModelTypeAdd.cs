@@ -38,7 +38,6 @@ namespace Poseidon.Winform.Client
             model.Name = this.txtName.Text;
             model.Code = this.txtCode.Text;
             model.Remark = this.txtRemark.Text;
-            model.Status = 0;
         }
 
         /// <summary>

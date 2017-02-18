@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
+    using MongoDB.Driver;
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
@@ -96,6 +97,26 @@ namespace Poseidon.Core.DAL.Mongo
                 throw new PoseidonException(ErrorCode.DuplicateCode);
 
             base.Create(entity);
+            return;
+        }
+
+        /// <summary>
+        /// 绑定模型类型
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <param name="codes">模型类型代码</param>
+        public void AddModelTypes(string id, List<string> codes)
+        {
+            var doc = new BsonArray();
+            foreach(var code in codes)
+            {
+                doc.Add(code);
+            }
+
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
+            var update = Builders<BsonDocument>.Update.Set("modelTypes", doc);
+
+            var result = this.Update(filter, update);
             return;
         }
         #endregion //Method

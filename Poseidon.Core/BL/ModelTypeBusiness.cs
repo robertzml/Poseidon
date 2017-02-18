@@ -18,7 +18,7 @@ namespace Poseidon.Core.BL
         #region Constructor
         public ModelTypeBusiness()
         {
-            this.dal = RepositoryFactory<IModelTypeRepository>.Instance;
+            this.baseDal = RepositoryFactory<IModelTypeRepository>.Instance;
         }
         #endregion //Constructor
     }

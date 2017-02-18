@@ -14,5 +14,11 @@ namespace Poseidon.Core.IDAL
     /// </summary>
     internal interface IGroupRepository : IBaseDAL<Group>
     {
+        /// <summary>
+        /// 绑定模型类型
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <param name="codes">模型类型代码</param>
+        void AddModelTypes(string id, List<string> codes);
     }
 }

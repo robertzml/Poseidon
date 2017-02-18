@@ -62,5 +62,17 @@ namespace Poseidon.Core.DAL.Mongo
             return doc;
         }
         #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 添加模型类型
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public override void Create(ModelType entity)
+        {
+            entity.Status = 0;
+            base.Create(entity);
+        }
+        #endregion //Method
     }
 }

@@ -147,6 +147,18 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 更新对象
+        /// </summary>
+        /// <param name="filter">查询条件</param>
+        /// <param name="update">更新条件</param>
+        /// <returns></returns>
+        public virtual UpdateResult Update(FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        {
+            var result = this.mongo.Update(this.collectionName, filter, update);
+            return result;
+        }
+
         public virtual void Delete(T entity)
         {
             throw new NotImplementedException();

@@ -25,12 +25,22 @@ namespace Poseidon.Core.BL
         /// </summary>
         public GroupBusiness()
         {
-            this.dal = RepositoryFactory<IGroupRepository>.Instance;
+            this.baseDal = RepositoryFactory<IGroupRepository>.Instance;
         }
         #endregion //Constructor
 
         #region Method
-
+        /// <summary>
+        /// 添加模型类型
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <param name="codes">模型类型代码</param>
+        public void AddModelTypes(string id, List<string> codes)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            dal.AddModelTypes(id, codes);
+            return;
+        }
         #endregion //Method
     }
 }

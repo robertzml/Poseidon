@@ -63,19 +63,13 @@
     <Compile Include="Control\OrganizationGrid.Designer.cs">
       <DependentUpon>OrganizationGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\ModelTypeGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ModelTypeGrid.Designer.cs">
+      <DependentUpon>ModelTypeGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <EmbeddedResource Include="Control\GroupsTree.resx">
-      <DependentUpon>GroupsTree.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Control\OrganizationGrid.resx">
-      <DependentUpon>OrganizationGrid.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
-    <None Include="Properties\DataSources\Poseidon.Core.DL.Organization.datasource" />
-    <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Poseidon.Base\Poseidon.Base.csproj">
@@ -90,6 +84,21 @@
       <Project>{7650e6f8-d821-4281-949c-1f9005f4fb32}</Project>
       <Name>Poseidon.Winform.Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Control\GroupsTree.resx">
+      <DependentUpon>GroupsTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ModelTypeGrid.resx">
+      <DependentUpon>ModelTypeGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\OrganizationGrid.resx">
+      <DependentUpon>OrganizationGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.ModelType.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Core.DL.Organization.datasource" />
+    <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

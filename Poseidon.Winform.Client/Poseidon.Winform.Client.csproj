@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Organization\FrmModelTypeBind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmModelTypeBind.Designer.cs">
+      <DependentUpon>FrmModelTypeBind.cs</DependentUpon>
+    </Compile>
     <Compile Include="Organization\FrmGroupRelate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Organization\FrmModelTypeBind.resx">
+      <DependentUpon>FrmModelTypeBind.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,10 +177,6 @@
     <ProjectReference Include="..\Poseidon.Core\Poseidon.Core.csproj">
       <Project>{7fb974ee-5f0e-45bb-b773-a34441cc1757}</Project>
       <Name>Poseidon.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Poseidon.Data\Poseidon.Data.csproj">
-      <Project>{6abe6b44-57dc-473f-b406-8e4772b08a4a}</Project>
-      <Name>Poseidon.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Poseidon.Winform.Base\Poseidon.Winform.Base.csproj">
       <Project>{7650e6f8-d821-4281-949c-1f9005f4fb32}</Project>

@@ -33,6 +33,14 @@ namespace Poseidon.Winform.Client
         /// </summary>
         protected override void InitControls()
         {
+            LoadGroups();
+        }
+
+        /// <summary>
+        /// 载入分组
+        /// </summary>
+        private void LoadGroups()
+        {
             var groups = BusinessFactory<GroupBusiness>.Instance.FindAll().ToList();
             this.trGroup.DataSource = groups;
         }
@@ -74,8 +82,8 @@ namespace Poseidon.Winform.Client
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmGroupAdd));
+            LoadGroups();
         }
-
         #endregion //Event
 
     }

@@ -19,6 +19,13 @@ namespace Poseidon.Winform.Client
     /// </summary>
     public partial class FrmGroupRelate : BaseMdiForm
     {
+        #region Field
+        /// <summary>
+        /// 选中分组
+        /// </summary>
+        private Group currentGroup;
+        #endregion //Field
+
         #region Constructor
         public FrmGroupRelate()
         {
@@ -47,6 +54,36 @@ namespace Poseidon.Winform.Client
         {
 
         }
+
+        /// <summary>
+        /// 选择分组
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        private void trGroup_GroupSelected(object arg1, EventArgs arg2)
+        {
+            var group = this.trGroup.GetCurrentSelect();
+            if (group == null)
+                return;
+
+            this.txtName.Text = group.Name;
+            this.txtCode.Text = group.Code;
+            this.txtStatus.Text = group.Status.ToString();
+            this.txtRemark.Text = group.Remark;
+
+            this.currentGroup = group;
+        }
+
+        /// <summary>
+        /// 绑定模型类型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModelTypeBind_Click(object sender, EventArgs e)
+        {
+            ChildFormManage.ShowDialogForm(typeof(FrmModelTypeBind), new object[] { this.currentGroup.Id });
+        }
         #endregion //Event
+
     }
 }

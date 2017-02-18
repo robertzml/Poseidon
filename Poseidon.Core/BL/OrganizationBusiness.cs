@@ -25,7 +25,7 @@ namespace Poseidon.Core.BL
         /// </summary>
         public OrganizationBusiness()
         {
-            this.dal = RepositoryFactory<IOrganizationRepository>.Instance;
+            this.baseDal = RepositoryFactory<IOrganizationRepository>.Instance;
         }
         #endregion //Constructor
 

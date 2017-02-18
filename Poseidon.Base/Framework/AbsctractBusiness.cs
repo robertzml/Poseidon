@@ -16,7 +16,7 @@ namespace Poseidon.Base.Framework
         /// <summary>
         /// 数据访问接口
         /// </summary>
-        protected IBaseDAL<T> dal;
+        protected IBaseDAL<T> baseDal;
         #endregion //Field
 
         #region Method
@@ -27,7 +27,7 @@ namespace Poseidon.Base.Framework
         /// <returns></returns>
         public virtual T FindById(string id)
         {
-            return this.dal.FindById(id);
+            return this.baseDal.FindById(id);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Poseidon.Base.Framework
         /// <returns></returns>
         public virtual IEnumerable<T> FindAll()
         {
-            return this.dal.FindAll();
+            return this.baseDal.FindAll();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Poseidon.Base.Framework
         /// <returns></returns>
         public virtual void Create(T entity)
         {
-            this.dal.Create(entity);
+            this.baseDal.Create(entity);
             return;
         }
         #endregion //Method

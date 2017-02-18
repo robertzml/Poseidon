@@ -133,6 +133,20 @@ namespace Poseidon.Data.BaseDAL
             collection.InsertOne(doc);
             return;
         }
+
+        /// <summary>
+        /// 更新记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <param name="update">更新条件</param>
+        /// <returns></returns>
+        public UpdateResult Update(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            var result = collection.UpdateOne(filter, update);
+            return result;
+        }
         #endregion //Method
     }
 }
