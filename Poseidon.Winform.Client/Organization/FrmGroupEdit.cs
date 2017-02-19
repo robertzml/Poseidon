@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Poseidon.Winform.Client
@@ -14,43 +16,46 @@ namespace Poseidon.Winform.Client
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
-    using Poseidon.Winform.Core;
 
     /// <summary>
-    /// 分组添加窗体
+    /// 编辑分组窗体
     /// </summary>
-    public partial class FrmGroupAdd : BaseSingleForm
+    public partial class FrmGroupEdit : BaseSingleForm
     {
+        #region Field
+        /// <summary>
+        /// 当前关联分组
+        /// </summary>
+        private Group currentGroup;
+        #endregion //Field
+
         #region Constructor
-        public FrmGroupAdd()
+        public FrmGroupEdit(string id)
         {
             InitializeComponent();
+
+            InitData(id);
         }
         #endregion //Constructor
 
         #region Function
+        private void InitData(string id)
+        {
+            this.currentGroup = BusinessFactory<GroupBusiness>.Instance.FindById(id);
+        }
+
         /// <summary>
         /// 初始化控件
         /// </summary>
         protected override void InitControls()
         {
-            var groups = BusinessFactory<GroupBusiness>.Instance.FindAll();
-            this.bsGroup.DataSource = groups.ToList();
-        }
+            this.txtName.Text = this.currentGroup.Name;
+            this.txtCode.Text = this.currentGroup.Code;
+            this.txtRemark.Text = this.currentGroup.Remark;
 
-        /// <summary>
-        /// 设置实体
-        /// </summary>
-        /// <param name="entity"></param>
-        private void SetEntity(Group entity)
-        {
-            entity.Name = this.txtName.Text;
-            entity.Code = this.txtCode.Text;
-            entity.Remark = this.txtRemark.Text;
-            if (this.cmbParent.EditValue == null)
-                entity.ParentId = null;
-            else
-                entity.ParentId = this.cmbParent.EditValue.ToString();
+            this.bsGroup.DataSource = BusinessFactory<GroupBusiness>.Instance.FindAll().ToList();
+
+            this.cmbParent.EditValue = this.currentGroup.ParentId;
         }
 
         /// <summary>
@@ -75,19 +80,20 @@ namespace Poseidon.Winform.Client
 
             return new Tuple<bool, string>(true, "");
         }
+
+        /// <summary>
+        /// 设置实体
+        /// </summary>
+        /// <param name="entity"></param>
+        private void SetEntity(Group entity)
+        {
+            entity.Name = this.txtName.Text;
+            entity.Code = this.txtCode.Text;
+            entity.Remark = this.txtRemark.Text;
+        }
         #endregion //Function
 
         #region Event
-        /// <summary>
-        /// 窗体载入
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrmGroupAdd_Load(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// 保存
         /// </summary>
@@ -102,15 +108,21 @@ namespace Poseidon.Winform.Client
                 return;
             }
 
-            Group entity = new Group();
-            SetEntity(entity);
+            SetEntity(this.currentGroup);
 
             try
             {
-                BusinessFactory<GroupBusiness>.Instance.Create(entity);
+                bool result = BusinessFactory<GroupBusiness>.Instance.Update(this.currentGroup);
 
-                MessageUtil.ShowInfo("保存成功");
-                this.Close();
+                if (result)
+                {
+                    MessageUtil.ShowInfo("保存成功");
+                    this.Close();
+                }
+                else
+                {
+                    MessageUtil.ShowInfo("保存失败");
+                }
             }
             catch (PoseidonException pe)
             {

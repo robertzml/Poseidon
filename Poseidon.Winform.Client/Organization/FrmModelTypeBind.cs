@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Poseidon.Winform.Client
-{
-    using DevExpress.XtraEditors;
+{    
     using Poseidon.Base.Framework;
+    using Poseidon.Base.System;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
@@ -61,6 +61,11 @@ namespace Poseidon.Winform.Client
         #endregion //Function
 
         #region Event
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             List<string> codes = new List<string>();
@@ -71,7 +76,17 @@ namespace Poseidon.Winform.Client
                 codes.Add(mt.Code);
             }
 
-            BusinessFactory<GroupBusiness>.Instance.SetModelTypes(this.groupId, codes);
+            try
+            {
+                BusinessFactory<GroupBusiness>.Instance.SetModelTypes(this.groupId, codes);
+
+                MessageUtil.ShowInfo("保存成功");
+                this.Close();
+            }
+            catch(PoseidonException pe)
+            {
+                MessageUtil.ShowError(string.Format("保存失败，错误消息:{0}", pe.Message));
+            }
         }
         #endregion //Event
     }

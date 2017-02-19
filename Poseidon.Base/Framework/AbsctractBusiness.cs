@@ -49,6 +49,15 @@ namespace Poseidon.Base.Framework
             this.baseDal.Create(entity);
             return;
         }
+
+        /// <summary>
+        /// 编辑对象
+        /// </summary>
+        /// <param name="entity">对象实体</param>
+        public virtual bool Update(T entity)
+        {
+            return this.baseDal.Update(entity);
+        }
         #endregion //Method
     }
 }

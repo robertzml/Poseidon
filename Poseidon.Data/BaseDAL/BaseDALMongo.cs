@@ -147,6 +147,20 @@ namespace Poseidon.Data.BaseDAL
             var result = collection.UpdateOne(filter, update);
             return result;
         }
+
+        /// <summary>
+        /// 替换记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <param name="doc">更新文档</param>
+        /// <returns></returns>
+        public ReplaceOneResult Replace(string collectionName, FilterDefinition<BsonDocument> filter, BsonDocument doc)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            ReplaceOneResult result = collection.ReplaceOne(filter, doc);
+            return result;
+        }
         #endregion //Method
     }
 }

@@ -159,9 +159,17 @@ namespace Poseidon.Data
             return;
         }
 
-        public virtual void Update(T entity)
-        {
-            throw new NotImplementedException();
+        /// <summary>
+        /// 更新对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual bool Update(T entity)
+        {           
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
+            var doc = EntityToDoc(entity);
+            var result = this.mongo.Replace(this.collectionName, filter, doc);
+            return result.IsAcknowledged;
         }
 
         /// <summary>
@@ -176,7 +184,12 @@ namespace Poseidon.Data
             return result;
         }
 
-        public virtual void Delete(T entity)
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual bool Delete(T entity)
         {
             throw new NotImplementedException();
         }

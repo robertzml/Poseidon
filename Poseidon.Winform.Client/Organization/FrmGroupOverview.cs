@@ -62,6 +62,21 @@ namespace Poseidon.Winform.Client
             this.txtStatus.Text = this.currentGroup.Status.ToString();
             this.txtRemark.Text = this.currentGroup.Remark;
         }
+
+        /// <summary>
+        /// 载入关联模型类型
+        /// </summary>
+        private void LoadModelTypes()
+        {
+            List<ModelType> data = new List<ModelType>();
+            foreach (var item in this.currentGroup.ModelTypes)
+            {
+                var mt = BusinessFactory<ModelTypeBusiness>.Instance.FindByCode(item);
+                data.Add(mt);
+            }
+
+            this.bsModelType.DataSource = data;
+        }
         #endregion //Function
 
         #region Event
@@ -87,6 +102,7 @@ namespace Poseidon.Winform.Client
                 return;
 
             SetGroupInfo();
+            LoadModelTypes();
         }
 
         /// <summary>
@@ -96,13 +112,30 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var children = BusinessFactory<GroupBusiness>.Instance.FindChildren(this.currentGroup.Id);
-
-            return;
             ChildFormManage.ShowDialogForm(typeof(FrmGroupAdd));
             LoadGroupsTree();
         }
+        
+        /// <summary>
+        /// 编辑分组
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            ChildFormManage.ShowDialogForm(typeof(FrmGroupEdit), new object[] { this.currentGroup.Id });
+        }
+        
+        /// <summary>
+        /// 绑定模型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModelTypeBind_Click(object sender, EventArgs e)
+        {
+            ChildFormManage.ShowDialogForm(typeof(FrmModelTypeBind), new object[] { this.currentGroup.Id });
+            LoadModelTypes();
+        }
         #endregion //Event
-
     }
 }

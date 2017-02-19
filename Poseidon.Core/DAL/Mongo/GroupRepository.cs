@@ -81,6 +81,17 @@ namespace Poseidon.Core.DAL.Mongo
             else
                 doc.Add("parentId", entity.ParentId);
 
+            if (entity.ModelTypes != null && entity.ModelTypes.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach(var item in entity.ModelTypes)
+                {
+                    array.Add(item);
+                }
+
+                doc.Add("modelTypes", array);
+            }
+
             return doc;
         }
 
@@ -121,20 +132,6 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
-        /// 添加分组
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        /// <returns></returns>
-        public override void Create(Group entity)
-        {
-            if (!CheckDuplicate(entity))
-                throw new PoseidonException(ErrorCode.DuplicateCode);
-
-            base.Create(entity);
-            return;
-        }
-
-        /// <summary>
         /// 绑定模型类型
         /// </summary>
         /// <param name="id">分组ID</param>
@@ -150,7 +147,7 @@ namespace Poseidon.Core.DAL.Mongo
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
             var update = Builders<BsonDocument>.Update.Set("modelTypes", doc);
 
-            var result = this.Update(filter, update);
+            var result = this.Update(filter, update);            
             return;
         }
 
@@ -163,6 +160,31 @@ namespace Poseidon.Core.DAL.Mongo
         {
             var data = LoadChildren(id);
             return data;
+        }
+
+        /// <summary>
+        /// 添加分组
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override void Create(Group entity)
+        {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateCode);
+
+            entity.Status = 0;
+            base.Create(entity);
+            return;
+        }
+
+        /// <summary>
+        /// 编辑分组
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override bool Update(Group entity)
+        {
+            return base.Update(entity);
         }
         #endregion //Method
     }

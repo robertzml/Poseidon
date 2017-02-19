@@ -69,13 +69,13 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        void Update(T entity);
+        bool Update(T entity);
 
         /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        void Delete(T entity);
+        bool Delete(T entity);
     }
 }
