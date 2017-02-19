@@ -39,10 +39,24 @@ namespace Poseidon.Core.DAL.Mongo
             Group entity = new Group();
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
-            entity.Code = doc["code"].ToString();
-            entity.ParentId = doc["parentId"].ToString();
+            entity.Code = doc["code"].ToString();           
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
+
+            if (doc["parentId"] == BsonNull.Value)
+                entity.ParentId = null;
+            else
+                entity.ParentId = doc["parentId"].ToString();
+
+            entity.ModelTypes = new List<string>();
+            if (doc.Contains("modelTypes"))
+            {
+                BsonArray array = doc["modelTypes"].AsBsonArray;
+                foreach(var item in array)
+                {
+                    entity.ModelTypes.Add(item.ToString());
+                }
+            }
 
             return entity;
         }
@@ -105,7 +119,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <param name="codes">模型类型代码</param>
-        public void AddModelTypes(string id, List<string> codes)
+        public void SetModelTypes(string id, List<string> codes)
         {
             var doc = new BsonArray();
             foreach(var code in codes)

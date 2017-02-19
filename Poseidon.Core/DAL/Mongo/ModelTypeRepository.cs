@@ -73,6 +73,17 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Status = 0;
             base.Create(entity);
         }
+
+        /// <summary>
+        /// 根据代码获取模型类型
+        /// </summary>
+        /// <param name="code">代码</param>
+        /// <returns></returns>
+        public ModelType FindByCode(string code)
+        {
+            var data = FindOneByField("code", code);
+            return data;
+        }
         #endregion //Method
     }
 }

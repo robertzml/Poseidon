@@ -24,7 +24,12 @@ namespace Poseidon.Winform.Base
         /// <summary>
         /// 是否显示行号
         /// </summary>
-        private bool showLineNumber;
+        protected bool showLineNumber;
+
+        /// <summary>
+        /// 是否显示Footer
+        /// </summary>
+        protected bool showFooter;
         #endregion //Field
 
         #region Constructor
@@ -66,10 +71,17 @@ namespace Poseidon.Winform.Base
         #endregion //Method
 
         #region Event
+        /// <summary>
+        /// 控件载入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WinEntityGrid_Load(object sender, EventArgs e)
         {
             if (this.showLineNumber)
                 this.dgvEntity.IndicatorWidth = 40;
+
+            this.dgvEntity.OptionsView.ShowFooter = this.showFooter;
         }
 
         /// <summary>
@@ -127,7 +139,22 @@ namespace Poseidon.Winform.Base
                 this.showLineNumber = value;
             }
         }
-        #endregion //Property
 
+        /// <summary>
+        /// 是否显示Footer
+        /// </summary>
+        [Description("是否显示Footer")]
+        public bool ShowFooter
+        {
+            get
+            {
+                return this.showFooter;
+            }
+            set
+            {
+                this.showFooter = value;
+            }
+        }
+        #endregion //Property
     }
 }

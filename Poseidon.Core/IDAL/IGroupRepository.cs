@@ -19,6 +19,6 @@ namespace Poseidon.Core.IDAL
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <param name="codes">模型类型代码</param>
-        void AddModelTypes(string id, List<string> codes);
+        void SetModelTypes(string id, List<string> codes);
     }
 }

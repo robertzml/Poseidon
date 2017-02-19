@@ -47,6 +47,21 @@ namespace Poseidon.Winform.Client
             var types = BusinessFactory<ModelTypeBusiness>.Instance.FindAll().ToList();
             this.bsModelType.DataSource = types;
         }
+
+        /// <summary>
+        /// 载入分组关联模型类型
+        /// </summary>
+        private void LoadModelTypes()
+        {
+            List<ModelType> data = new List<ModelType>();
+            foreach (var item in this.currentGroup.ModelTypes)
+            {
+                var mt = BusinessFactory<ModelTypeBusiness>.Instance.FindByCode(item);
+                data.Add(mt);
+            }
+
+            this.mtGrid.DataSource = data;
+        }
         #endregion //Function
 
         #region Event
@@ -72,6 +87,8 @@ namespace Poseidon.Winform.Client
             this.txtRemark.Text = group.Remark;
 
             this.currentGroup = group;
+
+            LoadModelTypes();
         }
 
         /// <summary>

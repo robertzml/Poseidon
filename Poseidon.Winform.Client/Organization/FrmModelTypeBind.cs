@@ -71,7 +71,7 @@ namespace Poseidon.Winform.Client
                 codes.Add(mt.Code);
             }
 
-            BusinessFactory<GroupBusiness>.Instance.AddModelTypes(this.groupId, codes);
+            BusinessFactory<GroupBusiness>.Instance.SetModelTypes(this.groupId, codes);
         }
         #endregion //Event
     }

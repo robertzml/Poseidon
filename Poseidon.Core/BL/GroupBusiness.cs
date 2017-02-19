@@ -31,14 +31,14 @@ namespace Poseidon.Core.BL
 
         #region Method
         /// <summary>
-        /// 添加模型类型
+        /// 设置关联模型类型
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <param name="codes">模型类型代码</param>
-        public void AddModelTypes(string id, List<string> codes)
+        public void SetModelTypes(string id, List<string> codes)
         {
             var dal = this.baseDal as IGroupRepository;
-            dal.AddModelTypes(id, codes);
+            dal.SetModelTypes(id, codes);
             return;
         }
         #endregion //Method

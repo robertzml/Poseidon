@@ -14,5 +14,11 @@ namespace Poseidon.Core.IDAL
     /// </summary>
     internal interface IModelTypeRepository : IBaseDAL<ModelType>
     {
+        /// <summary>
+        /// 根据代码获取模型类型
+        /// </summary>
+        /// <param name="code">代码</param>
+        /// <returns></returns>
+        ModelType FindByCode(string code);
     }
 }

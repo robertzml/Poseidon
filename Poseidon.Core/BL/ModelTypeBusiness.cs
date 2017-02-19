@@ -21,5 +21,18 @@ namespace Poseidon.Core.BL
             this.baseDal = RepositoryFactory<IModelTypeRepository>.Instance;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 根据代码获取模型类型
+        /// </summary>
+        /// <param name="code">代码</param>
+        /// <returns></returns>
+        public ModelType FindByCode(string code)
+        {
+            var dal = this.baseDal as IModelTypeRepository;
+            return dal.FindByCode(code);
+        }
+        #endregion //Method
     }
 }
