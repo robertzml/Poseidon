@@ -20,6 +20,13 @@ namespace Poseidon.Winform.Client
     /// </summary>
     public partial class FrmGroupOverview : BaseMdiForm
     {
+        #region Field
+        /// <summary>
+        /// 当前选中分组
+        /// </summary>
+        private Group currentGroup;
+        #endregion //Field
+
         #region Constructor
         public FrmGroupOverview()
         {
@@ -33,16 +40,27 @@ namespace Poseidon.Winform.Client
         /// </summary>
         protected override void InitControls()
         {
-            LoadGroups();
+            LoadGroupsTree();
         }
 
         /// <summary>
-        /// 载入分组
+        /// 载入分组树形列表
         /// </summary>
-        private void LoadGroups()
+        private void LoadGroupsTree()
         {
             var groups = BusinessFactory<GroupBusiness>.Instance.FindAll().ToList();
             this.trGroup.DataSource = groups;
+        }
+
+        /// <summary>
+        /// 设置分组基本信息
+        /// </summary>
+        private void SetGroupInfo()
+        {
+            this.txtName.Text = this.currentGroup.Name;
+            this.txtCode.Text = this.currentGroup.Code;
+            this.txtStatus.Text = this.currentGroup.Status.ToString();
+            this.txtRemark.Text = this.currentGroup.Remark;
         }
         #endregion //Function
 
@@ -64,14 +82,11 @@ namespace Poseidon.Winform.Client
         /// <param name="arg2"></param>
         private void trGroup_GroupSelected(object arg1, EventArgs arg2)
         {
-            var group = this.trGroup.GetCurrentSelect();
-            if (group == null)
+            this.currentGroup = this.trGroup.GetCurrentSelect();
+            if (this.currentGroup == null)
                 return;
 
-            this.txtName.Text = group.Name;
-            this.txtCode.Text = group.Code;
-            this.txtStatus.Text = group.Status.ToString();
-            this.txtRemark.Text = group.Remark;
+            SetGroupInfo();
         }
 
         /// <summary>
@@ -81,8 +96,11 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            var children = BusinessFactory<GroupBusiness>.Instance.FindChildren(this.currentGroup.Id);
+
+            return;
             ChildFormManage.ShowDialogForm(typeof(FrmGroupAdd));
-            LoadGroups();
+            LoadGroupsTree();
         }
         #endregion //Event
 

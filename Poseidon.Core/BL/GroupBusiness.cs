@@ -31,6 +31,17 @@ namespace Poseidon.Core.BL
 
         #region Method
         /// <summary>
+        /// 查找所有子分组
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindChildren(string id)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            return dal.FindChildren(id);
+        }
+
+        /// <summary>
         /// 设置关联模型类型
         /// </summary>
         /// <param name="id">分组ID</param>

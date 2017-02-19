@@ -97,6 +97,26 @@ namespace Poseidon.Core.DAL.Mongo
             else
                 return true;
         }
+
+        /// <summary>
+        /// 递归载入所有子分组
+        /// </summary>
+        /// <param name="parentId">父分组ID</param>
+        /// <returns></returns>
+        private IEnumerable<Group> LoadChildren(string parentId)
+        {
+            List<Group> data = new List<Group>();
+            var children = FindListByField("parentId", parentId);
+            data.AddRange(children);
+
+            foreach(var item in children)
+            {
+                var c = LoadChildren(item.Id);
+                data.AddRange(c);
+            }
+
+            return data;
+        }
         #endregion //Function
 
         #region Method
@@ -132,6 +152,17 @@ namespace Poseidon.Core.DAL.Mongo
 
             var result = this.Update(filter, update);
             return;
+        }
+
+        /// <summary>
+        /// 查找所有子分组
+        /// </summary>
+        /// <param name="id">父分组ID</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindChildren(string id)
+        {
+            var data = LoadChildren(id);
+            return data;
         }
         #endregion //Method
     }

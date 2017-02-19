@@ -111,9 +111,26 @@ namespace Poseidon.Data
             return data;
         }
 
+        /// <summary>
+        /// 根据条件查找记录
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var docs = this.mongo.Find(this.collectionName, filter);
+
+            List<T> data = new List<T>();
+            foreach (var doc in docs)
+            {
+                var entity = DocToEntity(doc);
+                data.Add(entity);
+            }
+
+            return data;
         }
 
         /// <summary>

@@ -15,6 +15,13 @@ namespace Poseidon.Core.IDAL
     internal interface IGroupRepository : IBaseDAL<Group>
     {
         /// <summary>
+        /// 查找所有子分组
+        /// </summary>
+        /// <param name="id">父分组ID</param>
+        /// <returns></returns>
+        IEnumerable<Group> FindChildren(string id);
+
+        /// <summary>
         /// 绑定模型类型
         /// </summary>
         /// <param name="id">分组ID</param>
