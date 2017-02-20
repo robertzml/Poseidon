@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
+    using MongoDB.Driver;
     using Poseidon.Base.Framework;
     using Poseidon.Data;
     using Poseidon.Core.DL;
@@ -63,6 +64,9 @@ namespace Poseidon.Core.DAL.Mongo
                 { "status", entity.Status }
             };
 
+            if (entity.ParentId != null)
+                doc.Add("parentId", entity.ParentId);
+
             return doc;
         }
         #endregion //Function
@@ -76,6 +80,19 @@ namespace Poseidon.Core.DAL.Mongo
         public IEnumerable<Organization> FindByModelType(string modelType)
         {
             return FindListByField("modelType", modelType);
+        }
+
+        /// <summary>
+        /// 根据ID查找组织
+        /// </summary>
+        /// <param name="organizationIds">组织ID列表</param>
+        /// <returns></returns>
+        public IEnumerable<Organization> FindWithIds(List<string> organizationIds)
+        {
+            var ids = organizationIds.Select(r => new ObjectId(r));
+            var filter = Builders<BsonDocument>.Filter.In("_id", ids);
+
+            return FindList(filter);
         }
         #endregion //Method
     }

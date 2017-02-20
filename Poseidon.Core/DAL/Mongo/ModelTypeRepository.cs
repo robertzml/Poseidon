@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
+    using MongoDB.Driver;
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
@@ -83,6 +84,17 @@ namespace Poseidon.Core.DAL.Mongo
         {
             var data = FindOneByField("code", code);
             return data;
+        }
+
+        /// <summary>
+        /// 根据代码获取模型类型
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        public IEnumerable<ModelType> FindWithCodes(List<string> codes)
+        {
+            var filter = Builders<BsonDocument>.Filter.In("code", codes);
+            return FindList(filter);
         }
         #endregion //Method
     }

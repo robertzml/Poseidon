@@ -19,5 +19,12 @@ namespace Poseidon.Core.IDAL
         /// <param name="modelType">模型类型</param>
         /// <returns></returns>
         IEnumerable<Organization> FindByModelType(string modelType);
+
+        /// <summary>
+        /// 根据ID查找组织
+        /// </summary>
+        /// <param name="organizationIds">组织ID列表</param>
+        /// <returns></returns>
+        IEnumerable<Organization> FindWithIds(List<string> organizationIds);
     }
 }

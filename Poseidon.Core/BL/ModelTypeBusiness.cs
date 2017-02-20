@@ -33,6 +33,17 @@ namespace Poseidon.Core.BL
             var dal = this.baseDal as IModelTypeRepository;
             return dal.FindByCode(code);
         }
+
+        /// <summary>
+        /// 根据代码获取模型类型
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        public IEnumerable<ModelType> FindWithCodes(List<string> codes)
+        {
+            var dal = this.baseDal as IModelTypeRepository;
+            return dal.FindWithCodes(codes);
+        }
         #endregion //Method
     }
 }

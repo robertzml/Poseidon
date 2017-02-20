@@ -161,6 +161,19 @@ namespace Poseidon.Data.BaseDAL
             ReplaceOneResult result = collection.ReplaceOne(filter, doc);
             return result;
         }
+
+        /// <summary>
+        /// 删除记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public DeleteResult Delete(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            DeleteResult result = collection.DeleteOne(filter);
+            return result;
+        }
         #endregion //Method
     }
 }

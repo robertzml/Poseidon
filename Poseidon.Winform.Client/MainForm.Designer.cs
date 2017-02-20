@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barChildList = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.bbiModelTypeOv = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExpenseAccount = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGroupOv = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiGroupRelate = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDepartmentOv = new DevExpress.XtraBars.BarButtonItem();
+            this.rpDepartment = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rpgDepartment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpExpense = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgExpenseInfo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpOrganization = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -42,10 +45,7 @@
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.rpDepartment = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rpgDepartment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiDepartmentOv = new DevExpress.XtraBars.BarButtonItem();
+            this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +59,6 @@
             this.bbiModelTypeOv,
             this.bbiExpenseAccount,
             this.bbiGroupOv,
-            this.bbiGroupRelate,
             this.bbiDepartmentOv});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 22;
@@ -109,15 +108,28 @@
             this.bbiGroupOv.Name = "bbiGroupOv";
             this.bbiGroupOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroupOv_ItemClick);
             // 
-            // bbiGroupRelate
+            // bbiDepartmentOv
             // 
-            this.bbiGroupRelate.Caption = "分组关联";
-            this.bbiGroupRelate.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiGroupRelate.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.Glyph")));
-            this.bbiGroupRelate.Id = 20;
-            this.bbiGroupRelate.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiGroupRelate.LargeGlyph")));
-            this.bbiGroupRelate.Name = "bbiGroupRelate";
-            this.bbiGroupRelate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGroupRelate_ItemClick);
+            this.bbiDepartmentOv.Caption = "部门总览";
+            this.bbiDepartmentOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiDepartmentOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiDepartmentOv.Glyph")));
+            this.bbiDepartmentOv.Id = 21;
+            this.bbiDepartmentOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiDepartmentOv.LargeGlyph")));
+            this.bbiDepartmentOv.Name = "bbiDepartmentOv";
+            this.bbiDepartmentOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDepartmentOv_ItemClick);
+            // 
+            // rpDepartment
+            // 
+            this.rpDepartment.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rpgDepartment});
+            this.rpDepartment.Name = "rpDepartment";
+            this.rpDepartment.Text = "部门管理";
+            // 
+            // rpgDepartment
+            // 
+            this.rpgDepartment.ItemLinks.Add(this.bbiDepartmentOv);
+            this.rpgDepartment.Name = "rpgDepartment";
+            this.rpgDepartment.Text = "部门管理";
             // 
             // rpExpense
             // 
@@ -143,7 +155,6 @@
             // 
             this.rpgGroup.ItemLinks.Add(this.bbiModelTypeOv);
             this.rpgGroup.ItemLinks.Add(this.bbiGroupOv);
-            this.rpgGroup.ItemLinks.Add(this.bbiGroupRelate);
             this.rpgGroup.Name = "rpgGroup";
             this.rpgGroup.Text = "组织分组";
             // 
@@ -172,29 +183,6 @@
             this.tabMdiManager.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
-            // 
-            // rpDepartment
-            // 
-            this.rpDepartment.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.rpgDepartment});
-            this.rpDepartment.Name = "rpDepartment";
-            this.rpDepartment.Text = "部门管理";
-            // 
-            // rpgDepartment
-            // 
-            this.rpgDepartment.ItemLinks.Add(this.bbiDepartmentOv);
-            this.rpgDepartment.Name = "rpgDepartment";
-            this.rpgDepartment.Text = "部门管理";
-            // 
-            // bbiDepartmentOv
-            // 
-            this.bbiDepartmentOv.Caption = "部门总览";
-            this.bbiDepartmentOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiDepartmentOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiDepartmentOv.Glyph")));
-            this.bbiDepartmentOv.Id = 21;
-            this.bbiDepartmentOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiDepartmentOv.LargeGlyph")));
-            this.bbiDepartmentOv.Name = "bbiDepartmentOv";
-            this.bbiDepartmentOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDepartmentOv_ItemClick);
             // 
             // MainForm
             // 
@@ -232,7 +220,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rpExpense;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgExpenseInfo;
         private DevExpress.XtraBars.BarButtonItem bbiGroupOv;
-        private DevExpress.XtraBars.BarButtonItem bbiGroupRelate;
         private DevExpress.XtraBars.BarButtonItem bbiDepartmentOv;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpDepartment;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgDepartment;

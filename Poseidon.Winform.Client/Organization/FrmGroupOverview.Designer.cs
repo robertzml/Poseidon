@@ -63,7 +63,7 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.organizationGrid1 = new Poseidon.Winform.Core.OrganizationGrid();
+            this.orgGrid = new Poseidon.Winform.Core.OrganizationGrid();
             this.luModelTypes = new DevExpress.XtraEditors.LookUpEdit();
             this.bsModelType = new System.Windows.Forms.BindingSource(this.components);
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -160,6 +160,7 @@
             this.btnDelete.StyleController = this.layoutControl1;
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "删除分组";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtRemark
             // 
@@ -421,7 +422,7 @@
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.organizationGrid1);
+            this.layoutControl2.Controls.Add(this.orgGrid);
             this.layoutControl2.Controls.Add(this.luModelTypes);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(2, 21);
@@ -431,15 +432,15 @@
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
-            // organizationGrid1
+            // orgGrid
             // 
-            this.organizationGrid1.DataSource = null;
-            this.organizationGrid1.Location = new System.Drawing.Point(12, 36);
-            this.organizationGrid1.Name = "organizationGrid1";
-            this.organizationGrid1.ShowFooter = false;
-            this.organizationGrid1.ShowLineNumber = false;
-            this.organizationGrid1.Size = new System.Drawing.Size(679, 251);
-            this.organizationGrid1.TabIndex = 5;
+            this.orgGrid.DataSource = null;
+            this.orgGrid.Location = new System.Drawing.Point(12, 36);
+            this.orgGrid.Name = "orgGrid";
+            this.orgGrid.ShowFooter = false;
+            this.orgGrid.ShowLineNumber = true;
+            this.orgGrid.Size = new System.Drawing.Size(679, 251);
+            this.orgGrid.TabIndex = 5;
             // 
             // luModelTypes
             // 
@@ -460,6 +461,7 @@
             this.luModelTypes.Size = new System.Drawing.Size(628, 20);
             this.luModelTypes.StyleController = this.layoutControl2;
             this.luModelTypes.TabIndex = 4;
+            this.luModelTypes.EditValueChanged += new System.EventHandler(this.luModelTypes_EditValueChanged);
             // 
             // bsModelType
             // 
@@ -488,7 +490,7 @@
             // 
             // layoutControlItem8
             // 
-            this.layoutControlItem8.Control = this.organizationGrid1;
+            this.layoutControlItem8.Control = this.orgGrid;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(683, 255);
@@ -565,7 +567,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControl layoutControl2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private Core.OrganizationGrid organizationGrid1;
+        private Core.OrganizationGrid orgGrid;
         private DevExpress.XtraEditors.LookUpEdit luModelTypes;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;

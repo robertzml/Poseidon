@@ -57,22 +57,23 @@ namespace Poseidon.Winform.Client
         /// </summary>
         private void LoadModelTypes()
         {
-            List<ModelType> data = new List<ModelType>();
-            foreach (var item in this.currentGroup.ModelTypes)
-            {
-                var mt = BusinessFactory<ModelTypeBusiness>.Instance.FindByCode(item);
-                data.Add(mt);
-            }
-
+            var data = BusinessFactory<ModelTypeBusiness>.Instance.FindWithCodes(this.currentGroup.ModelTypes).ToList();
             this.bsModelType.DataSource = data;
+        }
+
+        /// <summary>
+        /// 载入已有组织
+        /// </summary>
+        private void LoadOrganizations()
+        {
+            this.relateOrganizations = BusinessFactory<OrganizationBusiness>.Instance.FindWithIds(this.currentGroup.Organizations).ToList();
+            this.ogridRight.DataSource = this.relateOrganizations;
         }
 
         protected override void InitControls()
         {
             LoadModelTypes();
-
-            this.relateOrganizations = new List<Organization>();
-            this.ogridRight.DataSource = this.relateOrganizations;
+            LoadOrganizations();
         }
         #endregion //Function
 
@@ -98,7 +99,7 @@ namespace Poseidon.Winform.Client
         private void btnMoveIn_Click(object sender, EventArgs e)
         {
             var select = this.ogridLeft.GetCurrentSelect();
-            if (select != null)
+            if (select != null && !this.relateOrganizations.Any(r => r.Id == select.Id))
             {
                 this.relateOrganizations.Add(select);
                 this.ogridRight.UpdateBindingData();

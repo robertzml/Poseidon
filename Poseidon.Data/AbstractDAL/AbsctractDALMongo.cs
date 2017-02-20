@@ -134,6 +134,25 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 根据条件查找记录
+        /// </summary>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindList(FilterDefinition<BsonDocument> filter)
+        {
+            var docs = this.mongo.Find(this.collectionName, filter);
+
+            List<T> data = new List<T>();
+            foreach (var doc in docs)
+            {
+                var entity = DocToEntity(doc);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
         /// 根据条件查找记录数量
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>
@@ -191,7 +210,9 @@ namespace Poseidon.Data
         /// <returns></returns>
         public virtual bool Delete(T entity)
         {
-            throw new NotImplementedException();
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
+            var result = this.mongo.Delete(this.collectionName, filter);
+            return result.IsAcknowledged;
         }
         #endregion //Method
     }

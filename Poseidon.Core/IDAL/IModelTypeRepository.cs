@@ -20,5 +20,12 @@ namespace Poseidon.Core.IDAL
         /// <param name="code">代码</param>
         /// <returns></returns>
         ModelType FindByCode(string code);
+
+        /// <summary>
+        /// 根据代码获取模型类型
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        IEnumerable<ModelType> FindWithCodes(List<string> codes);
     }
 }

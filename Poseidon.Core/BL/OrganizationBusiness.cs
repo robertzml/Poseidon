@@ -40,6 +40,17 @@ namespace Poseidon.Core.BL
             var dal = this.baseDal as IOrganizationRepository;
             return dal.FindByModelType(modelType);
         }
+
+        /// <summary>
+        /// 根据ID查找组织
+        /// </summary>
+        /// <param name="organizationIds">组织ID列表</param>
+        /// <returns></returns>
+        public IEnumerable<Organization> FindWithIds(List<string> organizationIds)
+        {
+            var dal = this.baseDal as IOrganizationRepository;
+            return dal.FindWithIds(organizationIds);
+        }
         #endregion //Method
     }
 }

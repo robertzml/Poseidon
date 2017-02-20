@@ -58,6 +58,16 @@ namespace Poseidon.Base.Framework
         {
             return this.baseDal.Update(entity);
         }
+
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="entity">对象实体</param>
+        /// <returns></returns>
+        public virtual bool Delete(T entity)
+        {
+            return this.baseDal.Delete(entity);
+        }
         #endregion //Method
     }
 }

@@ -80,12 +80,6 @@
     <Compile Include="Organization\FrmModelTypeBind.Designer.cs">
       <DependentUpon>FrmModelTypeBind.cs</DependentUpon>
     </Compile>
-    <Compile Include="Organization\FrmGroupRelate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Organization\FrmGroupRelate.Designer.cs">
-      <DependentUpon>FrmGroupRelate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Organization\FrmGroupAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +111,6 @@
     <Compile Include="Organization\FrmModelTypeOverview.Designer.cs">
       <DependentUpon>FrmModelTypeOverview.cs</DependentUpon>
     </Compile>
-    <Compile Include="Organization\FrmOrganizationAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Organization\FrmOrganizationAdd.Designer.cs">
-      <DependentUpon>FrmOrganizationAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Organization\FrmGroupEdit.resx">
@@ -143,17 +131,11 @@
     <EmbeddedResource Include="Organization\FrmGroupOverview.resx">
       <DependentUpon>FrmGroupOverview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Organization\FrmGroupRelate.resx">
-      <DependentUpon>FrmGroupRelate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmModelTypeAdd.resx">
       <DependentUpon>FrmModelTypeAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmModelTypeOverview.resx">
       <DependentUpon>FrmModelTypeOverview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Organization\FrmOrganizationAdd.resx">
-      <DependentUpon>FrmOrganizationAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmOrganizationSelect.resx">
       <DependentUpon>FrmOrganizationSelect.cs</DependentUpon>
