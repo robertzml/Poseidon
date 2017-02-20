@@ -59,6 +59,21 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
+        /// 人数统计
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiPopulation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmPopulation";
+
+            var form = Reflect<BaseMdiForm>.Create(typeName, assemblyName);
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        /// <summary>
         /// 支出账户
         /// </summary>
         /// <param name="sender"></param>
@@ -105,5 +120,6 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
+
     }
 }

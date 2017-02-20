@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\AbsctractBusiness.cs" />
+    <Compile Include="Framework\BusinessEntity.cs" />
     <Compile Include="Framework\BusinessFactory.cs" />
     <Compile Include="Framework\IBaseDAL.cs" />
     <Compile Include="System\PoseidonException.cs" />

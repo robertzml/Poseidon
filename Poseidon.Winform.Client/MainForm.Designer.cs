@@ -46,6 +46,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.bbiPopulation = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -59,9 +60,10 @@
             this.bbiModelTypeOv,
             this.bbiExpenseAccount,
             this.bbiGroupOv,
-            this.bbiDepartmentOv});
+            this.bbiDepartmentOv,
+            this.bbiPopulation});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 22;
+            this.ribbonControl.MaxItemId = 23;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpDepartment,
@@ -128,6 +130,7 @@
             // rpgDepartment
             // 
             this.rpgDepartment.ItemLinks.Add(this.bbiDepartmentOv);
+            this.rpgDepartment.ItemLinks.Add(this.bbiPopulation);
             this.rpgDepartment.Name = "rpgDepartment";
             this.rpgDepartment.Text = "部门管理";
             // 
@@ -184,6 +187,16 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
+            // bbiPopulation
+            // 
+            this.bbiPopulation.Caption = "人数统计";
+            this.bbiPopulation.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiPopulation.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiPopulation.Glyph")));
+            this.bbiPopulation.Id = 22;
+            this.bbiPopulation.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiPopulation.LargeGlyph")));
+            this.bbiPopulation.Name = "bbiPopulation";
+            this.bbiPopulation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPopulation_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -223,6 +236,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiDepartmentOv;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpDepartment;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgDepartment;
+        private DevExpress.XtraBars.BarButtonItem bbiPopulation;
     }
 }
 
