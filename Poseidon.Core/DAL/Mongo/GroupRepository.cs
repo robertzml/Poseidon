@@ -8,10 +8,10 @@ namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
+    using Poseidon.Base.System;
     using Poseidon.Data;
     using Poseidon.Core.DL;
-    using Poseidon.Core.IDAL;
-    using Base.System;
+    using Poseidon.Core.IDAL;    
 
     /// <summary>
     /// 分组对象数据访问类

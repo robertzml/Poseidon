@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Organization\FrmOrganizationSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmOrganizationSelect.Designer.cs">
+      <DependentUpon>FrmOrganizationSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Organization\FrmGroupEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmOrganizationAdd.resx">
       <DependentUpon>FrmOrganizationAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organization\FrmOrganizationSelect.resx">
+      <DependentUpon>FrmOrganizationSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

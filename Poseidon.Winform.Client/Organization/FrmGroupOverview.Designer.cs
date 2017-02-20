@@ -37,7 +37,7 @@
             DevExpress.XtraLayout.RowDefinition rowDefinition1 = new DevExpress.XtraLayout.RowDefinition();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.btnOrganizationChoose = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOrganizationSelect = new DevExpress.XtraEditors.SimpleButton();
             this.btnModelTypeBind = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.txtRemark = new DevExpress.XtraEditors.TextEdit();
@@ -115,7 +115,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.btnOrganizationChoose);
+            this.layoutControl1.Controls.Add(this.btnOrganizationSelect);
             this.layoutControl1.Controls.Add(this.btnModelTypeBind);
             this.layoutControl1.Controls.Add(this.btnDelete);
             this.layoutControl1.Controls.Add(this.txtRemark);
@@ -132,14 +132,15 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // btnOrganizationChoose
+            // btnOrganizationSelect
             // 
-            this.btnOrganizationChoose.Location = new System.Drawing.Point(554, 129);
-            this.btnOrganizationChoose.Name = "btnOrganizationChoose";
-            this.btnOrganizationChoose.Size = new System.Drawing.Size(130, 22);
-            this.btnOrganizationChoose.StyleController = this.layoutControl1;
-            this.btnOrganizationChoose.TabIndex = 12;
-            this.btnOrganizationChoose.Text = "选择组织";
+            this.btnOrganizationSelect.Location = new System.Drawing.Point(554, 129);
+            this.btnOrganizationSelect.Name = "btnOrganizationSelect";
+            this.btnOrganizationSelect.Size = new System.Drawing.Size(130, 22);
+            this.btnOrganizationSelect.StyleController = this.layoutControl1;
+            this.btnOrganizationSelect.TabIndex = 12;
+            this.btnOrganizationSelect.Text = "选择组织";
+            this.btnOrganizationSelect.Click += new System.EventHandler(this.btnOrganizationSelect_Click);
             // 
             // btnModelTypeBind
             // 
@@ -350,7 +351,7 @@
             // 
             // layoutControlItem11
             // 
-            this.layoutControlItem11.Control = this.btnOrganizationChoose;
+            this.layoutControlItem11.Control = this.btnOrganizationSelect;
             this.layoutControlItem11.Location = new System.Drawing.Point(535, 0);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.OptionsTableLayoutItem.ColumnIndex = 4;
@@ -572,7 +573,7 @@
         private DevExpress.XtraEditors.SimpleButton btnDelete;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraEditors.SimpleButton btnOrganizationChoose;
+        private DevExpress.XtraEditors.SimpleButton btnOrganizationSelect;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private System.Windows.Forms.BindingSource bsModelType;
     }
