@@ -11,7 +11,7 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Base.System;
     using Poseidon.Data;
     using Poseidon.Core.DL;
-    using Poseidon.Core.IDAL;    
+    using Poseidon.Core.IDAL;
 
     /// <summary>
     /// 分组对象数据访问类
@@ -39,7 +39,7 @@ namespace Poseidon.Core.DAL.Mongo
             Group entity = new Group();
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
-            entity.Code = doc["code"].ToString();           
+            entity.Code = doc["code"].ToString();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
@@ -52,9 +52,19 @@ namespace Poseidon.Core.DAL.Mongo
             if (doc.Contains("modelTypes"))
             {
                 BsonArray array = doc["modelTypes"].AsBsonArray;
-                foreach(var item in array)
+                foreach (var item in array)
                 {
                     entity.ModelTypes.Add(item.ToString());
+                }
+            }
+
+            entity.Organizations = new List<string>();
+            if (doc.Contains("organizations"))
+            {
+                BsonArray array = doc["organizations"].AsBsonArray;
+                foreach (var item in array)
+                {
+                    entity.Organizations.Add(item.ToString());
                 }
             }
 
@@ -84,12 +94,23 @@ namespace Poseidon.Core.DAL.Mongo
             if (entity.ModelTypes != null && entity.ModelTypes.Count > 0)
             {
                 BsonArray array = new BsonArray();
-                foreach(var item in entity.ModelTypes)
+                foreach (var item in entity.ModelTypes)
                 {
                     array.Add(item);
                 }
 
                 doc.Add("modelTypes", array);
+            }
+
+            if (entity.Organizations != null && entity.Organizations.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Organizations)
+                {
+                    array.Add(item);
+                }
+
+                doc.Add("organizations", array);
             }
 
             return doc;
@@ -120,7 +141,7 @@ namespace Poseidon.Core.DAL.Mongo
             var children = FindListByField("parentId", parentId);
             data.AddRange(children);
 
-            foreach(var item in children)
+            foreach (var item in children)
             {
                 var c = LoadChildren(item.Id);
                 data.AddRange(c);
@@ -139,7 +160,7 @@ namespace Poseidon.Core.DAL.Mongo
         public void SetModelTypes(string id, List<string> codes)
         {
             var doc = new BsonArray();
-            foreach(var code in codes)
+            foreach (var code in codes)
             {
                 doc.Add(code);
             }
@@ -147,7 +168,27 @@ namespace Poseidon.Core.DAL.Mongo
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
             var update = Builders<BsonDocument>.Update.Set("modelTypes", doc);
 
-            var result = this.Update(filter, update);            
+            var result = this.Update(filter, update);
+            return;
+        }
+
+        /// <summary>
+        /// 设置下属组织
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <param name="organizations">组织ID</param>
+        public void SetOrganizations(string id, List<string> organizations)
+        {
+            var doc = new BsonArray();
+            foreach (var o in organizations)
+            {
+                doc.Add(o);
+            }
+
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
+            var update = Builders<BsonDocument>.Update.Set("organizations", doc);
+
+            var result = this.Update(filter, update);
             return;
         }
 

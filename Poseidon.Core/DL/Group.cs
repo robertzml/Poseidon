@@ -44,13 +44,13 @@ namespace Poseidon.Core.DL
         public int Status { get; set; }
 
         /// <summary>
-        /// 关联模型类型
+        /// 关联模型类型Code
         /// </summary>
         [Display(Name = "关联模型类型")]
         public List<string> ModelTypes { get; set; }
 
         /// <summary>
-        /// 下属组织
+        /// 下属组织ID
         /// </summary>
         [Display(Name = "下属组织")]
         public List<string> Organizations { get; set; }

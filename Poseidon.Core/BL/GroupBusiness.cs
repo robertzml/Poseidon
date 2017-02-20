@@ -53,10 +53,22 @@ namespace Poseidon.Core.BL
 
             // set the children's modelTypes field
             var children = dal.FindChildren(id);
-            foreach(var item in children)
+            foreach (var item in children)
             {
                 dal.SetModelTypes(item.Id, codes);
             }
+            return;
+        }
+
+        /// <summary>
+        /// 设置下属组织
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <param name="organizations">组织ID</param>
+        public void SetOrganizations(string id, List<string> organizations)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            dal.SetOrganizations(id, organizations);
             return;
         }
         #endregion //Method

@@ -30,7 +30,16 @@ namespace Poseidon.Core.BL
         #endregion //Constructor
 
         #region Method
-
+        /// <summary>
+        /// 根据模型类型查找组织
+        /// </summary>
+        /// <param name="modelType">模型类型</param>
+        /// <returns></returns>
+        public IEnumerable<Organization> FindByModelType(string modelType)
+        {
+            var dal = this.baseDal as IOrganizationRepository;
+            return dal.FindByModelType(modelType);
+        }
         #endregion //Method
     }
 }

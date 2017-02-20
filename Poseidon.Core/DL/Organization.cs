@@ -26,6 +26,12 @@ namespace Poseidon.Core.DL
         public string ParentId { get; set; }
 
         /// <summary>
+        /// 模型类型
+        /// </summary>
+        [Display(Name = "模型类型")]
+        public string ModelType { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [Display(Name = "备注")]

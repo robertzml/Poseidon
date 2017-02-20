@@ -26,6 +26,11 @@ namespace Poseidon.Winform.Client
         /// 当前关联分组
         /// </summary>
         private Group currentGroup;
+
+        /// <summary>
+        /// 分组关联组织
+        /// </summary>
+        private List<Organization> relateOrganizations;
         #endregion //Field
 
         #region Constructor
@@ -65,7 +70,77 @@ namespace Poseidon.Winform.Client
         protected override void InitControls()
         {
             LoadModelTypes();
+
+            this.relateOrganizations = new List<Organization>();
+            this.ogridRight.DataSource = this.relateOrganizations;
         }
         #endregion //Function
+
+        #region Event
+        /// <summary>
+        /// 模型类型选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void luModelTypes_EditValueChanged(object sender, EventArgs e)
+        {
+            if (this.luModelTypes.EditValue == null)
+                return;
+
+            this.ogridLeft.DataSource = BusinessFactory<OrganizationBusiness>.Instance.FindByModelType(this.luModelTypes.EditValue.ToString()).ToList();
+        }
+
+        /// <summary>
+        /// 移入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMoveIn_Click(object sender, EventArgs e)
+        {
+            var select = this.ogridLeft.GetCurrentSelect();
+            if (select != null)
+            {
+                this.relateOrganizations.Add(select);
+                this.ogridRight.UpdateBindingData();
+            }
+        }
+
+        /// <summary>
+        /// 移出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMoveOut_Click(object sender, EventArgs e)
+        {
+            var select = this.ogridRight.GetCurrentSelect();
+            if (select != null)
+            {
+                this.relateOrganizations.Remove(select);
+                this.ogridRight.UpdateBindingData();
+            }
+        }
+
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            var orgIds = this.ogridRight.DataSource.Select(r => r.Id).ToList();
+
+            try
+            {
+                BusinessFactory<GroupBusiness>.Instance.SetOrganizations(this.currentGroup.Id, orgIds);
+
+                MessageUtil.ShowInfo("保存成功");
+                this.Close();
+            }
+            catch (PoseidonException pe)
+            {
+                MessageUtil.ShowError(string.Format("保存失败，错误消息:{0}", pe.Message));
+            }
+        }
+        #endregion //Event
     }
 }

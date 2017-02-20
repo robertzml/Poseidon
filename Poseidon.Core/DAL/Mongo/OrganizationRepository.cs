@@ -38,6 +38,7 @@ namespace Poseidon.Core.DAL.Mongo
             Organization entity = new Organization();
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
+            entity.ModelType = doc["modelType"].ToString();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
@@ -57,6 +58,7 @@ namespace Poseidon.Core.DAL.Mongo
             BsonDocument doc = new BsonDocument
             {
                 { "name", entity.Name },
+                { "modelType", entity.ModelType },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };
@@ -64,5 +66,17 @@ namespace Poseidon.Core.DAL.Mongo
             return doc;
         }
         #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 根据模型类型查找组织
+        /// </summary>
+        /// <param name="modelType">模型类型</param>
+        /// <returns></returns>
+        public IEnumerable<Organization> FindByModelType(string modelType)
+        {
+            return FindListByField("modelType", modelType);
+        }
+        #endregion //Method
     }
 }
