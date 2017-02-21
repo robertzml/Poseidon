@@ -11,14 +11,8 @@ namespace Poseidon.Core.DL
     /// <summary>
     /// 组织类
     /// </summary>
-    public class Organization : BaseEntity
+    public class Organization : ObjectEntity
     {
-        /// <summary>
-        /// 名称
-        /// </summary>
-        [Display(Name = "名称")]
-        public string Name { get; set; }
-
         /// <summary>
         /// 上级ID
         /// </summary>
@@ -30,17 +24,5 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "模型类型")]
         public string ModelType { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [Display(Name = "备注")]
-        public string Remark { get; set; }
-
-        /// <summary>
-        /// 状态
-        /// </summary>
-        [Display(Name = "状态")]
-        public int Status { get; set; }
     }
 }

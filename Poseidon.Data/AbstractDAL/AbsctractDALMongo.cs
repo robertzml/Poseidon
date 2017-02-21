@@ -167,6 +167,17 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public virtual long Count(FilterDefinition<BsonDocument> filter)
+        {
+            long count = this.mongo.Count(this.collectionName, filter);
+            return count;
+        }
+
+        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -184,7 +195,7 @@ namespace Poseidon.Data
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         public virtual bool Update(T entity)
-        {           
+        {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
             var doc = EntityToDoc(entity);
             var result = this.mongo.Replace(this.collectionName, filter, doc);

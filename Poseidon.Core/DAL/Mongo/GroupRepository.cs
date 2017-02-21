@@ -123,7 +123,15 @@ namespace Poseidon.Core.DAL.Mongo
         /// <returns></returns>
         private bool CheckDuplicate(Group entity)
         {
-            long count = Count<string>("code", entity.Code);
+            var builder = Builders<BsonDocument>.Filter;
+            FilterDefinition<BsonDocument> filter;
+
+            if (entity.Id == null)
+                filter = builder.Eq("code", entity.Code);
+            else
+                filter = builder.Eq("code", entity.Code) & builder.Ne("_id", new ObjectId(entity.Id));
+
+            long count = Count(filter);
             if (count > 0)
                 return false;
             else
@@ -225,6 +233,9 @@ namespace Poseidon.Core.DAL.Mongo
         /// <returns></returns>
         public override bool Update(Group entity)
         {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateCode);
+
             return base.Update(entity);
         }
         #endregion //Method

@@ -51,6 +51,22 @@ namespace Poseidon.Winform.Client
         private void btnRegister_Click(object sender, EventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmModelTypeAdd));
+            LoadModelType();
+        }
+
+        /// <summary>
+        /// 编辑模型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var select = this.mtGrid.GetCurrentSelect();
+            if (select == null)
+                return;
+
+            ChildFormManage.ShowDialogForm(typeof(FrmModelTypeEdit), new object[] { select.Id });
+            LoadModelType();
         }
         #endregion //Event
     }

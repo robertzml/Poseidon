@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Organization\FrmModelTypeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmModelTypeEdit.Designer.cs">
+      <DependentUpon>FrmModelTypeEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Organization\FrmOrganizationSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmModelTypeAdd.resx">
       <DependentUpon>FrmModelTypeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organization\FrmModelTypeEdit.resx">
+      <DependentUpon>FrmModelTypeEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organization\FrmModelTypeOverview.resx">
       <DependentUpon>FrmModelTypeOverview.cs</DependentUpon>

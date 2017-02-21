@@ -25,7 +25,7 @@ namespace Poseidon.Data.BaseDAL
         /// <summary>
         /// 默认数据库名称
         /// </summary>
-        private string databaseName = "poseidon";
+        private readonly string databaseName = "poseidon";
         #endregion //Field
 
         #region Constructor

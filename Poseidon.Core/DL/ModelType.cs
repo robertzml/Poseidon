@@ -11,30 +11,12 @@ namespace Poseidon.Core.DL
     /// <summary>
     /// 模型类型类
     /// </summary>
-    public class ModelType : BaseEntity
+    public class ModelType : ObjectEntity
     {
-        /// <summary>
-        /// 名称
-        /// </summary>
-        [Display(Name = "名称")]
-        public string Name { get; set; }
-
         /// <summary>
         /// 代码
         /// </summary>
         [Display(Name = "代码")]
         public string Code { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [Display(Name = "备注")]
-        public string Remark { get; set; }
-
-        /// <summary>
-        /// 状态
-        /// </summary>
-        [Display(Name = "状态")]
-        public int Status { get; set; }
     }
 }

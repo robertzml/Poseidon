@@ -11,14 +11,8 @@ namespace Poseidon.Core.DL
     /// <summary>
     /// 组织分组类
     /// </summary>
-    public class Group : BaseEntity
+    public class Group : ObjectEntity
     {
-        /// <summary>
-        /// 名称
-        /// </summary>
-        [Display(Name = "名称")]
-        public string Name { get; set; }
-
         /// <summary>
         /// 代码
         /// </summary>
@@ -30,18 +24,6 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "上级ID")]
         public string ParentId { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [Display(Name = "备注")]
-        public string Remark { get; set; }
-
-        /// <summary>
-        /// 状态
-        /// </summary>
-        [Display(Name = "状态")]
-        public int Status { get; set; }
 
         /// <summary>
         /// 关联模型类型Code

@@ -8,6 +8,7 @@ namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
+    using Poseidon.Base.System;
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
@@ -62,6 +63,20 @@ namespace Poseidon.Core.DAL.Mongo
 
             return doc;
         }
+
+        /// <summary>
+        /// 检查重复项
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        private bool CheckDuplicate(ModelType entity)
+        {
+            long count = Count<string>("code", entity.Code);
+            if (count > 0)
+                return false;
+            else
+                return true;
+        }
         #endregion //Function
 
         #region Method
@@ -71,6 +86,9 @@ namespace Poseidon.Core.DAL.Mongo
         /// <param name="entity">实体对象</param>
         public override void Create(ModelType entity)
         {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateCode);
+
             entity.Status = 0;
             base.Create(entity);
         }

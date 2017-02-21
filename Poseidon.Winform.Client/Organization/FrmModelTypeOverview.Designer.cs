@@ -33,6 +33,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.mtGrid = new Poseidon.Winform.Core.ModelTypeGrid();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -42,6 +43,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.btnEdit);
             this.groupControl1.Controls.Add(this.btnRegister);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(3, 3);
@@ -90,9 +92,19 @@
             this.mtGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mtGrid.Location = new System.Drawing.Point(2, 21);
             this.mtGrid.Name = "mtGrid";
+            this.mtGrid.ShowFooter = false;
             this.mtGrid.ShowLineNumber = false;
             this.mtGrid.Size = new System.Drawing.Size(773, 370);
             this.mtGrid.TabIndex = 0;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(160, 39);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(86, 30);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "编辑模型";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // FrmModelTypeOverview
             // 
@@ -118,5 +130,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private Core.ModelTypeGrid mtGrid;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
     }
 }
