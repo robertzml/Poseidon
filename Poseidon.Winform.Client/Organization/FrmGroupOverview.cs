@@ -42,11 +42,12 @@ namespace Poseidon.Winform.Client
 
         #region Function
         /// <summary>
-        /// 初始化控件
+        /// 初始化窗体
         /// </summary>
-        protected override void InitControls()
+        protected override void InitForm()
         {
             LoadGroupsTree();
+            base.InitForm();
         }
 
         /// <summary>

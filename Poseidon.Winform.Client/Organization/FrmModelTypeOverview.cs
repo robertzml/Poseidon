@@ -36,9 +36,10 @@ namespace Poseidon.Winform.Client
             this.mtGrid.DataSource = data;
         }
 
-        protected override void InitControls()
+        protected override void InitForm()
         {
             LoadModelType();
+            base.InitForm();
         }
         #endregion //Function
 

@@ -26,7 +26,7 @@ namespace Poseidon.Winform.Client
         /// <summary>
         /// 当前关联分组
         /// </summary>
-        private Group currentGroup;
+        private Group currentEntity;
         #endregion //Field
 
         #region Constructor
@@ -41,21 +41,23 @@ namespace Poseidon.Winform.Client
         #region Function
         private void InitData(string id)
         {
-            this.currentGroup = BusinessFactory<GroupBusiness>.Instance.FindById(id);
+            this.currentEntity = BusinessFactory<GroupBusiness>.Instance.FindById(id);
         }
 
         /// <summary>
-        /// 初始化控件
+        /// 初始化窗体
         /// </summary>
-        protected override void InitControls()
+        protected override void InitForm()
         {
-            this.txtName.Text = this.currentGroup.Name;
-            this.txtCode.Text = this.currentGroup.Code;
-            this.txtRemark.Text = this.currentGroup.Remark;
+            this.txtName.Text = this.currentEntity.Name;
+            this.txtCode.Text = this.currentEntity.Code;
+            this.txtRemark.Text = this.currentEntity.Remark;
 
             this.bsGroup.DataSource = BusinessFactory<GroupBusiness>.Instance.FindAll().ToList();
 
-            this.cmbParent.EditValue = this.currentGroup.ParentId;
+            this.cmbParent.EditValue = this.currentEntity.ParentId;
+
+            base.InitForm();
         }
 
         /// <summary>
@@ -108,11 +110,11 @@ namespace Poseidon.Winform.Client
                 return;
             }
 
-            SetEntity(this.currentGroup);
+            SetEntity(this.currentEntity);
 
             try
             {
-                bool result = BusinessFactory<GroupBusiness>.Instance.Update(this.currentGroup);
+                bool result = BusinessFactory<GroupBusiness>.Instance.Update(this.currentEntity);
 
                 if (result)
                 {

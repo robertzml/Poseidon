@@ -23,18 +23,12 @@ namespace Poseidon.Winform.Base
         #endregion //Constructor
 
         #region Function
-        /// <summary>
-        /// 初始化控件
-        /// </summary>
-        protected virtual void InitControls()
-        {
-        }
         #endregion //Function
 
         #region Event
         private void BaseSingleForm_Load(object sender, EventArgs e)
         {
-            InitControls();
+
         }
         #endregion //Event
     }

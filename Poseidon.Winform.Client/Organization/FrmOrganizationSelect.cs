@@ -43,6 +43,14 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Function
+        protected override void InitForm()
+        {
+            LoadModelTypes();
+            LoadOrganizations();
+
+            base.InitForm();
+        }
+
         /// <summary>
         /// 载入关联对象
         /// </summary>
@@ -68,12 +76,6 @@ namespace Poseidon.Winform.Client
         {
             this.relateOrganizations = BusinessFactory<OrganizationBusiness>.Instance.FindWithIds(this.currentGroup.Organizations).ToList();
             this.ogridRight.DataSource = this.relateOrganizations;
-        }
-
-        protected override void InitControls()
-        {
-            LoadModelTypes();
-            LoadOrganizations();
         }
         #endregion //Function
 

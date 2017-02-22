@@ -45,9 +45,11 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Function
-        protected override void InitControls()
+        protected override void InitForm()
         {
             LoadModelType();
+
+            base.InitForm();
         }
 
         private void LoadModelType()

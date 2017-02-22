@@ -47,13 +47,15 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
-        /// 初始化控件
+        /// 初始化窗体
         /// </summary>
-        protected override void InitControls()
+        protected override void InitForm()
         {
             this.txtName.Text = this.currentEntity.Name;
             this.txtCode.Text = this.currentEntity.Code;
             this.txtRemark.Text = this.currentEntity.Remark;
+
+            base.InitForm();
         }
 
         /// <summary>
