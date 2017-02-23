@@ -22,6 +22,11 @@ namespace Poseidon.Winform.Base
     {
         #region Field
         /// <summary>
+        /// 是否能编辑
+        /// </summary>
+        protected bool editable;
+
+        /// <summary>
         /// 是否显示行号
         /// </summary>
         protected bool showLineNumber;
@@ -81,6 +86,7 @@ namespace Poseidon.Winform.Base
             if (this.showLineNumber)
                 this.dgvEntity.IndicatorWidth = 40;
 
+            this.dgvEntity.OptionsBehavior.Editable = this.editable;
             this.dgvEntity.OptionsView.ShowFooter = this.showFooter;
         }
 
@@ -121,6 +127,22 @@ namespace Poseidon.Winform.Base
                 this.dgvEntity.BeginDataUpdate();
                 this.bsEntity.DataSource = value;
                 this.dgvEntity.EndDataUpdate();
+            }
+        }
+
+        /// <summary>
+        /// 是否能编辑
+        /// </summary>
+        [Description("是否能编辑")]
+        public bool Editable
+        {
+            get
+            {
+                return this.editable;
+            }
+            set
+            {
+                this.editable = value;
             }
         }
 
