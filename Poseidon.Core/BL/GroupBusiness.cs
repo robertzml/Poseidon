@@ -42,6 +42,17 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 查找包含模型类型的分组
+        /// </summary>
+        /// <param name="modelType">模型类型</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindByModelType(string modelType)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            return dal.FindListByField("modelTypes", modelType);
+        }
+
+        /// <summary>
         /// 设置关联模型类型
         /// </summary>
         /// <param name="id">分组ID</param>

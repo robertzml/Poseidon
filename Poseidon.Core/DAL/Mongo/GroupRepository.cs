@@ -161,6 +161,17 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
+        /// 查找所有子分组
+        /// </summary>
+        /// <param name="id">父分组ID</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindChildren(string id)
+        {
+            var data = LoadChildren(id);
+            return data;
+        }
+
+        /// <summary>
         /// 绑定模型类型
         /// </summary>
         /// <param name="id">分组ID</param>
@@ -198,17 +209,6 @@ namespace Poseidon.Core.DAL.Mongo
 
             var result = this.Update(filter, update);
             return;
-        }
-
-        /// <summary>
-        /// 查找所有子分组
-        /// </summary>
-        /// <param name="id">父分组ID</param>
-        /// <returns></returns>
-        public IEnumerable<Group> FindChildren(string id)
-        {
-            var data = LoadChildren(id);
-            return data;
         }
 
         /// <summary>
