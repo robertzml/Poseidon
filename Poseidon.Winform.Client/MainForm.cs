@@ -53,9 +53,7 @@ namespace Poseidon.Winform.Client
             string assemblyName = "Poseidon.Energy.ClientDx";
             string typeName = "Poseidon.Energy.ClientDx.FrmDepartmentOverview";
 
-            var form = Reflect<BaseMdiForm>.Create(typeName, assemblyName);
-            form.MdiParent = this;
-            form.Show();
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
         }
 
         /// <summary>
@@ -66,11 +64,9 @@ namespace Poseidon.Winform.Client
         private void bbiPopulation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string assemblyName = "Poseidon.Energy.ClientDx";
-            string typeName = "Poseidon.Energy.ClientDx.FrmPopulation";
+            string typeName = "Poseidon.Energy.ClientDx.FrmPopulationOverview";
 
-            var form = Reflect<BaseMdiForm>.Create(typeName, assemblyName);
-            form.MdiParent = this;
-            form.Show();
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
         }
 
         /// <summary>
@@ -120,6 +116,5 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
-
     }
 }

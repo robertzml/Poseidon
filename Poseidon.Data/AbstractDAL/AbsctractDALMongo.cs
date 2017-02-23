@@ -215,6 +215,28 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 插入或更新对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual bool Upsert(T entity)
+        {
+            if (entity.Id == null)
+            {
+                var doc = EntityToDoc(entity);
+                this.mongo.Insert(this.collectionName, doc);
+                return true;
+            }
+            else
+            {
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
+                var doc = EntityToDoc(entity);
+                var result = this.mongo.Replace(this.collectionName, filter, doc);
+                return result.IsAcknowledged;
+            }
+        }
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>

@@ -72,6 +72,13 @@ namespace Poseidon.Base.Framework
         bool Update(T entity);
 
         /// <summary>
+        /// 插入或更新对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        bool Upsert(T entity);
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>

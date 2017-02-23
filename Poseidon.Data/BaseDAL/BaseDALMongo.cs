@@ -148,6 +148,14 @@ namespace Poseidon.Data.BaseDAL
             return result;
         }
 
+        public void Upsert(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        {
+            //var collection = this.db.GetCollection(collectionName);
+            //UpdateOptions option = new UpdateOptions { IsUpsert = true };
+            //collection.UpdateOne(filter, update, option);
+            //collection.in
+        }
+
         /// <summary>
         /// 替换记录
         /// </summary>

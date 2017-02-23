@@ -73,6 +73,14 @@ namespace Poseidon.Winform.Base
             else
                 return this.bsEntity[rowIndex] as T;
         }
+
+        /// <summary>
+        /// 完成编辑
+        /// </summary>
+        public void CloseEditor()
+        {
+            this.dgvEntity.CloseEditor();
+        }
         #endregion //Method
 
         #region Event

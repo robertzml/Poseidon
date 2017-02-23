@@ -60,6 +60,16 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 插入或更新对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual bool Upsert(T entity)
+        {
+            return this.baseDal.Upsert(entity);
+        }
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">对象实体</param>
