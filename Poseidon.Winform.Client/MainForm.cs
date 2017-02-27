@@ -43,6 +43,21 @@ namespace Poseidon.Winform.Client
         }
 
         #region Ribbon Event
+
+        #region Target
+        /// <summary>
+        /// 指标总览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiTargetOverview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmTargetOverview";
+
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
+        }
+
         /// <summary>
         /// 部门总览
         /// </summary>
@@ -81,6 +96,7 @@ namespace Poseidon.Winform.Client
 
             ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
         }
+        #endregion //Target
 
         /// <summary>
         /// 支出账户
@@ -129,6 +145,5 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
-
     }
 }

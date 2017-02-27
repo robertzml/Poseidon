@@ -215,28 +215,6 @@ namespace Poseidon.Data
         }
 
         /// <summary>
-        /// 插入或更新对象
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        /// <returns></returns>
-        public virtual bool Upsert(T entity)
-        {
-            if (entity.Id == null)
-            {
-                var doc = EntityToDoc(entity);
-                this.mongo.Insert(this.collectionName, doc);
-                return true;
-            }
-            else
-            {
-                var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
-                var doc = EntityToDoc(entity);
-                var result = this.mongo.Replace(this.collectionName, filter, doc);
-                return result.IsAcknowledged;
-            }
-        }
-
-        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -245,6 +223,34 @@ namespace Poseidon.Data
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
             var result = this.mongo.Delete(this.collectionName, filter);
+            return result.IsAcknowledged;
+        }
+
+        /// <summary>
+        /// 按条件删除对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual bool Delete<Tvalue>(string field, Tvalue value)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var result = this.mongo.Delete(this.collectionName, filter);
+            return result.IsAcknowledged;
+        }
+
+        /// <summary>
+        /// 按条件删除多个对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual bool DeleteMany<Tvalue>(string field, Tvalue value)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq(field, value);
+            var result = this.mongo.DeleteMany(this.collectionName, filter);
             return result.IsAcknowledged;
         }
         #endregion //Method

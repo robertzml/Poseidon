@@ -72,17 +72,28 @@ namespace Poseidon.Base.Framework
         bool Update(T entity);
 
         /// <summary>
-        /// 插入或更新对象
-        /// </summary>
-        /// <param name="entity">实体对象</param>
-        /// <returns></returns>
-        bool Upsert(T entity);
-
-        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         bool Delete(T entity);
+
+        /// <summary>
+        /// 按条件删除对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        bool Delete<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
+        /// 按条件删除多个对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        bool DeleteMany<Tvalue>(string field, Tvalue value);
     }
 }

@@ -37,8 +37,7 @@
             this.bbiGroupOv = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDepartmentOv = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPopulation = new DevExpress.XtraBars.BarButtonItem();
-            this.rpDepartment = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rpgDepartment = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiFund = new DevExpress.XtraBars.BarButtonItem();
             this.rpExpense = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgExpenseInfo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpOrganization = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -47,7 +46,10 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiFund = new DevExpress.XtraBars.BarButtonItem();
+            this.rpTarget = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rpgTargetBase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgTargetEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiTargetOverview = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -63,12 +65,13 @@
             this.bbiGroupOv,
             this.bbiDepartmentOv,
             this.bbiPopulation,
-            this.bbiFund});
+            this.bbiFund,
+            this.bbiTargetOverview});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.rpDepartment,
+            this.rpTarget,
             this.rpExpense,
             this.rpOrganization,
             this.rpSystem});
@@ -132,20 +135,15 @@
             this.bbiPopulation.Name = "bbiPopulation";
             this.bbiPopulation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPopulation_ItemClick);
             // 
-            // rpDepartment
+            // bbiFund
             // 
-            this.rpDepartment.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.rpgDepartment});
-            this.rpDepartment.Name = "rpDepartment";
-            this.rpDepartment.Text = "部门管理";
-            // 
-            // rpgDepartment
-            // 
-            this.rpgDepartment.ItemLinks.Add(this.bbiDepartmentOv);
-            this.rpgDepartment.ItemLinks.Add(this.bbiPopulation);
-            this.rpgDepartment.ItemLinks.Add(this.bbiFund);
-            this.rpgDepartment.Name = "rpgDepartment";
-            this.rpgDepartment.Text = "部门管理";
+            this.bbiFund.Caption = "经费统计";
+            this.bbiFund.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiFund.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiFund.Glyph")));
+            this.bbiFund.Id = 23;
+            this.bbiFund.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiFund.LargeGlyph")));
+            this.bbiFund.Name = "bbiFund";
+            this.bbiFund.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFund_ItemClick);
             // 
             // rpExpense
             // 
@@ -200,15 +198,37 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // bbiFund
+            // rpTarget
             // 
-            this.bbiFund.Caption = "经费统计";
-            this.bbiFund.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiFund.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiFund.Glyph")));
-            this.bbiFund.Id = 23;
-            this.bbiFund.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiFund.LargeGlyph")));
-            this.bbiFund.Name = "bbiFund";
-            this.bbiFund.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFund_ItemClick);
+            this.rpTarget.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rpgTargetEnergy,
+            this.rpgTargetBase});
+            this.rpTarget.Name = "rpTarget";
+            this.rpTarget.Text = "指标化管理";
+            // 
+            // rpgTargetBase
+            // 
+            this.rpgTargetBase.ItemLinks.Add(this.bbiDepartmentOv);
+            this.rpgTargetBase.ItemLinks.Add(this.bbiPopulation);
+            this.rpgTargetBase.ItemLinks.Add(this.bbiFund);
+            this.rpgTargetBase.Name = "rpgTargetBase";
+            this.rpgTargetBase.Text = "基础数据";
+            // 
+            // rpgTargetEnergy
+            // 
+            this.rpgTargetEnergy.ItemLinks.Add(this.bbiTargetOverview);
+            this.rpgTargetEnergy.Name = "rpgTargetEnergy";
+            this.rpgTargetEnergy.Text = "用能指标";
+            // 
+            // bbiTargetOverview
+            // 
+            this.bbiTargetOverview.Caption = "指标总览";
+            this.bbiTargetOverview.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiTargetOverview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiTargetOverview.Glyph")));
+            this.bbiTargetOverview.Id = 24;
+            this.bbiTargetOverview.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiTargetOverview.LargeGlyph")));
+            this.bbiTargetOverview.Name = "bbiTargetOverview";
+            this.bbiTargetOverview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTargetOverview_ItemClick);
             // 
             // MainForm
             // 
@@ -247,10 +267,12 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgExpenseInfo;
         private DevExpress.XtraBars.BarButtonItem bbiGroupOv;
         private DevExpress.XtraBars.BarButtonItem bbiDepartmentOv;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpDepartment;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgDepartment;
         private DevExpress.XtraBars.BarButtonItem bbiPopulation;
         private DevExpress.XtraBars.BarButtonItem bbiFund;
+        private DevExpress.XtraBars.BarButtonItem bbiTargetOverview;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rpTarget;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgTargetEnergy;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgTargetBase;
     }
 }
 

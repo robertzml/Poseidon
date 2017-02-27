@@ -148,14 +148,6 @@ namespace Poseidon.Data.BaseDAL
             return result;
         }
 
-        public void Upsert(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
-        {
-            //var collection = this.db.GetCollection(collectionName);
-            //UpdateOptions option = new UpdateOptions { IsUpsert = true };
-            //collection.UpdateOne(filter, update, option);
-            //collection.in
-        }
-
         /// <summary>
         /// 替换记录
         /// </summary>
@@ -180,6 +172,19 @@ namespace Poseidon.Data.BaseDAL
         {
             var collection = this.db.GetCollection(collectionName);
             DeleteResult result = collection.DeleteOne(filter);
+            return result;
+        }
+
+        /// <summary>
+        /// 删除多条记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public DeleteResult DeleteMany(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.db.GetCollection(collectionName);
+            DeleteResult result = collection.DeleteMany(filter);
             return result;
         }
         #endregion //Method
