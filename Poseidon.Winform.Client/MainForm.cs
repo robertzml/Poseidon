@@ -59,6 +59,19 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
+        /// 指标制定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiTargetMake_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmTargetMake";
+
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
+        }
+
+        /// <summary>
         /// 部门总览
         /// </summary>
         /// <param name="sender"></param>
@@ -145,5 +158,6 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
+
     }
 }

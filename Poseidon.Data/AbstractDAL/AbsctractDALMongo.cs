@@ -94,6 +94,18 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 根据条件查找单条记录
+        /// </summary>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public virtual T FindOne(FilterDefinition<BsonDocument> filter)
+        {
+            var doc = this.mongo.FindOne(this.collectionName, filter);
+            var entity = DocToEntity(doc);
+            return entity;
+        }
+
+        /// <summary>
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
