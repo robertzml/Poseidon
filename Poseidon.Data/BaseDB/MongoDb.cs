@@ -19,7 +19,7 @@ namespace Poseidon.Data.BaseDB
         /// <summary>
         /// MongoDB客户端连接
         /// </summary>
-        private MongoClient client;
+        private static MongoClient client = null;
 
         /// <summary>
         /// 数据库对象
@@ -27,32 +27,33 @@ namespace Poseidon.Data.BaseDB
         private IMongoDatabase database;
         #endregion //Field
 
+        #region Constructor
+        static MongoDb()
+        {
+            string connectionString = GetConnectionString();
+            client = new MongoClient(connectionString);
+        }
+        #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 获取配置连接字符串
+        /// </summary>
+        /// <returns></returns>
+        private static string GetConnectionString()
+        {
+            return AppConfig.GetConnectionString();
+        }
+        #endregion //Function
+
         #region Method
-        /// <summary>
-        /// 打开默认连接
-        /// </summary>
-        public void Connect()
-        {
-            string connectionString = AppConfig.GetConnectionString();
-            this.client = new MongoClient(connectionString);
-        }
-
-        /// <summary>
-        /// 打开指定连接
-        /// </summary>
-        /// <param name="connectionString">连接字符串</param>
-        public void Connect(string connectionString)
-        {
-            this.client = new MongoClient(connectionString);
-        }
-
         /// <summary>
         /// 打开数据库
         /// </summary>
         /// <param name="dbName">数据库名称</param>
         public void OpenDatabase(string dbName)
         {
-            this.database = this.client.GetDatabase(dbName);
+            this.database = client.GetDatabase(dbName);
         }
 
         /// <summary>

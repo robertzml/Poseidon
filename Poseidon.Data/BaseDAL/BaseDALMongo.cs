@@ -46,7 +46,6 @@ namespace Poseidon.Data.BaseDAL
         /// </summary>
         private void Initialize()
         {
-            this.db.Connect();
             this.db.OpenDatabase(this.databaseName);
         }
         #endregion //Function
@@ -63,8 +62,11 @@ namespace Poseidon.Data.BaseDAL
             var collection = this.db.GetCollection(collectionName);
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(_id));
 
-            var doc = collection.Find(filter).First();
+            var result = collection.Find(filter);
+            if (result.Count() == 0)
+                throw new PoseidonException(ErrorCode.ObjectNotFound);
 
+            var doc = result.First();
             return doc;
         }
 
@@ -77,8 +79,11 @@ namespace Poseidon.Data.BaseDAL
         public BsonDocument FindOne(string collectionName, FilterDefinition<BsonDocument> filter)
         {
             var collection = this.db.GetCollection(collectionName);
-            var doc = collection.Find(filter).First();
+            var result = collection.Find(filter);
+            if (result.Count() == 0)
+                throw new PoseidonException(ErrorCode.ObjectNotFound);
 
+            var doc = result.First();
             return doc;
         }
 
