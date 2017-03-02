@@ -117,7 +117,25 @@ namespace Poseidon.Winform.Base
                 }
             }
         }
+
+        /// <summary>
+        /// 选择行
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvEntity_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            RowSelected?.Invoke(sender, e);
+        }
         #endregion //Event
+
+        #region Delegate
+        /// <summary>
+        /// 行选择事件
+        /// </summary>
+        [Description("行选择事件")]
+        public event Action<object, EventArgs> RowSelected;
+        #endregion //Delegate
 
         #region Property
         /// <summary>

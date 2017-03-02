@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgcEntity = new DevExpress.XtraGrid.GridControl();
-            this.bsEntity = new System.Windows.Forms.BindingSource();
+            this.bsEntity = new System.Windows.Forms.BindingSource(this.components);
             this.dgvEntity = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgcEntity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEntity)).BeginInit();
@@ -60,6 +61,7 @@
             this.dgvEntity.OptionsView.ShowFooter = true;
             this.dgvEntity.OptionsView.ShowGroupPanel = false;
             this.dgvEntity.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.dgvEntity_CustomDrawRowIndicator);
+            this.dgvEntity.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.dgvEntity_FocusedRowChanged);
             // 
             // WinEntityGrid
             // 

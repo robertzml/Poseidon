@@ -265,6 +265,17 @@ namespace Poseidon.Data
             var result = this.mongo.DeleteMany(this.collectionName, filter);
             return result.IsAcknowledged;
         }
+
+        /// <summary>
+        /// 按条件删除多个对象
+        /// </summary>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public virtual bool DeleteMany(FilterDefinition<BsonDocument> filter)
+        {
+            var result = this.mongo.DeleteMany(this.collectionName, filter);
+            return result.IsAcknowledged;
+        }
         #endregion //Method
     }
 }
