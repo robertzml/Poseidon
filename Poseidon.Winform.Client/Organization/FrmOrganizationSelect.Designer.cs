@@ -40,17 +40,17 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.luModelTypes = new DevExpress.XtraEditors.LookUpEdit();
+            this.bsModelType = new System.Windows.Forms.BindingSource(this.components);
             this.btnMoveOut = new DevExpress.XtraEditors.SimpleButton();
             this.btnMoveIn = new DevExpress.XtraEditors.SimpleButton();
+            this.ogridRight = new Poseidon.Winform.Core.OrganizationGrid();
+            this.ogridLeft = new Poseidon.Winform.Core.OrganizationGrid();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bsModelType = new System.Windows.Forms.BindingSource(this.components);
-            this.ogridRight = new Poseidon.Winform.Core.OrganizationGrid();
-            this.ogridLeft = new Poseidon.Winform.Core.OrganizationGrid();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -60,13 +60,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luModelTypes.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsModelType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsModelType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -137,6 +137,10 @@
             this.luModelTypes.TabIndex = 8;
             this.luModelTypes.EditValueChanged += new System.EventHandler(this.luModelTypes_EditValueChanged);
             // 
+            // bsModelType
+            // 
+            this.bsModelType.DataSource = typeof(Poseidon.Core.DL.ModelType);
+            // 
             // btnMoveOut
             // 
             this.btnMoveOut.Location = new System.Drawing.Point(380, 193);
@@ -156,6 +160,28 @@
             this.btnMoveIn.TabIndex = 6;
             this.btnMoveIn.Text = ">";
             this.btnMoveIn.Click += new System.EventHandler(this.btnMoveIn_Click);
+            // 
+            // ogridRight
+            // 
+            this.ogridRight.DataSource = null;
+            this.ogridRight.Editable = false;
+            this.ogridRight.Location = new System.Drawing.Point(430, 53);
+            this.ogridRight.Name = "ogridRight";
+            this.ogridRight.ShowFooter = false;
+            this.ogridRight.ShowLineNumber = false;
+            this.ogridRight.Size = new System.Drawing.Size(365, 294);
+            this.ogridRight.TabIndex = 5;
+            // 
+            // ogridLeft
+            // 
+            this.ogridLeft.DataSource = null;
+            this.ogridLeft.Editable = false;
+            this.ogridLeft.Location = new System.Drawing.Point(12, 53);
+            this.ogridLeft.Name = "ogridLeft";
+            this.ogridLeft.ShowFooter = false;
+            this.ogridLeft.ShowLineNumber = true;
+            this.ogridLeft.Size = new System.Drawing.Size(364, 294);
+            this.ogridLeft.TabIndex = 4;
             // 
             // layoutControlGroup1
             // 
@@ -199,6 +225,31 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(807, 359);
             this.layoutControlGroup1.TextVisible = false;
             // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.ogridLeft;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.OptionsTableLayoutItem.RowIndex = 1;
+            this.layoutControlItem1.OptionsTableLayoutItem.RowSpan = 4;
+            this.layoutControlItem1.Size = new System.Drawing.Size(368, 315);
+            this.layoutControlItem1.Text = "模型组织";
+            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.ogridRight;
+            this.layoutControlItem2.Location = new System.Drawing.Point(418, 24);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.OptionsTableLayoutItem.ColumnIndex = 2;
+            this.layoutControlItem2.OptionsTableLayoutItem.RowIndex = 1;
+            this.layoutControlItem2.OptionsTableLayoutItem.RowSpan = 4;
+            this.layoutControlItem2.Size = new System.Drawing.Size(369, 315);
+            this.layoutControlItem2.Text = "已有组织";
+            this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
+            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnMoveIn;
@@ -230,55 +281,6 @@
             this.layoutControlItem5.Text = "模型类型";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // bsModelType
-            // 
-            this.bsModelType.DataSource = typeof(Poseidon.Core.DL.ModelType);
-            // 
-            // ogridRight
-            // 
-            this.ogridRight.DataSource = null;
-            this.ogridRight.Location = new System.Drawing.Point(430, 53);
-            this.ogridRight.Name = "ogridRight";
-            this.ogridRight.ShowFooter = false;
-            this.ogridRight.ShowLineNumber = false;
-            this.ogridRight.Size = new System.Drawing.Size(365, 294);
-            this.ogridRight.TabIndex = 5;
-            // 
-            // ogridLeft
-            // 
-            this.ogridLeft.DataSource = null;
-            this.ogridLeft.Location = new System.Drawing.Point(12, 53);
-            this.ogridLeft.Name = "ogridLeft";
-            this.ogridLeft.ShowFooter = false;
-            this.ogridLeft.ShowLineNumber = true;
-            this.ogridLeft.Size = new System.Drawing.Size(364, 294);
-            this.ogridLeft.TabIndex = 4;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.ogridLeft;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.OptionsTableLayoutItem.RowIndex = 1;
-            this.layoutControlItem1.OptionsTableLayoutItem.RowSpan = 4;
-            this.layoutControlItem1.Size = new System.Drawing.Size(368, 315);
-            this.layoutControlItem1.Text = "模型组织";
-            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.ogridRight;
-            this.layoutControlItem2.Location = new System.Drawing.Point(418, 24);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.OptionsTableLayoutItem.ColumnIndex = 2;
-            this.layoutControlItem2.OptionsTableLayoutItem.RowIndex = 1;
-            this.layoutControlItem2.OptionsTableLayoutItem.RowSpan = 4;
-            this.layoutControlItem2.Size = new System.Drawing.Size(369, 315);
-            this.layoutControlItem2.Text = "已有组织";
-            this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
-            // 
             // FrmOrganizationSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -295,13 +297,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.luModelTypes.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsModelType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsModelType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }

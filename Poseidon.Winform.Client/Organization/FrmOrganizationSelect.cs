@@ -38,7 +38,7 @@ namespace Poseidon.Winform.Client
         {
             InitializeComponent();
 
-            LoadEntity(groupId);
+            InitData(groupId);
         }
         #endregion //Constructor
 
@@ -52,10 +52,10 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
-        /// 载入关联对象
+        /// 初始化数据
         /// </summary>
         /// <param name="groupId">分组ID</param>
-        private void LoadEntity(string groupId)
+        private void InitData(string groupId)
         {
             this.currentGroup = BusinessFactory<GroupBusiness>.Instance.FindById(groupId);
         }

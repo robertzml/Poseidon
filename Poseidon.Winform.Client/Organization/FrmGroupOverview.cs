@@ -171,6 +171,7 @@ namespace Poseidon.Winform.Client
         private void btnModelTypeBind_Click(object sender, EventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmModelTypeBind), new object[] { this.currentGroup.Id });
+            LoadGroupsTree();
             LoadModelTypes();
         }
 
@@ -182,6 +183,7 @@ namespace Poseidon.Winform.Client
         private void btnOrganizationSelect_Click(object sender, EventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmOrganizationSelect), new object[] { this.currentGroup.Id });
+            LoadGroupsTree();
         }
 
         /// <summary>

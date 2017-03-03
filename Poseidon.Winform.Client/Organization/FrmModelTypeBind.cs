@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Poseidon.Winform.Client
-{    
+{
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
     using Poseidon.Core.BL;
@@ -47,18 +47,26 @@ namespace Poseidon.Winform.Client
         #region Function
         protected override void InitForm()
         {
-            LoadModelType();
+            var data = BusinessFactory<ModelTypeBusiness>.Instance.FindAll().ToList();
+            this.bsModelType.DataSource = data;
 
+            SetSelectItem();
             base.InitForm();
         }
 
-        private void LoadModelType()
+        /// <summary>
+        /// 设置选择项
+        /// </summary>
+        private void SetSelectItem()
         {
-            var data = BusinessFactory<ModelTypeBusiness>.Instance.FindAll().ToList();
+            var group = BusinessFactory<GroupBusiness>.Instance.FindById(this.groupId);
 
-            this.clbModelTypes.DataSource = data;
-            this.clbModelTypes.DisplayMember = "Name";
-            this.clbModelTypes.ValueMember = "Id";
+            for (int i = 0; i < this.bsModelType.Count; i++)
+            {
+                var modelType = this.bsModelType[i] as ModelType;
+                if (group.ModelTypes.Any(r => r == modelType.Code))
+                    this.clbModelTypes.SetItemChecked(i, true);
+            }
         }
         #endregion //Function
 
@@ -72,7 +80,7 @@ namespace Poseidon.Winform.Client
         {
             List<string> codes = new List<string>();
             var checkedItems = this.clbModelTypes.CheckedItems;
-            foreach(var item in checkedItems)
+            foreach (var item in checkedItems)
             {
                 var mt = item as ModelType;
                 codes.Add(mt.Code);
@@ -85,7 +93,7 @@ namespace Poseidon.Winform.Client
                 MessageUtil.ShowInfo("保存成功");
                 this.Close();
             }
-            catch(PoseidonException pe)
+            catch (PoseidonException pe)
             {
                 MessageUtil.ShowError(string.Format("保存失败，错误消息:{0}", pe.Message));
             }

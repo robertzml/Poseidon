@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.clbModelTypes = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bsModelType = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).BeginInit();
@@ -44,6 +46,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clbModelTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsModelType)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -91,12 +94,15 @@
             // 
             // clbModelTypes
             // 
+            this.clbModelTypes.DataSource = this.bsModelType;
+            this.clbModelTypes.DisplayMember = "Name";
             this.clbModelTypes.Location = new System.Drawing.Point(12, 12);
             this.clbModelTypes.Name = "clbModelTypes";
             this.clbModelTypes.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.clbModelTypes.Size = new System.Drawing.Size(333, 225);
             this.clbModelTypes.StyleController = this.layoutControl1;
             this.clbModelTypes.TabIndex = 4;
+            this.clbModelTypes.ValueMember = "Code";
             // 
             // layoutControlGroup1
             // 
@@ -118,6 +124,10 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // bsModelType
+            // 
+            this.bsModelType.DataSource = typeof(Poseidon.Core.DL.ModelType);
+            // 
             // FrmModelTypeBind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -136,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clbModelTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsModelType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -147,5 +158,6 @@
         private DevExpress.XtraEditors.CheckedListBoxControl clbModelTypes;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private System.Windows.Forms.BindingSource bsModelType;
     }
 }
