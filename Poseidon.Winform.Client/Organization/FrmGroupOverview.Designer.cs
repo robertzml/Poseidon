@@ -435,6 +435,7 @@
             // orgGrid
             // 
             this.orgGrid.DataSource = null;
+            this.orgGrid.Editable = false;
             this.orgGrid.Location = new System.Drawing.Point(12, 36);
             this.orgGrid.Name = "orgGrid";
             this.orgGrid.ShowFooter = false;
