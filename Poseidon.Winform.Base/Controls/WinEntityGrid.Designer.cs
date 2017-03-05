@@ -32,13 +32,17 @@
             this.dgcEntity = new DevExpress.XtraGrid.GridControl();
             this.bsEntity = new System.Windows.Forms.BindingSource(this.components);
             this.dgvEntity = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuAdd = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgcEntity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEntity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).BeginInit();
+            this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgcEntity
             // 
+            this.dgcEntity.ContextMenuStrip = this.contextMenu;
             this.dgcEntity.DataSource = this.bsEntity;
             this.dgcEntity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgcEntity.Location = new System.Drawing.Point(0, 0);
@@ -63,6 +67,20 @@
             this.dgvEntity.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.dgvEntity_CustomDrawRowIndicator);
             this.dgvEntity.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.dgvEntity_FocusedRowChanged);
             // 
+            // contextMenu
+            // 
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAdd});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(153, 48);
+            this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
+            // 
+            // menuAdd
+            // 
+            this.menuAdd.Name = "menuAdd";
+            this.menuAdd.Size = new System.Drawing.Size(152, 22);
+            this.menuAdd.Text = "新建";
+            // 
             // WinEntityGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -74,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgcEntity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEntity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntity)).EndInit();
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -82,5 +101,7 @@
         protected System.Windows.Forms.BindingSource bsEntity;
         protected DevExpress.XtraGrid.GridControl dgcEntity;
         protected DevExpress.XtraGrid.Views.Grid.GridView dgvEntity;
+        private System.Windows.Forms.ContextMenuStrip contextMenu;
+        private System.Windows.Forms.ToolStripMenuItem menuAdd;
     }
 }

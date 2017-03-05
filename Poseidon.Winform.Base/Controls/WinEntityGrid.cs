@@ -35,6 +35,11 @@ namespace Poseidon.Winform.Base
         /// 是否显示Footer
         /// </summary>
         protected bool showFooter;
+
+        /// <summary>
+        /// 是否显示新增菜单
+        /// </summary>
+        protected bool showAddMenu;
         #endregion //Field
 
         #region Constructor
@@ -127,6 +132,16 @@ namespace Poseidon.Winform.Base
         {
             RowSelected?.Invoke(sender, e);
         }
+
+        /// <summary>
+        /// 显示菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            this.menuAdd.Visible = this.showAddMenu;
+        }
         #endregion //Event
 
         #region Delegate
@@ -203,6 +218,23 @@ namespace Poseidon.Winform.Base
                 this.showFooter = value;
             }
         }
+
+        /// <summary>
+        /// 是否显示新建菜单
+        /// </summary>
+        [Category("菜单"), Description("是否显示新建菜单"), Browsable(true)]
+        public bool ShowAddMenu
+        {
+            get
+            {
+                return this.showAddMenu;
+            }
+            set
+            {
+                this.showAddMenu = value;
+            }
+        }
         #endregion //Property
+
     }
 }
