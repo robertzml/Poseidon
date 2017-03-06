@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 
 namespace Poseidon.Base.Framework
@@ -16,19 +14,19 @@ namespace Poseidon.Base.Framework
         /// 名称
         /// </summary>
         [Display(Name = "名称")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
         [Display(Name = "备注")]
-        public string Remark { get; set; }
+        public virtual string Remark { get; set; }
 
         /// <summary>
         /// 状态
         /// </summary>
         [Display(Name = "状态")]
-        public int Status { get; set; }
+        public virtual int Status { get; set; }
         #endregion //Property
     }
 }

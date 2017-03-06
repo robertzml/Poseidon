@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Winform.Client
 {
+    using Poseidon.Base.System;
+    using Poseidon.Core.DL;
     using Poseidon.Common;
 
     /// <summary>
@@ -33,6 +35,27 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Method
+        /// <summary>
+        /// 设置登录用户
+        /// </summary>
+        /// <param name="user">用户信息</param>
+        public LoginUser ConvertToLoginUser(User user)
+        {
+            LoginUser lu = new LoginUser
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                IsRoot = true,
+                Name = user.Name,
+                LastLoginTime = user.LastLoginTime,
+                CurrentLoginTime = user.CurrentLoginTime,
+                Remark = user.Remark,
+                Status = user.Status
+            };
+
+            return lu;
+        }
+
         /// <summary>
         /// 获取插件路径
         /// </summary>

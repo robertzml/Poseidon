@@ -61,21 +61,30 @@
     <Compile Include="BL\GroupBusiness.cs" />
     <Compile Include="BL\ModelTypeBusiness.cs" />
     <Compile Include="BL\OrganizationBusiness.cs" />
+    <Compile Include="BL\UserBusiness.cs" />
     <Compile Include="DAL\Mongo\GroupRepository.cs" />
     <Compile Include="DAL\Mongo\ModelTypeRepository.cs" />
     <Compile Include="DAL\Mongo\OrganizationRepository.cs" />
+    <Compile Include="DAL\Mongo\UserRepository.cs" />
     <Compile Include="DL\Group.cs" />
     <Compile Include="DL\ModelType.cs" />
     <Compile Include="DL\Organization.cs" />
+    <Compile Include="DL\Role.cs" />
+    <Compile Include="DL\User.cs" />
     <Compile Include="IDAL\IGroupRepository.cs" />
     <Compile Include="IDAL\IModelTypeRepository.cs" />
     <Compile Include="IDAL\IOrganizationRepository.cs" />
+    <Compile Include="IDAL\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Poseidon.Base\Poseidon.Base.csproj">
       <Project>{06220d70-2dbf-4aca-a583-0967f40923ff}</Project>
       <Name>Poseidon.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Poseidon.Common\Poseidon.Common.csproj">
+      <Project>{fa99b824-e554-400f-a8d3-44ffde8fd795}</Project>
+      <Name>Poseidon.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Poseidon.Data\Poseidon.Data.csproj">
       <Project>{6abe6b44-57dc-473f-b406-8e4772b08a4a}</Project>
