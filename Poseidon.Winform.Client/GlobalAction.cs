@@ -20,7 +20,7 @@ namespace Poseidon.Winform.Client
         #endregion //Field
 
         #region Constructor
-       
+
         #endregion //Constructor
 
         #region Method
@@ -52,12 +52,12 @@ namespace Poseidon.Winform.Client
         public static string GetPluginPath()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + AppConfig.GetAppSetting("PluginPath") + "\\";
-            return path;                
+            return path;
         }
         #endregion //Method
 
         #region Property
-     
+
         #endregion //Property
     }
 }

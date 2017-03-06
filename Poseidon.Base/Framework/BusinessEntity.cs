@@ -11,16 +11,16 @@ namespace Poseidon.Base.Framework
     {
         #region Property
         /// <summary>
-        /// 创建时间
+        /// 创建标注
         /// </summary>
-        [Display(Name = "创建时间")]
-        public virtual DateTime CreateTime { get; set; }
+        [Display(Name = "创建标注")]
+        public virtual UpdateStamp CreateBy { get; set; }
 
         /// <summary>
-        /// 更新时间
+        /// 修改标注
         /// </summary>
-        [Display(Name = "更新时间")]
-        public virtual DateTime UpdateTime { get; set; }
+        [Display(Name = "修改标注")]
+        public virtual UpdateStamp UpdateBy { get; set; }
 
         /// <summary>
         /// 备注
@@ -34,5 +34,29 @@ namespace Poseidon.Base.Framework
         [Display(Name = "状态")]
         public virtual int Status { get; set; }
         #endregion //Property
+    }
+
+    /// <summary>
+    /// 标注类
+    /// </summary>
+    public class UpdateStamp
+    {
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        [Display(Name = "用户ID")]
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        [Display(Name = "姓名")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 时间
+        /// </summary>
+        [Display(Name = "时间")]
+        public DateTime Time { get; set; }
     }
 }
