@@ -165,7 +165,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="id">父分组ID</param>
         /// <returns></returns>
-        public IEnumerable<Group> FindChildren(string id)
+        public IEnumerable<Group> FindAllChildren(string id)
         {
             var data = LoadChildren(id);
             return data;

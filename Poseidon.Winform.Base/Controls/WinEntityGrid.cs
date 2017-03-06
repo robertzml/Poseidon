@@ -24,22 +24,37 @@ namespace Poseidon.Winform.Base
         /// <summary>
         /// 是否能编辑
         /// </summary>
-        protected bool editable;
+        protected bool editable = false;
+
+        /// <summary>
+        /// 是否能筛选
+        /// </summary>
+        protected bool allowFilter = true;
+
+        /// <summary>
+        /// 是否能分组
+        /// </summary>
+        protected bool allowGroup = true;
+
+        /// <summary>
+        /// 是否能排序
+        /// </summary>
+        protected bool allowSort = true;
 
         /// <summary>
         /// 是否显示行号
         /// </summary>
-        protected bool showLineNumber;
+        protected bool showLineNumber = true;
 
         /// <summary>
         /// 是否显示Footer
         /// </summary>
-        protected bool showFooter;
+        protected bool showFooter = false;
 
         /// <summary>
         /// 是否显示新增菜单
         /// </summary>
-        protected bool showAddMenu;
+        protected bool showAddMenu = false;
         #endregion //Field
 
         #region Constructor
@@ -101,6 +116,9 @@ namespace Poseidon.Winform.Base
 
             this.dgvEntity.OptionsBehavior.Editable = this.editable;
             this.dgvEntity.OptionsView.ShowFooter = this.showFooter;
+            this.dgvEntity.OptionsCustomization.AllowFilter = this.allowFilter;
+            this.dgvEntity.OptionsCustomization.AllowGroup = this.allowGroup;
+            this.dgvEntity.OptionsCustomization.AllowSort = this.allowSort;
         }
 
         /// <summary>
@@ -174,7 +192,7 @@ namespace Poseidon.Winform.Base
         /// <summary>
         /// 是否能编辑
         /// </summary>
-        [Description("是否能编辑")]
+        [Category("功能"), Description("是否能编辑"), Browsable(true)]
         public bool Editable
         {
             get
@@ -184,6 +202,54 @@ namespace Poseidon.Winform.Base
             set
             {
                 this.editable = value;
+            }
+        }
+
+        /// <summary>
+        /// 是否能筛选
+        /// </summary>
+        [Category("功能"), Description("是否能筛选"), Browsable(true)]
+        public bool AllowFilter
+        {
+            get
+            {
+                return this.allowFilter;
+            }
+            set
+            {
+                this.allowFilter = value;
+            }
+        }
+
+        /// <summary>
+        /// 是否能分组
+        /// </summary>
+        [Category("功能"), Description("是否能分组"), Browsable(true)]
+        public bool AllowGroup
+        {
+            get
+            {
+                return this.allowGroup;
+            }
+            set
+            {
+                this.allowGroup = value;
+            }
+        }
+
+        /// <summary>
+        /// 是否能排序
+        /// </summary>
+        [Category("功能"), Description("是否能排序"), Browsable(true)]
+        public bool AllowSort
+        {
+            get
+            {
+                return this.allowSort;
+            }
+            set
+            {
+                this.allowSort = value;
             }
         }
 
@@ -235,6 +301,5 @@ namespace Poseidon.Winform.Base
             }
         }
         #endregion //Property
-
     }
 }

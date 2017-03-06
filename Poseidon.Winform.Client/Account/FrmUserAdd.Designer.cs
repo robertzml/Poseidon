@@ -30,16 +30,16 @@
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.txtUserName = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtPasswordConfirm = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
+            this.txtPasswordConfirm = new DevExpress.XtraEditors.TextEdit();
+            this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtUserName = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).BeginInit();
             this.plFill.SuspendLayout();
@@ -49,16 +49,16 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordConfirm.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordConfirm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,6 +109,48 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // txtRemark
+            // 
+            this.txtRemark.Location = new System.Drawing.Point(63, 108);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(245, 129);
+            this.txtRemark.StyleController = this.layoutControl1;
+            this.txtRemark.TabIndex = 8;
+            // 
+            // txtPasswordConfirm
+            // 
+            this.txtPasswordConfirm.Location = new System.Drawing.Point(63, 84);
+            this.txtPasswordConfirm.Name = "txtPasswordConfirm";
+            this.txtPasswordConfirm.Properties.PasswordChar = '*';
+            this.txtPasswordConfirm.Size = new System.Drawing.Size(245, 20);
+            this.txtPasswordConfirm.StyleController = this.layoutControl1;
+            this.txtPasswordConfirm.TabIndex = 7;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(63, 60);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(245, 20);
+            this.txtPassword.StyleController = this.layoutControl1;
+            this.txtPassword.TabIndex = 6;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(63, 36);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(245, 20);
+            this.txtName.StyleController = this.layoutControl1;
+            this.txtName.TabIndex = 5;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(63, 12);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(245, 20);
+            this.txtUserName.StyleController = this.layoutControl1;
+            this.txtUserName.TabIndex = 4;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -124,14 +166,6 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(320, 249);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // txtUserName
-            // 
-            this.txtUserName.Location = new System.Drawing.Point(64, 12);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(244, 20);
-            this.txtUserName.StyleController = this.layoutControl1;
-            this.txtUserName.TabIndex = 4;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.txtUserName;
@@ -141,31 +175,14 @@
             this.layoutControlItem1.Text = "用户名";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(64, 36);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(244, 20);
-            this.txtName.StyleController = this.layoutControl1;
-            this.txtName.TabIndex = 5;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtName;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(300, 24);
-            this.layoutControlItem2.Text = "名称";
+            this.layoutControlItem2.Text = "姓名";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(64, 60);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(244, 20);
-            this.txtPassword.StyleController = this.layoutControl1;
-            this.txtPassword.TabIndex = 6;
             // 
             // layoutControlItem3
             // 
@@ -176,15 +193,6 @@
             this.layoutControlItem3.Text = "密码";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 14);
             // 
-            // txtPasswordConfirm
-            // 
-            this.txtPasswordConfirm.Location = new System.Drawing.Point(64, 84);
-            this.txtPasswordConfirm.Name = "txtPasswordConfirm";
-            this.txtPasswordConfirm.Properties.PasswordChar = '*';
-            this.txtPasswordConfirm.Size = new System.Drawing.Size(244, 20);
-            this.txtPasswordConfirm.StyleController = this.layoutControl1;
-            this.txtPasswordConfirm.TabIndex = 7;
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtPasswordConfirm;
@@ -193,14 +201,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(300, 24);
             this.layoutControlItem4.Text = "密码确认";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(48, 14);
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(64, 108);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(244, 129);
-            this.txtRemark.StyleController = this.layoutControl1;
-            this.txtRemark.TabIndex = 8;
             // 
             // layoutControlItem5
             // 
@@ -226,16 +226,16 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordConfirm.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordConfirm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 

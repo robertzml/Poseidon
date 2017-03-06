@@ -35,10 +35,21 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <returns></returns>
+        public IEnumerable<Group> FindAllChildren(string id)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            return dal.FindAllChildren(id);
+        }
+
+        /// <summary>
+        /// 查找子分组
+        /// </summary>
+        /// <param name="id">分组ID</param>
+        /// <returns></returns>
         public IEnumerable<Group> FindChildren(string id)
         {
             var dal = this.baseDal as IGroupRepository;
-            return dal.FindChildren(id);
+            return dal.FindListByField("parentId", id);
         }
 
         /// <summary>
@@ -63,7 +74,7 @@ namespace Poseidon.Core.BL
             dal.SetModelTypes(id, codes);
 
             // set the children's modelTypes field
-            var children = dal.FindChildren(id);
+            var children = dal.FindAllChildren(id);
             foreach (var item in children)
             {
                 dal.SetModelTypes(item.Id, codes);

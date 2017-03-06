@@ -19,7 +19,7 @@ namespace Poseidon.Core.IDAL
         /// </summary>
         /// <param name="id">父分组ID</param>
         /// <returns></returns>
-        IEnumerable<Group> FindChildren(string id);
+        IEnumerable<Group> FindAllChildren(string id);
 
         /// <summary>
         /// 绑定模型类型
