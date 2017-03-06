@@ -18,9 +18,16 @@ namespace Poseidon.Core.DAL.Mongo
     /// </summary>
     internal class UserRepository : AbsctractDALMongo<User>, IUserRepository
     {
+        #region Field
+        /// <summary>
+        /// 用户注册初始化时间
+        /// </summary>
+        private readonly DateTime initialTime = new DateTime(2015, 1, 1);
+        #endregion //Field
+
         #region Constructor
         /// <summary>
-        /// 组织分组对象访问类
+        /// 用户对象数据访问类
         /// </summary>
         public UserRepository()
         {
@@ -79,9 +86,46 @@ namespace Poseidon.Core.DAL.Mongo
 
             return doc;
         }
+
+        /// <summary>
+        /// 检查重复项
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        private bool CheckDuplicate(User entity)
+        {
+            var builder = Builders<BsonDocument>.Filter;
+            FilterDefinition<BsonDocument> filter;
+
+            if (entity.Id == null)
+                filter = builder.Eq("userName", entity.UserName);
+            else
+                filter = builder.Eq("userName", entity.UserName) & builder.Ne("_id", new ObjectId(entity.Id));
+
+            long count = Count(filter);
+            if (count > 0)
+                return false;
+            else
+                return true;
+        }
         #endregion //Function
 
         #region Method
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="entity">用户实体</param>
+        public override void Create(User entity)
+        {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateName);
+
+            entity.LastLoginTime = this.initialTime;
+            entity.CurrentLoginTime = this.initialTime;
+            entity.Status = 0;
+
+            base.Create(entity);
+        }
         #endregion //Method
     }
 }

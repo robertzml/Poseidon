@@ -39,6 +39,7 @@
             this.bbiPopulation = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFund = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTargetOverview = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTargetMake = new DevExpress.XtraBars.BarButtonItem();
             this.rpTarget = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgTargetEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgTargetBase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -50,7 +51,8 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiTargetMake = new DevExpress.XtraBars.BarButtonItem();
+            this.rpgPrivilege = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -68,9 +70,10 @@
             this.bbiPopulation,
             this.bbiFund,
             this.bbiTargetOverview,
-            this.bbiTargetMake});
+            this.bbiTargetMake,
+            this.bbiUserAdd});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 26;
+            this.ribbonControl.MaxItemId = 27;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpTarget,
@@ -157,6 +160,16 @@
             this.bbiTargetOverview.Name = "bbiTargetOverview";
             this.bbiTargetOverview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTargetOverview_ItemClick);
             // 
+            // bbiTargetMake
+            // 
+            this.bbiTargetMake.Caption = "指标制定";
+            this.bbiTargetMake.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiTargetMake.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiTargetMake.Glyph")));
+            this.bbiTargetMake.Id = 25;
+            this.bbiTargetMake.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiTargetMake.LargeGlyph")));
+            this.bbiTargetMake.Name = "bbiTargetMake";
+            this.bbiTargetMake.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTargetMake_ItemClick);
+            // 
             // rpTarget
             // 
             this.rpTarget.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -210,7 +223,8 @@
             // rpSystem
             // 
             this.rpSystem.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.rpgPrivilege});
             this.rpSystem.Name = "rpSystem";
             this.rpSystem.Text = "系统管理";
             // 
@@ -233,15 +247,21 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // bbiTargetMake
+            // rpgPrivilege
             // 
-            this.bbiTargetMake.Caption = "指标制定";
-            this.bbiTargetMake.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiTargetMake.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiTargetMake.Glyph")));
-            this.bbiTargetMake.Id = 25;
-            this.bbiTargetMake.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiTargetMake.LargeGlyph")));
-            this.bbiTargetMake.Name = "bbiTargetMake";
-            this.bbiTargetMake.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTargetMake_ItemClick);
+            this.rpgPrivilege.ItemLinks.Add(this.bbiUserAdd);
+            this.rpgPrivilege.Name = "rpgPrivilege";
+            this.rpgPrivilege.Text = "权限管理";
+            // 
+            // bbiUserAdd
+            // 
+            this.bbiUserAdd.Caption = "添加用户";
+            this.bbiUserAdd.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiUserAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.Glyph")));
+            this.bbiUserAdd.Id = 26;
+            this.bbiUserAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.LargeGlyph")));
+            this.bbiUserAdd.Name = "bbiUserAdd";
+            this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // MainForm
             // 
@@ -287,6 +307,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgTargetEnergy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgTargetBase;
         private DevExpress.XtraBars.BarButtonItem bbiTargetMake;
+        private DevExpress.XtraBars.BarButtonItem bbiUserAdd;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgPrivilege;
     }
 }
 
