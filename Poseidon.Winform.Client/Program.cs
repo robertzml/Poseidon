@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Client
 {
+    using Poseidon.Common;
     using Poseidon.Winform.Base;
 
     static class Program
@@ -26,12 +27,14 @@ namespace Poseidon.Winform.Client
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
-            //LoginForm login = new LoginForm();
-            //if (login.ShowDialog() == DialogResult.OK)
-            //{
+            LoginForm login = new LoginForm();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                GlobalAction.CurrentUser = GlobalAction.ConvertToLoginUser(login.User);
+                Cache.Instance.Add("CurrentUser", GlobalAction.CurrentUser); //缓存用户信息
 
                 Application.Run(new MainForm());
-            //}
+            }
         }
 
         /// <summary>

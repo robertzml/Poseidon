@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +10,7 @@ using System.Windows.Forms;
 namespace Poseidon.Winform.Client
 {
     using Poseidon.Base.Framework;
+    using Poseidon.Common;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
@@ -18,8 +18,15 @@ namespace Poseidon.Winform.Client
     /// <summary>
     /// 用户登录窗体
     /// </summary>
-    public partial class LoginForm : Form
+    public partial class LoginForm : BaseForm
     {
+        #region Field
+        /// <summary>
+        /// 用户
+        /// </summary>
+        private User user;
+        #endregion //Field
+
         #region Constructor
         public LoginForm()
         {
@@ -54,15 +61,29 @@ namespace Poseidon.Winform.Client
 
         #region Event
         /// <summary>
+        /// 窗体载入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.txtUserName.Text = "admin";
+            this.txtPassword.Text = "123";
+        }
+
+        /// <summary>
         /// 登录
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var result = BusinessFactory<UserBusiness>.Instance.Login(this.txtUserName.Text, this.txtPassword.Text);
+            var hash = Hasher.SHA1Encrypt(this.txtPassword.Text);
+            var result = BusinessFactory<UserBusiness>.Instance.Login(this.txtUserName.Text, hash);
+
             if (result)
             {
+                this.user = BusinessFactory<UserBusiness>.Instance.FindByUserName(this.txtUserName.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -74,5 +95,18 @@ namespace Poseidon.Winform.Client
             }
         }
         #endregion //Event
+
+        #region Property
+        /// <summary>
+        /// 登录用户
+        /// </summary>
+        public User User
+        {
+            get
+            {
+                return this.user;
+            }
+        }
+        #endregion //Property
     }
 }

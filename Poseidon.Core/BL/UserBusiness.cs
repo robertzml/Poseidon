@@ -8,7 +8,6 @@ namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
-    using Poseidon.Common;
     using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
 
@@ -16,7 +15,7 @@ namespace Poseidon.Core.BL
     /// 用户业务类
     /// </summary>
     public class UserBusiness : AbsctractBusiness<User>
-    {        
+    {
         #region Constructor
         /// <summary>
         /// 用户业务类
@@ -27,7 +26,43 @@ namespace Poseidon.Core.BL
         }
         #endregion //Constructor
 
+        #region Function
+        /// <summary>
+        /// 更新登录时间
+        /// </summary>
+        /// <param name="_id">用户系统ID</param>
+        /// <param name="last">上次登录时间</param>
+        /// <param name="current">本次登录时间</param>
+        private void UpdateLoginTime(User user, DateTime last, DateTime current)
+        {
+            var dal = this.baseDal as IUserRepository;
+
+            user.LastLoginTime = last;
+            user.CurrentLoginTime = current;
+
+            dal.Update(user);
+
+            return;
+        }
+        #endregion //Function
+
         #region Method
+        /// <summary>
+        /// 按用户名获取用户
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <returns></returns>
+        public User FindByUserName(string userName)
+        {
+            return this.baseDal.FindOneByField("userName", userName);
+        }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="password">散列密码</param>
+        /// <returns></returns>
         public bool Login(string userName, string password)
         {
             var dal = this.baseDal as IUserRepository;
@@ -38,8 +73,10 @@ namespace Poseidon.Core.BL
 
             var user = dal.FindOneByField("userName", userName);
 
-            if (Hasher.SHA1Encrypt(password) != user.Password)
+            if (password != user.Password)
                 return false;
+
+            UpdateLoginTime(user, user.CurrentLoginTime, DateTime.Now);
 
             return true;
         }

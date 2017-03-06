@@ -9,15 +9,27 @@ using System.Windows.Forms;
 
 namespace Poseidon.Winform.Base
 {
+    using Poseidon.Base.System;
+    using Poseidon.Common;
+
     /// <summary>
     /// 窗体基类
     /// </summary>
     public partial class BaseForm : DevExpress.XtraEditors.XtraForm
     {
+        #region Field
+        /// <summary>
+        /// 当前用户
+        /// </summary>
+        protected LoginUser currentUser;
+        #endregion //Field
+
         #region Constructor
         public BaseForm()
         {
             InitializeComponent();
+
+            this.currentUser = Cache.Instance["CurrentUser"] as LoginUser;
         }
         #endregion //Constructor
 

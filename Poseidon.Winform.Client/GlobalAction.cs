@@ -13,25 +13,14 @@ namespace Poseidon.Winform.Client
     /// <summary>
     /// 全局操作类
     /// </summary>
-    public sealed class GlobalAction
+    public static class GlobalAction
     {
         #region Field
-        /// <summary>
-        /// 实例
-        /// </summary>
-        private static volatile GlobalAction _instance;
-
-        /// <summary>
-        /// 锁变量
-        /// </summary>
-        private static object syncRoot = new object();
+        public static LoginUser CurrentUser = null;
         #endregion //Field
 
         #region Constructor
-        private GlobalAction()
-        {
-           
-        }
+       
         #endregion //Constructor
 
         #region Method
@@ -39,7 +28,7 @@ namespace Poseidon.Winform.Client
         /// 设置登录用户
         /// </summary>
         /// <param name="user">用户信息</param>
-        public LoginUser ConvertToLoginUser(User user)
+        public static LoginUser ConvertToLoginUser(User user)
         {
             LoginUser lu = new LoginUser
             {
@@ -60,7 +49,7 @@ namespace Poseidon.Winform.Client
         /// 获取插件路径
         /// </summary>
         /// <returns></returns>
-        public string GetPluginPath()
+        public static string GetPluginPath()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + AppConfig.GetAppSetting("PluginPath") + "\\";
             return path;                
@@ -68,26 +57,7 @@ namespace Poseidon.Winform.Client
         #endregion //Method
 
         #region Property
-        /// <summary>
-        /// 单件实例
-        /// </summary>
-        public static GlobalAction Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    lock (syncRoot)
-                    {
-                        if (_instance == null)
-                        {
-                            _instance = new GlobalAction();
-                        }
-                    }
-                }
-                return _instance;
-            }
-        }
+     
         #endregion //Property
     }
 }

@@ -84,6 +84,17 @@ namespace Poseidon.Core.DAL.Mongo
                 { "status", entity.Status }
             };
 
+            if (entity.Roles != null && entity.Roles.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Roles)
+                {
+                    array.Add(item);
+                }
+
+                doc.Add("roles", array);
+            }
+
             return doc;
         }
 
