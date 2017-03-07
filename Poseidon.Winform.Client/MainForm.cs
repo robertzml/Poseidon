@@ -111,6 +111,20 @@ namespace Poseidon.Winform.Client
         }
         #endregion //Target
 
+        #region Expense
+        /// <summary>
+        /// 支出总览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiExpenseOv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmExpenseOverview";
+
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
+        }
+
         /// <summary>
         /// 支出账户
         /// </summary>
@@ -118,13 +132,12 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void bbiExpenseAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string assemblyName = "Poseidon.Expense.ClientDx";
-            string typeName = "Poseidon.Expense.ClientDx.FrmWaterAccountOverview";
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmExpenseAccount";
 
-            var form = Reflect<BaseMdiForm>.Create(typeName, assemblyName);
-            form.MdiParent = this;
-            form.Show();
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
         }
+        #endregion //Expense
 
         /// <summary>
         /// 模型类型总览
