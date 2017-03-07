@@ -20,7 +20,7 @@ namespace Poseidon.Core.DAL.Mongo
     {
         #region Constructor
         /// <summary>
-        /// 组织分组对象访问类
+        /// 模型类型数据访问类
         /// </summary>
         public ModelTypeRepository()
         {
