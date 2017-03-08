@@ -68,6 +68,24 @@
     <Compile Include="Account\FrmUserAdd.Designer.cs">
       <DependentUpon>FrmUserAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dict\FrmDictOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dict\FrmDictOverview.Designer.cs">
+      <DependentUpon>FrmDictOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dict\FrmDictCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dict\FrmDictCategoryAdd.Designer.cs">
+      <DependentUpon>FrmDictCategoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dict\FrmDictCategoryEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dict\FrmDictCategoryEdit.Designer.cs">
+      <DependentUpon>FrmDictCategoryEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +151,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Account\FrmUserAdd.resx">
       <DependentUpon>FrmUserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dict\FrmDictCategoryAdd.resx">
+      <DependentUpon>FrmDictCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dict\FrmDictCategoryEdit.resx">
+      <DependentUpon>FrmDictCategoryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dict\FrmDictOverview.resx">
+      <DependentUpon>FrmDictOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

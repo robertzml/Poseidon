@@ -113,6 +113,8 @@ namespace Poseidon.Winform.Base
         {
             if (this.showLineNumber)
                 this.dgvEntity.IndicatorWidth = 40;
+            else
+                this.dgvEntity.IndicatorWidth = 10;
 
             this.dgvEntity.OptionsBehavior.Editable = this.editable;
             this.dgvEntity.OptionsView.ShowFooter = this.showFooter;

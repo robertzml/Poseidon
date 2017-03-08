@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Poseidon.Winform.Client
@@ -14,28 +15,38 @@ namespace Poseidon.Winform.Client
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
     using Poseidon.Winform.Base;
-    using Poseidon.Winform.Core;
 
     /// <summary>
-    /// 分组添加窗体
+    /// 编辑字典分类窗体
     /// </summary>
-    public partial class FrmGroupAdd : BaseSingleForm
+    public partial class FrmDictCategoryEdit : BaseSingleForm
     {
+        #region Field
+        /// <summary>
+        /// 当前关联分类
+        /// </summary>
+        private DictCategory currentCategory;
+        #endregion //Field
+
         #region Constructor
-        public FrmGroupAdd()
+        public FrmDictCategoryEdit(string id)
         {
             InitializeComponent();
+
+            InitData(id);
         }
         #endregion //Constructor
 
         #region Function
-        /// <summary>
-        /// 初始化窗体
-        /// </summary>
+        private void InitData(string id)
+        {
+            this.currentCategory = BusinessFactory<DictCategoryBusiness>.Instance.FindById(id);
+        }
+
         protected override void InitForm()
         {
-            var groups = BusinessFactory<GroupBusiness>.Instance.FindAll();
-            this.bsGroup.DataSource = groups.ToList();
+            this.txtName.Text = this.currentCategory.Name;
+            this.txtRemark.Text = this.currentCategory.Remark;
             base.InitForm();
         }
 
@@ -43,15 +54,10 @@ namespace Poseidon.Winform.Client
         /// 设置实体
         /// </summary>
         /// <param name="entity"></param>
-        private void SetEntity(Group entity)
+        private void SetEntity(DictCategory entity)
         {
             entity.Name = this.txtName.Text;
-            entity.Code = this.txtCode.Text;
             entity.Remark = this.txtRemark.Text;
-            if (this.cmbParent.EditValue == null)
-                entity.ParentId = null;
-            else
-                entity.ParentId = this.cmbParent.EditValue.ToString();
         }
 
         /// <summary>
@@ -68,22 +74,11 @@ namespace Poseidon.Winform.Client
                 return new Tuple<bool, string>(false, errorMessage);
             }
 
-            if (string.IsNullOrEmpty(this.txtCode.Text.Trim()))
-            {
-                errorMessage = "代码不能为空";
-                return new Tuple<bool, string>(false, errorMessage);
-            }
-
             return new Tuple<bool, string>(true, "");
         }
         #endregion //Function
 
         #region Event
-        /// <summary>
-        /// 保存
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var input = CheckInput();
@@ -93,12 +88,11 @@ namespace Poseidon.Winform.Client
                 return;
             }
 
-            Group entity = new Group();
-            SetEntity(entity);
+            SetEntity(this.currentCategory);
 
             try
             {
-                BusinessFactory<GroupBusiness>.Instance.Create(entity);
+                BusinessFactory<DictCategoryBusiness>.Instance.Update(this.currentCategory);
 
                 MessageUtil.ShowInfo("保存成功");
                 this.Close();

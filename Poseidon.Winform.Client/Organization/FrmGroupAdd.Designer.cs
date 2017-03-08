@@ -266,7 +266,6 @@
             this.ClientSize = new System.Drawing.Size(401, 331);
             this.Name = "FrmGroupAdd";
             this.Text = "添加分组";
-            this.Load += new System.EventHandler(this.FrmGroupAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.plFill)).EndInit();
             this.plFill.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plBottom)).EndInit();

@@ -11,20 +11,9 @@ namespace Poseidon.Core.DL
     /// <summary>
     /// 字典分组类
     /// </summary>
-    public class DictCategory : BaseEntity
+    public class DictCategory : ObjectEntity
     {
         #region Property
-        /// <summary>
-        /// 名称
-        /// </summary>
-        [Display(Name = "名称")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [Display(Name = "备注")]
-        public string Remark { get; set; }
         #endregion //Property
     }
 }

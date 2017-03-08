@@ -160,6 +160,16 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
+        /// 字典总览
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiDictOv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ChildFormManage.LoadMdiForm(this, typeof(FrmDictOverview));
+        }
+
+        /// <summary>
         /// 添加用户
         /// </summary>
         /// <param name="sender"></param>

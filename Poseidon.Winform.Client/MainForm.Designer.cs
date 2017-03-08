@@ -41,6 +41,7 @@
             this.bbiTargetOverview = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTargetMake = new DevExpress.XtraBars.BarButtonItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExpenseOv = new DevExpress.XtraBars.BarButtonItem();
             this.rpTarget = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgTargetEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgTargetBase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -49,11 +50,11 @@
             this.rpOrganization = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgSystemFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgPrivilege = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiExpenseOv = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDictOv = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -73,9 +74,10 @@
             this.bbiTargetOverview,
             this.bbiTargetMake,
             this.bbiUserAdd,
-            this.bbiExpenseOv});
+            this.bbiExpenseOv,
+            this.bbiDictOv});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 28;
+            this.ribbonControl.MaxItemId = 29;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpTarget,
@@ -182,6 +184,16 @@
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
+            // bbiExpenseOv
+            // 
+            this.bbiExpenseOv.Caption = "支出总览";
+            this.bbiExpenseOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiExpenseOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiExpenseOv.Glyph")));
+            this.bbiExpenseOv.Id = 27;
+            this.bbiExpenseOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiExpenseOv.LargeGlyph")));
+            this.bbiExpenseOv.Name = "bbiExpenseOv";
+            this.bbiExpenseOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExpenseOv_ItemClick);
+            // 
             // rpTarget
             // 
             this.rpTarget.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -236,16 +248,17 @@
             // rpSystem
             // 
             this.rpSystem.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
+            this.rpgSystemFunction,
             this.rpgPrivilege});
             this.rpSystem.Name = "rpSystem";
             this.rpSystem.Text = "系统管理";
             // 
-            // ribbonPageGroup1
+            // rpgSystemFunction
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barChildList);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.rpgSystemFunction.ItemLinks.Add(this.bbiDictOv);
+            this.rpgSystemFunction.ItemLinks.Add(this.barChildList);
+            this.rpgSystemFunction.Name = "rpgSystemFunction";
+            this.rpgSystemFunction.Text = "系统功能";
             // 
             // rpgPrivilege
             // 
@@ -266,15 +279,15 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // bbiExpenseOv
+            // bbiDictOv
             // 
-            this.bbiExpenseOv.Caption = "支出总览";
-            this.bbiExpenseOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiExpenseOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiExpenseOv.Glyph")));
-            this.bbiExpenseOv.Id = 27;
-            this.bbiExpenseOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiExpenseOv.LargeGlyph")));
-            this.bbiExpenseOv.Name = "bbiExpenseOv";
-            this.bbiExpenseOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExpenseOv_ItemClick);
+            this.bbiDictOv.Caption = "字典总览";
+            this.bbiDictOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiDictOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiDictOv.Glyph")));
+            this.bbiDictOv.Id = 28;
+            this.bbiDictOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiDictOv.LargeGlyph")));
+            this.bbiDictOv.Name = "bbiDictOv";
+            this.bbiDictOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDictOv_ItemClick);
             // 
             // MainForm
             // 
@@ -300,7 +313,7 @@
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgSystemFunction;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager tabMdiManager;
         private DevExpress.XtraBars.BarMdiChildrenListItem barChildList;
@@ -323,6 +336,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiUserAdd;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgPrivilege;
         private DevExpress.XtraBars.BarButtonItem bbiExpenseOv;
+        private DevExpress.XtraBars.BarButtonItem bbiDictOv;
     }
 }
 

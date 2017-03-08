@@ -40,6 +40,7 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Remark = doc["remark"].ToString();
+            entity.Status = doc["status"].ToInt32();
 
             return entity;
         }
@@ -55,10 +56,50 @@ namespace Poseidon.Core.DAL.Mongo
             {
                 { "name", entity.Name },
                 { "remark", entity.Remark },
+                { "status", entity.Status }
             };
 
             return doc;
         }
+
+        /// <summary>
+        /// 检查重复项
+        /// </summary>
+        /// <param name="entity">分组实体</param>
+        /// <returns></returns>
+        private bool CheckDuplicate(DictCategory entity)
+        {
+            var builder = Builders<BsonDocument>.Filter;
+            FilterDefinition<BsonDocument> filter;
+
+            if (entity.Id == null)
+                filter = builder.Eq("name", entity.Name);
+            else
+                filter = builder.Eq("name", entity.Name) & builder.Ne("_id", new ObjectId(entity.Id));
+
+            long count = Count(filter);
+            if (count > 0)
+                return false;
+            else
+                return true;
+        }
         #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 添加分类
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override void Create(DictCategory entity)
+        {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateName);
+
+            entity.Status = 0;
+            base.Create(entity);
+            return;
+        }
+        #endregion //Method
     }
 }
