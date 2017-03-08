@@ -52,6 +52,18 @@ namespace Poseidon.Core.BL
             else
                 return item.Value;
         }
+
+        /// <summary>
+        /// 查找字典项
+        /// </summary>
+        /// <param name="code">字典代码</param>
+        /// <returns></returns>
+        public List<DictItem> FindItems(string code)
+        {
+            var dict = this.baseDal.FindOneByField("code", code);
+
+            return dict.Items;
+        }
         #endregion //Method
     }
 }
