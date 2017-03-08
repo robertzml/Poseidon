@@ -84,6 +84,7 @@
     <Compile Include="IDAL\IOrganizationRepository.cs" />
     <Compile Include="IDAL\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\DictUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Poseidon.Base\Poseidon.Base.csproj">

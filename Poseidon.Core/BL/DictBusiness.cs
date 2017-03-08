@@ -35,6 +35,23 @@ namespace Poseidon.Core.BL
         {
             return this.baseDal.FindListByField("categoryId", categoryId);
         }
+
+        /// <summary>
+        /// 查找字典值
+        /// </summary>
+        /// <param name="code">字典代码</param>
+        /// <param name="key">键</param>
+        /// <returns></returns>
+        public string FindValue(string code, int key)
+        {
+            var dict = this.baseDal.FindOneByField("code", code);
+
+            var item = dict.Items.Find(r => r.Key == key);
+            if (item == null)
+                return "";
+            else
+                return item.Value;
+        }
         #endregion //Method
     }
 }
