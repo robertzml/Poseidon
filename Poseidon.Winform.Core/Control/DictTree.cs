@@ -41,6 +41,8 @@ namespace Poseidon.Winform.Core
             this.categories = BusinessFactory<DictCategoryBusiness>.Instance.FindAll().ToList();
 
             this.tlData.BeginUnboundLoad();
+            this.tlData.Nodes.Clear();
+
             foreach (var item in categories)
             {
                 var node = this.tlData.AppendNode(new object[] { item.Id, item.Name, 1 }, null);
@@ -87,6 +89,14 @@ namespace Poseidon.Winform.Core
             else
                 return null;
         }
+
+        /// <summary>
+        /// 重新加载数据
+        /// </summary>
+        public void Reload()
+        {
+            this.LoadRootNode();
+        }
         #endregion //Method
 
         #region Delegate
@@ -116,7 +126,7 @@ namespace Poseidon.Winform.Core
                 LoadRootNode();
             }
         }
-        
+
         /// <summary>
         /// 节点展开
         /// </summary>
@@ -124,9 +134,28 @@ namespace Poseidon.Winform.Core
         /// <param name="e"></param>
         private void tlData_BeforeExpand(object sender, DevExpress.XtraTreeList.BeforeExpandEventArgs e)
         {
-           
+            var id = e.Node["colId"].ToString();
+            int type = Convert.ToInt32(e.Node["colType"]);
+
+            if (type == 1)
+            {
+                this.tlData.BeginUnboundLoad();
+                e.Node.Nodes.Clear();
+
+                // load contain dict
+
+                var dicts = BusinessFactory<DictBusiness>.Instance.FindByCategory(id);
+                foreach (var item in dicts)
+                {
+                    var node = this.tlData.AppendNode(new object[] { item.Id, item.Name, 2 }, e.Node);
+                    node.StateImageIndex = 1;
+                    node.HasChildren = false;
+                }
+
+                this.tlData.EndUnboundLoad();
+            }
         }
-        
+
         /// <summary>
         /// 节点选择
         /// </summary>

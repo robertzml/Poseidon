@@ -53,7 +53,26 @@ namespace Poseidon.Winform.Client
 
             this.currentCategory = BusinessFactory<DictCategoryBusiness>.Instance.FindById(id);
             this.txtName.Text = this.currentCategory.Name;
+            this.txtCode.Text = "";
             this.txtRemark.Text = this.currentCategory.Remark;
+        }
+
+        /// <summary>
+        /// 选择字典
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeDict_DictSelected(object sender, EventArgs e)
+        {
+            string id = this.treeDict.GetCurrentSelectDictId();
+            if (id == null)
+                return;
+
+            this.currentDict = BusinessFactory<DictBusiness>.Instance.FindById(id);
+            this.txtName.Text = this.currentDict.Name;
+            this.txtCode.Text = this.currentDict.Code;
+            this.txtRemark.Text = this.currentDict.Remark;
+            //this.gridDictItem.SetDataSource(this.currentDict.Data);
         }
 
         /// <summary>
@@ -64,6 +83,7 @@ namespace Poseidon.Winform.Client
         private void btnCategoryAdd_Click(object sender, EventArgs e)
         {
             ChildFormManage.ShowDialogForm(typeof(FrmDictCategoryAdd));
+            this.treeDict.Reload();
         }
 
         /// <summary>
@@ -77,13 +97,29 @@ namespace Poseidon.Winform.Client
                 return;
 
             ChildFormManage.ShowDialogForm(typeof(FrmDictCategoryEdit), new object[] { this.currentCategory.Id });
+            this.treeDict.Reload();
         }
 
-
+        /// <summary>
+        /// 删除分类
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCategoryDelete_Click(object sender, EventArgs e)
         {
 
         }
+
+        /// <summary>
+        /// 添加字典
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDictAdd_Click(object sender, EventArgs e)
+        {
+            ChildFormManage.ShowDialogForm(typeof(FrmDictAdd));
+        }
         #endregion //Event
+
     }
 }

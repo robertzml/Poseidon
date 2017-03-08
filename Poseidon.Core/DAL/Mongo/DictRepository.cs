@@ -14,17 +14,17 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 字典分组数据访问类
+    /// 字典数据访问类
     /// </summary>
-    internal class DictCategoryRepository : AbsctractDALMongo<DictCategory>, IDictCategoryRepository
+    internal class DictRepository : AbsctractDALMongo<Dict>, IDictRepository
     {
         #region Constructor
         /// <summary>
-        /// 字典分组数据访问类
+        /// 字典数据访问类
         /// </summary>
-        public DictCategoryRepository()
+        public DictRepository()
         {
-            this.collectionName = "core_dictCategory";
+            this.collectionName = "core_dict";
         }
         #endregion //Constructor
 
@@ -34,13 +34,30 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="doc">Bson文档</param>
         /// <returns></returns>
-        protected override DictCategory DocToEntity(BsonDocument doc)
+        protected override Dict DocToEntity(BsonDocument doc)
         {
-            DictCategory entity = new DictCategory();
+            Dict entity = new Dict();
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
+            entity.Code = doc["code"].ToString();
+            entity.CategoryId = doc["categoryId"].ToString();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
+
+            entity.Items = new List<DictItem>();
+            if (doc.Contains("data"))
+            {
+                BsonArray array = doc["data"].AsBsonArray;
+                foreach (BsonDocument item in array)
+                {
+                    entity.Items.Add(new DictItem
+                    {
+                        Key = item["key"].ToInt32(),
+                        Value = item["value"].ToString(),
+                        Remark = item["remark"].ToString()
+                    });
+                }
+            }
 
             return entity;
         }
@@ -50,14 +67,32 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        protected override BsonDocument EntityToDoc(DictCategory entity)
+        protected override BsonDocument EntityToDoc(Dict entity)
         {
             BsonDocument doc = new BsonDocument
             {
                 { "name", entity.Name },
+                { "code", entity.Code },
+                { "categoryId", entity.CategoryId },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };
+
+            if (entity.Items != null && entity.Items.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Items)
+                {
+                    BsonDocument sub = new BsonDocument
+                    {
+                        { "key", item.Key },
+                        { "value", item.Value },
+                        { "remark", item.Remark }
+                    };
+                    array.Add(sub);
+                }
+                doc.Add("data", array);
+            }
 
             return doc;
         }
@@ -65,17 +100,17 @@ namespace Poseidon.Core.DAL.Mongo
         /// <summary>
         /// 检查重复项
         /// </summary>
-        /// <param name="entity">分组实体</param>
+        /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        private bool CheckDuplicate(DictCategory entity)
+        private bool CheckDuplicate(Dict entity)
         {
             var builder = Builders<BsonDocument>.Filter;
             FilterDefinition<BsonDocument> filter;
 
             if (entity.Id == null)
-                filter = builder.Eq("name", entity.Name);
+                filter = builder.Eq("code", entity.Code);
             else
-                filter = builder.Eq("name", entity.Name) & builder.Ne("_id", new ObjectId(entity.Id));
+                filter = builder.Eq("code", entity.Code) & builder.Ne("_id", new ObjectId(entity.Id));
 
             long count = Count(filter);
             if (count > 0)
@@ -87,14 +122,14 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
-        /// 添加分类
+        /// 添加字典
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override void Create(DictCategory entity)
+        public override void Create(Dict entity)
         {
             if (!CheckDuplicate(entity))
-                throw new PoseidonException(ErrorCode.DuplicateName);
+                throw new PoseidonException(ErrorCode.DuplicateCode);
 
             entity.Status = 0;
             base.Create(entity);
@@ -102,14 +137,14 @@ namespace Poseidon.Core.DAL.Mongo
         }
 
         /// <summary>
-        /// 编辑分类
+        /// 编辑字典
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override bool Update(DictCategory entity)
+        public override bool Update(Dict entity)
         {
             if (!CheckDuplicate(entity))
-                throw new PoseidonException(ErrorCode.DuplicateName);
+                throw new PoseidonException(ErrorCode.DuplicateCode);
 
             return base.Update(entity);
         }

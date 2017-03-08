@@ -76,6 +76,12 @@
     <Compile Include="Control\DictTree.Designer.cs">
       <DependentUpon>DictTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\DictItemGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DictItemGrid.Designer.cs">
+      <DependentUpon>DictItemGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -98,6 +104,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Control\DictItemGrid.resx">
+      <DependentUpon>DictItemGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\DictTree.resx">
       <DependentUpon>DictTree.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,9 +123,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Poseidon.Core.DL.DictItem.datasource" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
-    <None Include="Properties\DataSources\Poseidon.Core.DL.ModelType.datasource" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.Organization.datasource" />
+    <None Include="Properties\DataSources\Poseidon.Winform.Core.Model.DictItem.datasource" />
     <None Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

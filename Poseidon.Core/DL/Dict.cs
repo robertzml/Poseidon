@@ -12,15 +12,9 @@ namespace Poseidon.Core.DL
     /// <summary>
     /// 字典类
     /// </summary>
-    public class Dict : BaseEntity
+    public class Dict : ObjectEntity
     {
         #region Property
-        /// <summary>
-        /// 名称
-        /// </summary>
-        [Display(Name = "名称")]
-        public string Name { get; set; }
-
         /// <summary>
         /// 代码
         /// </summary>
@@ -37,13 +31,31 @@ namespace Poseidon.Core.DL
         /// 字典项
         /// </summary>
         [Display(Name = "字典项")]
-        public Dictionary<string, object> Data { get; set; }
+        public List<DictItem> Items { get; set; }
+        #endregion //Property
+    }
+
+    /// <summary>
+    /// 字典项类
+    /// </summary>
+    public class DictItem : BaseEntity
+    {
+        /// <summary>
+        /// 键
+        /// </summary>
+        [Display(Name = "键")]
+        public int Key { get; set; }
+
+        /// <summary>
+        /// 值
+        /// </summary>
+        [Display(Name = "值")]
+        public string Value { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
         [Display(Name = "备注")]
         public string Remark { get; set; }
-        #endregion //Property
     }
 }
