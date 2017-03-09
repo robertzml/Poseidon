@@ -105,9 +105,20 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public long Count<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            string sql = string.Format("SELECT COUNT(*) FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
+            this.sqlite.AddParameter(field, value, PoseidonUtil.TypeToDbType(value.GetType()));
+
+            var obj = this.sqlite.ExecuteScalar(sql);
+            return Convert.ToInt32(obj);
         }
 
         /// <summary>
@@ -145,9 +156,39 @@ namespace Poseidon.Data
             return;
         }
 
+        /// <summary>
+        /// 更新对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        /// <remarks>采用主键Id进行限定</remarks>
         public bool Update(T entity)
         {
-            throw new NotImplementedException();
+            var hash = EntityToHash(entity);
+            if (hash == null || hash.Count < 1)
+                return false;
+
+            string setValue = "";
+            foreach (string field in hash.Keys)
+            {
+                if (field == "Id")
+                    continue;
+                setValue += string.Format("[{0}] = {1}{2},", field, parameterPrefix, field);
+            }
+
+            setValue = setValue.Substring(0, setValue.Length - 1);
+            string sql = string.Format("UPDATE {0} SET {1} WHERE [id] = {2}id", this.tableName, setValue, parameterPrefix);
+
+            foreach (string field in hash.Keys)
+            {
+                object val = hash[field];
+                val = val ?? DBNull.Value;
+
+                this.sqlite.AddParameter(field, val, PoseidonUtil.TypeToDbType(val.GetType()));
+            }
+
+            this.sqlite.ExecuteNonQuery(sql);
+            return true;
         }
 
         public bool Delete(T entity)

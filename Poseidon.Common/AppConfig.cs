@@ -57,15 +57,10 @@ namespace Poseidon.Common
         /// <returns></returns>
         public static string GetAppSetting(string key)
         {
-            foreach (string item in config.AppSettings.Settings.AllKeys)
-            {
-                if (item == key)
-                {
-                    return config.AppSettings.Settings[key].Value.ToString();
-                }
-            }
-
-            return "";
+            if (config.AppSettings.Settings.AllKeys.Contains(key))
+                return config.AppSettings.Settings[key].Value.ToString();
+            else
+                return "";
         }
 
         /// <summary>

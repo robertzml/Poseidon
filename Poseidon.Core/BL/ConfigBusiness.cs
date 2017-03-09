@@ -44,6 +44,16 @@ namespace Poseidon.Core.BL
         {
             return this.baseDal.FindOneByField("name", name);
         }
+
+        /// <summary>
+        /// 检查是否存在配置
+        /// </summary>
+        /// <param name="name">配置字段名</param>
+        /// <returns></returns>
+        public bool HaveConfig(string name)
+        {
+            return this.baseDal.Count("name", name) > 0;
+        }
         #endregion //Method
     }
 }

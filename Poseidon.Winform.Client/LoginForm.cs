@@ -13,6 +13,7 @@ namespace Poseidon.Winform.Client
     using Poseidon.Common;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
+    using Poseidon.Core.Utility;
     using Poseidon.Winform.Base;
 
     /// <summary>
@@ -35,6 +36,29 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 载入记住用户名密码
+        /// </summary>
+        private void LoadRemember()
+        {
+            if (ConfigUtility.CheckRememberUser())
+            {
+                this.txtUserName.Text = ConfigUtility.GetRememberUserName();
+                this.txtPassword.Text = ConfigUtility.GetRememberPassword();
+            }
+        }
+
+        /// <summary>
+        /// 记住用户名密码
+        /// </summary>
+        private void SaveRemember()
+        {
+            if (ConfigUtility.CheckRememberUser())
+                ConfigUtility.UpdateRememberUser(this.txtUserName.Text, this.txtPassword.Text);
+            else
+                ConfigUtility.SaveRememberUser(this.txtUserName.Text, this.txtPassword.Text);
+        }
+
         /// <summary>
         /// 输入检查
         /// </summary>
@@ -67,8 +91,7 @@ namespace Poseidon.Winform.Client
         /// <param name="e"></param>
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.txtUserName.Text = "admin";
-            this.txtPassword.Text = "123";
+            LoadRemember();
         }
 
         /// <summary>
@@ -83,6 +106,11 @@ namespace Poseidon.Winform.Client
 
             if (result)
             {
+                if (this.chkRemember.Checked)
+                {
+                    SaveRemember();
+                }
+
                 this.user = BusinessFactory<UserBusiness>.Instance.FindByUserName(this.txtUserName.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
