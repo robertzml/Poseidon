@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace Poseidon.Base.Utility
     /// </summary>
     public static class PoseidonUtil
     {
+        #region Method
         /// <summary>
         /// 根据字符串获取类型
         /// </summary>
@@ -118,5 +120,32 @@ namespace Poseidon.Base.Utility
             // Expected to throw an exception in case the type has not been recognized.
             return Type.GetType(parsedTypeName);
         }
+
+        /// <summary>
+        /// 转换.NET的对象类型到数据库类型
+        /// </summary>
+        /// <param name="t">.NET的对象类型</param>
+        /// <returns></returns>
+        public static DbType TypeToDbType(Type t)
+        {
+            DbType dbt;
+            try
+            {
+                if (t.Name.ToLower() == "byte[]")
+                {
+                    dbt = DbType.Binary;
+                }
+                else
+                {
+                    dbt = (DbType)Enum.Parse(typeof(DbType), t.Name);
+                }
+            }
+            catch
+            {
+                dbt = DbType.String;
+            }
+            return dbt;
+        }
+        #endregion //Method
     }
 }

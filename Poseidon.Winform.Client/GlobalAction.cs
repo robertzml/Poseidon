@@ -8,6 +8,7 @@ namespace Poseidon.Winform.Client
 {
     using Poseidon.Base.System;
     using Poseidon.Core.DL;
+    using Poseidon.Core.Utility;
     using Poseidon.Common;
 
     /// <summary>
@@ -24,6 +25,15 @@ namespace Poseidon.Winform.Client
         #endregion //Constructor
 
         #region Method
+        /// <summary>
+        /// 全局初始化
+        /// </summary>
+        public static void Initialize()
+        {
+            //ConfigUtility.SetConnectionString("mongodb://uposeidon:pose.170308!@210.28.16.82:27015/poseidon");
+
+        }
+
         /// <summary>
         /// 设置登录用户
         /// </summary>

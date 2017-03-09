@@ -39,7 +39,28 @@ namespace Poseidon.Common
                 throw new ArgumentNullException("assemblyString", string.Format("无法加载AssemblyString = {0} 的程序集", assemblyString));
             }
 
-            T obj = (T)assemblyObj.CreateInstance(name); //反射创建 
+            //反射创建
+            T obj = (T)assemblyObj.CreateInstance(name);
+            return obj;
+        }
+
+        /// <summary>
+        /// 根据全名,路径,参数构造对象
+        /// </summary>
+        /// <param name="name">对象全名</param>
+        /// <param name="assemblyString">程序集名称</param>
+        /// <param name="args">构造函数参数</param>
+        /// <returns></returns>
+        private static T CreateInstance(string name, string assemblyString, object[] args)
+        {
+            Assembly assemblyObj = Assembly.Load(assemblyString);
+            if (assemblyObj == null)
+            {
+                throw new ArgumentNullException("assemblyString", string.Format("无法加载AssemblyString = {0} 的程序集", assemblyString));
+            }
+
+            //反射创建
+            T obj = (T)assemblyObj.CreateInstance(name, false, BindingFlags.Default, null, args, null, null);
             return obj;
         }
         #endregion //Function
@@ -74,17 +95,56 @@ namespace Poseidon.Common
                     lock (syncRoot)
                     {
                         objType = CreateInstance(cacheKey, assemblyString);
-                        objCache.Add(cacheKey, objType);//缓存数据访问对象
+                        //缓存数据访问对象
+                        objCache.Add(cacheKey, objType);
                     }
                 }
                 else
                 {
-                    objType = (T)objCache[cacheKey];    //从缓存读取 
+                    //从缓存读取
+                    objType = (T)objCache[cacheKey];
                 }
             }
             else
             {
                 objType = CreateInstance(name, assemblyString);
+            }
+
+            return objType;
+        }
+
+        /// <summary>
+        /// 根据参数创建对象实例
+        /// </summary>
+        /// <param name="name">对象全局名称</param>
+        /// <param name="assemblyString">程序集名称</param>
+        /// <param name="args">构造函数参数</param>
+        /// <param name="bCache">是否用缓存</param>
+        /// <returns></returns>
+        public static T Create(string name, string assemblyString, object[] args, bool bCache)
+        {
+            string cacheKey = name;
+            T objType = null;
+            if (bCache)
+            {
+                if (!objCache.ContainsKey(cacheKey))
+                {
+                    lock (syncRoot)
+                    {
+                        objType = CreateInstance(cacheKey, assemblyString, args);
+                        //缓存数据访问对象
+                        objCache.Add(cacheKey, objType);
+                    }
+                }
+                else
+                {
+                    //从缓存读取
+                    objType = (T)objCache[cacheKey];
+                }
+            }
+            else
+            {
+                objType = CreateInstance(name, assemblyString, args);
             }
 
             return objType;

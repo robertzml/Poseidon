@@ -11,8 +11,6 @@ namespace Poseidon.Winform.Client
 
     static class Program
     {
-
-
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -26,6 +24,10 @@ namespace Poseidon.Winform.Client
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+
+            GlobalAction.Initialize();
+
+           
 
             LoginForm login = new LoginForm();
             if (login.ShowDialog() == DialogResult.OK)

@@ -44,7 +44,49 @@ namespace Poseidon.Base.Framework
             T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
             return o;
         }
+
+        /// <summary>
+        /// 载入指定数据访问程序集
+        /// </summary>
+        /// <param name="prefix">数据访问层前缀</param>
+        /// <returns></returns>
+        private static T LoadAssembly(string prefix)
+        {
+            prefix = "DAL." + prefix;
+
+            string name = typeof(T).Name;
+            string insName = typeof(T).Name.Remove(0, 1); //Remove the first 'I' character
+
+            string fullName = typeof(T).FullName;
+            fullName = fullName.Replace("IDAL", prefix).Replace(name, insName); //bind new instance name
+
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
+            return o;
+        }
         #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 创建业务类的实例，不缓存
+        /// </summary>
+        /// <param name="prefix">数据访问层前缀</param>
+        /// <returns></returns>
+        public static T GetInstance(string prefix)
+        {
+            T dal = null;
+            if (dal == null)
+            {
+                lock (syncRoot)
+                {
+                    if (dal == null)
+                    {
+                        dal = LoadAssembly(prefix);
+                    }
+                }
+            }
+            return dal;
+        }
+        #endregion //Method
 
         #region Property
         /// <summary>
@@ -55,7 +97,8 @@ namespace Poseidon.Base.Framework
             get
             {
                 string cacheKey = typeof(T).FullName;
-                T dal = (T)objCache[cacheKey];　 //从缓存读取  
+                //从缓存读取
+                T dal = (T)objCache[cacheKey];
                 if (dal == null)
                 {
                     lock (syncRoot)

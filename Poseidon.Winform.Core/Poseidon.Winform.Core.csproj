@@ -123,6 +123,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.DictItem.datasource" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.Group.datasource" />
     <None Include="Properties\DataSources\Poseidon.Core.DL.Organization.datasource" />
