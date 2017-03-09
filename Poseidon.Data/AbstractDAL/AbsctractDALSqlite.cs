@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 
@@ -43,18 +43,11 @@ namespace Poseidon.Data
 
         #region Function
         /// <summary>
-        /// Hashtable转实体对象
-        /// </summary>
-        /// <param name="table">Hashtable</param>
-        /// <returns></returns>
-        protected abstract T HashToEntity(Hashtable table);
-
-        /// <summary>
         /// Reader转实体对象
         /// </summary>
         /// <param name="reader">Reader</param>
         /// <returns></returns>
-        protected abstract T ReaderToEntity(SqlDataReader reader);
+        protected abstract T ReaderToEntity(SQLiteDataReader reader);
 
         /// <summary>
         /// 实体对象转Hashtable
@@ -84,11 +77,21 @@ namespace Poseidon.Data
         /// <returns></returns>
         public T FindOneByField<Tvalue>(string field, Tvalue value)
         {
-            string sql = string.Format("SELECT * FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, value);
+            string sql = string.Format("SELECT * FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
+            this.sqlite.AddParameter(field, value, PoseidonUtil.TypeToDbType(value.GetType()));
 
             var reader = this.sqlite.ExecuteReader(sql);
-
-            throw new NotImplementedException();
+            if (reader.Read())
+            {
+                T entity = ReaderToEntity(reader);
+                reader.Close();
+                return entity;
+            }
+            else
+            {
+                reader.Close();
+                return null;
+            }
         }
 
 

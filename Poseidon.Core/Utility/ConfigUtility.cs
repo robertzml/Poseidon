@@ -18,6 +18,9 @@ namespace Poseidon.Core.Utility
     public static class ConfigUtility
     {
         #region Field
+        /// <summary>
+        /// 配置业务对象，使用本地Sqlite
+        /// </summary>
         private static ConfigBusiness configBusiness;
         #endregion //Field
 
@@ -32,13 +35,14 @@ namespace Poseidon.Core.Utility
         /// <summary>
         /// 设置连接字符串
         /// </summary>
+        /// <param name="connectionName">字符串名称</param>
         /// <param name="connectionString">连接字符串</param>
-        public static void SetConnectionString(string connectionString)
+        public static void SetConnectionString(string connectionName, string connectionString)
         {
             Config config = new Config
             {
                 Id = ObjectId.GenerateNewId().ToString(),
-                Name = "Connection",
+                Name = connectionName,
                 Value = connectionString,
                 Remark = "连接字符串"
             };
@@ -46,9 +50,17 @@ namespace Poseidon.Core.Utility
             configBusiness.Create(config);
         }
 
-        public static string GetConnectionString()
+        /// <summary>
+        /// 获取连接字符串
+        /// </summary>
+        /// <returns></returns>
+        public static string GetConnectionString(string connectionName)
         {
-            return "";
+            var config = configBusiness.FindByName(connectionName);
+            if (config == null)
+                return "";
+            else
+                return config.Value;
         }
         #endregion //Method
     }

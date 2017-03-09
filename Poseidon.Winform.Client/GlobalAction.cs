@@ -30,8 +30,22 @@ namespace Poseidon.Winform.Client
         /// </summary>
         public static void Initialize()
         {
-            //ConfigUtility.SetConnectionString("mongodb://uposeidon:pose.170308!@210.28.16.82:27015/poseidon");
+            // 设置连接字符串
+            string source = AppConfig.GetAppSetting("ConnectionSource");
+            string connection = "";
+            if (source == "dbconfig")
+            {
+                string name = AppConfig.GetAppSetting("DbConnection");
+                connection = ConfigUtility.GetConnectionString(name);
+                if (string.IsNullOrEmpty(connection))
+                    throw new PoseidonException(ErrorCode.DatabaseConnectionNotFound);
+            }
+            else if (source == "appconfig")
+            {
+                connection = AppConfig.GetConnectionString();
+            }
 
+            Cache.Instance.Add("ConnectionString", connection);
         }
 
         /// <summary>

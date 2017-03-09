@@ -27,8 +27,6 @@ namespace Poseidon.Winform.Client
 
             GlobalAction.Initialize();
 
-           
-
             LoginForm login = new LoginForm();
             if (login.ShowDialog() == DialogResult.OK)
             {

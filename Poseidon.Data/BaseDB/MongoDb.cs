@@ -8,6 +8,7 @@ namespace Poseidon.Data.BaseDB
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
+    using Poseidon.Base.System;
     using Poseidon.Common;
 
     /// <summary>
@@ -30,7 +31,7 @@ namespace Poseidon.Data.BaseDB
         #region Constructor
         static MongoDb()
         {
-            string connectionString = GetConnectionString();
+            string connectionString = GetConnectionFromCache();
             client = new MongoClient(connectionString);
         }
         #endregion //Constructor
@@ -40,9 +41,21 @@ namespace Poseidon.Data.BaseDB
         /// 获取配置连接字符串
         /// </summary>
         /// <returns></returns>
-        private static string GetConnectionString()
+        private static string GetConnectionStringFromConfig()
         {
             return AppConfig.GetConnectionString();
+        }
+
+        /// <summary>
+        /// 从缓存获取连接字符串
+        /// </summary>
+        /// <returns></returns>
+        private static string GetConnectionFromCache()
+        {
+            if (!Cache.Instance.ContainKey("ConnectionString"))
+                throw new PoseidonException(ErrorCode.DatabaseConnectionNotFound);
+            else
+                return Cache.Instance["ConnectionString"].ToString();
         }
         #endregion //Function
 

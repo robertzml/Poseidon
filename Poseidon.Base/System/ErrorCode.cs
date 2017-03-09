@@ -89,6 +89,12 @@ namespace Poseidon.Base.System
         /// </summary>
         [Display(Name = "未选择记录")]
         EmptySelect = 12,
+
+        /// <summary>
+        /// 数据库连接未找到
+        /// </summary>
+        [Display(Name = "数据库连接未找到")]
+        DatabaseConnectionNotFound = 20
         #endregion //System
     }
 }

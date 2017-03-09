@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Poseidon.Core.DAL.Sqlite
     /// <summary>
     /// 配置数据访问类
     /// </summary>
-    internal class ConfigRepository: AbsctractDALSqlite<Config>, IConfigRepository
+    internal class ConfigRepository : AbsctractDALSqlite<Config>, IConfigRepository
     {
         #region Constructor
         /// <summary>
@@ -30,34 +31,18 @@ namespace Poseidon.Core.DAL.Sqlite
 
         #region Function
         /// <summary>
-        /// Hashtable转实体对象
-        /// </summary>
-        /// <param name="table">Hashtable</param>
-        /// <returns></returns>
-        protected override Config HashToEntity(Hashtable table)
-        {
-            return null;
-        }
-
-        /// <summary>
         /// Reader转实体对象
         /// </summary>
         /// <param name="reader">Reader</param>
         /// <returns></returns>
-        protected override Config ReaderToEntity(SqlDataReader reader)
+        protected override Config ReaderToEntity(SQLiteDataReader reader)
         {
             Config entity = new Config();
 
-            //reader.g.GetString()
-            ////SmartDataReader reader = new SmartDataReader(dataReader);
-
-            //info.WorkFlowInsID = reader.GetString("WorkFlowInsID");
-            //info.WorkFlowID = reader.GetString("WorkFlowID");
-            //info.WorkFlowNo = reader.GetString("WorkFlowNo");
-            //info.FlowInsCaption = reader.GetString("FlowInsCaption");
-            //info.Description = reader.GetString("Description");
-            //info.Priority = reader.GetString("Priority");
-            //info.Status = reader.GetString("Status");
+            entity.Id = reader["id"].ToString();
+            entity.Name = reader["name"].ToString();
+            entity.Value = reader["value"].ToString();
+            entity.Remark = reader["remark"].ToString();
 
             return entity;
         }

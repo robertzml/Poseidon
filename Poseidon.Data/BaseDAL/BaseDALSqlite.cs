@@ -227,7 +227,7 @@ namespace Poseidon.Data.BaseDAL
             }
             finally
             {
-                this.db.Close();
+                //this.db.Close();
                 this.parameters.Clear();
             }
 
