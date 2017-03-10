@@ -126,6 +126,19 @@ namespace Poseidon.Winform.Client
         }
 
         /// <summary>
+        /// 支出单据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bbiExpenseReceipt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string assemblyName = "Poseidon.Energy.ClientDx";
+            string typeName = "Poseidon.Energy.ClientDx.FrmExpenseReceipt";
+
+            ChildFormManage.LoadMdiForm(this, assemblyName, typeName);
+        }
+
+        /// <summary>
         /// 支出账户
         /// </summary>
         /// <param name="sender"></param>
@@ -191,5 +204,6 @@ namespace Poseidon.Winform.Client
         #endregion //Ribbon Event
 
         #endregion //Event
+
     }
 }

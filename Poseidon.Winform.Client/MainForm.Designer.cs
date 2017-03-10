@@ -42,6 +42,8 @@
             this.bbiTargetMake = new DevExpress.XtraBars.BarButtonItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExpenseOv = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDictOv = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExpenseReceipt = new DevExpress.XtraBars.BarButtonItem();
             this.rpTarget = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgTargetEnergy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgTargetBase = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -54,7 +56,6 @@
             this.rpgPrivilege = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiDictOv = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdiManager)).BeginInit();
             this.SuspendLayout();
@@ -75,9 +76,10 @@
             this.bbiTargetMake,
             this.bbiUserAdd,
             this.bbiExpenseOv,
-            this.bbiDictOv});
+            this.bbiDictOv,
+            this.bbiExpenseReceipt});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 29;
+            this.ribbonControl.MaxItemId = 30;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpTarget,
@@ -194,6 +196,26 @@
             this.bbiExpenseOv.Name = "bbiExpenseOv";
             this.bbiExpenseOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExpenseOv_ItemClick);
             // 
+            // bbiDictOv
+            // 
+            this.bbiDictOv.Caption = "字典总览";
+            this.bbiDictOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiDictOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiDictOv.Glyph")));
+            this.bbiDictOv.Id = 28;
+            this.bbiDictOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiDictOv.LargeGlyph")));
+            this.bbiDictOv.Name = "bbiDictOv";
+            this.bbiDictOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDictOv_ItemClick);
+            // 
+            // bbiExpenseReceipt
+            // 
+            this.bbiExpenseReceipt.Caption = "支出单据";
+            this.bbiExpenseReceipt.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.bbiExpenseReceipt.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiExpenseReceipt.Glyph")));
+            this.bbiExpenseReceipt.Id = 29;
+            this.bbiExpenseReceipt.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiExpenseReceipt.LargeGlyph")));
+            this.bbiExpenseReceipt.Name = "bbiExpenseReceipt";
+            this.bbiExpenseReceipt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExpenseReceipt_ItemClick);
+            // 
             // rpTarget
             // 
             this.rpTarget.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -227,6 +249,7 @@
             // rpgExpenseInfo
             // 
             this.rpgExpenseInfo.ItemLinks.Add(this.bbiExpenseOv);
+            this.rpgExpenseInfo.ItemLinks.Add(this.bbiExpenseReceipt);
             this.rpgExpenseInfo.ItemLinks.Add(this.bbiExpenseAccount);
             this.rpgExpenseInfo.Name = "rpgExpenseInfo";
             this.rpgExpenseInfo.Text = "基本信息";
@@ -279,16 +302,6 @@
             this.tabMdiManager.MdiParent = this;
             this.tabMdiManager.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InActiveTabPageHeader;
             // 
-            // bbiDictOv
-            // 
-            this.bbiDictOv.Caption = "字典总览";
-            this.bbiDictOv.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
-            this.bbiDictOv.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiDictOv.Glyph")));
-            this.bbiDictOv.Id = 28;
-            this.bbiDictOv.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiDictOv.LargeGlyph")));
-            this.bbiDictOv.Name = "bbiDictOv";
-            this.bbiDictOv.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDictOv_ItemClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -296,6 +309,7 @@
             this.ClientSize = new System.Drawing.Size(924, 588);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControl;
@@ -337,6 +351,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgPrivilege;
         private DevExpress.XtraBars.BarButtonItem bbiExpenseOv;
         private DevExpress.XtraBars.BarButtonItem bbiDictOv;
+        private DevExpress.XtraBars.BarButtonItem bbiExpenseReceipt;
     }
 }
 
