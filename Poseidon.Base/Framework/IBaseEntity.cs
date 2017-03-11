@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
     /// <summary>
-    /// 基础对象类
+    /// 基础对象接口
     /// </summary>
-    public abstract class BaseEntity : IBaseEntity<string>
+    /// <typeparam name="Tkey">主键类型</typeparam>
+    public interface IBaseEntity<Tkey>
     {
-        #region Property
         /// <summary>
-        /// ID
+        /// 主键
         /// </summary>
-        public virtual string Id { get; set; }
-        #endregion //Property
+        Tkey Id { get; set; }
     }
 }

@@ -8,21 +8,16 @@ namespace Poseidon.Base.Framework
     /// <summary>
     /// 数据库数据访问层基础接口
     /// </summary>
-    public interface IBaseDAL<T> where T : BaseEntity
+    /// <typeparam name="T">实体类型</typeparam>
+    /// <typeparam name="Tkey">主键类型</typeparam>
+    public interface IBaseDAL<T, Tkey> where T : IBaseEntity<Tkey>
     {
         /// <summary>
         /// 根据ID查找对象
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        T FindById(object id);
-
-        /// <summary>
-        /// 根据ID查找对象
-        /// </summary>
-        /// <param name="id">ID</param>
-        /// <returns></returns>
-        T FindById(string id);
+        T FindById(Tkey id);
 
         /// <summary>
         /// 根据某一字段查找对象
@@ -95,5 +90,14 @@ namespace Poseidon.Base.Framework
         /// <param name="value">值</param>
         /// <returns></returns>
         bool DeleteMany<Tvalue>(string field, Tvalue value);
+    }
+
+    /// <summary>
+    /// 默认数据库数据访问层基础接口
+    /// 主键类型为string
+    /// </summary>
+    /// <typeparam name="T">实体类型</typeparam>
+    public interface IBaseDAL<T> : IBaseDAL<T, string> where T : BaseEntity
+    {
     }
 }

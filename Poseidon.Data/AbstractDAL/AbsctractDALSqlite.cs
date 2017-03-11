@@ -58,11 +58,6 @@ namespace Poseidon.Data
         #endregion //Function
 
         #region Method
-        public T FindById(object id)
-        {
-            throw new NotImplementedException();
-        }
-
         public T FindById(string id)
         {
             throw new NotImplementedException();

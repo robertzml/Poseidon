@@ -10,13 +10,15 @@ namespace Poseidon.Base.Framework
     /// <summary>
     /// 抽象业务类
     /// </summary>
-    public abstract class AbsctractBusiness<T> where T : BaseEntity
+    /// <typeparam name="T">实体类型</typeparam>
+    /// <typeparam name="Tkey">主键类型</typeparam>
+    public abstract class AbsctractBusiness<T, Tkey> where T : IBaseEntity<Tkey>
     {
         #region Field
         /// <summary>
         /// 数据访问接口
         /// </summary>
-        protected IBaseDAL<T> baseDal;
+        protected IBaseDAL<T, Tkey> baseDal;
         #endregion //Field
 
         #region Method
@@ -25,7 +27,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public virtual T FindById(string id)
+        public virtual T FindById(Tkey id)
         {
             return this.baseDal.FindById(id);
         }
@@ -69,5 +71,13 @@ namespace Poseidon.Base.Framework
             return this.baseDal.Delete(entity);
         }
         #endregion //Method
+    }
+
+    /// <summary>
+    /// 抽象业务类
+    /// </summary>
+    /// <typeparam name="T">实体类型</typeparam>
+    public abstract class AbsctractBusiness<T> : AbsctractBusiness<T, string> where T : BaseEntity
+    {
     }
 }

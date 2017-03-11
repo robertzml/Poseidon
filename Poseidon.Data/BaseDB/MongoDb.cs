@@ -32,7 +32,7 @@ namespace Poseidon.Data.BaseDB
         static MongoDb()
         {
             string connectionString = GetConnectionFromCache();
-            client = new MongoClient(connectionString);
+            client = new MongoClient(connectionString);            
         }
         #endregion //Constructor
 

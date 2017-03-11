@@ -47,6 +47,7 @@
     <Compile Include="Framework\BusinessEntity.cs" />
     <Compile Include="Framework\BusinessFactory.cs" />
     <Compile Include="Framework\IBaseDAL.cs" />
+    <Compile Include="Framework\IBaseEntity.cs" />
     <Compile Include="Framework\ObjectEntity.cs" />
     <Compile Include="System\LoginUser.cs" />
     <Compile Include="System\PoseidonException.cs" />

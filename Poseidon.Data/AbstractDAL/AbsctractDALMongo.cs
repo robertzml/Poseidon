@@ -58,18 +58,6 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public virtual T FindById(object id)
-        {
-            var doc = this.mongo.FindById(this.collectionName, id.ToString());
-            var entity = DocToEntity(doc);
-            return entity;
-        }
-
-        /// <summary>
-        /// 根据ID查找对象
-        /// </summary>
-        /// <param name="id">ID</param>
-        /// <returns></returns>
         public virtual T FindById(string id)
         {
             var doc = this.mongo.FindById(this.collectionName, id);
