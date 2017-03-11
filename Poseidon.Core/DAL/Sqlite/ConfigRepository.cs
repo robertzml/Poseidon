@@ -12,12 +12,12 @@ namespace Poseidon.Core.DAL.Sqlite
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
-    using System.Data.SqlClient;
+   
 
     /// <summary>
     /// 配置数据访问类
     /// </summary>
-    internal class ConfigRepository : AbsctractDALSqlite<Config>, IConfigRepository
+    internal class ConfigRepository : AbstractDALSqlite<Config>, IConfigRepository
     {
         #region Constructor
         /// <summary>

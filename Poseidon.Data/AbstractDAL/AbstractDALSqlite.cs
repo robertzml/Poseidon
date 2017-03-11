@@ -15,7 +15,7 @@ namespace Poseidon.Data
     /// Sqlite抽象数据访问类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class AbsctractDALSqlite<T> : IBaseDAL<T> where T : BaseEntity
+    public abstract class AbstractDALSqlite<T> : IBaseDAL<T> where T : BaseEntity
     {
         #region Field
         /// <summary>
@@ -35,7 +35,7 @@ namespace Poseidon.Data
         #endregion //Field
 
         #region Constructor
-        public AbsctractDALSqlite()
+        public AbstractDALSqlite()
         {
             this.sqlite = new BaseDALSqlite();
         }
