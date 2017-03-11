@@ -7,15 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Base", "Poseidon.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Data", "Poseidon.Data\Poseidon.Data.csproj", "{6ABE6B44-57DC-473F-B406-8E4772B08A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Client", "Poseidon.Winform.Client\Poseidon.Winform.Client.csproj", "{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Base", "Poseidon.Winform.Base\Poseidon.Winform.Base.csproj", "{7650E6F8-D821-4281-949C-1F9005F4FB32}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Common", "Poseidon.Common\Poseidon.Common.csproj", "{FA99B824-E554-400F-A8D3-44FFDE8FD795}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Core", "Poseidon.Core\Poseidon.Core.csproj", "{7FB974EE-5F0E-45BB-B773-A34441CC1757}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Winform.Core", "Poseidon.Winform.Core\Poseidon.Winform.Core.csproj", "{A8F51891-8A7C-4881-9C66-8D0A7229CC11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +25,6 @@ Global
 		{6ABE6B44-57DC-473F-B406-8E4772B08A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ABE6B44-57DC-473F-B406-8E4772B08A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ABE6B44-57DC-473F-B406-8E4772B08A4A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63015ED5-4C13-4426-94DE-3DA5F2C4A4A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7650E6F8-D821-4281-949C-1F9005F4FB32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA99B824-E554-400F-A8D3-44FFDE8FD795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA99B824-E554-400F-A8D3-44FFDE8FD795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA99B824-E554-400F-A8D3-44FFDE8FD795}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,10 +33,6 @@ Global
 		{7FB974EE-5F0E-45BB-B773-A34441CC1757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB974EE-5F0E-45BB-B773-A34441CC1757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB974EE-5F0E-45BB-B773-A34441CC1757}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8F51891-8A7C-4881-9C66-8D0A7229CC11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
