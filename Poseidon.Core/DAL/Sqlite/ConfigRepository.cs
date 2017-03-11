@@ -12,7 +12,7 @@ namespace Poseidon.Core.DAL.Sqlite
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
-   
+
 
     /// <summary>
     /// 配置数据访问类
@@ -25,7 +25,7 @@ namespace Poseidon.Core.DAL.Sqlite
         /// </summary>
         public ConfigRepository()
         {
-            this.tableName = "Config";
+            base.Init("Config", ConnectionSource.Code, "");
         }
         #endregion //Constructor
 

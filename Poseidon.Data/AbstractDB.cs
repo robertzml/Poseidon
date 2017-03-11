@@ -13,6 +13,14 @@ namespace Poseidon.Data
     /// </summary>
     public abstract class AbstractDB
     {
+        #region Function
+        /// <summary>
+        /// 获取硬编码连接字符串
+        /// </summary>
+        /// <returns></returns>
+        protected abstract string GetConnectionString();
+        #endregion //Function
+
         #region Method
         /// <summary>
         /// 载入数据库配置信息
@@ -27,6 +35,9 @@ namespace Poseidon.Data
             {
                 case ConnectionSource.Default:
                     cs = AppConfig.GetConnectionString();
+                    break;
+                case ConnectionSource.Code:
+                    cs = GetConnectionString();
                     break;
                 case ConnectionSource.Config:
                     cs = AppConfig.GetConnectionString(key);

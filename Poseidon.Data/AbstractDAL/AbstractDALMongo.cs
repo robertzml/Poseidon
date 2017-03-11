@@ -15,7 +15,7 @@ namespace Poseidon.Data
     /// MongoDB抽象数据访问类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class AbsctractDALMongo<T> : IBaseDAL<T> where T : BaseEntity
+    public abstract class AbstractDALMongo<T> : IBaseDAL<T> where T : BaseEntity
     {
         #region Field
         /// <summary>
@@ -30,7 +30,7 @@ namespace Poseidon.Data
         #endregion //Field
 
         #region Constructor
-        public AbsctractDALMongo()
+        public AbstractDALMongo()
         {
             this.mongo = new BaseDALMongo();
         }

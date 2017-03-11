@@ -13,7 +13,7 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 配置业务类
     /// </summary>
-    public class ConfigBusiness : AbsctractBusiness<Config>
+    public class ConfigBusiness : AbstractBusiness<Config>
     {
         #region Constructor
         /// <summary>

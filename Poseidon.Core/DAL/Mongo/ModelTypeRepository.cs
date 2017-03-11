@@ -16,7 +16,7 @@ namespace Poseidon.Core.DAL.Mongo
     /// <summary>
     /// 模型类型数据访问类
     /// </summary>
-    internal class ModelTypeRepository : AbsctractDALMongo<ModelType>, IModelTypeRepository
+    internal class ModelTypeRepository : AbstractDALMongo<ModelType>, IModelTypeRepository
     {
         #region Constructor
         /// <summary>

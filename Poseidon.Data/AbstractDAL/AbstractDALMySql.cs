@@ -49,18 +49,21 @@ namespace Poseidon.Data
         /// <summary>
         /// 按默认方式初始化
         /// </summary>
-        protected virtual void Init()
+        /// <param name="tableName">对应数据表名称</param>
+        protected virtual void Init(string tableName)
         {
-            Init(ConnectionSource.Default, "");
+            Init(tableName, ConnectionSource.Default, "");
         }
 
         /// <summary>
         /// 按设置进行初始化
         /// </summary>
+        /// <param name="tableName">对应数据表名称</param>
         /// <param name="source">读取来源</param>
         /// <param name="key">读取键</param>
-        protected virtual void Init(ConnectionSource source, string key)
+        protected virtual void Init(string tableName, ConnectionSource source, string key)
         {
+            this.tableName = tableName;
             this.mysql = new MySqlDb(source, key);
         }
 

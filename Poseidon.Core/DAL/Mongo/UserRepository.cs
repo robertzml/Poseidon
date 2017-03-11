@@ -16,7 +16,7 @@ namespace Poseidon.Core.DAL.Mongo
     /// <summary>
     /// 用户对象数据访问类
     /// </summary>
-    internal class UserRepository : AbsctractDALMongo<User>, IUserRepository
+    internal class UserRepository : AbstractDALMongo<User>, IUserRepository
     {
         #region Field
         /// <summary>

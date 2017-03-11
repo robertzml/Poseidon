@@ -14,7 +14,7 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 用户业务类
     /// </summary>
-    public class UserBusiness : AbsctractBusiness<User>
+    public class UserBusiness : AbstractBusiness<User>
     {
         #region Constructor
         /// <summary>

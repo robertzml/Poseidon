@@ -13,7 +13,7 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 模型类型业务类
     /// </summary>
-    public class ModelTypeBusiness : AbsctractBusiness<ModelType>
+    public class ModelTypeBusiness : AbstractBusiness<ModelType>
     {
         #region Constructor
         public ModelTypeBusiness()

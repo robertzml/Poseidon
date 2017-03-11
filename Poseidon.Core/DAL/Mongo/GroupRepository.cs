@@ -16,7 +16,7 @@ namespace Poseidon.Core.DAL.Mongo
     /// <summary>
     /// 分组对象数据访问类
     /// </summary>
-    internal class GroupRepository : AbsctractDALMongo<Group>, IGroupRepository
+    internal class GroupRepository : AbstractDALMongo<Group>, IGroupRepository
     {
         #region Constructor
         /// <summary>

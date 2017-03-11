@@ -13,7 +13,7 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 组织对象业务类
     /// </summary>
-    public class OrganizationBusiness : AbsctractBusiness<Organization>
+    public class OrganizationBusiness : AbstractBusiness<Organization>
     {
         #region Field
 

@@ -13,7 +13,7 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 字典业务类
     /// </summary>
-    public class DictBusiness : AbsctractBusiness<Dict>
+    public class DictBusiness : AbstractBusiness<Dict>
     {
         #region Constructor
         /// <summary>

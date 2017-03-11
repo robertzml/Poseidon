@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\AbsctractBusiness.cs" />
+    <Compile Include="Framework\AbstractBusiness.cs" />
     <Compile Include="Framework\BusinessEntity.cs" />
     <Compile Include="Framework\BusinessFactory.cs" />
     <Compile Include="Framework\IBaseDAL.cs" />

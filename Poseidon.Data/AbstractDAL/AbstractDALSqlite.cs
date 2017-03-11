@@ -9,7 +9,7 @@ namespace Poseidon.Data
 {
     using Poseidon.Base.Framework;
     using Poseidon.Base.Utility;
-    using Poseidon.Data.BaseDAL;
+    using Poseidon.Data.BaseDB;
 
     /// <summary>
     /// Sqlite抽象数据访问类
@@ -21,7 +21,7 @@ namespace Poseidon.Data
         /// <summary>
         /// Sqlite数据访问接口
         /// </summary>
-        private BaseDALSqlite sqlite;
+        private SqliteDb sqlite;
 
         /// <summary>
         /// 关联数据表名称
@@ -37,11 +37,31 @@ namespace Poseidon.Data
         #region Constructor
         public AbstractDALSqlite()
         {
-            this.sqlite = new BaseDALSqlite();
         }
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 按默认方式初始化
+        /// </summary>
+        /// <param name="tableName">对应数据表名称</param>
+        protected virtual void Init(string tableName)
+        {
+            Init(tableName, ConnectionSource.Default, "");
+        }
+
+        /// <summary>
+        /// 按设置进行初始化
+        /// </summary>
+        /// <param name="tableName">对应数据表名称</param>
+        /// <param name="source">读取来源</param>
+        /// <param name="key">读取键</param>
+        protected virtual void Init(string tableName, ConnectionSource source, string key)
+        {
+            this.tableName = tableName;
+            this.sqlite = new SqliteDb(source, key);
+        }
+
         /// <summary>
         /// Reader转实体对象
         /// </summary>

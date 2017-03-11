@@ -16,7 +16,7 @@ namespace Poseidon.Core.DAL.Mongo
     /// <summary>
     /// 字典数据访问类
     /// </summary>
-    internal class DictRepository : AbsctractDALMongo<Dict>, IDictRepository
+    internal class DictRepository : AbstractDALMongo<Dict>, IDictRepository
     {
         #region Constructor
         /// <summary>

@@ -35,9 +35,13 @@ namespace Poseidon.Data.BaseDB
         {
             string connectionString = GetConnectionString();
             this.connection = new MySqlConnection(connectionString);
-          
         }
 
+        /// <summary>
+        /// MySQL数据库访问类
+        /// </summary>
+        /// <param name="source">读取来源</param>
+        /// <param name="key">读取键</param>
         public MySqlDb(ConnectionSource source, string key)
         {
             string cs = LoadDbConfig(source, key);
@@ -59,7 +63,7 @@ namespace Poseidon.Data.BaseDB
         /// 获取连接字符串
         /// </summary>
         /// <returns></returns>
-        private string GetConnectionString()
+        protected override string GetConnectionString()
         {
             return "server = 192.168.0.111; user = hc; database = test_zml; port = 3306; password = webDev; ";
         }

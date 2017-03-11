@@ -16,7 +16,7 @@ namespace Poseidon.Core.DAL.Mongo
     /// <summary>
     /// 组织对象访问类
     /// </summary>
-    internal class OrganizationRepository : AbsctractDALMongo<Organization>, IOrganizationRepository
+    internal class OrganizationRepository : AbstractDALMongo<Organization>, IOrganizationRepository
     {
         #region Constructor
         /// <summary>

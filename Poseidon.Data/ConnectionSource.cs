@@ -22,18 +22,26 @@ namespace Poseidon.Data
         Default = 0,
 
         /// <summary>
+        /// 代码硬编码
+        /// </summary>
+        /// <remarks>
+        /// GetConnectionString方法获取
+        /// </remarks>
+        Code = 1,
+
+        /// <summary>
         /// 配置文件
         /// </summary>
         /// <remarks>
         /// 配置文件指定连接
         /// </remarks>
         [Display(Name = "配置文件")]
-        Config = 1,
+        Config = 2,
 
         /// <summary>
         /// 缓存
         /// </summary>
         [Display(Name = "缓存")]
-        Cache = 2
+        Cache = 3
     }
 }
