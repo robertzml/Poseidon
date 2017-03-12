@@ -120,6 +120,17 @@ namespace Poseidon.Common
                 return GetAppSetting("DbConnection");
             }
         }
+
+        /// <summary>
+        /// 访问类型
+        /// </summary>
+        public static string CallerType
+        {
+            get
+            {
+                return GetAppSetting("CallerType");
+            }
+        }
         #endregion //Property
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace Poseidon.Data
         private string tableName;
 
         /// <summary>
+        /// 主键字段
+        /// </summary>
+        private string primaryKey;
+
+        /// <summary>
         /// 参数占位符
         /// </summary>
         private string parameterPrefix = "@";
@@ -43,36 +49,51 @@ namespace Poseidon.Data
         public AbstractDALMySql()
         {
         }
+
+        /// <summary>
+        /// MySQL抽象数据访问类
+        /// </summary>
+        /// <param name="tableName">数据表名</param>
+        /// <param name="primaryKey">主键字段</param>
+        public AbstractDALMySql(string tableName, string primaryKey)
+        {
+            this.tableName = tableName;
+            this.primaryKey = primaryKey;
+        }
         #endregion //Constructor
 
         #region Function
         /// <summary>
         /// 按默认方式初始化
         /// </summary>
-        /// <param name="tableName">对应数据表名称</param>
-        protected virtual void Init(string tableName)
+        protected virtual void Init()
         {
-            Init(tableName, ConnectionSource.Default, "");
+            Init(ConnectionSource.Default, "");
         }
 
         /// <summary>
         /// 按设置进行初始化
         /// </summary>
-        /// <param name="tableName">对应数据表名称</param>
         /// <param name="source">读取来源</param>
         /// <param name="key">读取键</param>
-        protected virtual void Init(string tableName, ConnectionSource source, string key)
+        protected virtual void Init(ConnectionSource source, string key)
         {
-            this.tableName = tableName;
             this.mysql = new MySqlDb(source, key);
         }
 
         /// <summary>
-        /// Reader转实体对象
+        /// DataReader转实体对象
         /// </summary>
-        /// <param name="reader">Reader</param>
+        /// <param name="reader">DataReader</param>
         /// <returns></returns>
-        protected abstract T ReaderToEntity(MySqlDataReader reader);
+        protected abstract T DataReaderToEntity(MySqlDataReader reader);
+
+        /// <summary>
+        /// DataRow转实体对象
+        /// </summary>
+        /// <param name="row">DataRow</param>
+        /// <returns></returns>
+        protected abstract T DataRowToEntity(DataRow row);
 
         /// <summary>
         /// 实体对象转Hashtable
@@ -83,25 +104,20 @@ namespace Poseidon.Data
         #endregion //Function
 
         #region Method
+        /// <summary>
+        /// 根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
         public T FindById(Tkey id)
         {
-            throw new NotImplementedException();
-        }
-
-        public T FindById(object id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T FindOneByField<Tvalue>(string field, Tvalue value)
-        {
-            string sql = string.Format("SELECT * FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
-            this.mysql.AddParameter(field, value);
+            string sql = string.Format("Select * From {0} Where ({1} = {2}Id)", this.tableName, this.primaryKey, parameterPrefix);
+            this.mysql.AddParameter("Id", id);
 
             var reader = this.mysql.ExecuteReader(sql);
             if (reader.Read())
             {
-                T entity = ReaderToEntity(reader);
+                T entity = DataReaderToEntity(reader);
                 reader.Close();
                 return entity;
             }
@@ -112,9 +128,44 @@ namespace Poseidon.Data
             }
         }
 
+        /// <summary>
+        /// 根据条件查找单条记录
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public T FindOneByField<Tvalue>(string field, Tvalue value)
+        {
+            string sql = string.Format("SELECT * FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
+            this.mysql.AddParameter(field, value);
+
+            var row = this.mysql.ExecuteRow(sql);
+            if (row == null)
+                return default(T);
+
+            T entity = DataRowToEntity(row);
+            return entity;
+        }
+
+        /// <summary>
+        /// 查找所有对象
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<T> FindAll()
         {
-            throw new NotImplementedException();
+            string sql = string.Format("SELECT * FROM {0};", this.tableName);
+
+            var dt = this.mysql.ExecuteQuery(sql);
+
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T entity = DataRowToEntity(row);
+                data.Add(entity);
+            }
+
+            return data;
         }
 
         public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
@@ -127,6 +178,11 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 添加对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
         public void Create(T entity)
         {
             var hash = EntityToHash(entity);
@@ -158,9 +214,39 @@ namespace Poseidon.Data
             return;
         }
 
+        /// <summary>
+        /// 更新对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        /// <remarks>采用主键Id进行限定</remarks>
         public bool Update(T entity)
         {
-            throw new NotImplementedException();
+            var hash = EntityToHash(entity);
+            if (hash == null || hash.Count < 1)
+                return false;
+
+            string setValue = "";
+            foreach (string field in hash.Keys)
+            {
+                if (field == this.primaryKey)
+                    continue;
+                setValue += string.Format("[{0}] = {1}{2},", field, parameterPrefix, field);
+            }
+
+            setValue = setValue.Substring(0, setValue.Length - 1);
+            string sql = string.Format("UPDATE {0} SET {1} WHERE {2} = {3}{2}", this.tableName, setValue, this.primaryKey, parameterPrefix);
+
+            foreach (string field in hash.Keys)
+            {
+                object val = hash[field];
+                val = val ?? DBNull.Value;
+
+                this.mysql.AddParameter(field, val);
+            }
+
+            this.mysql.ExecuteNonQuery(sql);
+            return true;
         }
 
         public bool Delete(T entity)

@@ -75,7 +75,7 @@ namespace Poseidon.Data.BaseDB
         /// </summary>
         public void Open()
         {
-            if (connection.State == System.Data.ConnectionState.Open)
+            if (connection.State == ConnectionState.Open)
                 return;
             connection.Open();
         }
@@ -85,6 +85,8 @@ namespace Poseidon.Data.BaseDB
         /// </summary>
         public void Close()
         {
+            if (connection.State == ConnectionState.Closed)
+                return;
             connection.Close();
         }
 

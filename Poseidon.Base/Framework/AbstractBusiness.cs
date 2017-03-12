@@ -12,7 +12,7 @@ namespace Poseidon.Base.Framework
     /// </summary>
     /// <typeparam name="T">实体类型</typeparam>
     /// <typeparam name="Tkey">主键类型</typeparam>
-    public abstract class AbstractBusiness<T, Tkey> where T : IBaseEntity<Tkey>
+    public abstract class AbstractBusiness<T, Tkey> : IBaseBL<T, Tkey> where T : IBaseEntity<Tkey>
     {
         #region Field
         /// <summary>

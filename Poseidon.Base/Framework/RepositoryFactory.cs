@@ -15,7 +15,7 @@ namespace Poseidon.Base.Framework
     {
         #region Field
         /// <summary>
-        /// 业务类缓存
+        /// 数据类缓存
         /// </summary>
         private static Hashtable objCache = new Hashtable();
 
