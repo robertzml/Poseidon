@@ -24,7 +24,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         public GroupRepository()
         {
-            this.collectionName = "core_group";
+            base.Init("core_group");
         }
         #endregion //Constructor
 

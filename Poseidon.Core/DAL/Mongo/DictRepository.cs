@@ -24,7 +24,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         public DictRepository()
         {
-            this.collectionName = "core_dict";
+            base.Init("core_dict");
         }
         #endregion //Constructor
 

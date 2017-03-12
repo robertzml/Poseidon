@@ -24,7 +24,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         public OrganizationRepository()
         {
-            this.collectionName = "core_organization";
+            base.Init("core_organization");
         }
         #endregion //Constructor
 

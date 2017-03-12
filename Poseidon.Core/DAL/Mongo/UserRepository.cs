@@ -31,7 +31,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         public UserRepository()
         {
-            this.collectionName = "core_user";
+            base.Init("core_user");
         }
         #endregion //Constructor
 

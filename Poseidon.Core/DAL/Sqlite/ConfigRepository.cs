@@ -13,7 +13,6 @@ namespace Poseidon.Core.DAL.Sqlite
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
 
-
     /// <summary>
     /// 配置数据访问类
     /// </summary>

@@ -14,7 +14,7 @@ namespace Poseidon.Data.BaseDB
     /// <summary>
     /// MongoDB 数据库访问类
     /// </summary>
-    internal class MongoDb
+    internal class MongoDb : AbstractDB
     {
         #region Field
         /// <summary>
@@ -37,6 +37,15 @@ namespace Poseidon.Data.BaseDB
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 获取连接字符串
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetConnectionString()
+        {
+            return "mongodb://localhost:27017";
+        }
+
         /// <summary>
         /// 获取配置连接字符串
         /// </summary>
@@ -65,7 +74,7 @@ namespace Poseidon.Data.BaseDB
         /// </summary>
         /// <param name="dbName">数据库名称</param>
         public void OpenDatabase(string dbName)
-        {
+        {            
             this.database = client.GetDatabase(dbName);
         }
 
@@ -78,6 +87,148 @@ namespace Poseidon.Data.BaseDB
         {
             var collection = this.database.GetCollection<BsonDocument>(collectionName);
             return collection;
+        }
+
+        /// <summary>
+        /// 根据ID查找记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="_id">ID</param>
+        /// <returns></returns>
+        public BsonDocument FindById(string collectionName, string _id)
+        {
+            var collection = this.GetCollection(collectionName);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(_id));
+
+            var result = collection.Find(filter);
+            if (result.Count() == 0)
+                throw new PoseidonException(ErrorCode.ObjectNotFound);
+
+            var doc = result.First();
+            return doc;
+        }
+
+        /// <summary>
+        /// 根据Filter查找单条记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public BsonDocument FindOne(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.GetCollection(collectionName);
+            var result = collection.Find(filter);
+            if (result.Count() == 0)
+                throw new PoseidonException(ErrorCode.ObjectNotFound);
+
+            var doc = result.First();
+            return doc;
+        }
+
+        /// <summary>
+        /// 查找集合所有记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <returns></returns>
+        public IEnumerable<BsonDocument> FindAll(string collectionName)
+        {
+            var collection = this.GetCollection(collectionName);
+            var docs = collection.Find(new BsonDocument()).ToList();
+
+            return docs;
+        }
+
+        /// <summary>
+        /// 根据Filter查找记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public IEnumerable<BsonDocument> Find(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.GetCollection(collectionName);
+            var docs = collection.Find(filter).ToList();
+
+            return docs;
+        }
+
+        /// <summary>
+        /// 根据Filter查找记录数量
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public long Count(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.GetCollection(collectionName);
+            return collection.Count(filter);
+        }
+
+        /// <summary>
+        /// 插入记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="doc">Bson文档</param>
+        /// <returns></returns>
+        public void Insert(string collectionName, BsonDocument doc)
+        {
+            var collection = this.GetCollection(collectionName);
+            collection.InsertOne(doc);
+            return;
+        }
+
+        /// <summary>
+        /// 更新记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <param name="update">更新条件</param>
+        /// <returns></returns>
+        public UpdateResult Update(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        {
+            var collection = this.GetCollection(collectionName);
+            var result = collection.UpdateOne(filter, update);
+            return result;
+        }
+
+        /// <summary>
+        /// 替换记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <param name="doc">更新文档</param>
+        /// <returns></returns>
+        public ReplaceOneResult Replace(string collectionName, FilterDefinition<BsonDocument> filter, BsonDocument doc)
+        {
+            var collection = this.GetCollection(collectionName);
+            ReplaceOneResult result = collection.ReplaceOne(filter, doc);
+            return result;
+        }
+
+        /// <summary>
+        /// 删除记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public DeleteResult Delete(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.GetCollection(collectionName);
+            DeleteResult result = collection.DeleteOne(filter);
+            return result;
+        }
+
+        /// <summary>
+        /// 删除多条记录
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="filter">查询条件</param>
+        /// <returns></returns>
+        public DeleteResult DeleteMany(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = this.GetCollection(collectionName);
+            DeleteResult result = collection.DeleteMany(filter);
+            return result;
         }
         #endregion //Method
     }

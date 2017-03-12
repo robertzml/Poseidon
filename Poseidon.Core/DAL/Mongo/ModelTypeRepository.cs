@@ -24,7 +24,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         public ModelTypeRepository()
         {
-            this.collectionName = "core_modelType";
+            base.Init("core_modelType");
         }
         #endregion //Constructor
 

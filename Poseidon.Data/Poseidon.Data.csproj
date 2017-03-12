@@ -90,7 +90,6 @@
     <Compile Include="AbstractDAL\AbstractDALMySql.cs" />
     <Compile Include="AbstractDAL\AbstractDALSqlite.cs" />
     <Compile Include="AbstractDB.cs" />
-    <Compile Include="BaseDAL\BaseDALMongo.cs" />
     <Compile Include="BaseDB\MongoDb.cs" />
     <Compile Include="BaseDB\MySqlDb.cs" />
     <Compile Include="BaseDB\SqlDb.cs" />

@@ -9,34 +9,63 @@ namespace Poseidon.Data
     using MongoDB.Bson;
     using MongoDB.Driver;
     using Poseidon.Base.Framework;
-    using Poseidon.Data.BaseDAL;
+    using Poseidon.Data.BaseDB;
 
     /// <summary>
     /// MongoDB抽象数据访问类
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">实体类型</typeparam>
     public abstract class AbstractDALMongo<T> : IBaseDAL<T> where T : BaseEntity
     {
         #region Field
         /// <summary>
         /// MongoDB数据访问接口
         /// </summary>
-        private BaseDALMongo mongo;
+        private MongoDb mongo;
+
+        /// <summary>
+        /// 默认数据库名称
+        /// </summary>
+        private readonly string databaseName = "poseidon";
 
         /// <summary>
         /// 关联集合名称
         /// </summary>
-        protected string collectionName;
+        private string collectionName;
         #endregion //Field
 
         #region Constructor
         public AbstractDALMongo()
         {
-            this.mongo = new BaseDALMongo();
+            this.mongo = new MongoDb();
         }
         #endregion //Constructor
 
         #region Function
+        /// <summary>
+        /// 按默认方式初始化
+        /// </summary>
+        /// <param name="collectionName">对应集合名称</param>
+        /// <remarks>
+        /// 由于MongoClient为静态对象，MongoDB只从缓存读取连接字符串并只初始化一次。
+        /// </remarks>
+        protected virtual void Init(string collectionName)
+        {
+            Init(collectionName, ConnectionSource.Cache, "ConnectionString");
+        }
+
+        /// <summary>
+        /// 按设置进行初始化
+        /// </summary>
+        /// <param name="collectionName">对应集合名称</param>
+        /// <param name="source">读取来源</param>
+        /// <param name="key">读取键</param>
+        private void Init(string collectionName, ConnectionSource source, string key)
+        {
+            this.collectionName = collectionName;
+            this.mongo.OpenDatabase(this.databaseName);
+        }
+
         /// <summary>
         /// BsonDocument转实体对象
         /// </summary>

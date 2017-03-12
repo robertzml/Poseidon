@@ -26,7 +26,7 @@ namespace Poseidon.Data
         /// <summary>
         /// 关联数据表名称
         /// </summary>
-        protected string tableName;
+        private string tableName;
 
         /// <summary>
         /// 参数占位符
