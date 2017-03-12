@@ -8,7 +8,6 @@ namespace Poseidon.Core.Utility
 {
     using MongoDB.Bson;
     using Poseidon.Base.Framework;
-    using Poseidon.Base.Utility;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
 
@@ -37,7 +36,7 @@ namespace Poseidon.Core.Utility
         #region Constructor
         static ConfigUtility()
         {
-            configBusiness = BusinessFactory<ConfigBusiness>.GetInstance(new object[] { "Sqlite" });
+            configBusiness = BusinessFactory<ConfigBusiness>.GetInstance(new object[] { DataBaseType.Sqlite });
         }
         #endregion //Constructor
 

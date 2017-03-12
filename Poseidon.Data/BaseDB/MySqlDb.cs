@@ -24,7 +24,7 @@ namespace Poseidon.Data.BaseDB
         /// <summary>
         /// 参数
         /// </summary>
-        private List<MySqlParameter> parameters = new List<MySqlParameter>()            ;
+        private List<MySqlParameter> parameters = new List<MySqlParameter>();
         #endregion //Field
 
         #region Constructor

@@ -86,12 +86,14 @@
     <Compile Include="BL\GroupBusiness.cs" />
     <Compile Include="BL\ModelTypeBusiness.cs" />
     <Compile Include="BL\OrganizationBusiness.cs" />
+    <Compile Include="BL\RoleBusiness.cs" />
     <Compile Include="BL\UserBusiness.cs" />
     <Compile Include="DAL\Mongo\DictCategoryRepository.cs" />
     <Compile Include="DAL\Mongo\DictRepository.cs" />
     <Compile Include="DAL\Mongo\GroupRepository.cs" />
     <Compile Include="DAL\Mongo\ModelTypeRepository.cs" />
     <Compile Include="DAL\Mongo\OrganizationRepository.cs" />
+    <Compile Include="DAL\Mongo\RoleRepository.cs" />
     <Compile Include="DAL\Mongo\UserRepository.cs" />
     <Compile Include="DAL\Sqlite\ConfigRepository.cs" />
     <Compile Include="DL\Config.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="IDAL\IGroupRepository.cs" />
     <Compile Include="IDAL\IModelTypeRepository.cs" />
     <Compile Include="IDAL\IOrganizationRepository.cs" />
+    <Compile Include="IDAL\IRoleRepository.cs" />
     <Compile Include="IDAL\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ConfigUtility.cs" />

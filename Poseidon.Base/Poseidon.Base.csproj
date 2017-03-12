@@ -49,6 +49,7 @@
     <Compile Include="Framework\IBaseDAL.cs" />
     <Compile Include="Framework\IBaseEntity.cs" />
     <Compile Include="Framework\ObjectEntity.cs" />
+    <Compile Include="Framework\DataBaseType.cs" />
     <Compile Include="System\LoginUser.cs" />
     <Compile Include="System\PoseidonException.cs" />
     <Compile Include="Utility\DictAttribute.cs" />

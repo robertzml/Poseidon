@@ -74,7 +74,7 @@ namespace Poseidon.Data.BaseDB
         /// </summary>
         /// <param name="dbName">数据库名称</param>
         public void OpenDatabase(string dbName)
-        {            
+        {
             this.database = client.GetDatabase(dbName);
         }
 

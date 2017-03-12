@@ -28,7 +28,7 @@ namespace Poseidon.Core.BL
         /// 字典业务类
         /// </summary>
         /// <param name="dbType">指定数据库</param>
-        public ConfigBusiness(string dbType)
+        public ConfigBusiness(DataBaseType dbType)
         {
             this.baseDal = RepositoryFactory<IConfigRepository>.GetInstance(dbType);
         }

@@ -27,6 +27,28 @@ namespace Poseidon.Base.Framework
 
         #region Function
         /// <summary>
+        /// 数据库前缀转换
+        /// </summary>
+        /// <param name="prefix">数据库前缀</param>
+        /// <returns></returns>
+        private static string DBTypeToString(DataBaseType prefix)
+        {
+            switch (prefix)
+            {
+                case DataBaseType.SqlServer:
+                    return "SQLServer";
+                case DataBaseType.MongoDB:
+                    return "Mongo";
+                case DataBaseType.MySql:
+                    return "MySQL";
+                case DataBaseType.Sqlite:
+                    return "Sqlite";
+            }
+
+            return "";
+        }
+
+        /// <summary>
         /// 根据配置载入相关数据访问程序集
         /// </summary>
         /// <returns></returns>
@@ -71,7 +93,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="prefix">数据访问层前缀</param>
         /// <returns></returns>
-        public static T GetInstance(string prefix)
+        public static T GetInstance(DataBaseType prefix)
         {
             T dal = null;
             if (dal == null)
@@ -80,7 +102,8 @@ namespace Poseidon.Base.Framework
                 {
                     if (dal == null)
                     {
-                        dal = LoadAssembly(prefix);
+                        string p = DBTypeToString(prefix);
+                        dal = LoadAssembly(p);
                     }
                 }
             }

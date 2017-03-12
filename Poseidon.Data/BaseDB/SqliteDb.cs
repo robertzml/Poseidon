@@ -145,6 +145,9 @@ namespace Poseidon.Data.BaseDB
         /// </summary>
         public void Close()
         {
+            if (this.connection.State == ConnectionState.Closed)
+                return;
+
             connection.Close();
         }
 
