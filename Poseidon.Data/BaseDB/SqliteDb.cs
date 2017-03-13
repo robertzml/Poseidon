@@ -13,7 +13,7 @@ namespace Poseidon.Data.BaseDB
     /// <summary>
     /// Sqlite数据库访问类
     /// </summary>
-    internal class SqliteDb : AbstractDB, IDisposable
+    internal class SqliteDb : AbstractDB
     {
         #region Field
         /// <summary>
@@ -65,41 +65,6 @@ namespace Poseidon.Data.BaseDB
         public SqliteDb(string dataSource)
         {
             this.connection = new SQLiteConnection("data source = " + datasource);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// 清理所有使用资源
-        /// </summary>
-        /// <param name="disposing">如果为true则清理托管资源</param>
-        protected void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                // dispose all managed resources.
-                if (disposing)
-                {
-                    connection.Dispose();
-                }
-
-                // dispose all unmanaged resources
-                this.Close();
-
-                disposed = true;
-            }
-        }
-
-        /// <summary>
-        /// 析构函数
-        /// </summary>
-        ~SqliteDb()
-        {
-            Dispose(false);
         }
         #endregion //Constructor
 

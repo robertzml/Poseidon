@@ -251,6 +251,3 @@ paket-files/
 .idea/
 *.sln.iml
 /packages
-/Poseidon.Winform.Base/Properties/licenses.licx
-/Poseidon.Winform.Client/Properties/licenses.licx
-/Poseidon.Winform.Test/Properties/licenses.licx
