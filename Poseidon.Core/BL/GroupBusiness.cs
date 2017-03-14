@@ -83,14 +83,16 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
-        /// 设置下属组织
+        /// 设置分组包含组织
         /// </summary>
         /// <param name="id">分组ID</param>
-        /// <param name="organizations">组织ID</param>
-        public void SetOrganizations(string id, List<string> organizations)
+        /// <param name="items">分组项</param>
+        public void SetOrganizations(string id, List<GroupItem> items)
         {
-            var dal = this.baseDal as IGroupRepository;
-            dal.SetOrganizations(id, organizations);
+            var group = this.baseDal.FindById(id);
+            group.Items = items;
+
+            base.Update(group);
             return;
         }
         #endregion //Method

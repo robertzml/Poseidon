@@ -13,6 +13,7 @@ namespace Poseidon.Core.DL
     /// </summary>
     public class Group : ObjectEntity
     {
+        #region Property
         /// <summary>
         /// 代码
         /// </summary>
@@ -32,9 +33,36 @@ namespace Poseidon.Core.DL
         public List<string> ModelTypes { get; set; }
 
         /// <summary>
-        /// 下属组织ID
+        /// 下属组织
         /// </summary>
         [Display(Name = "下属组织")]
-        public List<string> Organizations { get; set; }
+        public List<GroupItem> Items { get; set; }
+        #endregion //Property
+    }
+
+    /// <summary>
+    /// 分组项
+    /// </summary>
+    public class GroupItem : BaseEntity
+    {
+        #region Property
+        /// <summary>
+        /// 组织ID
+        /// </summary>
+        [Display(Name = "组织ID")]
+        public string OrganizationId { get; set; }
+
+        /// <summary>
+        /// 组织模型类型代码
+        /// </summary>
+        [Display(Name = "组织模型类型")]
+        public string ModelType { get; set; }
+
+        /// <summary>
+        /// 排序码
+        /// </summary>
+        [Display(Name = "排序码")]
+        public int Sort { get; set; }
+        #endregion //Property
     }
 }

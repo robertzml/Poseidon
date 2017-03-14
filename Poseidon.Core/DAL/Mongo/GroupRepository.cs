@@ -58,13 +58,18 @@ namespace Poseidon.Core.DAL.Mongo
                 }
             }
 
-            entity.Organizations = new List<string>();
-            if (doc.Contains("organizations"))
+            entity.Items = new List<GroupItem>();
+            if (doc.Contains("items"))
             {
-                BsonArray array = doc["organizations"].AsBsonArray;
-                foreach (var item in array)
+                BsonArray array = doc["items"].AsBsonArray;
+                foreach (BsonDocument item in array)
                 {
-                    entity.Organizations.Add(item.ToString());
+                    GroupItem gi = new GroupItem();
+                    gi.OrganizationId = item["organizationId"].ToString();
+                    gi.ModelType = item.GetValue("modelType", "").ToString();
+                    gi.Sort = item["sort"].ToInt32();
+
+                    entity.Items.Add(gi);
                 }
             }
 
@@ -102,15 +107,20 @@ namespace Poseidon.Core.DAL.Mongo
                 doc.Add("modelTypes", array);
             }
 
-            if (entity.Organizations != null && entity.Organizations.Count > 0)
+            if (entity.Items != null && entity.Items.Count > 0)
             {
                 BsonArray array = new BsonArray();
-                foreach (var item in entity.Organizations)
+                foreach (var item in entity.Items)
                 {
-                    array.Add(item);
+                    array.Add(new BsonDocument
+                    {
+                        { "organizationId", item.OrganizationId },
+                        { "modelType", item.ModelType },
+                        { "sort", item.Sort }
+                    });
                 }
 
-                doc.Add("organizations", array);
+                doc.Add("items", array);
             }
 
             return doc;
@@ -186,26 +196,6 @@ namespace Poseidon.Core.DAL.Mongo
 
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
             var update = Builders<BsonDocument>.Update.Set("modelTypes", doc);
-
-            var result = this.Update(filter, update);
-            return;
-        }
-
-        /// <summary>
-        /// 设置下属组织
-        /// </summary>
-        /// <param name="id">分组ID</param>
-        /// <param name="organizations">组织ID</param>
-        public void SetOrganizations(string id, List<string> organizations)
-        {
-            var doc = new BsonArray();
-            foreach (var o in organizations)
-            {
-                doc.Add(o);
-            }
-
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
-            var update = Builders<BsonDocument>.Update.Set("organizations", doc);
 
             var result = this.Update(filter, update);
             return;

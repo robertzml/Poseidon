@@ -13,6 +13,7 @@ namespace Poseidon.Core.DL
     /// </summary>
     public class Organization : ObjectEntity
     {
+        #region Property
         /// <summary>
         /// 上级ID
         /// </summary>
@@ -24,5 +25,6 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "模型类型")]
         public string ModelType { get; set; }
+        #endregion //Property
     }
 }

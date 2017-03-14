@@ -27,12 +27,5 @@ namespace Poseidon.Core.IDAL
         /// <param name="id">分组ID</param>
         /// <param name="codes">模型类型代码</param>
         void SetModelTypes(string id, List<string> codes);
-
-        /// <summary>
-        /// 设置下属组织
-        /// </summary>
-        /// <param name="id">分组ID</param>
-        /// <param name="organizations">组织ID</param>
-        void SetOrganizations(string id, List<string> organizations);
     }
 }
