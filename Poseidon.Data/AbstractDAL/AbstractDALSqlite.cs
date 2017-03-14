@@ -211,6 +211,16 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="id">主键</param>
+        /// <returns></returns>
+        public virtual bool Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();

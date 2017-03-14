@@ -22,11 +22,6 @@ namespace Poseidon.Data.BaseDB
         private string datasource = @"config.db";
 
         /// <summary>
-        /// 是否清理
-        /// </summary>
-        private bool disposed = false;
-
-        /// <summary>
         /// 数据库连接
         /// </summary>
         private SQLiteConnection connection;

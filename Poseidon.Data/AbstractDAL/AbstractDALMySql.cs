@@ -39,7 +39,7 @@ namespace Poseidon.Data
         /// <summary>
         /// 参数占位符
         /// </summary>
-        private string parameterPrefix = "@";
+        private string parameterPrefix = "?";
         #endregion //Field
 
         #region Constructor
@@ -109,22 +109,18 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public T FindById(Tkey id)
+        public virtual T FindById(Tkey id)
         {
-            string sql = string.Format("Select * From {0} Where ({1} = {2}Id)", this.tableName, this.primaryKey, parameterPrefix);
-            this.mysql.AddParameter("Id", id);
+            string sql = string.Format("Select * From {0} Where ({1} = {2}{1})", this.tableName, this.primaryKey, parameterPrefix);
+            this.mysql.AddParameter(this.primaryKey, id);
 
-            var reader = this.mysql.ExecuteReader(sql);
-            if (reader.Read())
-            {
-                T entity = DataReaderToEntity(reader);
-                reader.Close();
-                return entity;
-            }
+            var row = this.mysql.ExecuteRow(sql);
+            if (row == null)
+                return default(T);
             else
             {
-                reader.Close();
-                return default(T);
+                T entity = DataRowToEntity(row);
+                return entity;
             }
         }
 
@@ -135,9 +131,9 @@ namespace Poseidon.Data
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public T FindOneByField<Tvalue>(string field, Tvalue value)
+        public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
-            string sql = string.Format("SELECT * FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
+            string sql = string.Format("SELECT * FROM {0} WHERE {1} = {2}{3};", this.tableName, field, parameterPrefix, field);
             this.mysql.AddParameter(field, value);
 
             var row = this.mysql.ExecuteRow(sql);
@@ -152,7 +148,7 @@ namespace Poseidon.Data
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T> FindAll()
+        public virtual IEnumerable<T> FindAll()
         {
             string sql = string.Format("SELECT * FROM {0};", this.tableName);
 
@@ -168,14 +164,25 @@ namespace Poseidon.Data
             return data;
         }
 
-        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public long Count<Tvalue>(string field, Tvalue value)
+        /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual long Count<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            string sql = string.Format("SELECT COUNT(*) FROM {0} WHERE {1} = {2}{3};", this.tableName, field, parameterPrefix, field);
+            this.mysql.AddParameter(field, value);
+
+            var obj = this.mysql.ExecuteScalar(sql);
+            return Convert.ToInt64(obj);
         }
 
         /// <summary>
@@ -183,7 +190,7 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
@@ -193,7 +200,9 @@ namespace Poseidon.Data
             string vals = "";
             foreach (string field in hash.Keys)
             {
-                fields += string.Format("[{0}],", field);
+                if (field == this.primaryKey)
+                    continue;
+                fields += string.Format("{0},", field);
                 vals += string.Format("{0}{1},", parameterPrefix, field);
             }
 
@@ -220,7 +229,7 @@ namespace Poseidon.Data
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         /// <remarks>采用主键Id进行限定</remarks>
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
@@ -231,7 +240,7 @@ namespace Poseidon.Data
             {
                 if (field == this.primaryKey)
                     continue;
-                setValue += string.Format("[{0}] = {1}{2},", field, parameterPrefix, field);
+                setValue += string.Format("{0} = {1}{2},", field, parameterPrefix, field);
             }
 
             setValue = setValue.Substring(0, setValue.Length - 1);
@@ -249,17 +258,45 @@ namespace Poseidon.Data
             return true;
         }
 
-        public bool Delete(T entity)
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="entity">对象实体</param>
+        /// <returns></returns>
+        public virtual bool Delete(T entity)
+        {
+            string condition = string.Format("{0} = {1}{0}", this.primaryKey, this.parameterPrefix);
+            string sql = string.Format("DELETE FROM {0} WHERE {1} ", this.tableName, condition);
+
+            this.mysql.AddParameter(primaryKey, entity.Id);
+            this.mysql.ExecuteNonQuery(sql);
+
+            return true;
+        }
+
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="id">主键</param>
+        /// <returns></returns>
+        public virtual bool Delete(Tkey id)
+        {
+            string condition = string.Format("{0} = {1}{0}", this.primaryKey, this.parameterPrefix);
+            string sql = string.Format("DELETE FROM {0} WHERE {1} ", this.tableName, condition);
+
+            this.mysql.AddParameter(primaryKey, id);
+            this.mysql.ExecuteNonQuery(sql);
+
+            return true;
+        }
+
+
+        public virtual bool Delete<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete<Tvalue>(string field, Tvalue value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteMany<Tvalue>(string field, Tvalue value)
+        public virtual bool DeleteMany<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }

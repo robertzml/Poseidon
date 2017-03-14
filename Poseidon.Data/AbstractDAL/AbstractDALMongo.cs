@@ -207,17 +207,6 @@ namespace Poseidon.Data
         }
 
         /// <summary>
-        /// 聚合查找
-        /// </summary>
-        /// <param name="match">Match条件</param>
-        /// <param name="group">Group条件</param>
-        /// <returns></returns>
-        public virtual IEnumerable<BsonDocument> Aggregate(FilterDefinition<BsonDocument> match, ProjectionDefinition<BsonDocument, BsonDocument> group)
-        {
-            return this.mongo.Aggregate(this.collectionName, match, group);
-        }
-
-        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -262,6 +251,18 @@ namespace Poseidon.Data
         public virtual bool Delete(T entity)
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
+            var result = this.mongo.Delete(this.collectionName, filter);
+            return result.IsAcknowledged;
+        }
+
+        /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public virtual bool Delete(string id)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
             var result = this.mongo.Delete(this.collectionName, filter);
             return result.IsAcknowledged;
         }

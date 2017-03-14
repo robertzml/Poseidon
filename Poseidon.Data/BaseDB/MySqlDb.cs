@@ -65,7 +65,7 @@ namespace Poseidon.Data.BaseDB
         /// <returns></returns>
         protected override string GetConnectionString()
         {
-            return "server = 192.168.0.111; user = hc; database = test_zml; port = 3306; password = webDev; ";
+            return "server = localhost; user = hc; database = test_zml; port = 3306; password = webDev; ";
         }
         #endregion //Function
 

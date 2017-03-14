@@ -24,7 +24,7 @@ namespace Poseidon.Base.Framework
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
-        IEnumerable<T> FindAll();       
+        IEnumerable<T> FindAll();
 
         /// <summary>
         /// 插入指定对象到数据库中
@@ -46,6 +46,13 @@ namespace Poseidon.Base.Framework
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         bool Delete(T entity);
+
+        /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        bool Delete(Tkey id);
     }
 
     /// <summary>

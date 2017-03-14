@@ -70,6 +70,16 @@ namespace Poseidon.Base.Framework
         {
             return this.baseDal.Delete(entity);
         }
+
+        /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public virtual bool Delete(Tkey id)
+        {
+            return this.baseDal.Delete(id);
+        }
         #endregion //Method
     }
 

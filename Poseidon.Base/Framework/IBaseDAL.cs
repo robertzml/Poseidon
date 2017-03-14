@@ -74,6 +74,13 @@ namespace Poseidon.Base.Framework
         bool Delete(T entity);
 
         /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        bool Delete(Tkey id);
+
+        /// <summary>
         /// 按条件删除对象
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>
