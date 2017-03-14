@@ -165,6 +165,19 @@ namespace Poseidon.Data.BaseDB
         }
 
         /// <summary>
+        /// 聚合查找
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="match">Match条件</param>
+        /// <param name="group">Group条件</param>
+        /// <returns></returns>
+        public IEnumerable<BsonDocument> Aggregate(string collectionName, FilterDefinition<BsonDocument> match, ProjectionDefinition<BsonDocument, BsonDocument> group)
+        {
+            var collection = this.GetCollection(collectionName);
+            return collection.Aggregate().Match(match).Group(group).ToList();
+        }
+
+        /// <summary>
         /// 插入记录
         /// </summary>
         /// <param name="collectionName">集合名称</param>
