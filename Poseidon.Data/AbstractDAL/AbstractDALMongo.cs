@@ -9,6 +9,7 @@ namespace Poseidon.Data
     using MongoDB.Bson;
     using MongoDB.Driver;
     using Poseidon.Base.Framework;
+    using Poseidon.Base.System;
     using Poseidon.Data.BaseDB;
 
     /// <summary>
@@ -138,6 +139,26 @@ namespace Poseidon.Data
         public virtual IEnumerable<T> FindAll()
         {
             var docs = this.mongo.FindAll(this.collectionName);
+
+            List<T> data = new List<T>();
+            foreach (var doc in docs)
+            {
+                var entity = DocToEntity(doc);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindByStatus(EntityStatus status)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("status", (int)status);
+            var docs = this.mongo.Find(this.collectionName, filter);
 
             List<T> data = new List<T>();
             foreach (var doc in docs)
@@ -313,6 +334,30 @@ namespace Poseidon.Data
         {
             var result = this.mongo.DeleteMany(this.collectionName, filter);
             return result.IsAcknowledged;
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public void MarkDelete(T entity)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
+            var update = Builders<BsonDocument>.Update.Set("status", (int)EntityStatus.Deleted);
+
+            this.mongo.Update(this.collectionName, filter, update);
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        public void MarkDelete(string id)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
+            var update = Builders<BsonDocument>.Update.Set("status", (int)EntityStatus.Deleted);
+
+            this.mongo.Update(this.collectionName, filter, update);
         }
         #endregion //Method
     }

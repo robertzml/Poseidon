@@ -45,6 +45,8 @@ namespace Poseidon.Core.BL
         public string FindValue(string code, int key)
         {
             var dict = this.baseDal.FindOneByField("code", code);
+            if (dict == null)
+                return "";
 
             var item = dict.Items.Find(r => r.Key == key);
             if (item == null)
@@ -61,6 +63,8 @@ namespace Poseidon.Core.BL
         public List<DictItem> FindItems(string code)
         {
             var dict = this.baseDal.FindOneByField("code", code);
+            if (dict == null)
+                return new List<DictItem>();
 
             return dict.Items;
         }

@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.System;
+
     /// <summary>
     /// 数据库数据访问层基础接口
     /// </summary>
@@ -33,6 +35,13 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <returns></returns>
         IEnumerable<T> FindAll();
+
+        /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        IEnumerable<T> FindByStatus(EntityStatus status);
 
         /// <summary>
         /// 根据某一字段查找对象
@@ -97,6 +106,18 @@ namespace Poseidon.Base.Framework
         /// <param name="value">值</param>
         /// <returns></returns>
         bool DeleteMany<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        void MarkDelete(T entity);
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        void MarkDelete(Tkey id);
     }
 
     /// <summary>

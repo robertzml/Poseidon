@@ -8,6 +8,7 @@ using System.Text;
 namespace Poseidon.Data
 {
     using Poseidon.Base.Framework;
+    using Base.System;
     using Poseidon.Base.Utility;
     using Poseidon.Data.BaseDB;
 
@@ -78,7 +79,7 @@ namespace Poseidon.Data
         #endregion //Function
 
         #region Method
-        public T FindById(string id)
+        public virtual T FindById(string id)
         {
             throw new NotImplementedException();
         }
@@ -90,7 +91,7 @@ namespace Poseidon.Data
         /// <param name="field">字段</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public T FindOneByField<Tvalue>(string field, Tvalue value)
+        public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
             this.sqlite.AddParameter(field, value, PoseidonUtil.TypeToDbType(value.GetType()));
@@ -110,12 +111,18 @@ namespace Poseidon.Data
         }
 
 
-        public IEnumerable<T> FindAll()
+        public virtual IEnumerable<T> FindAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        public virtual IEnumerable<T> FindByStatus(EntityStatus status)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
@@ -127,7 +134,7 @@ namespace Poseidon.Data
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public long Count<Tvalue>(string field, Tvalue value)
+        public virtual long Count<Tvalue>(string field, Tvalue value)
         {
             string sql = string.Format("SELECT COUNT(*) FROM {0} WHERE [{1}] = {2}{3};", this.tableName, field, parameterPrefix, field);
             this.sqlite.AddParameter(field, value, PoseidonUtil.TypeToDbType(value.GetType()));
@@ -140,7 +147,7 @@ namespace Poseidon.Data
         /// 添加对象
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
@@ -177,7 +184,7 @@ namespace Poseidon.Data
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         /// <remarks>采用主键Id进行限定</remarks>
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
@@ -206,7 +213,7 @@ namespace Poseidon.Data
             return true;
         }
 
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
             throw new NotImplementedException();
         }
@@ -221,12 +228,22 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
-        public bool Delete<Tvalue>(string field, Tvalue value)
+        public virtual bool Delete<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteMany<Tvalue>(string field, Tvalue value)
+        public virtual bool DeleteMany<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void MarkDelete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void MarkDelete(string id)
         {
             throw new NotImplementedException();
         }

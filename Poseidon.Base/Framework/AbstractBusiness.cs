@@ -42,6 +42,25 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 查找所有正常状态对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindAllNormal()
+        {
+            return this.baseDal.FindByStatus(EntityStatus.Normal);
+        }
+
+        /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindByStatus(EntityStatus status)
+        {
+            return this.baseDal.FindByStatus(status);
+        }
+
+        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">对象实体</param>
@@ -79,6 +98,24 @@ namespace Poseidon.Base.Framework
         public virtual bool Delete(Tkey id)
         {
             return this.baseDal.Delete(id);
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public virtual void MarkDelete(T entity)
+        {
+            this.baseDal.MarkDelete(entity);
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        public virtual void MarkDelete(Tkey id)
+        {
+            this.baseDal.MarkDelete(id);
         }
         #endregion //Method
     }

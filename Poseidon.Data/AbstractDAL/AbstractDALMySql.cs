@@ -10,6 +10,7 @@ namespace Poseidon.Data
 {
     using MySql.Data.MySqlClient;
     using Poseidon.Base.Framework;
+    using Base.System;
     using Poseidon.Common;
     using Poseidon.Data.BaseDB;
 
@@ -164,6 +165,11 @@ namespace Poseidon.Data
             return data;
         }
 
+        public virtual IEnumerable<T> FindByStatus(EntityStatus status)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
@@ -290,13 +296,22 @@ namespace Poseidon.Data
             return true;
         }
 
-
         public virtual bool Delete<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
         public virtual bool DeleteMany<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void MarkDelete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void MarkDelete(Tkey id)
         {
             throw new NotImplementedException();
         }
