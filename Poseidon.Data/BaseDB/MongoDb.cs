@@ -102,7 +102,7 @@ namespace Poseidon.Data.BaseDB
 
             var result = collection.Find(filter);
             if (result.Count() == 0)
-                throw new PoseidonException(ErrorCode.ObjectNotFound);
+                return null;
 
             var doc = result.First();
             return doc;
@@ -119,7 +119,7 @@ namespace Poseidon.Data.BaseDB
             var collection = this.GetCollection(collectionName);
             var result = collection.Find(filter);
             if (result.Count() == 0)
-                throw new PoseidonException(ErrorCode.ObjectNotFound);
+                return null;
 
             var doc = result.First();
             return doc;

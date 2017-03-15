@@ -90,6 +90,9 @@ namespace Poseidon.Data
         public virtual T FindById(string id)
         {
             var doc = this.mongo.FindById(this.collectionName, id);
+            if (doc == null)
+                return null;
+
             var entity = DocToEntity(doc);
             return entity;
         }
@@ -106,6 +109,9 @@ namespace Poseidon.Data
             var filter = Builders<BsonDocument>.Filter.Eq(field, value);
             var doc = this.mongo.FindOne(this.collectionName, filter);
 
+            if (doc == null)
+                return null;
+
             var entity = DocToEntity(doc);
             return entity;
         }
@@ -118,6 +124,9 @@ namespace Poseidon.Data
         public virtual T FindOne(FilterDefinition<BsonDocument> filter)
         {
             var doc = this.mongo.FindOne(this.collectionName, filter);
+            if (doc == null)
+                return null;
+
             var entity = DocToEntity(doc);
             return entity;
         }

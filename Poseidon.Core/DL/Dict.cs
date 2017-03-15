@@ -40,6 +40,7 @@ namespace Poseidon.Core.DL
     /// </summary>
     public class DictItem : BaseEntity
     {
+        #region Property
         /// <summary>
         /// 键
         /// </summary>
@@ -57,5 +58,6 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "备注")]
         public string Remark { get; set; }
+        #endregion //Property
     }
 }

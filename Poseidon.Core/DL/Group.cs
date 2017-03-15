@@ -47,6 +47,12 @@ namespace Poseidon.Core.DL
     {
         #region Property
         /// <summary>
+        /// 所在分组代码
+        /// </summary>
+        [Display(Name = "分组代码")]
+        public string GroupCode { get; set; }
+
+        /// <summary>
         /// 组织ID
         /// </summary>
         [Display(Name = "组织ID")]
