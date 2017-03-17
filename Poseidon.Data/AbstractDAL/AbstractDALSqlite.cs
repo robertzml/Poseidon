@@ -110,7 +110,6 @@ namespace Poseidon.Data
             }
         }
 
-
         public virtual IEnumerable<T> FindAll()
         {
             throw new NotImplementedException();
@@ -213,9 +212,21 @@ namespace Poseidon.Data
             return true;
         }
 
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="entity">对象实体</param>
+        /// <returns></returns>
+        /// <remarks>采用主键ID限定</remarks>
         public virtual bool Delete(T entity)
         {
-            throw new NotImplementedException();
+            string condition = string.Format("[id] = {0}id", this.parameterPrefix);
+            string sql = string.Format("DELETE FROM {0} WHERE {1} ", this.tableName, condition);
+
+            this.sqlite.AddParameter("id", entity.Id, PoseidonUtil.TypeToDbType(entity.Id.GetType()));
+            this.sqlite.ExecuteNonQuery(sql);
+
+            return true;
         }
 
         /// <summary>

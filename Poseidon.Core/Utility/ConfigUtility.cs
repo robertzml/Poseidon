@@ -140,6 +140,18 @@ namespace Poseidon.Core.Utility
             configPass.Value = password;
             configBusiness.Update(configPass);
         }
+
+        /// <summary>
+        /// 删除保存用户名密码
+        /// </summary>
+        public static void RemoveRememberUser()
+        {
+            var configName = configBusiness.FindByName(rememberUserName);
+            configBusiness.Delete(configName);
+
+            var configPass = configBusiness.FindByName(remeberPassword);
+            configBusiness.Delete(configPass);
+        }
         #endregion //Method
     }
 }

@@ -67,11 +67,9 @@ namespace Poseidon.Core.BL
         {
             var dal = this.baseDal as IUserRepository;
 
-            long count = dal.Count("userName", userName);
-            if (count == 0)
-                return false;
-
             var user = dal.FindOneByField("userName", userName);
+            if (user == null)
+                return false;
 
             if (password != user.Password)
                 return false;
@@ -79,6 +77,46 @@ namespace Poseidon.Core.BL
             UpdateLoginTime(user, user.CurrentLoginTime, DateTime.Now);
 
             return true;
+        }
+
+        /// <summary>
+        /// 检查用户密码
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="password">散列密码</param>
+        /// <returns></returns>
+        public bool CheckPassword(string userName, string password)
+        {
+            var dal = this.baseDal as IUserRepository;
+            var user = dal.FindOneByField("userName", userName);
+            if (user == null)
+                return false;
+
+            if (password != user.Password)
+                return false;
+            else
+                return true;
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="oldPassword">原密码</param>
+        /// <param name="newPassword">新密码</param>
+        /// <returns></returns>
+        public bool ChangePassword(string userName, string oldPassword, string newPassword)
+        {
+            var dal = this.baseDal as IUserRepository;
+            var user = dal.FindOneByField("userName", userName);
+            if (user == null)
+                return false;
+
+            if (oldPassword != user.Password)
+                return false;
+
+            user.Password = newPassword;
+            return dal.Update(user);
         }
         #endregion //Method
     }
