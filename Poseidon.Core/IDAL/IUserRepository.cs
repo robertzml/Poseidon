@@ -13,5 +13,11 @@ namespace Poseidon.Core.IDAL
     /// </summary>
     internal interface IUserRepository : IBaseDAL<User>
     {
+        /// <summary>
+        /// 根据ID查找用户
+        /// </summary>
+        /// <param name="ids">用户ID列表</param>
+        /// <returns></returns>
+        IEnumerable<User> FindWithIds(List<string> ids);
     }
 }

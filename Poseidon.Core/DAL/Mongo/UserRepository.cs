@@ -123,6 +123,19 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
+        /// 根据ID查找用户
+        /// </summary>
+        /// <param name="ids">用户ID列表</param>
+        /// <returns></returns>
+        public IEnumerable<User> FindWithIds(List<string> ids)
+        {
+            var oids = ids.Select(r => new ObjectId(r));
+            var filter = Builders<BsonDocument>.Filter.In("_id", oids);
+
+            return FindList(filter);
+        }
+
+        /// <summary>
         /// 添加用户
         /// </summary>
         /// <param name="entity">用户实体</param>

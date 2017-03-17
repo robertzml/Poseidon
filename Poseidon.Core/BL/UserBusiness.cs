@@ -58,6 +58,17 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 按ID查找用户
+        /// </summary>
+        /// <param name="ids">用户ID列表</param>
+        /// <returns></returns>
+        public IEnumerable<User> FindWithIds(List<string> ids)
+        {
+            var dal = this.baseDal as IUserRepository;
+            return dal.FindWithIds(ids);
+        }
+
+        /// <summary>
         /// 用户登录
         /// </summary>
         /// <param name="userName">用户名</param>
