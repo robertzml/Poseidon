@@ -10,7 +10,7 @@ namespace Poseidon.Data
 {
     using MySql.Data.MySqlClient;
     using Poseidon.Base.Framework;
-    using Base.System;
+    using Poseidon.Base.System;
     using Poseidon.Common;
     using Poseidon.Data.BaseDB;
 
@@ -214,6 +214,45 @@ namespace Poseidon.Data
             }
 
             return data;
+        }
+
+        /// <summary>
+        /// 分页查找记录
+        /// </summary>
+        /// <param name="condition">查询条件</param>
+        /// <param name="paras">参数</param>
+        /// <param name="startPos">起始位置，从0开始</param>
+        /// <param name="count">返回记录数量</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindWithPage(string condition, List<MySqlParameter> paras, int startPos, int count)
+        {
+            string sql = string.Format("SELECT * FROM {0} WHERE {1} limit {2}, {3};", this.tableName, condition, startPos, count);
+            foreach (var item in paras)
+            {
+                mysql.AddParameter(item.ParameterName, item.Value);
+            }
+
+            var dt = this.mysql.ExecuteQuery(sql);
+
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T entity = DataRowToEntity(row);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        public virtual long Count()
+        {
+            string sql = string.Format("SELECT COUNT(*) FROM {0};", this.tableName);
+            var obj = this.mysql.ExecuteScalar(sql);
+            return Convert.ToInt64(obj);
         }
 
         /// <summary>

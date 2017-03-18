@@ -153,6 +153,17 @@ namespace Poseidon.Data.BaseDB
         }
 
         /// <summary>
+        /// 查找所有记录数据
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <returns></returns>
+        public long Count(string collectionName)
+        {
+            var collection = this.GetCollection(collectionName);
+            return collection.Count(new BsonDocument());
+        }
+
+        /// <summary>
         /// 根据Filter查找记录数量
         /// </summary>
         /// <param name="collectionName">集合名称</param>

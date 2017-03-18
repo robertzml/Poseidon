@@ -53,6 +53,12 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
 
         /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        long Count();
+
+        /// <summary>
         /// 根据条件查找记录数量
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>

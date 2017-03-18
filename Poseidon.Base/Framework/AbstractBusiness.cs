@@ -61,6 +61,15 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        public virtual long Count()
+        {
+            return this.baseDal.Count();
+        }
+
+        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">对象实体</param>

@@ -42,6 +42,12 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindByStatus(EntityStatus status);
 
         /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        long Count();
+
+        /// <summary>
         /// 插入指定对象到数据库中
         /// </summary>
         /// <param name="entity">指定的对象</param>

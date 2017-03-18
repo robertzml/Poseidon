@@ -8,7 +8,7 @@ using System.Text;
 namespace Poseidon.Data
 {
     using Poseidon.Base.Framework;
-    using Base.System;
+    using Poseidon.Base.System;
     using Poseidon.Base.Utility;
     using Poseidon.Data.BaseDB;
 
@@ -127,6 +127,17 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        public virtual long Count()
+        {
+            string sql = string.Format("SELECT COUNT(*) FROM {0};", this.tableName);
+            var obj = this.sqlite.ExecuteScalar(sql);
+            return Convert.ToInt64(obj);
+        }
+
+        /// <summary>
         /// 根据条件查找记录数量
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>
@@ -139,7 +150,7 @@ namespace Poseidon.Data
             this.sqlite.AddParameter(field, value, PoseidonUtil.TypeToDbType(value.GetType()));
 
             var obj = this.sqlite.ExecuteScalar(sql);
-            return Convert.ToInt32(obj);
+            return Convert.ToInt64(obj);
         }
 
         /// <summary>

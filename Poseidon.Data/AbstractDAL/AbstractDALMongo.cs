@@ -212,6 +212,15 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        public virtual long Count()
+        {
+            return this.mongo.Count(this.collectionName);
+        }
+
+        /// <summary>
         /// 根据条件查找记录数量
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>
