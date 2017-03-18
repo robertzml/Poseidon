@@ -40,7 +40,7 @@ namespace Poseidon.Data
         /// <summary>
         /// 参数占位符
         /// </summary>
-        private string parameterPrefix = "?";
+        protected string parameterPrefix = "?";
         #endregion //Field
 
         #region Constructor
@@ -146,6 +146,29 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 按条件查找单条记录
+        /// </summary>
+        /// <param name="condition">查询条件</param>
+        /// <param name="paras">参数</param>
+        /// <returns></returns>
+        public virtual T FindOne(string condition, List<MySqlParameter> paras)
+        {
+            string sql = string.Format("SELECT * FROM {0} WHERE {1};", this.tableName, condition);
+            foreach (var item in paras)
+            {
+                mysql.AddParameter(item.ParameterName, item.Value);
+            }
+
+            var row = this.mysql.ExecuteRow(sql);
+
+            if (row == null)
+                return default(T);
+
+            T entity = DataRowToEntity(row);
+            return entity;
+        }
+
+        /// <summary>
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
@@ -170,9 +193,27 @@ namespace Poseidon.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 根据条件查找记录
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            string sql = string.Format("SELECT * FROM {0} WHERE {1} = {2}{1};", this.tableName, field, parameterPrefix);
+            this.mysql.AddParameter(field, value);
+
+            var dt = this.mysql.ExecuteQuery(sql);
+
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T entity = DataRowToEntity(row);
+                data.Add(entity);
+            }
+
+            return data;
         }
 
         /// <summary>
@@ -184,7 +225,7 @@ namespace Poseidon.Data
         /// <returns></returns>
         public virtual long Count<Tvalue>(string field, Tvalue value)
         {
-            string sql = string.Format("SELECT COUNT(*) FROM {0} WHERE {1} = {2}{3};", this.tableName, field, parameterPrefix, field);
+            string sql = string.Format("SELECT COUNT(*) FROM {0} WHERE {1} = {2}{1};", this.tableName, field, parameterPrefix);
             this.mysql.AddParameter(field, value);
 
             var obj = this.mysql.ExecuteScalar(sql);
