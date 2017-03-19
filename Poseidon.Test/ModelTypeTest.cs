@@ -25,16 +25,27 @@ namespace Poseidon.Test
         /// 测试创建
         /// </summary>
         [TestMethod]
-        public void TestCreate()
+        public void TestCRUD()
         {
             ModelType entity = new ModelType();
             entity.Name = "测试";
             entity.Code = "test";
             entity.Remark = "T";
 
-            //CallerFactory<IModelTypeService>.Instance.Create(entity);
+            var mt = CallerFactory<IModelTypeService>.Instance.Create(entity);
 
-            Assert.AreEqual("123", entity.Id);
+            Assert.AreEqual(mt.Id, entity.Id);
+
+            var info = CallerFactory<IModelTypeService>.Instance.FindById(mt.Id);
+            Assert.AreEqual("test", mt.Code);
+
+            info.Remark = "rem";
+            CallerFactory<IModelTypeService>.Instance.Update(info);
+            Assert.AreEqual("rem", info.Remark);
+
+
+            var result = CallerFactory<IModelTypeService>.Instance.Delete(mt);
+            Assert.IsTrue(result);
         }
 
         /// <summary>

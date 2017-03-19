@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\IDictCategoryService.cs" />
+    <Compile Include="Facade\IDictService.cs" />
     <Compile Include="Facade\IGroupService.cs" />
     <Compile Include="Facade\IModelTypeService.cs" />
     <Compile Include="Facade\IOrganizationService.cs" />
     <Compile Include="Facade\IRoleService.cs" />
     <Compile Include="Facade\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinformCaller\DictCategoryService.cs" />
+    <Compile Include="WinformCaller\DictService.cs" />
     <Compile Include="WinformCaller\GroupService.cs" />
     <Compile Include="WinformCaller\ModelTypeService.cs" />
     <Compile Include="WinformCaller\OrganizationService.cs" />

@@ -4,24 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poseidon.Core.BL
+namespace Poseidon.Caller.WinformCaller
 {
     using Poseidon.Base.Framework;
+    using Poseidon.Caller.Facade;
+    using Poseidon.Core.BL;
     using Poseidon.Core.DL;
-    using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 字典业务类
+    /// 字典业务访问服务类
     /// </summary>
-    public class DictBusiness : AbstractBusiness<Dict>, IBaseBL<Dict>
+    internal class DictService : AbstractLocalService<Dict>, IDictService
     {
+        #region Field
+        /// <summary>
+        /// 业务类对象
+        /// </summary>
+        private DictBusiness bl = null;
+        #endregion //Field
+
         #region Constructor
         /// <summary>
-        /// 字典业务类
+        /// 字典业务访问服务类
         /// </summary>
-        public DictBusiness()
+        public DictService() : base(BusinessFactory<DictBusiness>.Instance)
         {
-            this.baseDal = RepositoryFactory<IDictRepository>.Instance;
+            this.bl = this.baseBL as DictBusiness;
         }
         #endregion //Constructor
 
@@ -33,7 +41,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<Dict> FindByCategory(string categoryId)
         {
-            return this.baseDal.FindListByField("categoryId", categoryId);
+            return this.bl.FindByCategory(categoryId);
         }
 
         /// <summary>
@@ -44,15 +52,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public string FindValue(string code, int key)
         {
-            var dict = this.baseDal.FindOneByField("code", code);
-            if (dict == null)
-                return "";
-
-            var item = dict.Items.Find(r => r.Key == key);
-            if (item == null)
-                return "";
-            else
-                return item.Value;
+            return this.bl.FindValue(code, key);
         }
 
         /// <summary>
@@ -62,11 +62,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public List<DictItem> FindItems(string code)
         {
-            var dict = this.baseDal.FindOneByField("code", code);
-            if (dict == null)
-                return new List<DictItem>();
-
-            return dict.Items;
+            return this.bl.FindItems(code);
         }
         #endregion //Method
     }
