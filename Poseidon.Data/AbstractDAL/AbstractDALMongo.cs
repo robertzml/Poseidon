@@ -250,11 +250,12 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual void Create(T entity)
+        public virtual T Create(T entity)
         {
             var doc = EntityToDoc(entity);
             this.mongo.Insert(this.collectionName, doc);
-            return;
+            entity.Id = doc["_id"].ToString();
+            return entity;
         }
 
         /// <summary>

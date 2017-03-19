@@ -70,7 +70,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">指定的对象</param>
         /// <returns></returns>
-        void Create(T entity);
+        T Create(T entity);
 
         /// <summary>
         /// 编辑对象

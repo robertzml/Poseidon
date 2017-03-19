@@ -136,14 +136,13 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override void Create(Role entity)
+        public override Role Create(Role entity)
         {
             if (!CheckDuplicate(entity))
                 throw new PoseidonException(ErrorCode.DuplicateCode);
 
             entity.Status = 0;
-            base.Create(entity);
-            return;
+            return base.Create(entity);
         }
         #endregion //Method
     }

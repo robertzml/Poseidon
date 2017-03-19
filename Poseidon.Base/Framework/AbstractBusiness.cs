@@ -74,10 +74,9 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">对象实体</param>
         /// <returns></returns>
-        public virtual void Create(T entity)
+        public virtual T Create(T entity)
         {
-            this.baseDal.Create(entity);
-            return;
+            return this.baseDal.Create(entity);
         }
 
         /// <summary>

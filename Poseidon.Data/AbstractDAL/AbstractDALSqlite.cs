@@ -157,11 +157,12 @@ namespace Poseidon.Data
         /// 添加对象
         /// </summary>
         /// <param name="entity">实体对象</param>
-        public virtual void Create(T entity)
+        /// <return></return>
+        public virtual T Create(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
-                return;
+                return default(T);
 
             string fields = "";
             string vals = "";
@@ -185,7 +186,7 @@ namespace Poseidon.Data
 
             this.sqlite.ExecuteNonQuery(sql);
 
-            return;
+            return entity;
         }
 
         /// <summary>

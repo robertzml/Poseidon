@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.System;
     using Poseidon.Common;
 
     /// <summary>
@@ -35,12 +36,12 @@ namespace Poseidon.Base.Framework
         private static T LoadAssembly(string prefix)
         {
             string name = typeof(T).Name;
-            string insName = typeof(T).Name.Remove(0, 1); 
+            string insName = typeof(T).Name.Remove(0, 1);
 
             string fullName = typeof(T).FullName;
             fullName = fullName.Replace("Facade", prefix).Replace(name, insName);
 
-            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); 
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name);
             return o;
         }
 
@@ -64,6 +65,8 @@ namespace Poseidon.Base.Framework
             fullName = fullName.Replace("Facade", prefix).Replace(name, insName); //bind new instance name
 
             T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
+            if (o == null)
+                throw new PoseidonException(ErrorCode.ObjectNotCreate);
             return o;
         }
         #endregion //Function

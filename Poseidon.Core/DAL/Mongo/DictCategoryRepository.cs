@@ -91,14 +91,13 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override void Create(DictCategory entity)
+        public override DictCategory Create(DictCategory entity)
         {
             if (!CheckDuplicate(entity))
                 throw new PoseidonException(ErrorCode.DuplicateName);
 
             entity.Status = 0;
-            base.Create(entity);
-            return;
+            return base.Create(entity);
         }
 
         /// <summary>

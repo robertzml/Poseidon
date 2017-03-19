@@ -139,7 +139,7 @@ namespace Poseidon.Core.DAL.Mongo
         /// 添加用户
         /// </summary>
         /// <param name="entity">用户实体</param>
-        public override void Create(User entity)
+        public override User Create(User entity)
         {
             if (!CheckDuplicate(entity))
                 throw new PoseidonException(ErrorCode.DuplicateName);
@@ -148,7 +148,7 @@ namespace Poseidon.Core.DAL.Mongo
             entity.CurrentLoginTime = this.initialTime;
             entity.Status = 0;
 
-            base.Create(entity);
+            return base.Create(entity);
         }
         #endregion //Method
     }

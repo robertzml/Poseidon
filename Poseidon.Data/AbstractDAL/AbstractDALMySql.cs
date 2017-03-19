@@ -276,11 +276,11 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual void Create(T entity)
+        public virtual T Create(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
-                return;
+                return default(T);
 
             string fields = "";
             string vals = "";
@@ -306,7 +306,7 @@ namespace Poseidon.Data
 
             this.mysql.ExecuteNonQuery(sql);
 
-            return;
+            return entity;
         }
 
         /// <summary>

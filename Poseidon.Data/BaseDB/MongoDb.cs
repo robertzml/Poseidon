@@ -194,11 +194,11 @@ namespace Poseidon.Data.BaseDB
         /// <param name="collectionName">集合名称</param>
         /// <param name="doc">Bson文档</param>
         /// <returns></returns>
-        public void Insert(string collectionName, BsonDocument doc)
+        public BsonDocument Insert(string collectionName, BsonDocument doc)
         {
             var collection = this.GetCollection(collectionName);
             collection.InsertOne(doc);
-            return;
+            return doc;
         }
 
         /// <summary>

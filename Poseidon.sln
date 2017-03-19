@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Core", "Poseidon.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Caller", "Poseidon.Caller\Poseidon.Caller.csproj", "{9F91B3C4-9BB4-4B0A-B7AA-3A5FEEE4CEC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poseidon.Test", "Poseidon.Test\Poseidon.Test.csproj", "{0D737737-FA34-48B2-A9F3-3155AFA77AC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9F91B3C4-9BB4-4B0A-B7AA-3A5FEEE4CEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F91B3C4-9BB4-4B0A-B7AA-3A5FEEE4CEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F91B3C4-9BB4-4B0A-B7AA-3A5FEEE4CEC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D737737-FA34-48B2-A9F3-3155AFA77AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D737737-FA34-48B2-A9F3-3155AFA77AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D737737-FA34-48B2-A9F3-3155AFA77AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D737737-FA34-48B2-A9F3-3155AFA77AC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
