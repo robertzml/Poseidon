@@ -2,30 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Poseidon.Core.BL
+namespace Poseidon.Caller.WinformCaller
 {
     using Poseidon.Base.Framework;
-    using Poseidon.Base.System;
-    using Poseidon.Core.IDAL;
+    using Poseidon.Caller.Facade;
+    using Poseidon.Core.BL;
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 分组对象业务类
+    /// 分组业务访问服务
     /// </summary>
-    public class GroupBusiness : AbstractBusiness<Group>, IBaseBL<Group>
+    public class GroupService : AbstractLocalService<Group>, IGroupService
     {
         #region Field
-
+        /// <summary>
+        /// 业务类对象
+        /// </summary>
+        private GroupBusiness bl = null;
         #endregion //Field
 
         #region Constructor
         /// <summary>
-        /// 分组对象业务类
+        /// 分组业务访问服务类
         /// </summary>
-        public GroupBusiness()
+        public GroupService() : base(BusinessFactory<GroupBusiness>.Instance)
         {
-            this.baseDal = RepositoryFactory<IGroupRepository>.Instance;
+            this.bl = this.baseBL as GroupBusiness;
         }
         #endregion //Constructor
 
@@ -37,8 +41,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public Group FindByCode(string code)
         {
-            var entity = this.baseDal.FindOneByField("code", code);
-            return entity;
+            return this.bl.FindByCode(code);
         }
 
         /// <summary>
@@ -48,8 +51,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<Group> FindAllChildren(string id)
         {
-            var dal = this.baseDal as IGroupRepository;
-            return dal.FindAllChildren(id);
+            return this.bl.FindAllChildren(id);
         }
 
         /// <summary>
@@ -59,8 +61,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<Group> FindChildren(string id)
         {
-            var dal = this.baseDal as IGroupRepository;
-            return dal.FindListByField("parentId", id);
+            return this.bl.FindChildren(id);
         }
 
         /// <summary>
@@ -70,8 +71,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<Group> FindByModelType(string modelType)
         {
-            var dal = this.baseDal as IGroupRepository;
-            return dal.FindListByField("modelTypes", modelType);
+            return this.bl.FindByModelType(modelType);
         }
 
         /// <summary>
@@ -81,20 +81,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<GroupItem> FindAllItems(string id)
         {
-            var dal = this.baseDal as IGroupRepository;
-            List<GroupItem> data = new List<GroupItem>();
-
-            var top = dal.FindById(id);
-            data.AddRange(top.Items);
-
-            var children = dal.FindAllChildren(id);
-            foreach (var child in children)
-            {
-                data.AddRange(child.Items);
-            }
-
-            data = data.OrderBy(r => r.Sort).ToList();
-            return data;
+            return this.bl.FindAllItems(id);
         }
 
         /// <summary>
@@ -104,11 +91,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public override bool Update(Group entity)
         {
-            foreach (var item in entity.Items)
-            {
-                item.GroupCode = entity.Code;
-            }
-            return base.Update(entity);
+            return this.bl.Update(entity);
         }
 
         /// <summary>
@@ -118,16 +101,7 @@ namespace Poseidon.Core.BL
         /// <param name="codes">模型类型代码</param>
         public void SetModelTypes(string id, List<string> codes)
         {
-            var dal = this.baseDal as IGroupRepository;
-            dal.SetModelTypes(id, codes);
-
-            // set the children's modelTypes field
-            var children = dal.FindAllChildren(id);
-            foreach (var item in children)
-            {
-                dal.SetModelTypes(item.Id, codes);
-            }
-            return;
+            this.bl.SetModelTypes(id, codes);
         }
 
         /// <summary>
@@ -137,15 +111,7 @@ namespace Poseidon.Core.BL
         /// <param name="items">分组项</param>
         public void SetOrganizations(string id, List<GroupItem> items)
         {
-            var group = this.baseDal.FindById(id);
-            foreach (var item in items)
-            {
-                item.GroupCode = group.Code;
-            }
-            group.Items = items;
-
-            base.Update(group);
-            return;
+            this.bl.SetOrganizations(id, items);
         }
         #endregion //Method
     }

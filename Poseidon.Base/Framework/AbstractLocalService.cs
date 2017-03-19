@@ -36,45 +36,63 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public T FindById(string id)
+        public virtual T FindById(string id)
         {
             return this.baseBL.FindById(id);
         }
 
-        public T FindOneByField<Tvalue>(string field, Tvalue value)
+        public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindAll()
+        /// <summary>
+        /// 查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindAll()
+        {
+            return this.baseBL.FindAll();
+        }
+
+        public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        public virtual long Count<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public long Count<Tvalue>(string field, Tvalue value)
+        /// <summary>
+        /// 创建对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual void Create(T entity)
         {
-            throw new NotImplementedException();
+            this.baseBL.Create(entity);
         }
 
-        public void Create(T entity)
+        /// <summary>
+        /// 编辑对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual bool Update(T entity)
         {
-            throw new NotImplementedException();
+            return this.baseBL.Update(entity);
         }
 
-
-        public bool Update(T entity)
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public virtual bool Delete(T entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(T entity)
-        {
-            throw new NotImplementedException();
+            return this.baseBL.Delete(entity);
         }
         #endregion //Method
     }

@@ -48,9 +48,9 @@ namespace Poseidon.Base.Framework
         long Count();
 
         /// <summary>
-        /// 插入指定对象到数据库中
+        /// 创建对象
         /// </summary>
-        /// <param name="entity">指定的对象</param>
+        /// <param name="entity">实体对象</param>
         /// <returns></returns>
         void Create(T entity);
 

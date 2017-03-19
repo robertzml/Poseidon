@@ -4,21 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poseidon.Core.BL
+namespace Poseidon.Caller.WinformCaller
 {
     using Poseidon.Base.Framework;
+    using Poseidon.Caller.Facade;
+    using Poseidon.Core.BL;
     using Poseidon.Core.DL;
-    using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 模型类型业务类
+    /// 模型类型业务访问服务类
     /// </summary>
-    public class ModelTypeBusiness : AbstractBusiness<ModelType>, IBaseBL<ModelType>
+    public class ModelTypeService : AbstractLocalService<ModelType>, IModelTypeService
     {
+        #region Field
+        /// <summary>
+        /// 业务类对象
+        /// </summary>
+        private ModelTypeBusiness bl = null;
+        #endregion //Field
+
         #region Constructor
-        public ModelTypeBusiness()
+        /// <summary>
+        /// 模型类型业务访问服务类
+        /// </summary>
+        public ModelTypeService() : base(BusinessFactory<ModelTypeBusiness>.Instance)
         {
-            this.baseDal = RepositoryFactory<IModelTypeRepository>.Instance;
+            this.bl = this.baseBL as ModelTypeBusiness;
         }
         #endregion //Constructor
 
@@ -30,8 +41,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public ModelType FindByCode(string code)
         {
-            var dal = this.baseDal as IModelTypeRepository;
-            return dal.FindByCode(code);
+            return this.bl.FindByCode(code);
         }
 
         /// <summary>
@@ -41,8 +51,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<ModelType> FindWithCodes(List<string> codes)
         {
-            var dal = this.baseDal as IModelTypeRepository;
-            return dal.FindWithCodes(codes);
+            return this.bl.FindWithCodes(codes);
         }
         #endregion //Method
     }
