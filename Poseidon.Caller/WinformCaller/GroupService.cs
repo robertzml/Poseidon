@@ -14,7 +14,7 @@ namespace Poseidon.Caller.WinformCaller
     /// <summary>
     /// 分组业务访问服务
     /// </summary>
-    public class GroupService : AbstractLocalService<Group>, IGroupService
+    internal class GroupService : AbstractLocalService<Group>, IGroupService
     {
         #region Field
         /// <summary>

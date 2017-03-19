@@ -14,7 +14,7 @@ namespace Poseidon.Core.BL
     /// <summary>
     /// 角色业务类
     /// </summary>
-    public class RoleBusiness : AbstractBusiness<Role>
+    public class RoleBusiness : AbstractBusiness<Role>, IBaseBL<Role>
     {
         #region Constructor
         /// <summary>

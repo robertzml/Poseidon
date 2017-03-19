@@ -14,9 +14,12 @@ namespace Poseidon.Caller.WinformCaller
     /// <summary>
     /// 用户数据访问服务类
     /// </summary>
-    public class UserService : AbstractLocalService<User>, IUserService
+    internal class UserService : AbstractLocalService<User>, IUserService
     {
         #region Field
+        /// <summary>
+        /// 业务类对象
+        /// </summary>
         private UserBusiness bl = null;
         #endregion //Field
 

@@ -60,6 +60,24 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 查找所有正常状态对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindAllNormal()
+        {
+            return this.baseBL.FindAllNormal();
+        }
+
+        /// <summary>
+        /// 查找所有记录数量
+        /// </summary>
+        /// <returns></returns>
+        public virtual long Count()
+        {
+            return this.baseBL.Count();
+        }
+
         public virtual long Count<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();

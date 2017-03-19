@@ -12,46 +12,46 @@ namespace Poseidon.Caller.WinformCaller
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 模型类型业务访问服务类
+    /// 角色业务访问服务类
     /// </summary>
-    internal class ModelTypeService : AbstractLocalService<ModelType>, IModelTypeService
+    internal class RoleService : AbstractLocalService<Role>, IRoleService
     {
         #region Field
         /// <summary>
         /// 业务类对象
         /// </summary>
-        private ModelTypeBusiness bl = null;
+        private RoleBusiness bl = null;
         #endregion //Field
 
         #region Constructor
         /// <summary>
-        /// 模型类型业务访问服务类
+        /// 分组业务访问服务类
         /// </summary>
-        public ModelTypeService() : base(BusinessFactory<ModelTypeBusiness>.Instance)
+        public RoleService() : base(BusinessFactory<RoleBusiness>.Instance)
         {
-            this.bl = this.baseBL as ModelTypeBusiness;
+            this.bl = this.baseBL as RoleBusiness;
         }
         #endregion //Constructor
 
         #region Method
         /// <summary>
-        /// 根据代码获取模型类型
+        /// 查找角色包含用户
         /// </summary>
-        /// <param name="code">代码</param>
+        /// <param name="id">角色ID</param>
         /// <returns></returns>
-        public ModelType FindByCode(string code)
+        public IEnumerable<User> FindUsers(string id)
         {
-            return this.bl.FindByCode(code);
+            return this.bl.FindUsers(id);
         }
 
         /// <summary>
-        /// 根据代码获取模型类型
+        /// 设置包含用户
         /// </summary>
-        /// <param name="codes">代码列表</param>
-        /// <returns></returns>
-        public IEnumerable<ModelType> FindWithCodes(List<string> codes)
+        /// <param name="id">角色ID</param>
+        /// <param name="uids">用户ID列表</param>
+        public void SetUsers(string id, List<string> uids)
         {
-            return this.bl.FindWithCodes(codes);
+            this.bl.SetUsers(id, uids);
         }
         #endregion //Method
     }

@@ -2,30 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Poseidon.Core.BL
+namespace Poseidon.Caller.WinformCaller
 {
     using Poseidon.Base.Framework;
-    using Poseidon.Base.System;
-    using Poseidon.Core.IDAL;
+    using Poseidon.Caller.Facade;
+    using Poseidon.Core.BL;
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 组织对象业务类
+    /// 组织业务访问服务类
     /// </summary>
-    public class OrganizationBusiness : AbstractBusiness<Organization>, IBaseBL<Organization>
+    internal class OrganizationService : AbstractLocalService<Organization>, IOrganizationService
     {
         #region Field
-
+        /// <summary>
+        /// 业务类对象
+        /// </summary>
+        private OrganizationBusiness bl = null;
         #endregion //Field
 
         #region Constructor
         /// <summary>
-        /// 组织对象业务类
+        /// 组织业务访问服务类
         /// </summary>
-        public OrganizationBusiness()
+        public OrganizationService() : base(BusinessFactory<OrganizationBusiness>.Instance)
         {
-            this.baseDal = RepositoryFactory<IOrganizationRepository>.Instance;
+            this.bl = this.baseBL as OrganizationBusiness;
         }
         #endregion //Constructor
 
@@ -37,8 +41,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<Organization> FindByModelType(string modelType)
         {
-            var dal = this.baseDal as IOrganizationRepository;
-            return dal.FindByModelType(modelType);
+            return this.bl.FindByModelType(modelType);
         }
 
         /// <summary>
@@ -48,8 +51,7 @@ namespace Poseidon.Core.BL
         /// <returns></returns>
         public IEnumerable<Organization> FindWithIds(List<string> organizationIds)
         {
-            var dal = this.baseDal as IOrganizationRepository;
-            return dal.FindWithIds(organizationIds);
+            return this.bl.FindWithIds(organizationIds);
         }
         #endregion //Method
     }
