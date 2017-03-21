@@ -217,6 +217,32 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 按条件查找多条记录
+        /// </summary>
+        /// <param name="condition">查询条件</param>
+        /// <param name="paras">参数</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindList(string condition, List<MySqlParameter> paras)
+        {
+            string sql = string.Format("SELECT * FROM {0} WHERE {1};", this.tableName, condition);
+            foreach (var item in paras)
+            {
+                mysql.AddParameter(item.ParameterName, item.Value);
+            }
+
+            var dt = this.mysql.ExecuteQuery(sql);
+
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T entity = DataRowToEntity(row);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
         /// 分页查找记录
         /// </summary>
         /// <param name="condition">查询条件</param>
