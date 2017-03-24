@@ -29,6 +29,13 @@ namespace Poseidon.Caller.Facade
         IEnumerable<Group> FindAllChildren(string id);
 
         /// <summary>
+        /// 查找分组及子分组
+        /// </summary>
+        /// <param name="code">分组代码</param>
+        /// <returns></returns>
+        IEnumerable<Group> FindWithChildrenByCode(string code);
+
+        /// <summary>
         /// 查找子分组
         /// </summary>
         /// <param name="id">分组ID</param>

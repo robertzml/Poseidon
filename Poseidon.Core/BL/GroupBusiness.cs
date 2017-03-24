@@ -53,6 +53,17 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 查找分组及子分组
+        /// </summary>
+        /// <param name="code">分组代码</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindWithChildrenByCode(string code)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            return dal.FindWithChildrenByCode(code);
+        }
+
+        /// <summary>
         /// 查找子分组
         /// </summary>
         /// <param name="id">分组ID</param>

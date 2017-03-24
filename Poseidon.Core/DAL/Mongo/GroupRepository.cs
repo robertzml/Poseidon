@@ -184,6 +184,26 @@ namespace Poseidon.Core.DAL.Mongo
         }
 
         /// <summary>
+        /// 查找分组及子分组
+        /// </summary>
+        /// <param name="code">分组代码</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindWithChildrenByCode(string code)
+        {
+            List<Group> data = new List<Group>();
+            var parent = base.FindOneByField("code", code);
+            if (parent == null)
+                return data;
+
+            data.Add(parent);
+
+            var children = LoadChildren(parent.Id);
+            data.AddRange(children);
+
+            return data;
+        }
+
+        /// <summary>
         /// 绑定模型类型
         /// </summary>
         /// <param name="id">分组ID</param>
