@@ -10,13 +10,14 @@ namespace Poseidon.Base.Framework
     /// 抽象本地服务调用类
     /// </summary>
     /// <typeparam name="T">实体类型</typeparam>
-    public abstract class AbstractLocalService<T> : IBaseService<T> where T : BaseEntity
+    /// <typeparam name="Tkey">主键类型</typeparam>
+    public abstract class AbstractLocalService<T, Tkey> : IBaseService<T, Tkey> where T : IBaseEntity<Tkey>
     {
         #region Field
         /// <summary>
         /// 业务接口
         /// </summary>
-        protected IBaseBL<T> baseBL;
+        protected IBaseBL<T, Tkey> baseBL;
         #endregion //Field
 
         #region Constructor
@@ -24,7 +25,7 @@ namespace Poseidon.Base.Framework
         /// 抽象本地服务调用类
         /// </summary>
         /// <param name="bl">业务对象</param>
-        public AbstractLocalService(IBaseBL<T> bl)
+        public AbstractLocalService(IBaseBL<T, Tkey> bl)
         {
             this.baseBL = bl;
         }
@@ -36,7 +37,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public virtual T FindById(string id)
+        public virtual T FindById(Tkey id)
         {
             return this.baseBL.FindById(id);
         }
@@ -113,5 +114,22 @@ namespace Poseidon.Base.Framework
             return this.baseBL.Delete(entity);
         }
         #endregion //Method
+    }
+
+    /// <summary>
+    /// 抽象本地服务调用类
+    /// </summary>
+    /// <typeparam name="T">实体类型</typeparam>
+    public abstract class AbstractLocalService<T> : AbstractLocalService<T, string> where T : BaseEntity
+    {
+        #region Constructor
+        /// <summary>
+        /// 抽象本地服务调用类
+        /// </summary>
+        /// <param name="bl">业务对象</param>
+        public AbstractLocalService(IBaseBL<T> bl) : base(bl)
+        {
+        }
+        #endregion /Constructor
     }
 }
