@@ -271,6 +271,36 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 分页查找记录
+        /// </summary>
+        /// <param name="condition">查询条件</param>
+        /// <param name="paras">参数</param>
+        /// <param name="orderField">排序字段</param>
+        /// <param name="orderType">排序方式</param>
+        /// <param name="startPos">起始位置，从0开始</param>
+        /// <param name="count">返回记录数量</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindWithPage(string condition, List<MySqlParameter> paras, string orderField, string orderType, int startPos, int count)
+        {
+            string sql = string.Format("SELECT * FROM {0} WHERE {1} ORDER BY {2} {3} limit {4}, {5};", this.tableName, condition, orderField, orderType, startPos, count);
+            foreach (var item in paras)
+            {
+                mysql.AddParameter(item.ParameterName, item.Value);
+            }
+
+            var dt = this.mysql.ExecuteQuery(sql);
+
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T entity = DataRowToEntity(row);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
         /// 查找所有记录数量
         /// </summary>
         /// <returns></returns>
