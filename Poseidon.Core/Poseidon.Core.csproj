@@ -86,6 +86,7 @@
     <Compile Include="BL\GroupBusiness.cs" />
     <Compile Include="BL\ModelTypeBusiness.cs" />
     <Compile Include="BL\OrganizationBusiness.cs" />
+    <Compile Include="BL\PrivilegeBusiness.cs" />
     <Compile Include="BL\RoleBusiness.cs" />
     <Compile Include="BL\UserBusiness.cs" />
     <Compile Include="DAL\Mongo\DictCategoryRepository.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="DAL\Mongo\GroupRepository.cs" />
     <Compile Include="DAL\Mongo\ModelTypeRepository.cs" />
     <Compile Include="DAL\Mongo\OrganizationRepository.cs" />
+    <Compile Include="DAL\Mongo\PrivilegeRepository.cs" />
     <Compile Include="DAL\Mongo\RoleRepository.cs" />
     <Compile Include="DAL\Mongo\UserRepository.cs" />
     <Compile Include="DAL\Sqlite\ConfigRepository.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="DL\Group.cs" />
     <Compile Include="DL\ModelType.cs" />
     <Compile Include="DL\Organization.cs" />
+    <Compile Include="DL\Privilege.cs" />
     <Compile Include="DL\Role.cs" />
     <Compile Include="DL\User.cs" />
     <Compile Include="IDAL\IConfigRepository.cs" />
@@ -110,6 +113,7 @@
     <Compile Include="IDAL\IGroupRepository.cs" />
     <Compile Include="IDAL\IModelTypeRepository.cs" />
     <Compile Include="IDAL\IOrganizationRepository.cs" />
+    <Compile Include="IDAL\IPrivilegeRepository.cs" />
     <Compile Include="IDAL\IRoleRepository.cs" />
     <Compile Include="IDAL\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
