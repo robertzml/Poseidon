@@ -51,6 +51,17 @@ namespace Poseidon.Core.BL
             var dal = this.baseDal as IRoleRepository;
             dal.SetUsers(id, uids);
         }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">角色ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            var dal = this.baseDal as IRoleRepository;
+            dal.SetPrivileges(id, codes);
+        }
         #endregion //Method
     }
 }

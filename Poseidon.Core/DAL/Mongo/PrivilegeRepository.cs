@@ -103,6 +103,17 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
+        /// 根据代码获取权限
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        public IEnumerable<Privilege> FindWithCodes(List<string> codes)
+        {
+            var filter = Builders<BsonDocument>.Filter.In("code", codes);
+            return FindList(filter);
+        }
+
+        /// <summary>
         /// 添加权限
         /// </summary>
         /// <param name="entity">实体对象</param>

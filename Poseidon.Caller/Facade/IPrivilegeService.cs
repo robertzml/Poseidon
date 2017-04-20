@@ -14,5 +14,18 @@ namespace Poseidon.Caller.Facade
     /// </summary>
     public interface IPrivilegeService : IBaseService<Privilege>
     {
+        /// <summary>
+        /// 根据代码查找权限
+        /// </summary>
+        /// <param name="code">权限代码</param>
+        /// <returns></returns>
+        Privilege FindByCode(string code);
+
+        /// <summary>
+        /// 根据代码获取权限
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        IEnumerable<Privilege> FindWithCodes(List<string> codes);
     }
 }

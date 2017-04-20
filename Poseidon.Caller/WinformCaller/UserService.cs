@@ -87,6 +87,16 @@ namespace Poseidon.Caller.WinformCaller
         {
             return this.bl.ChangePassword(userName, oldPassword, newPassword);
         }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            this.bl.SetPrivileges(id, codes);
+        }
         #endregion //Method
     }
 }

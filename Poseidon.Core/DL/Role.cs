@@ -31,6 +31,12 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "包含用户")]
         public List<string> Users { get; set; }
+
+        /// <summary>
+        /// 包含权限代码
+        /// </summary>
+        [Display(Name = "包含权限代码")]
+        public List<string> Privileges { get; set; }
         #endregion //Property
     }
 }

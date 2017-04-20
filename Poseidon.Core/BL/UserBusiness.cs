@@ -129,6 +129,17 @@ namespace Poseidon.Core.BL
             user.Password = newPassword;
             return dal.Update(user);
         }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            var dal = this.baseDal as IUserRepository;
+            dal.SetPrivileges(id, codes);
+        }
         #endregion //Method
     }
 }

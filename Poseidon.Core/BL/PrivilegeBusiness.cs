@@ -25,5 +25,29 @@ namespace Poseidon.Core.BL
             this.baseDal = RepositoryFactory<IPrivilegeRepository>.Instance;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 根据代码查找权限
+        /// </summary>
+        /// <param name="code">权限代码</param>
+        /// <returns></returns>
+        public Privilege FindByCode(string code)
+        {
+            var entity = this.baseDal.FindOneByField("code", code);
+            return entity;
+        }
+
+        /// <summary>
+        /// 根据代码获取权限
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        public IEnumerable<Privilege> FindWithCodes(List<string> codes)
+        {
+            var dal = this.baseDal as IPrivilegeRepository;
+            return dal.FindWithCodes(codes);
+        }
+        #endregion //Method
     }
 }

@@ -19,5 +19,12 @@ namespace Poseidon.Core.IDAL
         /// <param name="ids">用户ID列表</param>
         /// <returns></returns>
         IEnumerable<User> FindWithIds(List<string> ids);
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        void SetPrivileges(string id, List<string> codes);
     }
 }

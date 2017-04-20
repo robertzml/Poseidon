@@ -63,6 +63,16 @@ namespace Poseidon.Core.DAL.Mongo
                 }
             }
 
+            entity.Privileges = new List<string>();
+            if (doc.Contains("privileges"))
+            {
+                BsonArray array = doc["privileges"].AsBsonArray;
+                foreach (var item in array)
+                {
+                    entity.Privileges.Add(item.ToString());
+                }
+            }
+
             return entity;
         }
 
@@ -93,6 +103,17 @@ namespace Poseidon.Core.DAL.Mongo
                 }
 
                 doc.Add("roles", array);
+            }
+
+            if (entity.Privileges != null && entity.Privileges.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Privileges)
+                {
+                    array.Add(item);
+                }
+
+                doc.Add("privileges", array);
             }
 
             return doc;
@@ -149,6 +170,26 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Status = 0;
 
             return base.Create(entity);
+        }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            var doc = new BsonArray();
+            foreach (var code in codes)
+            {
+                doc.Add(code);
+            }
+
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
+            var update = Builders<BsonDocument>.Update.Set("privileges", doc);
+
+            var result = this.Update(filter, update);
+            return;
         }
         #endregion //Method
     }

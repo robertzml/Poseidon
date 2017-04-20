@@ -20,5 +20,12 @@ namespace Poseidon.Core.IDAL
         /// <param name="id">角色ID</param>
         /// <param name="uids">用户ID列表</param>
         void SetUsers(string id, List<string> uids);
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">角色ID</param>
+        /// <param name="codes">权限代码列表</param>
+        void SetPrivileges(string id, List<string> codes);
     }
 }

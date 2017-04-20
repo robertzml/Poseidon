@@ -14,5 +14,11 @@ namespace Poseidon.Core.IDAL
     /// </summary>
     internal interface IPrivilegeRepository : IBaseDAL<Privilege>
     {
+        /// <summary>
+        /// 根据代码获取权限
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        IEnumerable<Privilege> FindWithCodes(List<string> codes);
     }
 }

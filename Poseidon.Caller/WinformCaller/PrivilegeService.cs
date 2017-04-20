@@ -32,5 +32,27 @@ namespace Poseidon.Caller.WinformCaller
             this.bl = this.baseBL as PrivilegeBusiness;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 根据代码查找权限
+        /// </summary>
+        /// <param name="code">权限代码</param>
+        /// <returns></returns>
+        public Privilege FindByCode(string code)
+        {
+            return this.bl.FindByCode(code);
+        }
+
+        /// <summary>
+        /// 根据代码获取权限
+        /// </summary>
+        /// <param name="codes">代码列表</param>
+        /// <returns></returns>
+        public IEnumerable<Privilege> FindWithCodes(List<string> codes)
+        {
+            return this.bl.FindWithCodes(codes);
+        }
+        #endregion //Method
     }
 }

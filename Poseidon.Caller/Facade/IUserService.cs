@@ -52,5 +52,12 @@ namespace Poseidon.Caller.Facade
         /// <param name="newPassword">新密码</param>
         /// <returns></returns>
         bool ChangePassword(string userName, string oldPassword, string newPassword);
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        void SetPrivileges(string id, List<string> codes);
     }
 }
