@@ -15,6 +15,20 @@ namespace Poseidon.Core.IDAL
     internal interface IRoleRepository : IBaseDAL<Role>
     {
         /// <summary>
+        /// 获取所有角色
+        /// </summary>
+        /// <param name="includeRoot">是否包含Root</param>
+        /// <returns></returns>
+        IEnumerable<Role> FindAll(bool includeRoot);
+
+        /// <summary>
+        /// 查找用户所有角色
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns></returns>
+        IEnumerable<Role> FindUserRoles(string userId);
+
+        /// <summary>
         /// 关联用户
         /// </summary>
         /// <param name="id">角色ID</param>

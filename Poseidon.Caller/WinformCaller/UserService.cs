@@ -55,6 +55,16 @@ namespace Poseidon.Caller.WinformCaller
         }
 
         /// <summary>
+        /// 获取用户所有权限列表
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns>权限代码列表</returns>
+        public IEnumerable<string> GetPrivileges(string id)
+        {
+            return this.bl.GetPrivileges(id);
+        }
+
+        /// <summary>
         /// 用户登录
         /// </summary>
         /// <param name="userName">用户名</param>

@@ -69,6 +69,30 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 获取用户所有权限列表
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns>权限代码列表</returns>
+        public IEnumerable<string> GetPrivileges(string id)
+        {
+            List<string> codes = new List<string>();
+
+            var user = this.baseDal.FindById(id);
+            codes.AddRange(user.Privileges);
+
+            RoleBusiness roleBusiness = new RoleBusiness();
+            var roles = roleBusiness.FindUserRoles(id);
+            foreach (var item in roles)
+            {
+                codes.AddRange(item.Privileges);
+            }
+
+            codes = codes.Distinct().ToList();
+
+            return codes;
+        }
+
+        /// <summary>
         /// 用户登录
         /// </summary>
         /// <param name="userName">用户名</param>

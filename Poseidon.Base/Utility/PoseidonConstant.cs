@@ -14,5 +14,10 @@ namespace Poseidon.Base.Utility
         /// 自定义模型基类
         /// </summary>
         public readonly static string RootModelName = "BaseEntity";
+
+        /// <summary>
+        /// 超级用户组代码
+        /// </summary>
+        public readonly static string RootRole = "Root";
     }
 }

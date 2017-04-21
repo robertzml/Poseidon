@@ -132,6 +132,33 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
+        /// 获取所有角色
+        /// </summary>
+        /// <param name="includeRoot">是否包含Root</param>
+        /// <returns></returns>
+        public IEnumerable<Role> FindAll(bool includeRoot)
+        {
+            if (includeRoot)
+                return this.FindAll();
+            else
+            {
+                var filter = Builders<BsonDocument>.Filter.Ne("code", Poseidon.Base.Utility.PoseidonConstant.RootRole);
+                return this.FindList(filter);
+            }
+        }
+
+        /// <summary>
+        /// 查找用户所有角色
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns></returns>
+        public IEnumerable<Role> FindUserRoles(string userId)
+        {
+            var filter = Builders<BsonDocument>.Filter.AnyEq("users", userId);
+            return this.FindList(filter);
+        }
+
+        /// <summary>
         /// 关联用户
         /// </summary>
         /// <param name="id">角色ID</param>

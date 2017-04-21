@@ -28,11 +28,33 @@ namespace Poseidon.Core.BL
 
         #region Method
         /// <summary>
+        /// 获取所有角色
+        /// </summary>
+        /// <param name="includeRoot">是否包含Root</param>
+        /// <returns></returns>
+        public IEnumerable<Role> FindAll(bool includeRoot)
+        {
+            var dal = this.baseDal as IRoleRepository;
+            return dal.FindAll(includeRoot);
+        }
+
+        /// <summary>
+        /// 查找用户所有角色
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns></returns>
+        public IEnumerable<Role> FindUserRoles(string userId)
+        {
+            var dal = this.baseDal as IRoleRepository;
+            return dal.FindUserRoles(userId);
+        }
+
+        /// <summary>
         /// 查找角色包含用户
         /// </summary>
         /// <param name="id">角色ID</param>
         /// <returns></returns>
-        public IEnumerable<User> FindUsers(string id)
+        public IEnumerable<User> GetUsers(string id)
         {
             var role = this.baseDal.FindById(id);
 
