@@ -29,6 +29,13 @@ namespace Poseidon.Caller.Facade
         IEnumerable<Role> FindUserRoles(string userId);
 
         /// <summary>
+        /// 根据代码获取角色
+        /// </summary>
+        /// <param name="code">角色代码</param>
+        /// <returns></returns>
+        Role FindByCode(string code);
+
+        /// <summary>
         /// 查找角色包含用户
         /// </summary>
         /// <param name="id">角色ID</param>

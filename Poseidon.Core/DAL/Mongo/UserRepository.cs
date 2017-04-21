@@ -53,16 +53,6 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
-            entity.Roles = new List<string>();
-            if (doc.Contains("roles"))
-            {
-                BsonArray array = doc["roles"].AsBsonArray;
-                foreach (var item in array)
-                {
-                    entity.Roles.Add(item.ToString());
-                }
-            }
-
             entity.Privileges = new List<string>();
             if (doc.Contains("privileges"))
             {
@@ -93,17 +83,6 @@ namespace Poseidon.Core.DAL.Mongo
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };
-
-            if (entity.Roles != null && entity.Roles.Count > 0)
-            {
-                BsonArray array = new BsonArray();
-                foreach (var item in entity.Roles)
-                {
-                    array.Add(item);
-                }
-
-                doc.Add("roles", array);
-            }
 
             if (entity.Privileges != null && entity.Privileges.Count > 0)
             {

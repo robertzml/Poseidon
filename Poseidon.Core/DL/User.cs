@@ -34,12 +34,6 @@ namespace Poseidon.Core.DL
         public string Password { get; set; }
 
         /// <summary>
-        /// 拥有角色
-        /// </summary>
-        [Display(Name = "拥有角色")]
-        public List<string> Roles { get; set; }
-
-        /// <summary>
         /// 上次登录时间
         /// </summary>
         [Display(Name = "上次登录时间")]

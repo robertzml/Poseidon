@@ -8,6 +8,7 @@ namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
+    using Poseidon.Base.Utility;
     using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
 
@@ -69,6 +70,19 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 检查用户是否Root
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns></returns>
+        public bool IsRoot(string id)
+        {
+            RoleBusiness roleBusiness = new RoleBusiness();
+            var role = roleBusiness.FindByCode(PoseidonConstant.RootRole);
+
+            return role.Users.Contains(id);
+        }
+
+        /// <summary>
         /// 获取用户所有权限列表
         /// </summary>
         /// <param name="id">用户ID</param>
@@ -90,6 +104,21 @@ namespace Poseidon.Core.BL
             codes = codes.Distinct().ToList();
 
             return codes;
+        }
+
+        /// <summary>
+        /// 检查用户是否含有指定权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="code">权限代码</param>
+        /// <returns></returns>
+        public bool HasPrivilege(string id, string code)
+        {
+            var codes = GetPrivileges(id);
+            if (codes.Contains(code))
+                return true;
+            else
+                return false;
         }
 
         /// <summary>

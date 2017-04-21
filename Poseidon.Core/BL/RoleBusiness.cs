@@ -50,6 +50,17 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 根据代码获取角色
+        /// </summary>
+        /// <param name="code">角色代码</param>
+        /// <returns></returns>
+        public Role FindByCode(string code)
+        {
+            var dal = this.baseDal as IRoleRepository;
+            return dal.FindOneByField("code", code);
+        }
+
+        /// <summary>
         /// 查找角色包含用户
         /// </summary>
         /// <param name="id">角色ID</param>
