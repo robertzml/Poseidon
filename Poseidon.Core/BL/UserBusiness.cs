@@ -8,6 +8,7 @@ namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
+    using Poseidon.Base.Utility;
     using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
 
@@ -66,6 +67,58 @@ namespace Poseidon.Core.BL
         {
             var dal = this.baseDal as IUserRepository;
             return dal.FindWithIds(ids);
+        }
+
+        /// <summary>
+        /// 检查用户是否Root
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns></returns>
+        public bool IsRoot(string id)
+        {
+            RoleBusiness roleBusiness = new RoleBusiness();
+            var role = roleBusiness.FindByCode(PoseidonConstant.RootRole);
+
+            return role.Users.Contains(id);
+        }
+
+        /// <summary>
+        /// 获取用户所有权限列表
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns>权限代码列表</returns>
+        public IEnumerable<string> GetPrivileges(string id)
+        {
+            List<string> codes = new List<string>();
+
+            var user = this.baseDal.FindById(id);
+            codes.AddRange(user.Privileges);
+
+            RoleBusiness roleBusiness = new RoleBusiness();
+            var roles = roleBusiness.FindUserRoles(id);
+            foreach (var item in roles)
+            {
+                codes.AddRange(item.Privileges);
+            }
+
+            codes = codes.Distinct().ToList();
+
+            return codes;
+        }
+
+        /// <summary>
+        /// 检查用户是否含有指定权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="code">权限代码</param>
+        /// <returns></returns>
+        public bool HasPrivilege(string id, string code)
+        {
+            var codes = GetPrivileges(id);
+            if (codes.Contains(code))
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -128,6 +181,17 @@ namespace Poseidon.Core.BL
 
             user.Password = newPassword;
             return dal.Update(user);
+        }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            var dal = this.baseDal as IUserRepository;
+            dal.SetPrivileges(id, codes);
         }
         #endregion //Method
     }

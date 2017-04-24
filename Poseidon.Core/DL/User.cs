@@ -34,12 +34,6 @@ namespace Poseidon.Core.DL
         public string Password { get; set; }
 
         /// <summary>
-        /// 拥有角色
-        /// </summary>
-        [Display(Name = "拥有角色")]
-        public List<string> Roles { get; set; }
-
-        /// <summary>
         /// 上次登录时间
         /// </summary>
         [Display(Name = "上次登录时间")]
@@ -50,6 +44,12 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "本次登录时间")]
         public DateTime CurrentLoginTime { get; set; }
+
+        /// <summary>
+        /// 包含权限代码
+        /// </summary>
+        [Display(Name = "包含权限代码")]
+        public List<string> Privileges { get; set; }
         #endregion //Property
     }
 }

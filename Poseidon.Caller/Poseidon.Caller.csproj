@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Poseidon.Caller</RootNamespace>
     <AssemblyName>Poseidon.Caller</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -46,6 +46,7 @@
     <Compile Include="Facade\IGroupService.cs" />
     <Compile Include="Facade\IModelTypeService.cs" />
     <Compile Include="Facade\IOrganizationService.cs" />
+    <Compile Include="Facade\IPrivilegeService.cs" />
     <Compile Include="Facade\IRoleService.cs" />
     <Compile Include="Facade\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="WinformCaller\GroupService.cs" />
     <Compile Include="WinformCaller\ModelTypeService.cs" />
     <Compile Include="WinformCaller\OrganizationService.cs" />
+    <Compile Include="WinformCaller\PrivilegeService.cs" />
     <Compile Include="WinformCaller\RoleService.cs" />
     <Compile Include="WinformCaller\UserService.cs" />
   </ItemGroup>
@@ -66,6 +68,9 @@
       <Project>{7fb974ee-5f0e-45bb-b773-a34441cc1757}</Project>
       <Name>Poseidon.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

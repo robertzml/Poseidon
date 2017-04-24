@@ -53,13 +53,13 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
-            entity.Roles = new List<string>();
-            if (doc.Contains("roles"))
+            entity.Privileges = new List<string>();
+            if (doc.Contains("privileges"))
             {
-                BsonArray array = doc["roles"].AsBsonArray;
+                BsonArray array = doc["privileges"].AsBsonArray;
                 foreach (var item in array)
                 {
-                    entity.Roles.Add(item.ToString());
+                    entity.Privileges.Add(item.ToString());
                 }
             }
 
@@ -84,15 +84,15 @@ namespace Poseidon.Core.DAL.Mongo
                 { "status", entity.Status }
             };
 
-            if (entity.Roles != null && entity.Roles.Count > 0)
+            if (entity.Privileges != null && entity.Privileges.Count > 0)
             {
                 BsonArray array = new BsonArray();
-                foreach (var item in entity.Roles)
+                foreach (var item in entity.Privileges)
                 {
                     array.Add(item);
                 }
 
-                doc.Add("roles", array);
+                doc.Add("privileges", array);
             }
 
             return doc;
@@ -149,6 +149,26 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Status = 0;
 
             return base.Create(entity);
+        }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            var doc = new BsonArray();
+            foreach (var code in codes)
+            {
+                doc.Add(code);
+            }
+
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
+            var update = Builders<BsonDocument>.Update.Set("privileges", doc);
+
+            var result = this.Update(filter, update);
+            return;
         }
         #endregion //Method
     }

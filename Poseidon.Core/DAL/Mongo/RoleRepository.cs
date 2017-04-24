@@ -53,6 +53,15 @@ namespace Poseidon.Core.DAL.Mongo
                     entity.Users.Add(item.ToString());
                 }
             }
+            entity.Privileges = new List<string>();
+            if (doc.Contains("privileges"))
+            {
+                BsonArray array = doc["privileges"].AsBsonArray;
+                foreach (var item in array)
+                {
+                    entity.Privileges.Add(item.ToString());
+                }
+            }
 
             return entity;
         }
@@ -84,6 +93,17 @@ namespace Poseidon.Core.DAL.Mongo
                 doc.Add("users", array);
             }
 
+            if (entity.Privileges != null && entity.Privileges.Count > 0)
+            {
+                BsonArray array = new BsonArray();
+                foreach (var item in entity.Privileges)
+                {
+                    array.Add(item);
+                }
+
+                doc.Add("privileges", array);
+            }
+
             return doc;
         }
 
@@ -112,6 +132,33 @@ namespace Poseidon.Core.DAL.Mongo
 
         #region Method
         /// <summary>
+        /// 获取所有角色
+        /// </summary>
+        /// <param name="includeRoot">是否包含Root</param>
+        /// <returns></returns>
+        public IEnumerable<Role> FindAll(bool includeRoot)
+        {
+            if (includeRoot)
+                return this.FindAll();
+            else
+            {
+                var filter = Builders<BsonDocument>.Filter.Ne("code", Poseidon.Base.Utility.PoseidonConstant.RootRole);
+                return this.FindList(filter);
+            }
+        }
+
+        /// <summary>
+        /// 查找用户所有角色
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns></returns>
+        public IEnumerable<Role> FindUserRoles(string userId)
+        {
+            var filter = Builders<BsonDocument>.Filter.AnyEq("users", userId);
+            return this.FindList(filter);
+        }
+
+        /// <summary>
         /// 关联用户
         /// </summary>
         /// <param name="id">角色ID</param>
@@ -126,6 +173,26 @@ namespace Poseidon.Core.DAL.Mongo
 
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
             var update = Builders<BsonDocument>.Update.Set("users", doc);
+
+            var result = this.Update(filter, update);
+            return;
+        }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">角色ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            var doc = new BsonArray();
+            foreach (var code in codes)
+            {
+                doc.Add(code);
+            }
+
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
+            var update = Builders<BsonDocument>.Update.Set("privileges", doc);
 
             var result = this.Update(filter, update);
             return;

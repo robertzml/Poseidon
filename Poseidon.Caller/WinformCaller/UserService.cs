@@ -55,6 +55,37 @@ namespace Poseidon.Caller.WinformCaller
         }
 
         /// <summary>
+        /// 检查用户是否Root
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns></returns>
+        public bool IsRoot(string id)
+        {
+            return this.bl.IsRoot(id);
+        }
+
+        /// <summary>
+        /// 获取用户所有权限列表
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns>权限代码列表</returns>
+        public IEnumerable<string> GetPrivileges(string id)
+        {
+            return this.bl.GetPrivileges(id);
+        }
+
+        /// <summary>
+        /// 检查用户是否含有指定权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="code">权限代码</param>
+        /// <returns></returns>
+        public bool HasPrivilege(string id, string code)
+        {
+            return this.bl.HasPrivilege(id, code);
+        }
+
+        /// <summary>
         /// 用户登录
         /// </summary>
         /// <param name="userName">用户名</param>
@@ -86,6 +117,16 @@ namespace Poseidon.Caller.WinformCaller
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
             return this.bl.ChangePassword(userName, oldPassword, newPassword);
+        }
+
+        /// <summary>
+        /// 设置权限
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <param name="codes">权限代码列表</param>
+        public void SetPrivileges(string id, List<string> codes)
+        {
+            this.bl.SetPrivileges(id, codes);
         }
         #endregion //Method
     }
