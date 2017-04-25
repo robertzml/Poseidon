@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BuildingBusiness.cs" />
     <Compile Include="BL\ConfigBusiness.cs" />
     <Compile Include="BL\DictBusiness.cs" />
     <Compile Include="BL\DictCategoryBusiness.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="BL\PrivilegeBusiness.cs" />
     <Compile Include="BL\RoleBusiness.cs" />
     <Compile Include="BL\UserBusiness.cs" />
+    <Compile Include="DAL\Mongo\BuildingRepository.cs" />
     <Compile Include="DAL\Mongo\DictCategoryRepository.cs" />
     <Compile Include="DAL\Mongo\DictRepository.cs" />
     <Compile Include="DAL\Mongo\GroupRepository.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="DAL\Mongo\RoleRepository.cs" />
     <Compile Include="DAL\Mongo\UserRepository.cs" />
     <Compile Include="DAL\Sqlite\ConfigRepository.cs" />
+    <Compile Include="DL\Building.cs" />
     <Compile Include="DL\Config.cs" />
     <Compile Include="DL\Dict.cs" />
     <Compile Include="DL\DictCategory.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="DL\Privilege.cs" />
     <Compile Include="DL\Role.cs" />
     <Compile Include="DL\User.cs" />
+    <Compile Include="IDAL\IBuildingRepository.cs" />
     <Compile Include="IDAL\IConfigRepository.cs" />
     <Compile Include="IDAL\IDictCategoryRepository.cs" />
     <Compile Include="IDAL\IDictRepository.cs" />

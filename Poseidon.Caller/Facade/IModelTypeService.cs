@@ -27,5 +27,12 @@ namespace Poseidon.Caller.Facade
         /// <param name="codes">代码列表</param>
         /// <returns></returns>
         IEnumerable<ModelType> FindWithCodes(List<string> codes);
+
+        /// <summary>
+        /// 根据类型获取模型类型
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        IEnumerable<ModelType> FindByType(int type);
     }
 }

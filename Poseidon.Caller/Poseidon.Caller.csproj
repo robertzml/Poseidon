@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\IBuildingService.cs" />
     <Compile Include="Facade\IDictCategoryService.cs" />
     <Compile Include="Facade\IDictService.cs" />
     <Compile Include="Facade\IGroupService.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Facade\IRoleService.cs" />
     <Compile Include="Facade\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinformCaller\BuildingService.cs" />
     <Compile Include="WinformCaller\DictCategoryService.cs" />
     <Compile Include="WinformCaller\DictService.cs" />
     <Compile Include="WinformCaller\GroupService.cs" />

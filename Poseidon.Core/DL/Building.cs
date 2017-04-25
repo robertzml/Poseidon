@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Poseidon.Core.DL
 {
     using Poseidon.Base.Framework;
 
     /// <summary>
-    /// 模型类型类
+    /// 建筑类
     /// </summary>
-    public class ModelType : ObjectEntity
+    public class Building : ObjectEntity
     {
         #region Property
         /// <summary>
-        /// 代码
+        /// 上级ID
         /// </summary>
-        [Display(Name = "代码")]
-        public string Code { get; set; }
+        [Display(Name = "上级ID")]
+        public string ParentId { get; set; }
 
         /// <summary>
-        /// 类型 1:组织模型 2:建筑模型
+        /// 模型类型
         /// </summary>
-        [Display(Name = "类型")]
-        public int Type { get; set; }
+        [Display(Name = "模型类型")]
+        public string ModelType { get; set; }
         #endregion //Property
     }
 }
