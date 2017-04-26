@@ -27,12 +27,5 @@ namespace Poseidon.Caller.Facade
         /// <param name="organizationIds">组织ID列表</param>
         /// <returns></returns>
         IEnumerable<Organization> FindWithIds(List<string> organizationIds);
-
-        /// <summary>
-        /// 查找分组项对应组织
-        /// </summary>
-        /// <param name="items">分组项</param>
-        /// <returns></returns>
-        IEnumerable<Organization> FindByGroupItem(List<GroupItem> items);
     }
 }

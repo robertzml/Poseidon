@@ -66,7 +66,7 @@ namespace Poseidon.Core.DAL.Mongo
                 {
                     GroupItem gi = new GroupItem();
                     gi.GroupCode = item.GetValue("groupCode", "").ToString();
-                    gi.OrganizationId = item["organizationId"].ToString();
+                    gi.EntityId = item["entityId"].ToString();
                     gi.ModelType = item.GetValue("modelType", "").ToString();
                     gi.Sort = item["sort"].ToInt32();
 
@@ -116,7 +116,7 @@ namespace Poseidon.Core.DAL.Mongo
                     array.Add(new BsonDocument
                     {
                         { "groupCode", item.GroupCode },
-                        { "organizationId", item.OrganizationId },
+                        { "entityId", item.EntityId },
                         { "modelType", item.ModelType },
                         { "sort", item.Sort }
                     });

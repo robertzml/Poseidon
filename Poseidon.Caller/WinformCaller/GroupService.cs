@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Caller.WinformCaller
 {
     using Poseidon.Base.Framework;
+    using Poseidon.Base.System;
     using Poseidon.Caller.Facade;
     using Poseidon.Core.BL;
     using Poseidon.Core.DL;
@@ -95,6 +96,39 @@ namespace Poseidon.Caller.WinformCaller
         }
 
         /// <summary>
+        /// 获取分组关联模型分类
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <remarks>
+        /// 默认一个分组只能包含一种模型分类
+        /// </remarks>
+        /// <returns></returns>
+        public ModelCategory GetCategory(Group entity)
+        {
+            return this.bl.GetCategory(entity);
+        }
+
+        /// <summary>
+        /// 获取分组项对应实体
+        /// </summary>
+        /// <param name="groupItem">分组项</param>
+        /// <returns></returns>
+        public ObjectEntity GetItemEntity(GroupItem groupItem)
+        {
+            return this.bl.GetItemEntity(groupItem);
+        }
+
+        /// <summary>
+        /// 获取分组项对应实体
+        /// </summary>
+        /// <param name="groupItems">分组项</param>
+        /// <returns></returns>
+        public IEnumerable<ObjectEntity> GetItemEntities(List<GroupItem> groupItems)
+        {
+            return this.bl.GetItemEntities(groupItems);
+        }
+
+        /// <summary>
         /// 编辑分组
         /// </summary>
         /// <param name="entity">分组对象</param>
@@ -115,13 +149,13 @@ namespace Poseidon.Caller.WinformCaller
         }
 
         /// <summary>
-        /// 设置分组包含组织
+        /// 设置分组包含对象
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <param name="items">分组项</param>
-        public void SetOrganizations(string id, List<GroupItem> items)
+        public void SetGroupItems(string id, List<GroupItem> items)
         {
-            this.bl.SetOrganizations(id, items);
+            this.bl.SetGroupItems(id, items);
         }
         #endregion //Method
     }

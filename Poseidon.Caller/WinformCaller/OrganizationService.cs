@@ -53,16 +53,6 @@ namespace Poseidon.Caller.WinformCaller
         {
             return this.bl.FindWithIds(organizationIds);
         }
-
-        /// <summary>
-        /// 查找分组项对应组织
-        /// </summary>
-        /// <param name="items">分组项</param>
-        /// <returns></returns>
-        public IEnumerable<Organization> FindByGroupItem(List<GroupItem> items)
-        {
-            return this.bl.FindByGroupItem(items);
-        }
         #endregion //Method
     }
 }
