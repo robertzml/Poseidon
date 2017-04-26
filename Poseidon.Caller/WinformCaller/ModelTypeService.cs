@@ -55,13 +55,13 @@ namespace Poseidon.Caller.WinformCaller
         }
 
         /// <summary>
-        /// 根据类型获取模型类型
+        /// 根据分类获取模型类型
         /// </summary>
-        /// <param name="type">类型</param>
+        /// <param name="category">分类</param>
         /// <returns></returns>
-        public IEnumerable<ModelType> FindByType(int type)
+        public IEnumerable<ModelType> FindByCategory(int category)
         {
-            return this.bl.FindByType(type);
+            return this.bl.FindByCategory(category);
         }
         #endregion //Method
     }

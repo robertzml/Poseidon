@@ -21,10 +21,10 @@ namespace Poseidon.Core.DL
         public string Code { get; set; }
 
         /// <summary>
-        /// 类型 1:组织模型 2:建筑模型
+        /// 分类 1:组织模型 2:建筑模型
         /// </summary>
-        [Display(Name = "类型")]
-        public int Type { get; set; }
+        [Display(Name = "分类")]
+        public int Category { get; set; }
         #endregion //Property
     }
 }

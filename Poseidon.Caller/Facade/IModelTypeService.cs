@@ -29,10 +29,10 @@ namespace Poseidon.Caller.Facade
         IEnumerable<ModelType> FindWithCodes(List<string> codes);
 
         /// <summary>
-        /// 根据类型获取模型类型
+        /// 根据分类获取模型类型
         /// </summary>
-        /// <param name="type">类型</param>
+        /// <param name="category">分类</param>
         /// <returns></returns>
-        IEnumerable<ModelType> FindByType(int type);
+        IEnumerable<ModelType> FindByCategory(int category);
     }
 }

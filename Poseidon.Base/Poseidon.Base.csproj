@@ -57,6 +57,7 @@
     <Compile Include="System\DataAction.cs" />
     <Compile Include="System\EntityStatus.cs" />
     <Compile Include="System\LoginUser.cs" />
+    <Compile Include="System\ModelCategory.cs" />
     <Compile Include="System\PoseidonException.cs" />
     <Compile Include="Utility\DictAttribute.cs" />
     <Compile Include="Utility\PoseidonConstant.cs" />
