@@ -55,6 +55,14 @@ namespace Poseidon.Base.Framework
         T Create(T entity);
 
         /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        T Create(T entity, bool generateKey);
+
+        /// <summary>
         /// 编辑对象
         /// </summary>
         /// <param name="entity">实体对象</param>

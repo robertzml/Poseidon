@@ -334,6 +334,17 @@ namespace Poseidon.Data
         /// <returns></returns>
         public virtual T Create(T entity)
         {
+            return Create(entity, true);
+        }
+
+        /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        public T Create(T entity, bool generateKey)
+        {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
                 return default(T);
@@ -342,7 +353,7 @@ namespace Poseidon.Data
             string vals = "";
             foreach (string field in hash.Keys)
             {
-                if (field == this.primaryKey)
+                if (generateKey && field == this.primaryKey)
                     continue;
                 fields += string.Format("{0},", field);
                 vals += string.Format("{0}{1},", parameterPrefix, field);
