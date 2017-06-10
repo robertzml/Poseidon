@@ -264,7 +264,7 @@ namespace Poseidon.Data
         /// <param name="entity">指定的对象</param>
         /// <param name="generateKey">是否自动生成主键</param>
         /// <returns></returns>
-        public T Create(T entity, bool generateKey)
+        public virtual T Create(T entity, bool generateKey)
         {
             throw new NotImplementedException();
         }
