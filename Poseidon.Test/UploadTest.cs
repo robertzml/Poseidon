@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Web;
 using System.Threading.Tasks;
 
 namespace Poseidon.Test
@@ -24,6 +25,7 @@ namespace Poseidon.Test
                 {
                     FileName = Path.GetFileName(file)
                 };
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(MimeMapping.GetMimeMapping(Path.GetFileName(file)));
 
                 list.Add(fileContent);
             }
@@ -39,30 +41,30 @@ namespace Poseidon.Test
                 using (var content = new MultipartFormDataContent())//表明是通过multipart/form-data的方式上传数据  
                 {
                     //var formDatas = this.GetFormDataByteArrayContent(this.GetNameValueCollection(this.gv_FormData));//获取键值集合对应的ByteArrayContent集合  
-                    //var files = this.GetFileByteArrayContent(filePath);//获取文件集合对应的ByteArrayContent集合  
+                    var files = this.GetFileByteArrayContent(filePath);//获取文件集合对应的ByteArrayContent集合  
 
-                    //Action<List<ByteArrayContent>> act = (dataContents) =>
+                    Action<List<ByteArrayContent>> act = (dataContents) =>
+                    {
+                        //声明一个委托，该委托的作用就是将ByteArrayContent集合加入到MultipartFormDataContent中  
+                        foreach (var byteArrayContent in dataContents)
+                        {
+                            content.Add(byteArrayContent);
+                        }
+                    };
+                    //act(formDatas);//执行act  
+
+                    act(files);//执行act  
+
+                    //var fileContent = new ByteArrayContent(File.ReadAllBytes(filePath.First()));
+                    //fileContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attchment")
                     //{
-                    //    //声明一个委托，该委托的作用就是将ByteArrayContent集合加入到MultipartFormDataContent中  
-                    //    foreach (var byteArrayContent in dataContents)
-                    //    {
-                    //        content.Add(byteArrayContent);
-                    //    }
+                    //    FileName = Path.GetFileName(filePath.First())
                     //};
-                    ////act(formDatas);//执行act  
-
-                    //act(files);//执行act  
-
-                    var fileContent = new ByteArrayContent(File.ReadAllBytes(filePath.First()));
-                    fileContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attchment")
-                    {
-                        FileName = Path.GetFileName(filePath.First())
-                    };
-                    content.Add(fileContent, "file1", "abc.txt");
-                    content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
-                    {
-                        FileName = Path.GetFileName(filePath.First())
-                    };
+                    //content.Add(fileContent, "file1", "abc.txt");
+                    //content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+                    //{
+                    //    FileName = Path.GetFileName(filePath.First())
+                    //};
 
 
                     var result = await client.PostAsync(url, content);
@@ -108,11 +110,11 @@ namespace Poseidon.Test
         public void TestPost2()
         {
             string filePath = AppDomain.CurrentDomain.BaseDirectory + "\\abc.txt";
-            //string imgPath = AppDomain.CurrentDomain.BaseDirectory + "\\333.jpg";
+            string imgPath = AppDomain.CurrentDomain.BaseDirectory + "\\333.jpg";
 
             List<string> path = new List<string>();
             path.Add(filePath);
-            //path.Add(imgPath);
+            path.Add(imgPath);
 
             var task = Task.Run(() =>
             {
