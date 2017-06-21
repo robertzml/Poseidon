@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
+using System.Collections.Specialized;
+using System.Net.Http.Headers;
 
 namespace Poseidon.Test
 {
@@ -23,13 +25,30 @@ namespace Poseidon.Test
                 var fileContent = new ByteArrayContent(File.ReadAllBytes(file));
                 fileContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
-                    FileName = Path.GetFileName(file)
+                    FileName = Path.GetFileName(file),
+                    Name = file
                 };
                 fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(MimeMapping.GetMimeMapping(Path.GetFileName(file)));
+                
 
                 list.Add(fileContent);
             }
 
+            return list;
+        }
+
+        private List<ByteArrayContent> GetFormDataByteArrayContent(NameValueCollection collection)
+        {
+            List<ByteArrayContent> list = new List<ByteArrayContent>();
+            foreach (var key in collection.AllKeys)
+            {
+                var dataContent = new ByteArrayContent(Encoding.UTF8.GetBytes(collection[key]));
+                dataContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                {
+                    Name = key
+                };
+                list.Add(dataContent);
+            }
             return list;
         }
 

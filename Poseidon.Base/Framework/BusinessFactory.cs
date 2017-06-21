@@ -33,18 +33,7 @@ namespace Poseidon.Base.Framework
         /// <returns></returns>
         public static T GetInstance(object[] args)
         {
-            T bll = null;
-            if (bll == null)
-            {
-                lock (syncRoot)
-                {
-                    if (bll == null)
-                    {
-                        //反射创建
-                        bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name, args, false);
-                    }
-                }
-            }
+            T bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name, args, false); 
             return bll;
         }
         #endregion //Method
@@ -59,20 +48,29 @@ namespace Poseidon.Base.Framework
             {
                 string cacheKey = typeof(T).FullName;
                 //从缓存读取
-                T bll = (T)objCache[cacheKey];
-                if (bll == null)
+                if (objCache.ContainsKey(cacheKey))
+                {
+                    T bll = (T)objCache[cacheKey];
+                    return bll;
+                }
+                else
                 {
                     lock (syncRoot)
                     {
-                        if (bll == null)
+                        if (objCache.ContainsKey(cacheKey))
+                        {
+                            return (T)objCache[cacheKey];
+                        }
+                        else
                         {
                             //反射创建，并缓存
-                            bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name);
+                            T bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name);
                             objCache.Add(cacheKey, bll);
+
+                            return bll;
                         }
                     }
                 }
-                return bll;
             }
         }
         #endregion //Property

@@ -94,9 +94,16 @@ namespace Poseidon.Common
                 {
                     lock (syncRoot)
                     {
-                        objType = CreateInstance(cacheKey, assemblyString);
-                        //缓存数据访问对象
-                        objCache.Add(cacheKey, objType);
+                        if (objCache.ContainsKey(cacheKey))
+                        {
+                            objType = (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            objType = CreateInstance(cacheKey, assemblyString);
+                            //缓存数据访问对象
+                            objCache.Add(cacheKey, objType);
+                        }
                     }
                 }
                 else
@@ -131,9 +138,16 @@ namespace Poseidon.Common
                 {
                     lock (syncRoot)
                     {
-                        objType = CreateInstance(cacheKey, assemblyString, args);
-                        //缓存数据访问对象
-                        objCache.Add(cacheKey, objType);
+                        if (objCache.ContainsKey(cacheKey))
+                        {
+                            objType = (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            objType = CreateInstance(cacheKey, assemblyString, args);
+                            //缓存数据访问对象
+                            objCache.Add(cacheKey, objType);
+                        }
                     }
                 }
                 else

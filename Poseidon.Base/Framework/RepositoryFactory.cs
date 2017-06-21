@@ -95,18 +95,8 @@ namespace Poseidon.Base.Framework
         /// <returns></returns>
         public static T GetInstance(DataBaseType prefix)
         {
-            T dal = null;
-            if (dal == null)
-            {
-                lock (syncRoot)
-                {
-                    if (dal == null)
-                    {
-                        string p = DBTypeToString(prefix);
-                        dal = LoadAssembly(p);
-                    }
-                }
-            }
+            string p = DBTypeToString(prefix);
+            T dal = LoadAssembly(p);
             return dal;
         }
         #endregion //Method
@@ -120,20 +110,27 @@ namespace Poseidon.Base.Framework
             get
             {
                 string cacheKey = typeof(T).FullName;
-                //从缓存读取
-                T dal = (T)objCache[cacheKey];
-                if (dal == null)
+                if (objCache.ContainsKey(cacheKey))
+                {
+                    T dal = (T)objCache[cacheKey];
+                    return dal;
+                }
+                else
                 {
                     lock (syncRoot)
                     {
-                        if (dal == null)
+                        if (objCache.ContainsKey(cacheKey))
                         {
-                            dal = LoadAssembly();
+                            return (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            T dal = LoadAssembly();
                             objCache.Add(cacheKey, dal);
+                            return dal;
                         }
                     }
                 }
-                return dal;
             }
         }
         #endregion //Property
