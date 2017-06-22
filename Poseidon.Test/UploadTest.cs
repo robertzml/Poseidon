@@ -26,10 +26,12 @@ namespace Poseidon.Test
                 fileContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
                 {
                     FileName = Path.GetFileName(file),
-                    Name = file
+                    Name = "ef12"                    
                 };
                 fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(MimeMapping.GetMimeMapping(Path.GetFileName(file)));
-                
+                fileContent.Headers.Add("remark", "sef");
+                fileContent.Headers.Add("name", "sdf33");
+                fileContent.Headers.Add("hash", "233333");
 
                 list.Add(fileContent);
             }
@@ -59,9 +61,12 @@ namespace Poseidon.Test
             {
                 using (var content = new MultipartFormDataContent())//表明是通过multipart/form-data的方式上传数据  
                 {
-                    //var formDatas = this.GetFormDataByteArrayContent(this.GetNameValueCollection(this.gv_FormData));//获取键值集合对应的ByteArrayContent集合  
+                    //NameValueCollection nc = new NameValueCollection();
+                    //nc.Add("name", "abc");
+                    //nc.Add("remark", "dd");
+                    //var formDatas = this.GetFormDataByteArrayContent(nc);//获取键值集合对应的ByteArrayContent集合  
                     var files = this.GetFileByteArrayContent(filePath);//获取文件集合对应的ByteArrayContent集合  
-
+                    
                     Action<List<ByteArrayContent>> act = (dataContents) =>
                     {
                         //声明一个委托，该委托的作用就是将ByteArrayContent集合加入到MultipartFormDataContent中  
@@ -70,21 +75,9 @@ namespace Poseidon.Test
                             content.Add(byteArrayContent);
                         }
                     };
-                    //act(formDatas);//执行act  
 
-                    act(files);//执行act  
-
-                    //var fileContent = new ByteArrayContent(File.ReadAllBytes(filePath.First()));
-                    //fileContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attchment")
-                    //{
-                    //    FileName = Path.GetFileName(filePath.First())
-                    //};
-                    //content.Add(fileContent, "file1", "abc.txt");
-                    //content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
-                    //{
-                    //    FileName = Path.GetFileName(filePath.First())
-                    //};
-
+                    //act(formDatas);//执行act
+                    act(files);//执行act
 
                     var result = await client.PostAsync(url, content);
 
