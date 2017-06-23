@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -48,6 +49,33 @@ namespace Poseidon.Common
             }
 
             return sBuilder.ToString();
+        }
+
+        /// <summary>
+        /// 获取文件MD5哈希值
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <returns></returns>
+        public static string GetFileMD5Hash(string fileName)
+        {
+            try
+            {
+                FileStream file = new FileStream(fileName, FileMode.Open);
+                MD5 md5 = new MD5CryptoServiceProvider();
+                byte[] retVal = md5.ComputeHash(file);
+                file.Close();
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetFileMD5Hash() fail, error:" + ex.Message);
+            }
         }
         #endregion //Method
     }
