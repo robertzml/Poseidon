@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,9 @@ namespace Poseidon.Common
     {
         #region Field
         /// <summary>
-        /// 字典
+        /// 存储字典
         /// </summary>
-        private Dictionary<string, object> dict = new Dictionary<string, object>();
+        private Hashtable hashtable = new Hashtable();
 
         /// <summary>
         /// 单件实例
@@ -42,13 +43,36 @@ namespace Poseidon.Common
         /// <param name="value">值</param>
         public void Add(string key, object value)
         {
-            if (dict.ContainsKey(key))
+            lock (lockHelper)
             {
-                dict[key] = value;
+                if (hashtable.ContainsKey(key))
+                {
+                    hashtable[key] = value;
+                }
+                else
+                {
+                    hashtable.Add(key, value);
+                }
             }
-            else
+        }
+
+        /// <summary>
+        /// 获取缓存项
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
+        public object Get(string key)
+        {
+            lock (lockHelper)
             {
-                dict.Add(key, value);
+                if (hashtable.ContainsKey(key))
+                {
+                    return hashtable[key];
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -58,9 +82,12 @@ namespace Poseidon.Common
         /// <param name="key">键</param>
         public void Remove(string key)
         {
-            if (dict.ContainsKey(key))
+            lock (lockHelper)
             {
-                dict.Remove(key);
+                if (hashtable.ContainsKey(key))
+                {
+                    hashtable.Remove(key);
+                }
             }
         }
 
@@ -71,7 +98,10 @@ namespace Poseidon.Common
         /// <returns></returns>
         public bool ContainKey(string key)
         {
-            return dict.ContainsKey(key);
+            lock (lockHelper)
+            {
+                return hashtable.ContainsKey(key);
+            }
         }
 
         /// <summary>
@@ -81,7 +111,10 @@ namespace Poseidon.Common
         /// <returns></returns>
         public bool ContainValue(string value)
         {
-            return dict.ContainsValue(value);
+            lock (lockHelper)
+            {
+                return hashtable.ContainsValue(value);
+            }
         }
         #endregion //Method
 
@@ -116,14 +149,11 @@ namespace Poseidon.Common
         {
             get
             {
-                if (dict.ContainsKey(key))
-                    return dict[key];
-                else
-                    return null;
+                return Get(key);
             }
             set
             {
-                dict[key] = value;
+                Add(key, value);
             }
         }
         #endregion //Property

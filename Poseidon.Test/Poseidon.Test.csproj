@@ -56,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Foo.cs" />
     <Compile Include="GlobalAction.cs" />
     <Compile Include="ModelTypeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
     <Compile Include="Cache.cs" />
-    <Compile Include="CacheItem.cs" />
     <Compile Include="ConvertUtility.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Hasher.cs" />
