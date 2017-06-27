@@ -113,9 +113,11 @@ namespace Poseidon.Data
         public virtual T FindById(Tkey id)
         {
             string sql = string.Format("Select * From {0} Where ({1} = {2}{1})", this.tableName, this.primaryKey, parameterPrefix);
-            this.mysql.AddParameter(this.primaryKey, id);
 
-            var row = this.mysql.ExecuteRow(sql);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter { ParameterName = this.primaryKey, Value = id });
+
+            var row = this.mysql.ExecuteRow(sql, parameters);
             if (row == null)
                 return default(T);
             else
@@ -135,9 +137,11 @@ namespace Poseidon.Data
         public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE {1} = {2}{3};", this.tableName, field, parameterPrefix, field);
-            this.mysql.AddParameter(field, value);
 
-            var row = this.mysql.ExecuteRow(sql);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter { ParameterName = field, Value = value });
+
+            var row = this.mysql.ExecuteRow(sql, parameters);
             if (row == null)
                 return default(T);
 
@@ -154,12 +158,8 @@ namespace Poseidon.Data
         public virtual T FindOne(string condition, List<MySqlParameter> paras)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE {1};", this.tableName, condition);
-            foreach (var item in paras)
-            {
-                mysql.AddParameter(item.ParameterName, item.Value);
-            }
 
-            var row = this.mysql.ExecuteRow(sql);
+            var row = this.mysql.ExecuteRow(sql, paras);
 
             if (row == null)
                 return default(T);
@@ -202,9 +202,10 @@ namespace Poseidon.Data
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE {1} = {2}{1};", this.tableName, field, parameterPrefix);
-            this.mysql.AddParameter(field, value);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter { ParameterName = field, Value = value });
 
-            var dt = this.mysql.ExecuteQuery(sql);
+            var dt = this.mysql.ExecuteQuery(sql, parameters);
 
             List<T> data = new List<T>();
             foreach (DataRow row in dt.Rows)
@@ -225,12 +226,8 @@ namespace Poseidon.Data
         public virtual IEnumerable<T> FindList(string condition, List<MySqlParameter> paras)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE {1};", this.tableName, condition);
-            foreach (var item in paras)
-            {
-                mysql.AddParameter(item.ParameterName, item.Value);
-            }
 
-            var dt = this.mysql.ExecuteQuery(sql);
+            var dt = this.mysql.ExecuteQuery(sql, paras);
 
             List<T> data = new List<T>();
             foreach (DataRow row in dt.Rows)
@@ -253,12 +250,8 @@ namespace Poseidon.Data
         public virtual IEnumerable<T> FindWithPage(string condition, List<MySqlParameter> paras, int startPos, int count)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE {1} limit {2}, {3};", this.tableName, condition, startPos, count);
-            foreach (var item in paras)
-            {
-                mysql.AddParameter(item.ParameterName, item.Value);
-            }
 
-            var dt = this.mysql.ExecuteQuery(sql);
+            var dt = this.mysql.ExecuteQuery(sql, paras);
 
             List<T> data = new List<T>();
             foreach (DataRow row in dt.Rows)
@@ -283,12 +276,8 @@ namespace Poseidon.Data
         public virtual IEnumerable<T> FindWithPage(string condition, List<MySqlParameter> paras, string orderField, string orderType, int startPos, int count)
         {
             string sql = string.Format("SELECT * FROM {0} WHERE {1} ORDER BY {2} {3} limit {4}, {5};", this.tableName, condition, orderField, orderType, startPos, count);
-            foreach (var item in paras)
-            {
-                mysql.AddParameter(item.ParameterName, item.Value);
-            }
 
-            var dt = this.mysql.ExecuteQuery(sql);
+            var dt = this.mysql.ExecuteQuery(sql, paras);
 
             List<T> data = new List<T>();
             foreach (DataRow row in dt.Rows)
@@ -321,9 +310,11 @@ namespace Poseidon.Data
         public virtual long Count<Tvalue>(string field, Tvalue value)
         {
             string sql = string.Format("SELECT COUNT(*) FROM {0} WHERE {1} = {2}{1};", this.tableName, field, parameterPrefix);
-            this.mysql.AddParameter(field, value);
 
-            var obj = this.mysql.ExecuteScalar(sql);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter { ParameterName = field, Value = value });
+
+            var obj = this.mysql.ExecuteScalar(sql, parameters);
             return Convert.ToInt64(obj);
         }
 
@@ -361,17 +352,19 @@ namespace Poseidon.Data
 
             fields = fields.Trim(',');
             vals = vals.Trim(',');
+
             string sql = string.Format("INSERT INTO {0} ({1}) VALUES ({2});", this.tableName, fields, vals);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
 
             foreach (string field in hash.Keys)
             {
                 object val = hash[field];
                 val = val ?? DBNull.Value;
 
-                this.mysql.AddParameter(field, val);
+                parameters.Add(new MySqlParameter { ParameterName = field, Value = val });
             }
 
-            this.mysql.ExecuteNonQuery(sql);
+            this.mysql.ExecuteNonQuery(sql, parameters);
 
             return entity;
         }
@@ -397,17 +390,19 @@ namespace Poseidon.Data
             }
 
             setValue = setValue.Substring(0, setValue.Length - 1);
+
             string sql = string.Format("UPDATE {0} SET {1} WHERE {2} = {3}{2}", this.tableName, setValue, this.primaryKey, parameterPrefix);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
 
             foreach (string field in hash.Keys)
             {
                 object val = hash[field];
                 val = val ?? DBNull.Value;
 
-                this.mysql.AddParameter(field, val);
+                parameters.Add(new MySqlParameter { ParameterName = field, Value = val });
             }
 
-            this.mysql.ExecuteNonQuery(sql);
+            this.mysql.ExecuteNonQuery(sql, parameters);
             return true;
         }
 
@@ -421,8 +416,10 @@ namespace Poseidon.Data
             string condition = string.Format("{0} = {1}{0}", this.primaryKey, this.parameterPrefix);
             string sql = string.Format("DELETE FROM {0} WHERE {1} ", this.tableName, condition);
 
-            this.mysql.AddParameter(primaryKey, entity.Id);
-            this.mysql.ExecuteNonQuery(sql);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter { ParameterName = primaryKey, Value = entity.Id });
+
+            this.mysql.ExecuteNonQuery(sql, parameters);
 
             return true;
         }
@@ -437,8 +434,10 @@ namespace Poseidon.Data
             string condition = string.Format("{0} = {1}{0}", this.primaryKey, this.parameterPrefix);
             string sql = string.Format("DELETE FROM {0} WHERE {1} ", this.tableName, condition);
 
-            this.mysql.AddParameter(primaryKey, id);
-            this.mysql.ExecuteNonQuery(sql);
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter { ParameterName = primaryKey, Value = id });
+
+            this.mysql.ExecuteNonQuery(sql, parameters);
 
             return true;
         }
