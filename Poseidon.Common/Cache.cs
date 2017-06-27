@@ -27,6 +27,11 @@ namespace Poseidon.Common
         /// 锁变量
         /// </summary>
         private static object lockHelper = new object();
+
+        /// <summary>
+        /// 实例锁变量
+        /// </summary>
+        private static object lockInstance = new object();
         #endregion //Field
 
         #region Constructor
@@ -63,16 +68,13 @@ namespace Poseidon.Common
         /// <returns></returns>
         public object Get(string key)
         {
-            lock (lockHelper)
+            if (hashtable.ContainsKey(key))
             {
-                if (hashtable.ContainsKey(key))
-                {
-                    return hashtable[key];
-                }
-                else
-                {
-                    return null;
-                }
+                return hashtable[key];
+            }
+            else
+            {
+                return null;
             }
         }
 
@@ -98,10 +100,7 @@ namespace Poseidon.Common
         /// <returns></returns>
         public bool ContainKey(string key)
         {
-            lock (lockHelper)
-            {
-                return hashtable.ContainsKey(key);
-            }
+            return hashtable.ContainsKey(key);
         }
 
         /// <summary>
@@ -111,10 +110,31 @@ namespace Poseidon.Common
         /// <returns></returns>
         public bool ContainValue(string value)
         {
-            lock (lockHelper)
+            return hashtable.ContainsValue(value);
+        }
+
+        /// <summary>
+        /// 获取字典中所有键
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetKeys()
+        {
+            List<string> keys = new List<string>();
+            foreach (string item in hashtable.Keys)
             {
-                return hashtable.ContainsValue(value);
+                keys.Add(item);
             }
+
+            return keys;
+        }
+
+        /// <summary>
+        /// 获取字典项数量
+        /// </summary>
+        /// <returns></returns>
+        public int Count()
+        {
+            return hashtable.Count;
         }
         #endregion //Method
 
@@ -128,7 +148,7 @@ namespace Poseidon.Common
             {
                 if (instance == null)
                 {
-                    lock (lockHelper)
+                    lock (lockInstance)
                     {
                         if (instance == null)
                         {

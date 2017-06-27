@@ -56,6 +56,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Common\CacheTest.cs" />
+    <Compile Include="Common\ReflectTest.cs" />
     <Compile Include="Foo.cs" />
     <Compile Include="GlobalAction.cs" />
     <Compile Include="ModelTypeTest.cs" />

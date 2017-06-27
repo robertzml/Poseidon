@@ -52,26 +52,7 @@ namespace Poseidon.Test
             Console.WriteLine("total time is {0} millisecond", sw.ElapsedMilliseconds);
         }
 
-        /// <summary>
-        /// 测试多线程反射
-        /// </summary>
-        [TestMethod]
-        public void TestReflect1()
-        {
-            var obj1 = Reflect<Foo>.Create(typeof(Foo).FullName, typeof(Foo).Assembly.GetName().Name, true);
-            var obj2 = Reflect<Foo>.Create(typeof(Foo).FullName, typeof(Foo).Assembly.GetName().Name, true);
-
-            Assert.IsTrue(obj1.Equals(obj2));
-
-            obj1.Set(5);
-
-            Assert.AreEqual(obj1.Get(), obj2.Get());
-
-            var obj3 = new Foo();
-            var obj4 = new Foo();
-          
-            Assert.IsFalse(obj3.Equals(obj4));
-        }
+      
 
         [TestMethod]
         public void TestReflect2()

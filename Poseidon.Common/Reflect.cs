@@ -97,32 +97,20 @@ namespace Poseidon.Common
                 }
                 else
                 {
-                    objType = CreateInstance(cacheKey, assemblyString);
-                    //缓存数据访问对象
-                    objCache.Add(cacheKey, objType);
+                    lock (syncRoot)
+                    {
+                        if (objCache.ContainKey(cacheKey))
+                        {
+                            objType = (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            objType = CreateInstance(cacheKey, assemblyString);
+                            //缓存数据访问对象
+                            objCache.Add(cacheKey, objType);
+                        }
+                    }
                 }
-
-                //if (!objCache.ContainsKey(cacheKey))
-                //{
-                //    lock (syncRoot)
-                //    {
-                //        if (objCache.ContainsKey(cacheKey))
-                //        {
-                //            objType = (T)objCache[cacheKey];
-                //        }
-                //        else
-                //        {
-                //            objType = CreateInstance(cacheKey, assemblyString);
-                //            //缓存数据访问对象
-                //            objCache.Add(cacheKey, objType);
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    //从缓存读取
-                //    objType = (T)objCache[cacheKey];
-                //}
             }
             else
             {
@@ -152,30 +140,19 @@ namespace Poseidon.Common
                 }
                 else
                 {
-                    objType = CreateInstance(cacheKey, assemblyString, args);
-                    objCache.Add(cacheKey, objType);
+                    lock (syncRoot)
+                    {
+                        if (objCache.ContainKey(cacheKey))
+                        {
+                            objType = (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            objType = CreateInstance(cacheKey, assemblyString, args);
+                            objCache.Add(cacheKey, objType);
+                        }
+                    }
                 }
-                //if (!objCache.ContainsKey(cacheKey))
-                //{
-                //    lock (syncRoot)
-                //    {
-                //        if (objCache.ContainsKey(cacheKey))
-                //        {
-                //            objType = (T)objCache[cacheKey];
-                //        }
-                //        else
-                //        {
-                //            objType = CreateInstance(cacheKey, assemblyString, args);
-                //            //缓存数据访问对象
-                //            objCache.Add(cacheKey, objType);
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    //从缓存读取
-                //    objType = (T)objCache[cacheKey];
-                //}
             }
             else
             {
