@@ -35,6 +35,10 @@ namespace Poseidon.Test
                 throw new PoseidonException(ErrorCode.DatabaseConnectionNotFound);
 
             Cache.Instance.Add("ConnectionString", connection);
+
+            // 设置数据库类型
+            string dalPrefix = AppConfig.GetAppSetting("DALPrefix");
+            Cache.Instance.Add("DALPrefix", dalPrefix);
         }
         #endregion //Method
     }

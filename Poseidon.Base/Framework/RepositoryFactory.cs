@@ -15,9 +15,14 @@ namespace Poseidon.Base.Framework
     {
         #region Field
         /// <summary>
+        /// 缓存
+        /// </summary>
+        private static Cache objCache = Cache.Instance;
+
+        /// <summary>
         /// 数据类缓存
         /// </summary>
-        private static Hashtable objCache = new Hashtable();
+        //private static Hashtable objCache = new Hashtable();
 
         /// <summary>
         /// 锁变量
@@ -49,12 +54,13 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
-        /// 根据配置载入相关数据访问程序集
+        /// 载入相关数据访问程序集
+        /// 由缓存DALPrefix确定
         /// </summary>
         /// <returns></returns>
         private static T LoadAssembly()
         {
-            string prefix = AppConfig.GetAppSetting("DALPrefix");
+            string prefix = Cache.Instance["DALPrefix"].ToString();
             prefix = "DAL." + prefix;
 
             string name = typeof(T).Name;
@@ -63,7 +69,7 @@ namespace Poseidon.Base.Framework
             string fullName = typeof(T).FullName;
             fullName = fullName.Replace("IDAL", prefix).Replace(name, insName); //bind new instance name
 
-            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name, false); //reflection create
             return o;
         }
 
@@ -82,7 +88,7 @@ namespace Poseidon.Base.Framework
             string fullName = typeof(T).FullName;
             fullName = fullName.Replace("IDAL", prefix).Replace(name, insName); //bind new instance name
 
-            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name, false); //reflection create
             return o;
         }
         #endregion //Function
@@ -110,16 +116,15 @@ namespace Poseidon.Base.Framework
             get
             {
                 string cacheKey = typeof(T).FullName;
-                if (objCache.ContainsKey(cacheKey))
+                if (objCache.ContainKey(cacheKey))
                 {
-                    T dal = (T)objCache[cacheKey];
-                    return dal;
+                    return (T)objCache[cacheKey];
                 }
                 else
                 {
                     lock (syncRoot)
                     {
-                        if (objCache.ContainsKey(cacheKey))
+                        if (objCache.ContainKey(cacheKey))
                         {
                             return (T)objCache[cacheKey];
                         }
