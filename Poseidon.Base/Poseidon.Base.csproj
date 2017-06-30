@@ -59,6 +59,7 @@
     <Compile Include="Framework\BusinessEntity.cs" />
     <Compile Include="Framework\BusinessFactory.cs" />
     <Compile Include="Framework\CallerFactory.cs" />
+    <Compile Include="Framework\CallerType.cs" />
     <Compile Include="Framework\IBaseBL.cs" />
     <Compile Include="Framework\IBaseDAL.cs" />
     <Compile Include="Framework\IBaseEntity.cs" />

@@ -17,9 +17,14 @@ namespace Poseidon.Base.Framework
     {
         #region Field
         /// <summary>
+        /// 缓存
+        /// </summary>
+        private static Cache objCache = Cache.Instance;
+
+        /// <summary>
         /// 服务类缓存
         /// </summary>
-        private static Hashtable objCache = new Hashtable();
+        //private static Hashtable objCache = new Hashtable();
 
         /// <summary>
         /// 锁变量
@@ -28,6 +33,21 @@ namespace Poseidon.Base.Framework
         #endregion //Field
 
         #region Function
+        private static string CallerTypeToString(CallerType prefix)
+        {
+            switch (prefix)
+            {
+                case CallerType.Win:
+                    return "WinformCaller";
+                case CallerType.WebApi:
+                    return "WebApiCaller";
+                case CallerType.Wcf:
+                    return "WcfCaller";
+            }
+
+            return "";
+        }
+
         /// <summary>
         /// 载入指定数据访问程序集
         /// </summary>
@@ -41,7 +61,7 @@ namespace Poseidon.Base.Framework
             string fullName = typeof(T).FullName;
             fullName = fullName.Replace("Facade", prefix).Replace(name, insName);
 
-            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name);
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name, false);
             return o;
         }
 
@@ -80,20 +100,41 @@ namespace Poseidon.Base.Framework
             get
             {
                 string cacheKey = typeof(T).FullName;
-                T call = (T)objCache[cacheKey];
-                if (call == null)
+                if (objCache.ContainKey(cacheKey))
                 {
-                    lock (syncRoot)
+                    return (T)objCache[cacheKey];
+                }
+                else
+                {
+                    lock(syncRoot)
                     {
-                        if (call == null)
+                        if (objCache.ContainKey(cacheKey))
                         {
-                            //反射创建，并缓存
-                            call = LoadAssembly();
+                            return (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            T call = LoadAssembly();
                             objCache.Add(cacheKey, call);
+                            return call;
                         }
                     }
                 }
-                return call;
+
+                //T call = (T)objCache[cacheKey];
+                //if (call == null)
+                //{
+                //    lock (syncRoot)
+                //    {
+                //        if (call == null)
+                //        {
+                //            //反射创建，并缓存
+                //            call = LoadAssembly();
+                //            objCache.Add(cacheKey, call);
+                //        }
+                //    }
+                //}
+                //return call;
             }
         }
         #endregion //Property
