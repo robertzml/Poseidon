@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Base.Framework
 {
     /// <summary>
-    /// 服务访问类前缀
+    /// 服务访问类型
     /// </summary>
     public enum CallerType
     {

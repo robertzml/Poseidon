@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Base\RepositoryTest.cs" />
     <Compile Include="Base\BusinessTest.cs" />
+    <Compile Include="Base\CallerTest.cs" />
     <Compile Include="Common\CacheTest.cs" />
     <Compile Include="Common\ReflectTest.cs" />
     <Compile Include="Foo.cs" />
