@@ -36,13 +36,13 @@ namespace Poseidon.Base.Framework
         }
         #endregion //Constructor
 
-        #region Method
+        #region Function
         /// <summary>
-        /// 根据ID查找对象
+        /// 获取实体
         /// </summary>
-        /// <param name="id">ID</param>
+        /// <param name="url">地址</param>
         /// <returns></returns>
-        public T FindById(Tkey id)
+        protected T GetEntity(string url)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -50,8 +50,7 @@ namespace Poseidon.Base.Framework
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 T entity = default(T);
-                string url = host + controller + "/" +id.ToString();
-                               
+
                 HttpResponseMessage response = client.GetAsync(url).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -61,6 +60,73 @@ namespace Poseidon.Base.Framework
 
                 return entity;
             }
+        }
+
+        /// <summary>
+        /// 异步获取实体
+        /// </summary>
+        /// <param name="url">地址</param>
+        /// <returns></returns>
+        protected async Task<T> GetEntityAsync(string url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.GetAsync(url);
+
+                response.EnsureSuccessStatusCode();
+                var entity = response.Content.ReadAsAsync<T>();
+                return await entity;
+            }
+        }
+
+        /// <summary>
+        /// 获取实体列表
+        /// </summary>
+        /// <param name="url">地址</param>
+        /// <returns></returns>
+        protected List<T> GetList(string url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    
+                HttpResponseMessage response = client.GetAsync(url).Result;
+
+                response.EnsureSuccessStatusCode();
+                var entity = response.Content.ReadAsAsync<List<T>>().Result;
+            
+                return entity;
+            }
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<T> FindAll()
+        {
+            string url = host + controller;
+            var entity = GetList(url);
+            return entity;
+        }
+
+        /// <summary>
+        /// 根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public T FindById(Tkey id)
+        {
+            string url = host + controller + "/" + id.ToString();
+            T entity = GetEntity(url);
+
+            return entity;
         }
         #endregion //Method
 
@@ -89,10 +155,7 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindAll()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public IEnumerable<T> FindAllNormal()
         {
