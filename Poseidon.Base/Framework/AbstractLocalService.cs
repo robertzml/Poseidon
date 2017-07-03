@@ -42,6 +42,22 @@ namespace Poseidon.Base.Framework
             return this.baseBL.FindById(id);
         }
 
+        /// <summary>
+        /// 异步根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public async Task<T> FindByIdAsync(Tkey id)
+        {
+            var task = Task.Run(() =>
+            {
+                return this.baseBL.FindById(id);
+            });
+
+            return await task;
+        }
+
+
         public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();

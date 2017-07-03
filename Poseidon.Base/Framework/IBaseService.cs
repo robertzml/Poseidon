@@ -21,6 +21,13 @@ namespace Poseidon.Base.Framework
         T FindById(Tkey id);
 
         /// <summary>
+        /// 异步根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        Task<T> FindByIdAsync(Tkey id);
+
+        /// <summary>
         /// 根据某一字段查找对象
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>

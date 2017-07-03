@@ -22,7 +22,7 @@ namespace Poseidon.Base.Framework
         /// <summary>
         /// 控制器
         /// </summary>
-        private string controller;
+        protected string controller;
         #endregion //Field
 
         #region Constructor
@@ -42,7 +42,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="url">地址</param>
         /// <returns></returns>
-        protected T GetEntity(string url)
+        protected virtual T GetEntity(string url)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -67,7 +67,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="url">地址</param>
         /// <returns></returns>
-        protected async Task<T> GetEntityAsync(string url)
+        protected virtual async Task<T> GetEntityAsync(string url)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -109,7 +109,7 @@ namespace Poseidon.Base.Framework
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T> FindAll()
+        public virtual IEnumerable<T> FindAll()
         {
             string url = host + controller;
             var entity = GetList(url);
@@ -121,12 +121,23 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public T FindById(Tkey id)
+        public virtual T FindById(Tkey id)
         {
             string url = host + controller + "/" + id.ToString();
             T entity = GetEntity(url);
 
             return entity;
+        }
+
+        /// <summary>
+        /// 根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public virtual async Task<T> FindByIdAsync(Tkey id)
+        {
+            string url = host + controller + "/" + id.ToString();
+            return await GetEntityAsync(url);
         }
         #endregion //Method
 
