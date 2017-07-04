@@ -87,35 +87,45 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="url">地址</param>
         /// <returns></returns>
-        protected List<T> GetList(string url)
+        protected virtual List<T> GetList(string url)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    
+
                 HttpResponseMessage response = client.GetAsync(url).Result;
 
                 response.EnsureSuccessStatusCode();
                 var entity = response.Content.ReadAsAsync<List<T>>().Result;
-            
+
                 return entity;
+            }
+        }
+
+        /// <summary>
+        /// 异步获取实体列表
+        /// </summary>
+        /// <param name="url">地址</param>
+        /// <returns></returns>
+        protected virtual async Task<List<T>> GetListAsync(string url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.GetAsync(url);
+
+                response.EnsureSuccessStatusCode();
+                var entity = response.Content.ReadAsAsync<List<T>>();
+
+                return await entity;
             }
         }
         #endregion //Function
 
         #region Method
-        /// <summary>
-        /// 查找所有对象
-        /// </summary>
-        /// <returns></returns>
-        public virtual IEnumerable<T> FindAll()
-        {
-            string url = host + controller;
-            var entity = GetList(url);
-            return entity;
-        }
-
         /// <summary>
         /// 根据ID查找对象
         /// </summary>
@@ -130,7 +140,7 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
-        /// 根据ID查找对象
+        /// 异步根据ID查找对象
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
@@ -139,7 +149,28 @@ namespace Poseidon.Base.Framework
             string url = host + controller + "/" + id.ToString();
             return await GetEntityAsync(url);
         }
-        #endregion //Method
+
+        /// <summary>
+        /// 查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindAll()
+        {
+            string url = host + controller;
+            var entity = GetList(url);
+            return entity;
+        }
+
+        /// <summary>
+        /// 异步查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<IEnumerable<T>> FindAllAsync()
+        {
+            string url = host + controller;
+            return await GetListAsync(url);
+        }      
+
 
         public long Count()
         {
@@ -166,7 +197,7 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
-        
+
 
         public IEnumerable<T> FindAllNormal()
         {
@@ -188,6 +219,23 @@ namespace Poseidon.Base.Framework
         {
             throw new NotImplementedException();
         }
-       
+        #endregion //Method
+    }
+
+    /// <summary>
+    /// 抽象WebAPI服务调用类
+    /// </summary>
+    /// <typeparam name="T">实体类型</typeparam>
+    public abstract class AbstractApiService<T> : AbstractApiService<T, string> where T : BaseEntity
+    {
+        #region Constructor
+        /// <summary>
+        /// 抽象WebAPI服务调用类
+        /// </summary>
+        /// <param name="controller">控制器</param>
+        public AbstractApiService(string controller) : base(controller)
+        {
+        }
+        #endregion //Constructor
     }
 }

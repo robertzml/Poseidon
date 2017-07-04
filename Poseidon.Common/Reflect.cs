@@ -41,6 +41,10 @@ namespace Poseidon.Common
 
             //反射创建
             T obj = (T)assemblyObj.CreateInstance(name);
+            if (obj == null)
+            {
+                throw new Exception(string.Format("反射创建对象失败， name={0}, assemblyString={1}", name, assemblyString));
+            }
             return obj;
         }
 
@@ -61,6 +65,10 @@ namespace Poseidon.Common
 
             //反射创建
             T obj = (T)assemblyObj.CreateInstance(name, false, BindingFlags.Default, null, args, null, null);
+            if (obj == null)
+            {
+                throw new Exception(string.Format("反射创建参数化对象失败， name={0}, assemblyString={1}", name, assemblyString));
+            }
             return obj;
         }
         #endregion //Function

@@ -43,6 +43,12 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindAll();
 
         /// <summary>
+        /// 异步查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<T>> FindAllAsync();
+
+        /// <summary>
         /// 根据某一字段查找对象
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>

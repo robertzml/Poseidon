@@ -47,7 +47,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public async Task<T> FindByIdAsync(Tkey id)
+        public virtual async Task<T> FindByIdAsync(Tkey id)
         {
             var task = Task.Run(() =>
             {
@@ -70,6 +70,20 @@ namespace Poseidon.Base.Framework
         public virtual IEnumerable<T> FindAll()
         {
             return this.baseBL.FindAll();
+        }
+
+        /// <summary>
+        /// 异步查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<IEnumerable<T>> FindAllAsync()
+        {
+            var task = Task.Run(() =>
+            {
+                return this.baseBL.FindAll();
+            });
+
+            return await task;
         }
 
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
