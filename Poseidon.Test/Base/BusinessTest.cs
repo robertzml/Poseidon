@@ -11,7 +11,6 @@ namespace Poseidon.Test.Base
     using Poseidon.Base.Framework;
     using Poseidon.Common;
     using Poseidon.Core.BL;
-    using Poseidon.Attachment.Core.BL;
 
     /// <summary>
     /// 业务类测试
@@ -100,21 +99,6 @@ namespace Poseidon.Test.Base
 
             Assert.IsFalse(foo0.Equals(foo1));
             Console.WriteLine("Test finished");
-        }
-
-        /// <summary>
-        /// 附件模块测试
-        /// </summary>
-        [TestMethod]
-        public void AttachmentTest()
-        {
-            var bl = BusinessFactory<AttachmentBusiness>.Instance;
-
-            Assert.IsNotNull(bl);
-
-            var data = bl.FindAll();
-
-            Assert.IsTrue(data.Count() > 0);
         }
         #endregion //Test
     }
