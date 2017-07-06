@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Common;
+
     /// <summary>
     /// 抽象WebAPI服务调用类
     /// </summary>
@@ -32,6 +34,7 @@ namespace Poseidon.Base.Framework
         /// <param name="controller">控制器</param>
         public AbstractApiService(string controller)
         {
+            this.host = Cache.Instance["ApiHost"].ToString();
             this.controller = controller;
         }
         #endregion //Constructor
