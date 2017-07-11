@@ -193,6 +193,28 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<string> values)
+        {
+            var ids = values.Select(r => new ObjectId(r));
+            var filter = Builders<BsonDocument>.Filter.In("_id", ids);
+
+            var docs = this.mongo.Find(this.collectionName, filter);
+
+            List<T> data = new List<T>();
+            foreach (var doc in docs)
+            {
+                var entity = DocToEntity(doc);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
         /// 根据条件查找记录
         /// </summary>
         /// <param name="filter">查询条件</param>

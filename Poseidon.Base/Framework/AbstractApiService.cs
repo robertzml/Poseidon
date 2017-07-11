@@ -172,7 +172,7 @@ namespace Poseidon.Base.Framework
         {
             string url = host + controller;
             return await GetListAsync(url);
-        }      
+        }
 
 
         public long Count()
@@ -181,6 +181,32 @@ namespace Poseidon.Base.Framework
         }
 
         public long Count<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> FindAllNormal()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<Tkey> values)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
@@ -195,30 +221,12 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
-        public bool Delete(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        public IEnumerable<T> FindAllNormal()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T FindOneByField<Tvalue>(string field, Tvalue value)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Update(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(T entity)
         {
             throw new NotImplementedException();
         }

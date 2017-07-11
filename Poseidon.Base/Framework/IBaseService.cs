@@ -58,6 +58,13 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListInIds(List<Tkey> values);
+
+        /// <summary>
         /// 查找所有正常状态对象
         /// </summary>
         /// <returns></returns>

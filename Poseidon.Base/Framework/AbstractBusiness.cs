@@ -42,6 +42,28 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        {
+            return this.baseDal.FindListByField(field, value);
+        }
+
+        /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<Tkey> values)
+        {
+            return this.baseDal.FindListInIds(values);
+        }
+
+        /// <summary>
         /// 查找所有正常状态对象
         /// </summary>
         /// <returns></returns>

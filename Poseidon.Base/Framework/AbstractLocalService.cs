@@ -86,9 +86,26 @@ namespace Poseidon.Base.Framework
             return await task;
         }
 
+        /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            return this.baseBL.FindListByField(field, value);
+        }
+
+        /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<Tkey> values)
+        {
+            return this.baseBL.FindListInIds(values);
         }
 
         /// <summary>

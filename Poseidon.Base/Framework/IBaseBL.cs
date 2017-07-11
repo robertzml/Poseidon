@@ -35,6 +35,22 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindAllNormal();
 
         /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListInIds(List<Tkey> values);
+
+        /// <summary>
         /// 按状态查找对象
         /// </summary>
         /// <param name="status">对象状态</param>

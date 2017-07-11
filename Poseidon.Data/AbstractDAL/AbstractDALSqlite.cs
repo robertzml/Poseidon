@@ -127,6 +127,16 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<string> values)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// 查找所有记录数量
         /// </summary>
         /// <returns></returns>
