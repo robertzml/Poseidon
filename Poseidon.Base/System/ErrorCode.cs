@@ -67,6 +67,12 @@ namespace Poseidon.Base.System
         NoPrivilege = 8,
 
         /// <summary>
+        /// HTTP访问错误
+        /// </summary>
+        [Display(Name = "HTTP访问错误")]
+        HTTPError = 9,
+
+        /// <summary>
         /// 未选择记录
         /// </summary>
         [Display(Name = "未选择记录")]

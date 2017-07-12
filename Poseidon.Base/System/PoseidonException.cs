@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,11 @@ namespace Poseidon.Base.System
         /// 错误代码
         /// </summary>
         private ErrorCode errorCode;
+
+        /// <summary>
+        /// HTTP状态码
+        /// </summary>
+        HttpStatusCode httpStatusCode;
         #endregion //Field
 
         #region Constructor
@@ -59,6 +65,16 @@ namespace Poseidon.Base.System
         {
             this.errorCode = errorCode;
         }
+
+        /// <summary>
+        /// Poseidon异常类，网络异常
+        /// </summary>
+        /// <param name="errorCode">错误代码</param>
+        /// <param name="httpStatusCode">HTTP状态码</param>
+        public PoseidonException(ErrorCode errorCode, HttpStatusCode httpStatusCode) : base(errorCode.DisplayName())
+        {
+            this.errorCode = errorCode;
+        }
         #endregion //Constructor
 
         #region Property
@@ -70,6 +86,17 @@ namespace Poseidon.Base.System
             get
             {
                 return this.errorCode;
+            }
+        }
+
+        /// <summary>
+        /// HTTP状态码
+        /// </summary>
+        public HttpStatusCode HttpStatusCode
+        {
+            get
+            {
+                return httpStatusCode;
             }
         }
         #endregion //Property
