@@ -268,6 +268,17 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 聚合查找
+        /// </summary>
+        /// <param name="match">Match条件</param>
+        /// <param name="group">Group条件</param>
+        /// <returns></returns>
+        public virtual IEnumerable<BsonDocument> Aggregate(FilterDefinition<BsonDocument> match, ProjectionDefinition<BsonDocument, BsonDocument> group)
+        {
+            return this.mongo.Aggregate(this.collectionName, match, group);
+        }
+
+        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">实体对象</param>
