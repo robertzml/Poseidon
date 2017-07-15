@@ -24,7 +24,7 @@ namespace Poseidon.Base.System
         /// <summary>
         /// HTTP状态码
         /// </summary>
-        HttpStatusCode httpStatusCode;
+        private HttpStatusCode httpStatusCode;
         #endregion //Field
 
         #region Constructor
@@ -74,6 +74,7 @@ namespace Poseidon.Base.System
         public PoseidonException(ErrorCode errorCode, HttpStatusCode httpStatusCode) : base(errorCode.DisplayName())
         {
             this.errorCode = errorCode;
+            this.httpStatusCode = httpStatusCode;
         }
         #endregion //Constructor
 
