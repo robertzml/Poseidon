@@ -105,6 +105,7 @@
     <Compile Include="DL\Dict.cs" />
     <Compile Include="DL\DictCategory.cs" />
     <Compile Include="DL\Group.cs" />
+    <Compile Include="DL\Menu.cs" />
     <Compile Include="DL\ModelType.cs" />
     <Compile Include="DL\Organization.cs" />
     <Compile Include="DL\Privilege.cs" />
