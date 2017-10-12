@@ -85,6 +85,7 @@
     <Compile Include="BL\DictBusiness.cs" />
     <Compile Include="BL\DictCategoryBusiness.cs" />
     <Compile Include="BL\GroupBusiness.cs" />
+    <Compile Include="BL\MenuBusiness.cs" />
     <Compile Include="BL\ModelTypeBusiness.cs" />
     <Compile Include="BL\OrganizationBusiness.cs" />
     <Compile Include="BL\PrivilegeBusiness.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="DAL\Mongo\DictCategoryRepository.cs" />
     <Compile Include="DAL\Mongo\DictRepository.cs" />
     <Compile Include="DAL\Mongo\GroupRepository.cs" />
+    <Compile Include="DAL\Mongo\MenuRepository.cs" />
     <Compile Include="DAL\Mongo\ModelTypeRepository.cs" />
     <Compile Include="DAL\Mongo\OrganizationRepository.cs" />
     <Compile Include="DAL\Mongo\PrivilegeRepository.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="IDAL\IDictCategoryRepository.cs" />
     <Compile Include="IDAL\IDictRepository.cs" />
     <Compile Include="IDAL\IGroupRepository.cs" />
+    <Compile Include="IDAL\IMenuRepository.cs" />
     <Compile Include="IDAL\IModelTypeRepository.cs" />
     <Compile Include="IDAL\IOrganizationRepository.cs" />
     <Compile Include="IDAL\IPrivilegeRepository.cs" />
@@ -124,6 +127,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ConfigUtility.cs" />
     <Compile Include="Utility\DictUtility.cs" />
+    <Compile Include="Utility\MenuType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Poseidon.Base\Poseidon.Base.csproj">
