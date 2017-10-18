@@ -45,6 +45,7 @@ namespace Poseidon.Core.DAL.Mongo
             entity.LargeGlyph = doc["largeGlyph"].ToString();
             entity.PrivilegeCode = doc["privilegeCode"].ToString();
             entity.Type = doc["type"].ToInt32();
+            entity.Visible = doc["visible"].ToBoolean();
             entity.Sort = doc["sort"].ToInt32();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
@@ -71,6 +72,7 @@ namespace Poseidon.Core.DAL.Mongo
                 { "largeGlyph", entity.LargeGlyph },
                 { "privilegeCode", entity.PrivilegeCode },
                 { "type", entity.Type },
+                { "visible", entity.Visible },
                 { "sort", entity.Sort },
                 { "remark", entity.Remark },
                 { "status", entity.Status }

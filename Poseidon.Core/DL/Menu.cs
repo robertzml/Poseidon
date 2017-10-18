@@ -52,6 +52,12 @@ namespace Poseidon.Core.DL
         public int Type { get; set; }
 
         /// <summary>
+        /// 是否显示
+        /// </summary>
+        [Display(Name = "是否显示")]
+        public bool Visible { get; set; }
+
+        /// <summary>
         /// 排序码
         /// </summary>
         [Display(Name = "排序码")]
