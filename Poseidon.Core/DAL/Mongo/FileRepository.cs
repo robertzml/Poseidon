@@ -8,6 +8,7 @@ namespace Poseidon.Core.DAL.Mongo
 {
     using MongoDB.Bson;
     using MongoDB.Driver;
+    using Poseidon.Base.Framework;
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
@@ -43,12 +44,19 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Extension = doc["extension"].ToString();
             entity.ContentType = doc["contentType"].ToString();
             entity.Size = doc["size"].ToInt32();
-            entity.CreateTime = doc["createTime"].ToLocalTime();
             entity.Mount = doc["mount"].ToString();
             entity.Type = doc["type"].ToInt32();
             entity.DatasetCode = doc["datasetCode"].ToString();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
+
+            var createBy = doc["createBy"].ToBsonDocument();
+            entity.CreateBy = new UpdateStamp
+            {
+                UserId = createBy["userId"].ToString(),
+                Name = createBy["name"].ToString(),
+                Time = createBy["time"].ToLocalTime()
+            };
 
             return entity;
         }
@@ -68,10 +76,14 @@ namespace Poseidon.Core.DAL.Mongo
                 { "extension", entity.Extension },
                 { "contentType", entity.ContentType },
                 { "size", entity.Size },
-                { "createTime", entity.CreateTime },
                 { "mount", entity.Mount },
                 { "type", entity.Type },
                 { "datasetCode", entity.DatasetCode },
+                { "createBy", new BsonDocument {
+                    { "userId", entity.CreateBy.UserId },
+                    { "name", entity.CreateBy.Name },
+                    { "time", entity.CreateBy.Time }
+                }},
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };

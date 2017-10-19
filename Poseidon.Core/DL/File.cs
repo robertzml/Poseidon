@@ -46,10 +46,10 @@ namespace Poseidon.Core.DL
         public long Size { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// 创建标注
         /// </summary>
-        [Display(Name = "创建时间")]
-        public DateTime CreateTime { get; set; }
+        [Display(Name = "创建标注")]
+        public UpdateStamp CreateBy { get; set; }
 
         /// <summary>
         /// 挂载点
