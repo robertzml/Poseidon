@@ -6,7 +6,6 @@ using System.Text;
 namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
-    using Poseidon.Base.System;
     using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
 

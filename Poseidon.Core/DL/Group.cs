@@ -9,7 +9,7 @@ namespace Poseidon.Core.DL
     using Poseidon.Base.Framework;
 
     /// <summary>
-    /// 组织分组类
+    /// 模型分组类
     /// </summary>
     public class Group : ObjectEntity
     {

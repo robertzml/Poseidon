@@ -14,7 +14,7 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 分组对象数据访问类
+    /// 模型分组对象数据访问类
     /// </summary>
     internal class GroupRepository : AbstractDALMongo<Group>, IGroupRepository
     {

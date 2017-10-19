@@ -10,7 +10,7 @@ namespace Poseidon.Core.IDAL
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 组织分组对象访问接口
+    /// 模型分组对象访问接口
     /// </summary>
     internal interface IGroupRepository : IBaseDAL<Group>
     {
