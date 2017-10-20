@@ -20,6 +20,14 @@ namespace Poseidon.Test.Common
         }
 
         [TestMethod]
+        public void TestWarning()
+        {
+            Logger.Instance.Warning("Warning");
+            Assert.AreEqual(1, 1);
+        }
+
+
+        [TestMethod]
         public void TestException()
         {
             try

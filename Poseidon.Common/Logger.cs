@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -90,28 +92,58 @@ namespace Poseidon.Common
         }
 
         /// <summary>
-        /// 记录异常
+        /// 记录日志
         /// </summary>
+        /// <param name="level">日志级别</param>
+        /// <param name="className">类名</param>
+        /// <param name="methodName">方法名</param>
         /// <param name="message">消息</param>
-        /// <param name="e">异常</param>
-        private void WriteException(string message, Exception e)
+        private void WriteMessage(int level, string className, string methodName, string message)
         {
             try
             {
                 string fileName = DateTime.Now.ToString("yyyyMMdd") + ".log";
 
-                string time = DateTime.Now.ToString("[yyyy-MM-dd HH:mm:ss]");
-                string title = "[异常]";                
+                string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string title = levelName[level - 1];
 
-                string text = string.Format("{0} {1}\r\n\tMessage: {2}\r\n\tSource: {3}\r\n\tTarget: {4}\r\n\tStack: {5}\r\n",
-                    time, title, e.Message, e.Source, e.TargetSite.Name, e.StackTrace);
+                string text = string.Format("[{0}] [{1}] [{2}] [{3}] \t {4}\r\n", time, title, className, methodName, message);
 
                 lock (lockWrite)
                 {
                     File.AppendAllText(Path.Combine(folder, fileName), text, Encoding.GetEncoding("utf-8"));
                 }
             }
-            catch(Exception)
+            catch (Exception)
+            {
+            }
+        }
+
+        /// <summary>
+        /// 记录异常
+        /// </summary>
+        /// <param name="message">消息</param>
+        /// <param name="className">类名</param>
+        /// <param name="methodName">方法名</param>
+        /// <param name="e">异常</param>
+        private void WriteException(string message, string className, string methodName, Exception e)
+        {
+            try
+            {
+                string fileName = DateTime.Now.ToString("yyyyMMdd") + ".log";
+
+                string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string title = "异常";
+
+                string text = string.Format("[{0}] [{1}] [{2}] [{3}]\r\n\tMessage: {4}\r\n\tSource: {5}\r\n\tTarget: {6}\r\n\tStack: {7}\r\n",
+                    time, title, className, methodName, e.Message, e.Source, e.TargetSite.Name, e.StackTrace);
+
+                lock (lockWrite)
+                {
+                    File.AppendAllText(Path.Combine(folder, fileName), text, Encoding.GetEncoding("utf-8"));
+                }
+            }
+            catch (Exception)
             {
 
             }
@@ -127,7 +159,11 @@ namespace Poseidon.Common
         {
             if (this.logLevel >= 5)
             {
-                this.WriteMessage(5, message);
+                StackTrace trace = new StackTrace();
+                var className = trace.GetFrame(1).GetMethod().DeclaringType.FullName;
+                string methodName = trace.GetFrame(1).GetMethod().Name;
+
+                this.WriteMessage(5, className, methodName, message);
             }
         }
 
@@ -139,7 +175,11 @@ namespace Poseidon.Common
         {
             if (this.logLevel >= 4)
             {
-                this.WriteMessage(4, message);
+                StackTrace trace = new StackTrace();
+                var className = trace.GetFrame(1).GetMethod().DeclaringType.FullName;
+                string methodName = trace.GetFrame(1).GetMethod().Name;
+
+                this.WriteMessage(4, className, methodName, message);
             }
         }
 
@@ -151,7 +191,11 @@ namespace Poseidon.Common
         {
             if (this.logLevel >= 3)
             {
-                this.WriteMessage(3, message);
+                StackTrace trace = new StackTrace();
+                var className = trace.GetFrame(1).GetMethod().DeclaringType.FullName;
+                string methodName = trace.GetFrame(1).GetMethod().Name;
+
+                this.WriteMessage(3, className, methodName, message);
             }
         }
 
@@ -163,7 +207,11 @@ namespace Poseidon.Common
         {
             if (this.logLevel >= 2)
             {
-                this.WriteMessage(2, message);
+                StackTrace trace = new StackTrace();
+                var className = trace.GetFrame(1).GetMethod().DeclaringType.FullName;
+                string methodName = trace.GetFrame(1).GetMethod().Name;
+
+                this.WriteMessage(2, className, methodName, message);
             }
         }
 
@@ -176,7 +224,11 @@ namespace Poseidon.Common
         {
             if (this.logLevel >= 1)
             {
-                this.WriteException(message, e);
+                StackTrace trace = new StackTrace();
+                var className = trace.GetFrame(1).GetMethod().DeclaringType.FullName;
+                string methodName = trace.GetFrame(1).GetMethod().Name;
+
+                this.WriteException(message, className, methodName, e);
             }
         }
         #endregion //Method
