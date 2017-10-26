@@ -58,6 +58,14 @@ namespace Poseidon.Core.DAL.Mongo
                 Time = createBy["time"].ToLocalTime()
             };
 
+            var updateBy = doc["updateBy"].ToBsonDocument();
+            entity.UpdateBy = new UpdateStamp
+            {
+                UserId = updateBy["userId"].ToString(),
+                Name = updateBy["name"].ToString(),
+                Time = updateBy["time"].ToLocalTime()
+            };
+
             return entity;
         }
 
@@ -83,6 +91,11 @@ namespace Poseidon.Core.DAL.Mongo
                     { "userId", entity.CreateBy.UserId },
                     { "name", entity.CreateBy.Name },
                     { "time", entity.CreateBy.Time }
+                }},
+                { "updateBy", new BsonDocument {
+                    { "userId", entity.UpdateBy.UserId },
+                    { "name", entity.UpdateBy.Name },
+                    { "time", entity.UpdateBy.Time }
                 }},
                 { "remark", entity.Remark },
                 { "status", entity.Status }

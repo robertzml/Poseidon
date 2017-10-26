@@ -52,6 +52,12 @@ namespace Poseidon.Core.DL
         public UpdateStamp CreateBy { get; set; }
 
         /// <summary>
+        /// 修改标注
+        /// </summary>
+        [Display(Name = "修改标注")]
+        public UpdateStamp UpdateBy { get; set; }
+
+        /// <summary>
         /// 挂载点
         /// </summary>
         [Display(Name = "挂载点")]
