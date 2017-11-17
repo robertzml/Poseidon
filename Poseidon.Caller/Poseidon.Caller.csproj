@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facade\IBuildingService.cs" />
+    <Compile Include="Facade\IDatasetService.cs" />
     <Compile Include="Facade\IDictCategoryService.cs" />
     <Compile Include="Facade\IDictService.cs" />
     <Compile Include="Facade\IFileService.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Facade\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinformCaller\BuildingService.cs" />
+    <Compile Include="WinformCaller\DatasetService.cs" />
     <Compile Include="WinformCaller\DictCategoryService.cs" />
     <Compile Include="WinformCaller\DictService.cs" />
     <Compile Include="WinformCaller\FileService.cs" />

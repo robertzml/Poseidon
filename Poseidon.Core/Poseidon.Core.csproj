@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="BL\BuildingBusiness.cs" />
     <Compile Include="BL\ConfigBusiness.cs" />
+    <Compile Include="BL\DatasetBusiness.cs" />
     <Compile Include="BL\DictBusiness.cs" />
     <Compile Include="BL\DictCategoryBusiness.cs" />
     <Compile Include="BL\FileBusiness.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="BL\RoleBusiness.cs" />
     <Compile Include="BL\UserBusiness.cs" />
     <Compile Include="DAL\Mongo\BuildingRepository.cs" />
+    <Compile Include="DAL\Mongo\DatasetRepository.cs" />
     <Compile Include="DAL\Mongo\DictCategoryRepository.cs" />
     <Compile Include="DAL\Mongo\DictRepository.cs" />
     <Compile Include="DAL\Mongo\FileRepository.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="DAL\Sqlite\ConfigRepository.cs" />
     <Compile Include="DL\Building.cs" />
     <Compile Include="DL\Config.cs" />
+    <Compile Include="DL\Dataset.cs" />
     <Compile Include="DL\Dict.cs" />
     <Compile Include="DL\DictCategory.cs" />
     <Compile Include="DL\File.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="DL\User.cs" />
     <Compile Include="IDAL\IBuildingRepository.cs" />
     <Compile Include="IDAL\IConfigRepository.cs" />
+    <Compile Include="IDAL\IDatasetRepository.cs" />
     <Compile Include="IDAL\IDictCategoryRepository.cs" />
     <Compile Include="IDAL\IDictRepository.cs" />
     <Compile Include="IDAL\IFileRepository.cs" />
