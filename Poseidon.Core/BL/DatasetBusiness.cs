@@ -25,5 +25,65 @@ namespace Poseidon.Core.BL
             this.baseDal = RepositoryFactory<IDatasetRepository>.Instance;
         }
         #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 检查重复项
+        /// </summary>
+        /// <param name="entity">权限实体</param>
+        /// <returns></returns>
+        private bool CheckDuplicate(Dataset entity)
+        {
+            var exists = this.FindListByField("code", entity.Code);
+            if (exists.Count() > 0)
+            {
+                if (exists.First().Id == entity.Id)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return true;
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 根据代码查找数据集
+        /// </summary>
+        /// <param name="code">数据集代码</param>
+        /// <returns></returns>
+        public Dataset FindByCode(string code)
+        {
+            var entity = this.baseDal.FindOneByField("code", code);
+            return entity;
+        }
+
+        /// <summary>
+        /// 添加数据集
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override Dataset Create(Dataset entity)
+        {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateCode);
+
+            entity.Status = 0;
+            return base.Create(entity);
+        }
+
+        /// <summary>
+        /// 编辑数据集
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override bool Update(Dataset entity)
+        {
+            if (!CheckDuplicate(entity))
+                throw new PoseidonException(ErrorCode.DuplicateCode);
+            return base.Update(entity);
+        }
+        #endregion //Method
     }
 }

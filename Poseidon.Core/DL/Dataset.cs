@@ -28,12 +28,6 @@ namespace Poseidon.Core.DL
         public string ParentId { get; set; }
 
         /// <summary>
-        /// 数据行为
-        /// </summary>
-        [Display(Name = "数据行为")]
-        public int Action { get; set; }
-
-        /// <summary>
         /// 排序码
         /// </summary>
         [Display(Name = "排序码")]

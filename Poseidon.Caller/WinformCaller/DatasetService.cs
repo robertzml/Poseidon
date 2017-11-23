@@ -32,5 +32,17 @@ namespace Poseidon.Caller.WinformCaller
             this.bl = this.baseBL as DatasetBusiness;
         }
         #endregion //Constructor
+
+        #region Method
+        /// <summary>
+        /// 根据代码查找数据集
+        /// </summary>
+        /// <param name="code">数据集代码</param>
+        /// <returns></returns>
+        public Dataset FindByCode(string code)
+        {
+            return this.bl.FindByCode(code);
+        }
+        #endregion //Method
     }
 }

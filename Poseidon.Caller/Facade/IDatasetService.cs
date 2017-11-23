@@ -14,5 +14,11 @@ namespace Poseidon.Caller.Facade
     /// </summary>
     public interface IDatasetService : IBaseService<Dataset>
     {
+        /// <summary>
+        /// 根据代码查找数据集
+        /// </summary>
+        /// <param name="code">数据集代码</param>
+        /// <returns></returns>
+        Dataset FindByCode(string code);
     }
 }
