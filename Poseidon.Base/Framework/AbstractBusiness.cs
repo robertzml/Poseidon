@@ -33,6 +33,18 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
+        {
+            return this.baseDal.FindOneByField(field, value);
+        }
+
+        /// <summary>
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
@@ -89,6 +101,18 @@ namespace Poseidon.Base.Framework
         public virtual long Count()
         {
             return this.baseDal.Count();
+        }
+
+        /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        public virtual long Count<Tvalue>(string field, Tvalue value)
+        {
+            return this.baseDal.Count(field, value);
         }
 
         /// <summary>

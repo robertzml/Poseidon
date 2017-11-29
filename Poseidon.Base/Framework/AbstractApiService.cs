@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.System;
     using Poseidon.Common;
 
     /// <summary>
@@ -174,13 +175,12 @@ namespace Poseidon.Base.Framework
             return await GetListAsync(url);
         }
 
-
-        public long Count()
-        {
-            throw new NotImplementedException();
-        }
-
-        public long Count<Tvalue>(string field, Tvalue value)
+        /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindByStatus(EntityStatus status)
         {
             throw new NotImplementedException();
         }
@@ -211,6 +211,16 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
+        public long Count()
+        {
+            throw new NotImplementedException();
+        }
+
+        public long Count<Tvalue>(string field, Tvalue value)
+        {
+            throw new NotImplementedException();
+        }
+
         public T Create(T entity)
         {
             throw new NotImplementedException();
@@ -226,7 +236,30 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
+        public bool Delete(Tkey id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public virtual void MarkDelete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        public virtual void MarkDelete(Tkey id)
         {
             throw new NotImplementedException();
         }

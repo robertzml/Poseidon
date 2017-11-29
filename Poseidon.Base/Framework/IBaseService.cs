@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.System;
+
     /// <summary>
     /// 服务调用层基础接口
     /// </summary>
@@ -71,6 +73,13 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindAllNormal();
 
         /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        IEnumerable<T> FindByStatus(EntityStatus status);
+
+        /// <summary>
         /// 查找所有记录数量
         /// </summary>
         /// <returns></returns>
@@ -108,11 +117,30 @@ namespace Poseidon.Base.Framework
         bool Update(T entity);
 
         /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        bool Delete(Tkey id);
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         bool Delete(T entity);
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        void MarkDelete(T entity);
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        void MarkDelete(Tkey id);
     }
 
     /// <summary>

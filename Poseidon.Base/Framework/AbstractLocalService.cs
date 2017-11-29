@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.System;
+
     /// <summary>
     /// 抽象本地服务调用类
     /// </summary>
@@ -57,7 +59,13 @@ namespace Poseidon.Base.Framework
             return await task;
         }
 
-
+        /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
@@ -118,6 +126,16 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindByStatus(EntityStatus status)
+        {
+            return this.baseBL.FindByStatus(status);
+        }
+
+        /// <summary>
         /// 查找所有记录数量
         /// </summary>
         /// <returns></returns>
@@ -126,9 +144,16 @@ namespace Poseidon.Base.Framework
             return this.baseBL.Count();
         }
 
+        /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public virtual long Count<Tvalue>(string field, Tvalue value)
         {
-            throw new NotImplementedException();
+            return this.baseBL.Count(field, value);
         }
 
         /// <summary>
@@ -163,6 +188,16 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public virtual bool Delete(Tkey id)
+        {
+            return this.baseBL.Delete(id);
+        }
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -170,6 +205,24 @@ namespace Poseidon.Base.Framework
         public virtual bool Delete(T entity)
         {
             return this.baseBL.Delete(entity);
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        public virtual void MarkDelete(T entity)
+        {
+            this.baseBL.MarkDelete(entity);
+        }
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        public virtual void MarkDelete(Tkey id)
+        {
+            this.baseBL.MarkDelete(id);
         }
         #endregion //Method
     }
