@@ -193,6 +193,35 @@ namespace Poseidon.Core.BL
             var dal = this.baseDal as IUserRepository;
             dal.SetPrivileges(id, codes);
         }
+
+        /// <summary>
+        /// 启用用户
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        public void Enable(string id)
+        {
+            var user = baseDal.FindById(id);
+            user.Status = (int)EntityStatus.Normal;
+
+            baseDal.Update(user);
+        }
+
+        /// <summary>
+        /// 禁用用户
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        public void Disable(string id)
+        {
+            if (IsRoot(id))
+            {
+                throw new PoseidonException("超级用户无法禁用");
+            }
+
+            var user = baseDal.FindById(id);
+            user.Status = (int)EntityStatus.Disabled;
+
+            baseDal.Update(user);
+        }
         #endregion //Method
     }
 }
