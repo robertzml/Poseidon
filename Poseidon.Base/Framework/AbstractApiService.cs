@@ -185,13 +185,13 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> FindAllNormal()
+        public virtual IEnumerable<T> FindAllNormal()
         {
             throw new NotImplementedException();
         }
 
 
-        public IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
+        public virtual IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
@@ -206,42 +206,42 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
-        public T FindOneByField<Tvalue>(string field, Tvalue value)
+        public virtual T FindOneByField<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public long Count()
+        public virtual long Count()
         {
             throw new NotImplementedException();
         }
 
-        public long Count<Tvalue>(string field, Tvalue value)
+        public virtual long Count<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public T Create(T entity)
+        public virtual T Create(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public T Create(T entity, bool generateKey)
+        public virtual T Create(T entity, bool generateKey)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Tkey id)
+        public virtual bool Delete(Tkey id)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
             throw new NotImplementedException();
         }
