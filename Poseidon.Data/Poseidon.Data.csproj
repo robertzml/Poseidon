@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="AbstractDAL\AbstractDALMongo.cs" />
     <Compile Include="AbstractDAL\AbstractDALMySql.cs" />
+    <Compile Include="AbstractDAL\AbstractDALSql.cs" />
     <Compile Include="AbstractDAL\AbstractDALSqlite.cs" />
     <Compile Include="AbstractDB.cs" />
     <Compile Include="BaseDB\MongoDb.cs" />
