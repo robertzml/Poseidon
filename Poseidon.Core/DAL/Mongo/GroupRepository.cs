@@ -43,6 +43,9 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
+            if (doc.Contains("module"))
+                entity.Module = doc["module"].ToString();
+
             if (doc["parentId"] == BsonNull.Value)
                 entity.ParentId = null;
             else
@@ -88,6 +91,7 @@ namespace Poseidon.Core.DAL.Mongo
             {
                 { "name", entity.Name },
                 { "code", entity.Code },
+                { "module", entity.Module },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };

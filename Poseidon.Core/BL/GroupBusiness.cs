@@ -86,6 +86,17 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
+        /// 按模块查询分组
+        /// </summary>
+        /// <param name="module">模块名称</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindByModule(string module)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            return dal.FindListByField("module", module);
+        }
+
+        /// <summary>
         /// 查找分组及子分组包含对象
         /// </summary>
         /// <param name="id">分组ID</param>

@@ -21,6 +21,12 @@ namespace Poseidon.Core.DL
         public string Code { get; set; }
 
         /// <summary>
+        /// 模块
+        /// </summary>
+        [Display(Name = "模块")]
+        public string Module { get; set; }
+
+        /// <summary>
         /// 上级ID
         /// </summary>
         [Display(Name = "上级ID")]

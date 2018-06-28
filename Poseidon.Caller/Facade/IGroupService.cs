@@ -51,6 +51,13 @@ namespace Poseidon.Caller.Facade
         IEnumerable<Group> FindByModelType(string modelType);
 
         /// <summary>
+        /// 按模块查询分组
+        /// </summary>
+        /// <param name="module">模块名称</param>
+        /// <returns></returns>
+        IEnumerable<Group> FindByModule(string module);
+
+        /// <summary>
         /// 查找分组及子分组包含组织
         /// </summary>
         /// <param name="id">分组ID</param>
