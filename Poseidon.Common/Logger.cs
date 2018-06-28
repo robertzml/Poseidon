@@ -56,7 +56,8 @@ namespace Poseidon.Common
         private Logger()
         {
             string level = AppConfig.GetAppSetting("LogLevel");
-            this.logLevel = Convert.ToInt32(level);
+            if (!string.IsNullOrEmpty(level))
+                this.logLevel = Convert.ToInt32(level);
 
             this.folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
             if (!Directory.Exists(folder))
