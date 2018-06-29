@@ -34,5 +34,12 @@ namespace Poseidon.Caller.Facade
         /// <param name="category">分类</param>
         /// <returns></returns>
         IEnumerable<ModelType> FindByCategory(int category);
+
+        /// <summary>
+        /// 按模块获取模型类型
+        /// </summary>
+        /// <param name="module">模块名称</param>
+        /// <returns></returns>
+        IEnumerable<ModelType> FindByModule(string module);
     }
 }

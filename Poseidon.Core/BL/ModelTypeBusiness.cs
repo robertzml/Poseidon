@@ -54,6 +54,17 @@ namespace Poseidon.Core.BL
         {
             return this.baseDal.FindListByField("category", category);
         }
+
+        /// <summary>
+        /// 按模块查询模型类型
+        /// </summary>
+        /// <param name="module">模块名称</param>
+        /// <returns></returns>
+        public IEnumerable<ModelType> FindByModule(string module)
+        {
+            var dal = this.baseDal as IModelTypeRepository;
+            return dal.FindListByField("module", module);
+        }
         #endregion //Method
     }
 }
