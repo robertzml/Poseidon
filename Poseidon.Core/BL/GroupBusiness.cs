@@ -158,6 +158,14 @@ namespace Poseidon.Core.BL
                     var bulBusiness = new BuildingBusiness();
                     var bul = bulBusiness.FindById(groupItem.EntityId);
                     return bul;
+                case ModelCategory.File:
+                    var fileBusiness = new FileBusiness();
+                    var fil = fileBusiness.FindById(groupItem.EntityId);
+                    return fil;
+                case ModelCategory.Facility:
+                    var facilityBusiness = new FacilityBusiness();
+                    var fac = facilityBusiness.FindById(groupItem.EntityId);
+                    return fac;
             }
 
             return null;
@@ -186,6 +194,14 @@ namespace Poseidon.Core.BL
                     var bulBusiness = new BuildingBusiness();
                     var bul = bulBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
                     return bul;
+                case ModelCategory.File:
+                    var fileBusiness = new FileBusiness();
+                    var fil = fileBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
+                    return fil;
+                case ModelCategory.Facility:
+                    var facilityBusiness = new FacilityBusiness();
+                    var fac = facilityBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
+                    return fac;
             }
 
             return null;
