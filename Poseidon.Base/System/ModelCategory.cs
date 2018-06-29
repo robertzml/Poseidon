@@ -22,6 +22,18 @@ namespace Poseidon.Base.System
         /// 建筑模型
         /// </summary>
         [Display(Name = "建筑模型")]
-        Building = 2
+        Building = 2,
+
+        /// <summary>
+        /// 文件模型
+        /// </summary>
+        [Display(Name = "文件模型")]
+        File = 3,
+
+        /// <summary>
+        /// 设施模型
+        /// </summary>
+        [Display(Name = "设施模型")]
+        Facility = 4
     }
 }

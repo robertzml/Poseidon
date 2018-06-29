@@ -28,6 +28,12 @@ namespace Poseidon.Base.System
         /// 已禁用
         /// </summary>
         [Display(Name = "已禁用")]
-        Disabled = 0x0002
+        Disabled = 0x0002,
+
+        /// <summary>
+        /// 已报废
+        /// </summary>
+        [Display(Name = "已报废")]
+        Abandon = 0x0004
     }
 }
