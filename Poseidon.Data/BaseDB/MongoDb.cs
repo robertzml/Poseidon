@@ -189,6 +189,18 @@ namespace Poseidon.Data.BaseDB
         }
 
         /// <summary>
+        /// 聚合查找
+        /// </summary>
+        /// <param name="collectionName">集合名称</param>
+        /// <param name="pipeline">查询条件</param>
+        /// <returns></returns>
+        public IEnumerable<BsonDocument> Aggregate(string collectionName, PipelineDefinition<BsonDocument, BsonDocument> pipeline)
+        {
+            var collection = this.GetCollection(collectionName);
+            return collection.Aggregate(pipeline).ToEnumerable();
+        }
+
+        /// <summary>
         /// 插入记录
         /// </summary>
         /// <param name="collectionName">集合名称</param>
