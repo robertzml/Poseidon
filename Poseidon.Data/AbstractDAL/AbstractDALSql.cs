@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Poseidon.Data.AbstractDAL
+namespace Poseidon.Data
 {
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
@@ -58,7 +58,7 @@ namespace Poseidon.Data.AbstractDAL
         /// <param name="primaryKey">主键字段</param>
         public AbstractDALSql(string tableName, string primaryKey)
         {
-            this.tableName = tableName;
+            this.tableName = "[" + tableName + "]";
             this.primaryKey = primaryKey;
         }
         #endregion //Constructor

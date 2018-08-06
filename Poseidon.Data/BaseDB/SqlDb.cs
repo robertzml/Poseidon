@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace Poseidon.Data
+namespace Poseidon.Data.BaseDB
 {
     using Poseidon.Base.System;
 
@@ -106,11 +106,12 @@ namespace Poseidon.Data
         public void ExecuteNonQuery(string sql, List<SqlParameter> parameters = null)
         {
             this.Open();
-            try
+
+            using (SqlTransaction transaction = this.connection.BeginTransaction())
             {
-                using (SqlTransaction transaction = this.connection.BeginTransaction())
+                try
                 {
-                    using (SqlCommand command = new SqlCommand(sql, this.connection))
+                    using (SqlCommand command = new SqlCommand(sql, this.connection, transaction))
                     {
                         if (parameters != null)
                         {
@@ -124,14 +125,15 @@ namespace Poseidon.Data
                     }
                     transaction.Commit();
                 }
-            }
-            catch (SqlException e)
-            {
-                throw new PoseidonException(e.Message);
-            }
-            finally
-            {
-                this.Close();
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+                    throw new PoseidonException(e.Message);
+                }
+                finally
+                {
+                    this.Close();
+                }
             }
         }
 
