@@ -68,6 +68,7 @@
     <Compile Include="Framework\DataBaseType.cs" />
     <Compile Include="System\DataAction.cs" />
     <Compile Include="System\EntityStatus.cs" />
+    <Compile Include="System\ILoginUser.cs" />
     <Compile Include="System\LoginUser.cs" />
     <Compile Include="System\ModelCategory.cs" />
     <Compile Include="System\PoseidonException.cs" />
