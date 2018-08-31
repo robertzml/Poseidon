@@ -101,7 +101,7 @@ namespace Poseidon.Data.BaseDB
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(_id));
 
             var result = collection.Find(filter);
-            if (result.Count() == 0)
+            if (result.CountDocuments() == 0)
                 return null;
 
             var doc = result.First();
@@ -118,7 +118,7 @@ namespace Poseidon.Data.BaseDB
         {
             var collection = this.GetCollection(collectionName);
             var result = collection.Find(filter);
-            if (result.Count() == 0)
+            if (result.CountDocuments() == 0)
                 return null;
 
             var doc = result.First();
@@ -160,7 +160,7 @@ namespace Poseidon.Data.BaseDB
         public long Count(string collectionName)
         {
             var collection = this.GetCollection(collectionName);
-            return collection.Count(new BsonDocument());
+            return collection.CountDocuments(new BsonDocument());
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Poseidon.Data.BaseDB
         public long Count(string collectionName, FilterDefinition<BsonDocument> filter)
         {
             var collection = this.GetCollection(collectionName);
-            return collection.Count(filter);
+            return collection.CountDocuments(filter);
         }
 
         /// <summary>
