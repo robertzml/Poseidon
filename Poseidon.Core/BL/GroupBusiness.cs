@@ -11,7 +11,7 @@ namespace Poseidon.Core.BL
     using Poseidon.Core.DL;
 
     /// <summary>
-    /// 分组对象业务类
+    /// 模型分组对象业务类
     /// </summary>
     public class GroupBusiness : AbstractBusiness<Group>, IBaseBL<Group>
     {
@@ -86,7 +86,18 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
-        /// 查找分组及子分组包含组织
+        /// 按模块查询分组
+        /// </summary>
+        /// <param name="module">模块名称</param>
+        /// <returns></returns>
+        public IEnumerable<Group> FindByModule(string module)
+        {
+            var dal = this.baseDal as IGroupRepository;
+            return dal.FindListByField("module", module);
+        }
+
+        /// <summary>
+        /// 查找分组及子分组包含对象
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <returns></returns>
@@ -106,6 +117,94 @@ namespace Poseidon.Core.BL
 
             data = data.OrderBy(r => r.Sort).ToList();
             return data;
+        }
+
+        /// <summary>
+        /// 获取分组关联模型分类
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <remarks>
+        /// 默认一个分组只能包含一种模型分类
+        /// </remarks>
+        /// <returns></returns>
+        public ModelCategory GetCategory(Group entity)
+        {
+            if (entity.ModelTypes.Count == 0)
+                return 0;
+
+            ModelTypeBusiness mtBusiness = new ModelTypeBusiness();
+            var modelType = mtBusiness.FindByCode(entity.ModelTypes[0]);
+
+            return (ModelCategory)modelType.Category;
+        }
+
+        /// <summary>
+        /// 获取分组项对应实体
+        /// </summary>
+        /// <param name="groupItem">分组项</param>
+        /// <returns></returns>
+        public ObjectEntity GetItemEntity(GroupItem groupItem)
+        {
+            ModelTypeBusiness mtBusiness = new ModelTypeBusiness();
+            var modelType = mtBusiness.FindByCode(groupItem.ModelType);
+
+            switch ((ModelCategory)modelType.Category)
+            {
+                case ModelCategory.Organization:
+                    var orgBusiness = new OrganizationBusiness();
+                    var org = orgBusiness.FindById(groupItem.EntityId);
+                    return org;
+                case ModelCategory.Building:
+                    var bulBusiness = new BuildingBusiness();
+                    var bul = bulBusiness.FindById(groupItem.EntityId);
+                    return bul;
+                case ModelCategory.File:
+                    var fileBusiness = new FileBusiness();
+                    var fil = fileBusiness.FindById(groupItem.EntityId);
+                    return fil;
+                case ModelCategory.Facility:
+                    var facilityBusiness = new FacilityBusiness();
+                    var fac = facilityBusiness.FindById(groupItem.EntityId);
+                    return fac;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 获取分组项对应实体
+        /// </summary>
+        /// <param name="groupItems">分组项</param>
+        /// <returns></returns>
+        public IEnumerable<ObjectEntity> GetItemEntities(List<GroupItem> groupItems)
+        {
+            if (groupItems.Count == 0)
+                return null;
+
+            ModelTypeBusiness mtBusiness = new ModelTypeBusiness();
+            var modelType = mtBusiness.FindByCode(groupItems[0].ModelType);
+
+            switch ((ModelCategory)modelType.Category)
+            {
+                case ModelCategory.Organization:
+                    var orgBusiness = new OrganizationBusiness();
+                    var org = orgBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
+                    return org;
+                case ModelCategory.Building:
+                    var bulBusiness = new BuildingBusiness();
+                    var bul = bulBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
+                    return bul;
+                case ModelCategory.File:
+                    var fileBusiness = new FileBusiness();
+                    var fil = fileBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
+                    return fil;
+                case ModelCategory.Facility:
+                    var facilityBusiness = new FacilityBusiness();
+                    var fac = facilityBusiness.FindWithIds(groupItems.Select(r => r.EntityId).ToList());
+                    return fac;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -142,11 +241,11 @@ namespace Poseidon.Core.BL
         }
 
         /// <summary>
-        /// 设置分组包含组织
+        /// 设置分组包含对象
         /// </summary>
         /// <param name="id">分组ID</param>
         /// <param name="items">分组项</param>
-        public void SetOrganizations(string id, List<GroupItem> items)
+        public void SetGroupItems(string id, List<GroupItem> items)
         {
             var group = this.baseDal.FindById(id);
             foreach (var item in items)

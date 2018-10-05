@@ -14,7 +14,7 @@ namespace Poseidon.Core.DAL.Mongo
     using Poseidon.Core.IDAL;
 
     /// <summary>
-    /// 分组对象数据访问类
+    /// 模型分组对象数据访问类
     /// </summary>
     internal class GroupRepository : AbstractDALMongo<Group>, IGroupRepository
     {
@@ -43,6 +43,9 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
 
+            if (doc.Contains("module"))
+                entity.Module = doc["module"].ToString();
+
             if (doc["parentId"] == BsonNull.Value)
                 entity.ParentId = null;
             else
@@ -66,7 +69,7 @@ namespace Poseidon.Core.DAL.Mongo
                 {
                     GroupItem gi = new GroupItem();
                     gi.GroupCode = item.GetValue("groupCode", "").ToString();
-                    gi.OrganizationId = item["organizationId"].ToString();
+                    gi.EntityId = item["entityId"].ToString();
                     gi.ModelType = item.GetValue("modelType", "").ToString();
                     gi.Sort = item["sort"].ToInt32();
 
@@ -88,6 +91,7 @@ namespace Poseidon.Core.DAL.Mongo
             {
                 { "name", entity.Name },
                 { "code", entity.Code },
+                { "module", entity.Module },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };
@@ -116,7 +120,7 @@ namespace Poseidon.Core.DAL.Mongo
                     array.Add(new BsonDocument
                     {
                         { "groupCode", item.GroupCode },
-                        { "organizationId", item.OrganizationId },
+                        { "entityId", item.EntityId },
                         { "modelType", item.ModelType },
                         { "sort", item.Sort }
                     });

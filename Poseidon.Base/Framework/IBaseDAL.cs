@@ -53,6 +53,13 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListInIds(List<Tkey> values);
+
+        /// <summary>
         /// 查找所有记录数量
         /// </summary>
         /// <returns></returns>
@@ -73,6 +80,14 @@ namespace Poseidon.Base.Framework
         /// <param name="entity">指定的对象</param>
         /// <returns></returns>
         T Create(T entity);
+
+        /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        T Create(T entity, bool generateKey);
 
         /// <summary>
         /// 编辑对象

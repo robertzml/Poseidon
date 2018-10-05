@@ -45,8 +45,10 @@
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
     <Compile Include="Cache.cs" />
+    <Compile Include="ConvertUtility.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Hasher.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflect.cs" />
   </ItemGroup>

@@ -128,6 +128,24 @@ namespace Poseidon.Caller.WinformCaller
         {
             this.bl.SetPrivileges(id, codes);
         }
+
+        /// <summary>
+        /// 启用用户
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        public void Enable(string id)
+        {
+            this.bl.Enable(id);
+        }
+
+        /// <summary>
+        /// 禁用用户
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        public void Disable(string id)
+        {
+            this.bl.Disable(id);
+        }
         #endregion //Method
     }
 }

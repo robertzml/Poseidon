@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
+    using Poseidon.Base.System;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
 
@@ -24,5 +25,50 @@ namespace Poseidon.Core.BL
             this.baseDal = RepositoryFactory<IDictCategoryRepository>.Instance;
         }
         #endregion //Constructor
+
+        #region Function
+        /// <summary>
+        /// 检查分组是否含有字典
+        /// </summary>
+        /// <param name="id">字典分组ID</param>
+        /// <returns></returns>
+        private bool CheckHasDict(string id)
+        {
+            DictBusiness dictBusiness = new DictBusiness();
+            var data = dictBusiness.FindByCategory(id);
+            if (data.Count() > 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion //Function
+
+        #region Method
+        /// <summary>
+        /// 删除字典分组
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        /// <returns></returns>
+        public override bool Delete(DictCategory entity)
+        {
+            if (CheckHasDict(entity.Id))
+                throw new PoseidonException("字典分组含有字典");
+
+            return base.Delete(entity);
+        }
+
+        /// <summary>
+        /// 删除字典分组
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        public override bool Delete(string id)
+        {
+            if (CheckHasDict(id))
+                throw new PoseidonException("字典分组含有字典");
+
+            return base.Delete(id);
+        }
+        #endregion //Method
     }
 }

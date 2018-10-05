@@ -15,9 +15,14 @@ namespace Poseidon.Base.Framework
     {
         #region Field
         /// <summary>
+        /// 缓存
+        /// </summary>
+        private static Cache objCache = Cache.Instance;
+
+        /// <summary>
         /// 业务类缓存
         /// </summary>
-        private static Hashtable objCache = new Hashtable();
+        //private static Hashtable objCache = new Hashtable();
 
         /// <summary>
         /// 锁变量
@@ -29,22 +34,21 @@ namespace Poseidon.Base.Framework
         /// <summary>
         /// 创建对应业务类的实例，不缓存
         /// </summary>
+        /// <returns></returns>
+        public static T GetInstance()
+        {
+            T bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name, false);
+            return bll;
+        }
+
+        /// <summary>
+        /// 创建对应业务类的实例，不缓存
+        /// </summary>
         /// <param name="args">构造函数参数</param>
         /// <returns></returns>
         public static T GetInstance(object[] args)
         {
-            T bll = null;
-            if (bll == null)
-            {
-                lock (syncRoot)
-                {
-                    if (bll == null)
-                    {
-                        //反射创建
-                        bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name, args, false);
-                    }
-                }
-            }
+            T bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name, args, false);
             return bll;
         }
         #endregion //Method
@@ -58,21 +62,27 @@ namespace Poseidon.Base.Framework
             get
             {
                 string cacheKey = typeof(T).FullName;
-                //从缓存读取
-                T bll = (T)objCache[cacheKey];
-                if (bll == null)
+                if (objCache.ContainKey(cacheKey))
+                {
+                    return (T)objCache[cacheKey];
+                }
+                else
                 {
                     lock (syncRoot)
                     {
-                        if (bll == null)
+                        if (objCache.ContainKey(cacheKey))
                         {
-                            //反射创建，并缓存
-                            bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name);
+                            return (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            T bll = Reflect<T>.Create(typeof(T).FullName, typeof(T).Assembly.GetName().Name, false);
                             objCache.Add(cacheKey, bll);
+
+                            return bll;
                         }
                     }
                 }
-                return bll;
             }
         }
         #endregion //Property

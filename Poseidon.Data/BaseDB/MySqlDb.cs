@@ -20,11 +20,6 @@ namespace Poseidon.Data.BaseDB
         /// MySQL连接
         /// </summary>
         private MySqlConnection connection;
-
-        /// <summary>
-        /// 参数
-        /// </summary>
-        private List<MySqlParameter> parameters = new List<MySqlParameter>();
         #endregion //Field
 
         #region Constructor
@@ -91,35 +86,11 @@ namespace Poseidon.Data.BaseDB
         }
 
         /// <summary>
-        /// 添加参数
-        /// </summary>
-        /// <param name="name">参数名</param>
-        /// <param name="value">参数值</param>
-        public void AddParameter(string name, object value)
-        {
-            parameters.Add(new MySqlParameter(name, value));
-        }
-
-        /// <summary>
-        /// 添加参数
-        /// </summary>
-        /// <param name="name">参数名</param>
-        /// <param name="value">参数值</param>
-        public void AddParameter(string name, object value, MySqlDbType type)
-        {
-            parameters.Add(new MySqlParameter
-            {
-                ParameterName = name,
-                Value = value,
-                MySqlDbType = type
-            });
-        }
-
-        /// <summary>
         /// 执行SQL语句
         /// </summary>
         /// <param name="sql">SQL语句</param>
-        public void ExecuteNonQuery(string sql)
+        /// <param name="parameters">参数</param>
+        public void ExecuteNonQuery(string sql, List<MySqlParameter> parameters = null)
         {
             this.Open();
             try
@@ -128,9 +99,12 @@ namespace Poseidon.Data.BaseDB
                 {
                     using (MySqlCommand command = new MySqlCommand(sql, this.connection))
                     {
-                        foreach (var para in this.parameters)
+                        if (parameters != null)
                         {
-                            command.Parameters.Add(para);
+                            foreach (var para in parameters)
+                            {
+                                command.Parameters.Add(para);
+                            }
                         }
 
                         command.ExecuteNonQuery();
@@ -145,16 +119,16 @@ namespace Poseidon.Data.BaseDB
             finally
             {
                 this.Close();
-                this.parameters.Clear();
             }
-        }
+        }        
 
         /// <summary>
         /// 执行SQL语句并返回所有结果
         /// </summary>
         /// <param name="sql">SQL语句</param>
+        /// <param name="parameters">参数</param>
         /// <returns>返回DataTable</returns>
-        public DataTable ExecuteQuery(string sql)
+        public DataTable ExecuteQuery(string sql, List<MySqlParameter> parameters = null)
         {
             DataTable dt = new DataTable();
             this.Open();
@@ -163,9 +137,12 @@ namespace Poseidon.Data.BaseDB
                 using (MySqlCommand command = new MySqlCommand(sql, this.connection))
                 {
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                    foreach (var para in this.parameters)
+                    if (parameters != null)
                     {
-                        command.Parameters.Add(para);
+                        foreach (var para in parameters)
+                        {
+                            command.Parameters.Add(para);
+                        }
                     }
 
                     adapter.Fill(dt);
@@ -178,7 +155,6 @@ namespace Poseidon.Data.BaseDB
             finally
             {
                 this.Close();
-                this.parameters.Clear();
             }
             return dt;
         }
@@ -187,8 +163,9 @@ namespace Poseidon.Data.BaseDB
         /// 执行SQL语句并返回第一行
         /// </summary>
         /// <param name="sql">SQL语句</param>
+        /// <param name="parameters">参数</param>
         /// <returns>返回DataRow</returns>
-        public DataRow ExecuteRow(string sql)
+        public DataRow ExecuteRow(string sql, List<MySqlParameter> parameters = null)
         {
             DataRow row;
             this.Open();
@@ -197,9 +174,12 @@ namespace Poseidon.Data.BaseDB
                 using (MySqlCommand command = new MySqlCommand(sql, this.connection))
                 {
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                    foreach (var para in this.parameters)
+                    if (parameters != null)
                     {
-                        command.Parameters.Add(para);
+                        foreach (var para in parameters)
+                        {
+                            command.Parameters.Add(para);
+                        }
                     }
 
                     DataTable dt = new DataTable();
@@ -217,7 +197,6 @@ namespace Poseidon.Data.BaseDB
             finally
             {
                 this.Close();
-                this.parameters.Clear();
             }
 
             return row;
@@ -227,8 +206,9 @@ namespace Poseidon.Data.BaseDB
         /// 执行SQL语句并返回结果第一行的第一列
         /// </summary>
         /// <param name="sql">SQL语句</param>
+        /// <param name="parameters">参数</param>
         /// <returns>返回值</returns>
-        public Object ExecuteScalar(string sql)
+        public Object ExecuteScalar(string sql, List<MySqlParameter> parameters = null)
         {
             Object obj;
             this.Open();
@@ -236,9 +216,12 @@ namespace Poseidon.Data.BaseDB
             {
                 using (MySqlCommand command = new MySqlCommand(sql, this.connection))
                 {
-                    foreach (var para in this.parameters)
+                    if (parameters != null)
                     {
-                        command.Parameters.Add(para);
+                        foreach (var para in parameters)
+                        {
+                            command.Parameters.Add(para);
+                        }
                     }
                     obj = command.ExecuteScalar();
                 }
@@ -250,7 +233,6 @@ namespace Poseidon.Data.BaseDB
             finally
             {
                 this.Close();
-                this.parameters.Clear();
             }
 
             return obj;
@@ -260,8 +242,9 @@ namespace Poseidon.Data.BaseDB
         /// 执行SQL语句并返回Reader
         /// </summary>
         /// <param name="sql">SQL语句</param>
+        /// <param name="parameters">参数</param>
         /// <returns>返回值</returns>
-        public MySqlDataReader ExecuteReader(string sql)
+        public MySqlDataReader ExecuteReader(string sql, List<MySqlParameter> parameters = null)
         {
             MySqlDataReader reader;
             this.Open();
@@ -269,9 +252,12 @@ namespace Poseidon.Data.BaseDB
             {
                 using (MySqlCommand command = new MySqlCommand(sql, this.connection))
                 {
-                    foreach (var para in this.parameters)
+                    if (parameters != null)
                     {
-                        command.Parameters.Add(para);
+                        foreach (var para in parameters)
+                        {
+                            command.Parameters.Add(para);
+                        }
                     }
                     reader = command.ExecuteReader();
                 }
@@ -283,7 +269,6 @@ namespace Poseidon.Data.BaseDB
             finally
             {
                 //this.db.Close();
-                this.parameters.Clear();
             }
 
             return reader;

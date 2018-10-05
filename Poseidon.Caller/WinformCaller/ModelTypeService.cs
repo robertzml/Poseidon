@@ -53,6 +53,26 @@ namespace Poseidon.Caller.WinformCaller
         {
             return this.bl.FindWithCodes(codes);
         }
+
+        /// <summary>
+        /// 根据分类获取模型类型
+        /// </summary>
+        /// <param name="category">分类</param>
+        /// <returns></returns>
+        public IEnumerable<ModelType> FindByCategory(int category)
+        {
+            return this.bl.FindByCategory(category);
+        }
+
+        /// <summary>
+        /// 按模块获取模型类型
+        /// </summary>
+        /// <param name="module">模块名称</param>
+        /// <returns></returns>
+        public IEnumerable<ModelType> FindByModule(string module)
+        {
+            return this.bl.FindByModule(module);
+        }
         #endregion //Method
     }
 }

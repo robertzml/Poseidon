@@ -193,6 +193,28 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<string> values)
+        {
+            var ids = values.Select(r => new ObjectId(r));
+            var filter = Builders<BsonDocument>.Filter.In("_id", ids);
+
+            var docs = this.mongo.Find(this.collectionName, filter);
+
+            List<T> data = new List<T>();
+            foreach (var doc in docs)
+            {
+                var entity = DocToEntity(doc);
+                data.Add(entity);
+            }
+
+            return data;
+        }
+
+        /// <summary>
         /// 根据条件查找记录
         /// </summary>
         /// <param name="filter">查询条件</param>
@@ -246,6 +268,69 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 生成最新流水号
+        /// yyyymmddxxxx
+        /// 8位日期+4位顺序号
+        /// </summary>
+        /// <param name="date">参考日期</param>
+        /// <returns></returns>
+        public virtual string GenerateSerialNumber(DateTime date)
+        {
+            string max = string.Format("{0}{1:d2}{2:d2}{3:d4}", date.Year, date.Month, date.Day, 9999);
+            string min = string.Format("{0}{1:d2}{2:d2}{3:d4}", date.Year, date.Month, date.Day, 0);
+            PipelineDefinition<BsonDocument, BsonDocument> pipeline = new[]
+            {
+                new BsonDocument {
+                    { "$project", new BsonDocument {
+                        { "serialNumber", 1 }
+                    }}
+                },
+                new BsonDocument {
+                    { "$match", new BsonDocument {
+                        { "serialNumber", new BsonDocument {
+                            { "$lt", max },
+                            { "$gt", min }
+                        }}
+                    }}
+                },
+                new BsonDocument {
+                    { "$sort", new BsonDocument {
+                        { "serialNumber", -1 }
+                    }}
+                },
+                new BsonDocument {
+                    { "$limit", 1 }
+                }
+            };
+
+            var result = this.mongo.Aggregate(this.collectionName, pipeline).ToList();
+            string serialNumber = "";
+            if (result.Count == 0)
+            {
+                serialNumber = string.Format("{0}{1:d2}{2:d2}{3:d4}", date.Year, date.Month, date.Day, 1);
+            }
+            else
+            {
+                var last = result[0].GetValue("serialNumber").ToString();
+
+                int flow = Convert.ToInt32(last.Substring(8));
+                serialNumber = string.Format("{0}{1:d2}{2:d2}{3:d4}", date.Year, date.Month, date.Day, flow + 1);
+            }
+            return serialNumber;
+        }
+
+        /// <summary>
+        /// 聚合查找
+        /// </summary>
+        /// <param name="match">Match条件</param>
+        /// <param name="group">Group条件</param>
+        /// <returns></returns>
+        public virtual IEnumerable<BsonDocument> Aggregate(FilterDefinition<BsonDocument> match, ProjectionDefinition<BsonDocument, BsonDocument> group)
+        {
+            return this.mongo.Aggregate(this.collectionName, match, group);
+        }
+
+        /// <summary>
         /// 添加对象
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -256,6 +341,17 @@ namespace Poseidon.Data
             this.mongo.Insert(this.collectionName, doc);
             entity.Id = doc["_id"].ToString();
             return entity;
+        }
+
+        /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        public virtual T Create(T entity, bool generateKey)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

@@ -127,6 +127,16 @@ namespace Poseidon.Data
         }
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> FindListInIds(List<string> values)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// 查找所有记录数量
         /// </summary>
         /// <returns></returns>
@@ -159,6 +169,43 @@ namespace Poseidon.Data
         /// <param name="entity">实体对象</param>
         /// <return></return>
         public virtual T Create(T entity)
+        {
+            var hash = EntityToHash(entity);
+            if (hash == null || hash.Count < 1)
+                return default(T);
+
+            string fields = "";
+            string vals = "";
+            foreach (string field in hash.Keys)
+            {
+                fields += string.Format("[{0}],", field);
+                vals += string.Format("{0}{1},", parameterPrefix, field);
+            }
+
+            fields = fields.Trim(',');
+            vals = vals.Trim(',');
+            string sql = string.Format("INSERT INTO {0} ({1}) VALUES ({2});", this.tableName, fields, vals);
+
+            foreach (string field in hash.Keys)
+            {
+                object val = hash[field];
+                val = val ?? DBNull.Value;
+
+                this.sqlite.AddParameter(field, val, PoseidonUtil.TypeToDbType(val.GetType()));
+            }
+
+            this.sqlite.ExecuteNonQuery(sql);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        public virtual T Create(T entity, bool generateKey)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
@@ -270,6 +317,7 @@ namespace Poseidon.Data
         {
             throw new NotImplementedException();
         }
+
         #endregion //Method
     }
 }

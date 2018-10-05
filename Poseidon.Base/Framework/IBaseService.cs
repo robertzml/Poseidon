@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Poseidon.Base.Framework
 {
+    using Poseidon.Base.System;
+
     /// <summary>
     /// 服务调用层基础接口
     /// </summary>
@@ -19,6 +21,13 @@ namespace Poseidon.Base.Framework
         /// <param name="id">ID</param>
         /// <returns></returns>
         T FindById(Tkey id);
+
+        /// <summary>
+        /// 异步根据ID查找对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        Task<T> FindByIdAsync(Tkey id);
 
         /// <summary>
         /// 根据某一字段查找对象
@@ -36,6 +45,12 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindAll();
 
         /// <summary>
+        /// 异步查找所有对象
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<T>> FindAllAsync();
+
+        /// <summary>
         /// 根据某一字段查找对象
         /// </summary>
         /// <typeparam name="Tvalue">值类型</typeparam>
@@ -45,10 +60,24 @@ namespace Poseidon.Base.Framework
         IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
 
         /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListInIds(List<Tkey> values);
+
+        /// <summary>
         /// 查找所有正常状态对象
         /// </summary>
         /// <returns></returns>
         IEnumerable<T> FindAllNormal();
+
+        /// <summary>
+        /// 按状态查找对象
+        /// </summary>
+        /// <param name="status">对象状态</param>
+        /// <returns></returns>
+        IEnumerable<T> FindByStatus(EntityStatus status);
 
         /// <summary>
         /// 查找所有记录数量
@@ -73,6 +102,14 @@ namespace Poseidon.Base.Framework
         T Create(T entity);
 
         /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        T Create(T entity, bool generateKey);
+
+        /// <summary>
         /// 编辑对象
         /// </summary>
         /// <param name="entity">实体对象</param>
@@ -80,11 +117,30 @@ namespace Poseidon.Base.Framework
         bool Update(T entity);
 
         /// <summary>
+        /// 根据ID删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
+        bool Delete(Tkey id);
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         bool Delete(T entity);
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="entity">实体对象</param>
+        void MarkDelete(T entity);
+
+        /// <summary>
+        /// 标记删除对象
+        /// </summary>
+        /// <param name="id">ID</param>
+        void MarkDelete(Tkey id);
     }
 
     /// <summary>

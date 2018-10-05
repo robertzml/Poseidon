@@ -16,13 +16,17 @@ namespace Poseidon.Test
         #region Method
         public static void Initialize()
         {
-            // 设置连接字符串
             string source = AppConfig.GetAppSetting("ConnectionSource");
             if (string.IsNullOrEmpty(source))
-                throw new PoseidonException(ErrorCode.ConnectionSourceNotFound);
+                throw new PoseidonException(ErrorCode.DatabaseConnectionNotFound);
 
             string connection = "";
-            if (source == "appconfig")
+            if (source == "dbconfig")
+            {
+                string name = AppConfig.GetAppSetting("DbConnection");
+                connection = ConfigUtility.GetConnectionString(name);
+            }
+            else if (source == "appconfig")
             {
                 connection = AppConfig.GetConnectionString();
             }
@@ -31,6 +35,10 @@ namespace Poseidon.Test
                 throw new PoseidonException(ErrorCode.DatabaseConnectionNotFound);
 
             Cache.Instance.Add("ConnectionString", connection);
+
+            // 设置数据库类型
+            string dalPrefix = AppConfig.GetAppSetting("DALPrefix");
+            Cache.Instance.Add("DALPrefix", dalPrefix);
         }
         #endregion //Method
     }

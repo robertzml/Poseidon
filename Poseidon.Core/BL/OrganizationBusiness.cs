@@ -6,7 +6,6 @@ using System.Text;
 namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
-    using Poseidon.Base.System;
     using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
 
@@ -50,18 +49,6 @@ namespace Poseidon.Core.BL
         {
             var dal = this.baseDal as IOrganizationRepository;
             return dal.FindWithIds(organizationIds);
-        }
-
-        /// <summary>
-        /// 查找分组项对应组织
-        /// </summary>
-        /// <param name="items">分组项</param>
-        /// <returns></returns>
-        public IEnumerable<Organization> FindByGroupItem(List<GroupItem> items)
-        {
-            var dal = this.baseDal as IOrganizationRepository;
-            var ids = items.Select(r => r.OrganizationId).ToList();
-            return dal.FindWithIds(ids);
         }
         #endregion //Method
     }

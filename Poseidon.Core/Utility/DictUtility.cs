@@ -23,12 +23,27 @@ namespace Poseidon.Core.Utility
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <param name="field">属性字段</param>
-        /// <param name="key"></param>
+        /// <param name="key">字典键</param>
         /// <returns></returns>
         public static string GetDictValue(BaseEntity entity, string field, int key)
         {
             Type t = entity.GetType();
             var propertyInfo = t.GetProperty(field);
+            var attr = Attribute.GetCustomAttribute(propertyInfo, typeof(DictAttribute)) as DictAttribute;
+
+            return BusinessFactory<DictBusiness>.Instance.FindValue(attr.DictCode, key);
+        }
+
+        /// <summary>
+        /// 获取类型指定属性字典值
+        /// </summary>
+        /// <param name="type">对象类型</param>
+        /// <param name="field">属性字段</param>
+        /// <param name="key">字典键</param>
+        /// <returns></returns>
+        public static string GetDictValue(Type type, string field, int key)
+        {
+            var propertyInfo = type.GetProperty(field);
             var attr = Attribute.GetCustomAttribute(propertyInfo, typeof(DictAttribute)) as DictAttribute;
 
             return BusinessFactory<DictBusiness>.Instance.FindValue(attr.DictCode, key);

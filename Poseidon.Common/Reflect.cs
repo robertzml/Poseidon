@@ -16,7 +16,7 @@ namespace Poseidon.Common
         /// <summary>
         /// 缓存
         /// </summary>
-        private static Hashtable objCache = new Hashtable();
+        private static Cache objCache = Cache.Instance;
 
         /// <summary>
         /// 锁变量
@@ -41,6 +41,10 @@ namespace Poseidon.Common
 
             //反射创建
             T obj = (T)assemblyObj.CreateInstance(name);
+            if (obj == null)
+            {
+                throw new Exception(string.Format("反射创建对象失败， name={0}, assemblyString={1}", name, assemblyString));
+            }
             return obj;
         }
 
@@ -61,6 +65,10 @@ namespace Poseidon.Common
 
             //反射创建
             T obj = (T)assemblyObj.CreateInstance(name, false, BindingFlags.Default, null, args, null, null);
+            if (obj == null)
+            {
+                throw new Exception(string.Format("反射创建参数化对象失败， name={0}, assemblyString={1}", name, assemblyString));
+            }
             return obj;
         }
         #endregion //Function
@@ -90,19 +98,26 @@ namespace Poseidon.Common
             T objType = null;
             if (bCache)
             {
-                if (!objCache.ContainsKey(cacheKey))
-                {
-                    lock (syncRoot)
-                    {
-                        objType = CreateInstance(cacheKey, assemblyString);
-                        //缓存数据访问对象
-                        objCache.Add(cacheKey, objType);
-                    }
-                }
-                else
+                if (objCache.ContainKey(cacheKey))
                 {
                     //从缓存读取
                     objType = (T)objCache[cacheKey];
+                }
+                else
+                {
+                    lock (syncRoot)
+                    {
+                        if (objCache.ContainKey(cacheKey))
+                        {
+                            objType = (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            objType = CreateInstance(cacheKey, assemblyString);
+                            //缓存数据访问对象
+                            objCache.Add(cacheKey, objType);
+                        }
+                    }
                 }
             }
             else
@@ -127,19 +142,24 @@ namespace Poseidon.Common
             T objType = null;
             if (bCache)
             {
-                if (!objCache.ContainsKey(cacheKey))
+                if (objCache.ContainKey(cacheKey))
                 {
-                    lock (syncRoot)
-                    {
-                        objType = CreateInstance(cacheKey, assemblyString, args);
-                        //缓存数据访问对象
-                        objCache.Add(cacheKey, objType);
-                    }
+                    objType = (T)objCache[cacheKey];
                 }
                 else
                 {
-                    //从缓存读取
-                    objType = (T)objCache[cacheKey];
+                    lock (syncRoot)
+                    {
+                        if (objCache.ContainKey(cacheKey))
+                        {
+                            objType = (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            objType = CreateInstance(cacheKey, assemblyString, args);
+                            objCache.Add(cacheKey, objType);
+                        }
+                    }
                 }
             }
             else

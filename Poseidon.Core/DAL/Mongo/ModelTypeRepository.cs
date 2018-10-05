@@ -40,8 +40,12 @@ namespace Poseidon.Core.DAL.Mongo
             entity.Id = doc["_id"].ToString();
             entity.Name = doc["name"].ToString();
             entity.Code = doc["code"].ToString();
+            entity.Category = doc["category"].ToInt32();
             entity.Remark = doc["remark"].ToString();
             entity.Status = doc["status"].ToInt32();
+
+            if (doc.Contains("module"))
+                entity.Module = doc["module"].ToString();
 
             return entity;
         }
@@ -57,6 +61,8 @@ namespace Poseidon.Core.DAL.Mongo
             {
                 { "name", entity.Name },
                 { "code", entity.Code },
+                { "category", entity.Category },
+                { "module", entity.Module },
                 { "remark", entity.Remark },
                 { "status", entity.Status }
             };

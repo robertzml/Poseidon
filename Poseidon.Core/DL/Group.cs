@@ -9,7 +9,7 @@ namespace Poseidon.Core.DL
     using Poseidon.Base.Framework;
 
     /// <summary>
-    /// 组织分组类
+    /// 模型分组类
     /// </summary>
     public class Group : ObjectEntity
     {
@@ -19,6 +19,12 @@ namespace Poseidon.Core.DL
         /// </summary>
         [Display(Name = "代码")]
         public string Code { get; set; }
+
+        /// <summary>
+        /// 模块
+        /// </summary>
+        [Display(Name = "模块")]
+        public string Module { get; set; }
 
         /// <summary>
         /// 上级ID
@@ -33,9 +39,9 @@ namespace Poseidon.Core.DL
         public List<string> ModelTypes { get; set; }
 
         /// <summary>
-        /// 下属组织
+        /// 包含对象
         /// </summary>
-        [Display(Name = "下属组织")]
+        [Display(Name = "包含对象")]
         public List<GroupItem> Items { get; set; }
         #endregion //Property
     }
@@ -53,15 +59,15 @@ namespace Poseidon.Core.DL
         public string GroupCode { get; set; }
 
         /// <summary>
-        /// 组织ID
+        /// 对象ID
         /// </summary>
-        [Display(Name = "组织ID")]
-        public string OrganizationId { get; set; }
+        [Display(Name = "对象ID")]
+        public string EntityId { get; set; }
 
         /// <summary>
-        /// 组织模型类型代码
+        /// 模型类型代码
         /// </summary>
-        [Display(Name = "组织模型类型")]
+        [Display(Name = "模型类型")]
         public string ModelType { get; set; }
 
         /// <summary>

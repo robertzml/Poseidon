@@ -9,7 +9,7 @@ namespace Poseidon.Base.System
     /// <summary>
     /// 登录用户
     /// </summary>
-    public class LoginUser
+    public class LoginUser : ILoginUser
     {
         #region Property
         /// <summary>

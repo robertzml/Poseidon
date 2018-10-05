@@ -41,18 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\IBuildingService.cs" />
+    <Compile Include="Facade\IDatasetService.cs" />
     <Compile Include="Facade\IDictCategoryService.cs" />
     <Compile Include="Facade\IDictService.cs" />
+    <Compile Include="Facade\IFacilityService.cs" />
+    <Compile Include="Facade\IFileService.cs" />
     <Compile Include="Facade\IGroupService.cs" />
+    <Compile Include="Facade\IMenuService.cs" />
     <Compile Include="Facade\IModelTypeService.cs" />
     <Compile Include="Facade\IOrganizationService.cs" />
     <Compile Include="Facade\IPrivilegeService.cs" />
     <Compile Include="Facade\IRoleService.cs" />
     <Compile Include="Facade\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinformCaller\BuildingService.cs" />
+    <Compile Include="WinformCaller\DatasetService.cs" />
     <Compile Include="WinformCaller\DictCategoryService.cs" />
     <Compile Include="WinformCaller\DictService.cs" />
+    <Compile Include="WinformCaller\FacilityService.cs" />
+    <Compile Include="WinformCaller\FileService.cs" />
     <Compile Include="WinformCaller\GroupService.cs" />
+    <Compile Include="WinformCaller\MenuService.cs" />
     <Compile Include="WinformCaller\ModelTypeService.cs" />
     <Compile Include="WinformCaller\OrganizationService.cs" />
     <Compile Include="WinformCaller\PrivilegeService.cs" />

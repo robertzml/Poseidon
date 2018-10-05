@@ -81,5 +81,17 @@ namespace Poseidon.Caller.Facade
         /// <param name="id">用户ID</param>
         /// <param name="codes">权限代码列表</param>
         void SetPrivileges(string id, List<string> codes);
+
+        /// <summary>
+        /// 启用用户
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        void Enable(string id);
+
+        /// <summary>
+        /// 禁用用户
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        void Disable(string id);
     }
 }

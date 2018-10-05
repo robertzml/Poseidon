@@ -23,6 +23,15 @@ namespace Poseidon.Base.Framework
         T FindById(Tkey id);
 
         /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        T FindOneByField<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
         /// 查找所有对象
         /// </summary>
         /// <returns></returns>
@@ -33,6 +42,22 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <returns></returns>
         IEnumerable<T> FindAllNormal();
+
+        /// <summary>
+        /// 根据某一字段查找对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListByField<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
+        /// 按ID列表查找记录
+        /// </summary>
+        /// <param name="values">ID列表</param>
+        /// <returns></returns>
+        IEnumerable<T> FindListInIds(List<Tkey> values);
 
         /// <summary>
         /// 按状态查找对象
@@ -48,11 +73,28 @@ namespace Poseidon.Base.Framework
         long Count();
 
         /// <summary>
+        /// 根据条件查找记录数量
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        long Count<Tvalue>(string field, Tvalue value);
+
+        /// <summary>
         /// 创建对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         T Create(T entity);
+
+        /// <summary>
+        /// 插入指定对象到数据库中
+        /// </summary>
+        /// <param name="entity">指定的对象</param>
+        /// <param name="generateKey">是否自动生成主键</param>
+        /// <returns></returns>
+        T Create(T entity, bool generateKey);
 
         /// <summary>
         /// 编辑对象

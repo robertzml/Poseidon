@@ -15,9 +15,14 @@ namespace Poseidon.Base.Framework
     {
         #region Field
         /// <summary>
+        /// 缓存
+        /// </summary>
+        private static Cache objCache = Cache.Instance;
+
+        /// <summary>
         /// 数据类缓存
         /// </summary>
-        private static Hashtable objCache = new Hashtable();
+        //private static Hashtable objCache = new Hashtable();
 
         /// <summary>
         /// 锁变量
@@ -49,12 +54,13 @@ namespace Poseidon.Base.Framework
         }
 
         /// <summary>
-        /// 根据配置载入相关数据访问程序集
+        /// 载入相关数据访问程序集
+        /// 由缓存DALPrefix确定
         /// </summary>
         /// <returns></returns>
         private static T LoadAssembly()
         {
-            string prefix = AppConfig.GetAppSetting("DALPrefix");
+            string prefix = Cache.Instance["DALPrefix"].ToString();
             prefix = "DAL." + prefix;
 
             string name = typeof(T).Name;
@@ -63,7 +69,7 @@ namespace Poseidon.Base.Framework
             string fullName = typeof(T).FullName;
             fullName = fullName.Replace("IDAL", prefix).Replace(name, insName); //bind new instance name
 
-            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name, false); //reflection create
             return o;
         }
 
@@ -82,7 +88,7 @@ namespace Poseidon.Base.Framework
             string fullName = typeof(T).FullName;
             fullName = fullName.Replace("IDAL", prefix).Replace(name, insName); //bind new instance name
 
-            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name); //reflection create
+            T o = Reflect<T>.Create(fullName, typeof(T).Assembly.GetName().Name, false); //reflection create
             return o;
         }
         #endregion //Function
@@ -95,18 +101,8 @@ namespace Poseidon.Base.Framework
         /// <returns></returns>
         public static T GetInstance(DataBaseType prefix)
         {
-            T dal = null;
-            if (dal == null)
-            {
-                lock (syncRoot)
-                {
-                    if (dal == null)
-                    {
-                        string p = DBTypeToString(prefix);
-                        dal = LoadAssembly(p);
-                    }
-                }
-            }
+            string p = DBTypeToString(prefix);
+            T dal = LoadAssembly(p);
             return dal;
         }
         #endregion //Method
@@ -120,20 +116,26 @@ namespace Poseidon.Base.Framework
             get
             {
                 string cacheKey = typeof(T).FullName;
-                //从缓存读取
-                T dal = (T)objCache[cacheKey];
-                if (dal == null)
+                if (objCache.ContainKey(cacheKey))
+                {
+                    return (T)objCache[cacheKey];
+                }
+                else
                 {
                     lock (syncRoot)
                     {
-                        if (dal == null)
+                        if (objCache.ContainKey(cacheKey))
                         {
-                            dal = LoadAssembly();
+                            return (T)objCache[cacheKey];
+                        }
+                        else
+                        {
+                            T dal = LoadAssembly();
                             objCache.Add(cacheKey, dal);
+                            return dal;
                         }
                     }
                 }
-                return dal;
             }
         }
         #endregion //Property
