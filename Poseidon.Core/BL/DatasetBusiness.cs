@@ -8,6 +8,7 @@ namespace Poseidon.Core.BL
 {
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
+    using Poseidon.Common;
     using Poseidon.Core.IDAL;
     using Poseidon.Core.DL;
 
@@ -78,10 +79,10 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override bool Update(Dataset entity)
+        public override (bool success, string errorMessage) Update(Dataset entity)
         {
             if (!CheckDuplicate(entity))
-                throw new PoseidonException(ErrorCode.DuplicateCode);
+                return (false, ErrorCode.DuplicateCode.DisplayName());
             return base.Update(entity);
         }
         #endregion //Method

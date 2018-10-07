@@ -140,7 +140,7 @@ namespace Poseidon.Base.Framework
         /// 编辑对象
         /// </summary>
         /// <param name="entity">对象实体</param>
-        public virtual bool Update(T entity)
+        public virtual (bool success, string errorMessage) Update(T entity)
         {
             return this.baseDal.Update(entity);
         }
@@ -150,7 +150,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">对象实体</param>
         /// <returns></returns>
-        public virtual bool Delete(T entity)
+        public virtual (bool success, string errorMessage) Delete(T entity)
         {
             return this.baseDal.Delete(entity);
         }
@@ -160,9 +160,20 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public virtual bool Delete(Tkey id)
+        public virtual (bool success, string errorMessage) Delete(Tkey id)
         {
             return this.baseDal.Delete(id);
+        }
+
+        /// <summary>
+        /// 按条件删除多个对象
+        /// </summary>
+        /// <typeparam name="Tvalue">值类型</typeparam>
+        /// <param name="field">字段名称</param>
+        /// <param name="value">值</param>
+        public virtual (bool success, string errorMessage) DeleteMany<Tvalue>(string field, Tvalue value)
+        {
+            return this.baseDal.DeleteMany(field, value);
         }
 
         /// <summary>

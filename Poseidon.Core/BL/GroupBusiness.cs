@@ -212,7 +212,7 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="entity">分组对象</param>
         /// <returns></returns>
-        public override bool Update(Group entity)
+        public override (bool success, string errorMessage) Update(Group entity)
         {
             foreach (var item in entity.Items)
             {

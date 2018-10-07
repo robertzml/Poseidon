@@ -10,8 +10,12 @@
 用户管理、字典管理、分组管理。
 
 ### v1.0  2017-04-24
-基于.net framework 4.6.
+基于.net framework 4.6
 实现权限管理。
 
 ### v1.2  2018-08-31
 支持MongoDB 4.0
+
+### v2.0  2018-10-07
+基于.net framework 4.7.2
+使用Visual Studio 2017

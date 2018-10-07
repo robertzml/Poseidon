@@ -49,10 +49,10 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override bool Delete(DictCategory entity)
+        public override (bool success, string errorMessage) Delete(DictCategory entity)
         {
             if (CheckHasDict(entity.Id))
-                throw new PoseidonException("字典分组含有字典");
+                return (false, "字典分组含有字典");
 
             return base.Delete(entity);
         }
@@ -62,10 +62,10 @@ namespace Poseidon.Core.BL
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public override bool Delete(string id)
+        public override (bool success, string errorMessage) Delete(string id)
         {
             if (CheckHasDict(id))
-                throw new PoseidonException("字典分组含有字典");
+                return (false, "字典分组含有字典");
 
             return base.Delete(id);
         }

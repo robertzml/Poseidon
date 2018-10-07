@@ -94,21 +94,21 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        bool Update(T entity);
+        (bool success, string errorMessage) Update(T entity);
 
         /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        bool Delete(T entity);
+        (bool success, string errorMessage) Delete(T entity);
 
         /// <summary>
         /// 根据ID删除对象
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        bool Delete(Tkey id);
+        (bool success, string errorMessage) Delete(Tkey id);
 
         /// <summary>
         /// 按条件删除对象
@@ -117,7 +117,7 @@ namespace Poseidon.Base.Framework
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        bool Delete<Tvalue>(string field, Tvalue value);
+        (bool success, string errorMessage) Delete<Tvalue>(string field, Tvalue value);
 
         /// <summary>
         /// 按条件删除多个对象
@@ -126,7 +126,7 @@ namespace Poseidon.Base.Framework
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        bool DeleteMany<Tvalue>(string field, Tvalue value);
+        (bool success, string errorMessage) DeleteMany<Tvalue>(string field, Tvalue value);
 
         /// <summary>
         /// 标记删除对象

@@ -231,17 +231,17 @@ namespace Poseidon.Base.Framework
             throw new NotImplementedException();
         }
 
-        public virtual bool Update(T entity)
+        public virtual (bool success, string errorMessage) Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public virtual bool Delete(Tkey id)
+        public virtual (bool success, string errorMessage) Delete(Tkey id)
         {
             throw new NotImplementedException();
         }
 
-        public virtual bool Delete(T entity)
+        public virtual (bool success, string errorMessage) Delete(T entity)
         {
             throw new NotImplementedException();
         }

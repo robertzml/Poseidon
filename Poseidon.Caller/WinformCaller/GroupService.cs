@@ -143,7 +143,7 @@ namespace Poseidon.Caller.WinformCaller
         /// </summary>
         /// <param name="entity">分组对象</param>
         /// <returns></returns>
-        public override bool Update(Group entity)
+        public override (bool success, string errorMessage) Update(Group entity)
         {
             return this.bl.Update(entity);
         }

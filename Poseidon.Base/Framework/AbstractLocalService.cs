@@ -182,7 +182,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual bool Update(T entity)
+        public virtual (bool success, string errorMessage) Update(T entity)
         {
             return this.baseBL.Update(entity);
         }
@@ -192,7 +192,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public virtual bool Delete(Tkey id)
+        public virtual (bool success, string errorMessage) Delete(Tkey id)
         {
             return this.baseBL.Delete(id);
         }
@@ -202,7 +202,7 @@ namespace Poseidon.Base.Framework
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual bool Delete(T entity)
+        public virtual (bool success, string errorMessage) Delete(T entity)
         {
             return this.baseBL.Delete(entity);
         }

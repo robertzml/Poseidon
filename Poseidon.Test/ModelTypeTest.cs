@@ -45,7 +45,7 @@ namespace Poseidon.Test
 
 
             var result = CallerFactory<IModelTypeService>.Instance.Delete(mt);
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.success);
         }
 
         /// <summary>

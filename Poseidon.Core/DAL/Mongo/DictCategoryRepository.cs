@@ -9,6 +9,7 @@ namespace Poseidon.Core.DAL.Mongo
     using MongoDB.Bson;
     using MongoDB.Driver;
     using Poseidon.Base.System;
+    using Poseidon.Common;
     using Poseidon.Data;
     using Poseidon.Core.DL;
     using Poseidon.Core.IDAL;
@@ -105,10 +106,10 @@ namespace Poseidon.Core.DAL.Mongo
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public override bool Update(DictCategory entity)
+        public override (bool success, string errorMessage) Update(DictCategory entity)
         {
             if (!CheckDuplicate(entity))
-                throw new PoseidonException(ErrorCode.DuplicateName);
+                return (false, ErrorCode.DuplicateName.DisplayName());
 
             return base.Update(entity);
         }

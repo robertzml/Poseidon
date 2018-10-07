@@ -180,7 +180,7 @@ namespace Poseidon.Core.BL
                 return false;
 
             user.Password = newPassword;
-            return dal.Update(user);
+            return dal.Update(user).success;
         }
 
         /// <summary>

@@ -77,6 +77,12 @@ namespace Poseidon.Base.System
         /// </summary>
         [Display(Name = "未选择记录")]
         EmptySelect = 12,
+
+        /// <summary>
+        /// 对象为空
+        /// </summary>
+        [Display(Name = "对象为空")]
+        ObjectIsEmpty = 13,
         #endregion //System
 
         #region Config

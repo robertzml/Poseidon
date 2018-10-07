@@ -359,12 +359,12 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual bool Update(T entity)
+        public virtual (bool success, string errorMessage) Update(T entity)
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
             var doc = EntityToDoc(entity);
             var result = this.mongo.Replace(this.collectionName, filter, doc);
-            return result.IsAcknowledged;
+            return (result.IsAcknowledged, result.ToString());
         }
 
         /// <summary>
@@ -384,11 +384,11 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
-        public virtual bool Delete(T entity)
+        public virtual (bool success, string errorMessage) Delete(T entity)
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(entity.Id));
             var result = this.mongo.Delete(this.collectionName, filter);
-            return result.IsAcknowledged;
+            return (result.IsAcknowledged, result.ToString());
         }
 
         /// <summary>
@@ -396,11 +396,11 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="id">ID</param>
         /// <returns></returns>
-        public virtual bool Delete(string id)
+        public virtual (bool success, string errorMessage) Delete(string id)
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(id));
             var result = this.mongo.Delete(this.collectionName, filter);
-            return result.IsAcknowledged;
+            return (result.IsAcknowledged, result.ToString());
         }
 
         /// <summary>
@@ -410,11 +410,11 @@ namespace Poseidon.Data
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public virtual bool Delete<Tvalue>(string field, Tvalue value)
+        public virtual (bool success, string errorMessage) Delete<Tvalue>(string field, Tvalue value)
         {
             var filter = Builders<BsonDocument>.Filter.Eq(field, value);
             var result = this.mongo.Delete(this.collectionName, filter);
-            return result.IsAcknowledged;
+            return (result.IsAcknowledged, result.ToString());
         }
 
         /// <summary>
@@ -424,11 +424,11 @@ namespace Poseidon.Data
         /// <param name="field">字段名称</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public virtual bool DeleteMany<Tvalue>(string field, Tvalue value)
+        public virtual (bool success, string errorMessage) DeleteMany<Tvalue>(string field, Tvalue value)
         {
             var filter = Builders<BsonDocument>.Filter.Eq(field, value);
             var result = this.mongo.DeleteMany(this.collectionName, filter);
-            return result.IsAcknowledged;
+            return (result.IsAcknowledged, result.ToString());
         }
 
         /// <summary>
@@ -436,10 +436,10 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="filter">查询条件</param>
         /// <returns></returns>
-        public virtual bool DeleteMany(FilterDefinition<BsonDocument> filter)
+        public virtual (bool success, string errorMessage) DeleteMany(FilterDefinition<BsonDocument> filter)
         {
             var result = this.mongo.DeleteMany(this.collectionName, filter);
-            return result.IsAcknowledged;
+            return (result.IsAcknowledged, result.ToString());
         }
 
         /// <summary>

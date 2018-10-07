@@ -10,6 +10,7 @@ namespace Poseidon.Data
     using Poseidon.Base.Framework;
     using Poseidon.Base.System;
     using Poseidon.Base.Utility;
+    using Poseidon.Common;
     using Poseidon.Data.BaseDB;
 
     /// <summary>
@@ -242,11 +243,11 @@ namespace Poseidon.Data
         /// <param name="entity">实体对象</param>
         /// <returns></returns>
         /// <remarks>采用主键Id进行限定</remarks>
-        public virtual bool Update(T entity)
+        public virtual (bool success, string errorMessage) Update(T entity)
         {
             var hash = EntityToHash(entity);
             if (hash == null || hash.Count < 1)
-                return false;
+                return (false, ErrorCode.ObjectIsEmpty.DisplayName());
 
             string setValue = "";
             foreach (string field in hash.Keys)
@@ -268,7 +269,7 @@ namespace Poseidon.Data
             }
 
             this.sqlite.ExecuteNonQuery(sql);
-            return true;
+            return (true, "");
         }
 
         /// <summary>
@@ -277,7 +278,7 @@ namespace Poseidon.Data
         /// <param name="entity">对象实体</param>
         /// <returns></returns>
         /// <remarks>采用主键ID限定</remarks>
-        public virtual bool Delete(T entity)
+        public virtual (bool success, string errorMessage) Delete(T entity)
         {
             string condition = string.Format("[id] = {0}id", this.parameterPrefix);
             string sql = string.Format("DELETE FROM {0} WHERE {1} ", this.tableName, condition);
@@ -285,7 +286,7 @@ namespace Poseidon.Data
             this.sqlite.AddParameter("id", entity.Id, PoseidonUtil.TypeToDbType(entity.Id.GetType()));
             this.sqlite.ExecuteNonQuery(sql);
 
-            return true;
+            return (true, "");
         }
 
         /// <summary>
@@ -293,17 +294,17 @@ namespace Poseidon.Data
         /// </summary>
         /// <param name="id">主键</param>
         /// <returns></returns>
-        public virtual bool Delete(string id)
+        public virtual (bool success, string errorMessage) Delete(string id)
         {
             throw new NotImplementedException();
         }
 
-        public virtual bool Delete<Tvalue>(string field, Tvalue value)
+        public virtual (bool success, string errorMessage) Delete<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
 
-        public virtual bool DeleteMany<Tvalue>(string field, Tvalue value)
+        public virtual (bool success, string errorMessage) DeleteMany<Tvalue>(string field, Tvalue value)
         {
             throw new NotImplementedException();
         }
