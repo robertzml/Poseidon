@@ -91,7 +91,7 @@ namespace Poseidon.Caller.WinformCaller
         /// <param name="userName">用户名</param>
         /// <param name="password">散列密码</param>
         /// <returns></returns>
-        public bool Login(string userName, string password)
+        public (bool success, string errorMessage) Login(string userName, string password)
         {
             return this.bl.Login(userName, password);
         }

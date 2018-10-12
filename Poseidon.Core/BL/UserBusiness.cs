@@ -127,20 +127,23 @@ namespace Poseidon.Core.BL
         /// <param name="userName">用户名</param>
         /// <param name="password">散列密码</param>
         /// <returns></returns>
-        public bool Login(string userName, string password)
+        public (bool success, string errorMessage) Login(string userName, string password)
         {
             var dal = this.baseDal as IUserRepository;
 
             var user = dal.FindOneByField("userName", userName);
             if (user == null)
-                return false;
+                return (false, "用户为空");
+
+            if (user.Status == (int)EntityStatus.Disabled)
+                return (false, "用户已禁用");
 
             if (password != user.Password)
-                return false;
+                return (false, "用户名或密码错误");
 
             UpdateLoginTime(user, user.CurrentLoginTime, DateTime.Now);
 
-            return true;
+            return (true, "");
         }
 
         /// <summary>

@@ -56,7 +56,7 @@ namespace Poseidon.Caller.Facade
         /// <param name="userName">用户名</param>
         /// <param name="password">散列密码</param>
         /// <returns></returns>
-        bool Login(string userName, string password);
+        (bool success, string errorMessage) Login(string userName, string password);
 
         /// <summary>
         /// 检查用户密码
